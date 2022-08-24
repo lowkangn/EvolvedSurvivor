@@ -6,6 +6,17 @@ using System;
 public class EnemySpawner : TimedSpawner
 {
     [SerializeField] private MMSpawnAroundProperties spawnProperties;
+    [SerializeField] private SpawnManagerScriptableObject spawnManager;
+
+    private void OnEnable()
+    {
+        spawnManager.PlayerSpawnEvent.AddListener(AttachToPlayer);
+    }
+
+    private void OnDisable()
+    {
+        spawnManager.PlayerSpawnEvent.RemoveListener(AttachToPlayer);
+    }
 
     protected override void Spawn()
     {
@@ -29,5 +40,11 @@ public class EnemySpawner : TimedSpawner
 
         _lastSpawnTimestamp = Time.time;
         DetermineNextFrequency();
+    }
+
+    private void AttachToPlayer(PlayerController player)
+    {
+        gameObject.transform.position = player.transform.position;
+        gameObject.transform.parent = player.transform;
     }
 }
