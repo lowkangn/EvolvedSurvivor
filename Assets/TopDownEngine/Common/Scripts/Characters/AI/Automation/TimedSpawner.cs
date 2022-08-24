@@ -79,7 +79,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			GameObject nextGameObject = ObjectPooler.GetPooledGameObject();
 
-			// mandatory checks
+			// mandatory checks		
 			if (nextGameObject==null) { return; }
 			if (nextGameObject.GetComponent<MMPoolableObject>()==null)
 			{
