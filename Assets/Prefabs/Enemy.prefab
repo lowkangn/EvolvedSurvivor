@@ -5100,6 +5100,7 @@ GameObject:
   - component: {fileID: 7751773710183483230}
   - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
+  - component: {fileID: 8557347373184591496}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -5472,6 +5473,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoundsBasedOn: 1
   LifeTime: 0
+--- !u!114 &8557347373184591496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e996c2caf63bcfb44ab2089683b48fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolableObject: {fileID: 3135418408013145896}
+  despawnDistance: 35
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0

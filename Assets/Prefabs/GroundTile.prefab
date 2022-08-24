@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3848382279629026567}
   - component: {fileID: 3982967524800901897}
   - component: {fileID: 3848382279629026564}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: GroundTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3755ecb064a5e441b6cdb0e30b49934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xIndex: 0
-  yIndex: 0
+  x: 0
+  y: 0
