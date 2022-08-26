@@ -2,7 +2,7 @@ using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 
-public class CombatAbility : MonoBehaviour
+public class Ability : MonoBehaviour
 {
     [SerializeField] private float abilityCooldown;
     [SerializeField] private MMObjectPooler objectPool;
