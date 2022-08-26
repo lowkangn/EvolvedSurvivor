@@ -8,7 +8,12 @@ namespace TeamOne.EvolvedSurvivor
     {
         protected override void Activate()
         {
+            // Fire projectile
+        }
 
+        protected override void Build(int score)
+        {
+            // Set fire cool down, damage, speed, etc
         }
     }
 }
