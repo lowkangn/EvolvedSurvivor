@@ -12,21 +12,28 @@ namespace TeamOne.EvolvedSurvivor
         [Header("The ability is activated once every (coolDown) seconds")]
         [SerializeField]
         protected float coolDown;
+        protected int tier;
+        protected TraitChart traitChart;
 
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
 
         /// <summary>
-        /// Uses the score to (randomly) define the behaviours of the ability. 
+        /// Uses the trait chart to define the behaviours of the ability. 
         /// E.g., Speed, Damage, CoolDown, etc.
         /// MUST be called before the ability can be activated
         /// </summary>
-        public void BuildAbility(int score)
+        public void BuildAbility(TraitChart traitChart)
         {
-            Build(score);
+            Build(traitChart);
             hasBuilt = true;
         }
+
+        /// <summary>
+        /// Updates the ability using the consumed ability.
+        /// </summary>
+        public abstract void UpgradeAbility(Ability consumedAbility);
 
         private void Update()
         {
@@ -52,7 +59,7 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
-        protected abstract void Build(int score);
+        protected abstract void Build(TraitChart traitChart);
 
         protected abstract void Activate();
     }
