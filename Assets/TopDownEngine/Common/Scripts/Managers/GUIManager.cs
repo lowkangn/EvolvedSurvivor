@@ -21,6 +21,9 @@ namespace MoreMountains.TopDownEngine
 		/// the health bars to update
 		[Tooltip("the health bars to update")]
 		public MMProgressBar[] HealthBars;
+		/// the XP bars to update
+		[Tooltip("the XP bars to update")]
+		public MMProgressBar[] XPBars;
 		/// the dash bars to update
 		[Tooltip("the dash bars to update")]
 		public MMRadialProgressBar[] DashBars;
@@ -275,6 +278,29 @@ namespace MoreMountains.TopDownEngine
 				if (healthBar.PlayerID == playerID)
 				{
 					healthBar.UpdateBar(currentHealth,minHealth,maxHealth);
+				}
+	    	}
+
+	    }
+
+		/// <summary>
+	    /// Updates the XP bar.
+	    /// </summary>
+	    /// <param name="currentXP">Current XP.</param>
+	    /// <param name="minXP">Minimum XP.</param>
+	    /// <param name="maxXP">Max XP.</param>
+	    /// <param name="playerID">Player I.</param>
+	    public virtual void UpdateXPBar(float currentXP, float minXP, float maxXP, string playerID)
+	    {
+			if (XPBars == null) { return; }
+			if (XPBars.Length <= 0)	{ return; }
+
+	    	foreach (MMProgressBar XPBar in XPBars)
+	    	{
+				if (XPBar == null) { continue; }
+				if (XPBar.PlayerID == playerID)
+				{
+					XPBar.UpdateBar(currentXP, minXP, maxXP);
 				}
 	    	}
 
