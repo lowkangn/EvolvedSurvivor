@@ -6,7 +6,7 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class AbilityManager : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject playerRef;
         private List<Ability> abilitiesList;
         private List<bool> isAbilityActive; 
 
@@ -21,6 +21,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (!isAbilityActive[i])
                 {
+                    addPlayerRef(newAbility);
                     abilitiesList[i] = newAbility;
                     isAbilityActive[i] = true;
                     break;
@@ -38,6 +39,11 @@ namespace TeamOne.EvolvedSurvivor
         {
             abilitiesList[abilityToRemove] = null;
             isAbilityActive[abilityToRemove] = false;
+        }
+
+        private void addPlayerRef(Ability abilityToAdd)
+        {
+            abilityToAdd.addPlayerRef(playerRef);
         }
     }
 }
