@@ -180,16 +180,16 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="XP">The XP the character gets.</param>
 		public virtual void GetXP(int XP)
 		{
+			// Set XP to new XP
+			SetXP(Mathf.Min (CurrentXP + XP, MaximumXP));
+
 			// If MaxXP is reached, level up 
 			if (CurrentXP == MaximumXP) {
 				CurrentLevel++;
 				MaximumXP = GetMaximumXP(CurrentLevel);
 				CurrentXP = 0;
 				Debug.Log("CurrentLevel: " + CurrentLevel + ", MaximumXP: " + MaximumXP);
-			}
-
-			// Set XP to new XP
-			SetXP(Mathf.Min (CurrentXP + XP, MaximumXP));
+			}	
 
 			UpdateXPBar(true);
 		}
@@ -239,6 +239,10 @@ namespace MoreMountains.TopDownEngine
 					if (GUIManager.HasInstance)
 					{
 						GUIManager.Instance.UpdateXPBar(CurrentXP, 0f, MaximumXP, _character.PlayerID);
+
+						if (CurrentXP == MaximumXP) {
+							TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelUp, null);
+						}
 					}
 				}
 			}    

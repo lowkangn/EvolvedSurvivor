@@ -42,7 +42,8 @@ namespace MoreMountains.TopDownEngine
         CharacterSwitch,
         Repaint,
         TogglePause,
-        LoadNextScene
+        LoadNextScene,
+		LevelUp
     }
 
 	/// <summary>
@@ -186,6 +187,7 @@ namespace MoreMountains.TopDownEngine
         // storage
 		protected bool _inventoryOpen = false;
 		protected bool _pauseMenuOpen = false;
+		protected bool _hasLevelUpScreen = false;
 		protected InventoryInputManager _inventoryInputManager;
         protected int _initialMaximumLives;
         protected int _initialCurrentLives;
@@ -341,11 +343,29 @@ namespace MoreMountains.TopDownEngine
 				_pauseMenuOpen = false;
 				SetActiveInventoryInputManager (true);
 			}
+			if ((GUIManager.HasInstance) && _hasLevelUpScreen) {
+				GUIManager.Instance.SetLevelUpScreen(false);
+				_hasLevelUpScreen = false;
+				UnPause(PauseMethods.NoPauseMenu);
+			}
 			if (_inventoryOpen)
 			{
 				_inventoryOpen = false;
             }
             LevelManager.Instance.ToggleCharacterPause();
+        }
+
+		/// <summary>
+        /// Pause game and show Level up screen
+        /// </summary>
+        public virtual void LevelUp()
+        {
+			if ((GUIManager.HasInstance))
+			{
+				GUIManager.Instance.SetLevelUpScreen(true);	
+				_hasLevelUpScreen = true;
+			}
+			Pause(PauseMethods.NoPauseMenu);
         }
         
         /// <summary>
@@ -492,6 +512,10 @@ namespace MoreMountains.TopDownEngine
 
 				case TopDownEngineEventTypes.UnPause:
 					UnPause ();
+					break;
+
+				case TopDownEngineEventTypes.LevelUp:
+					LevelUp();
 					break;
 			}
 		}

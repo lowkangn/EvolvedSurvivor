@@ -36,6 +36,9 @@ namespace MoreMountains.TopDownEngine
 		/// the death screen
 		[Tooltip("the death screen")]
 		public GameObject DeathScreen;
+		/// the level up screen game object
+		[Tooltip("the level up screen game object")]
+		public GameObject LevelUpScreen;
 		/// The mobile buttons
 		[Tooltip("The mobile buttons")]
 		public CanvasGroup Buttons;
@@ -94,6 +97,7 @@ namespace MoreMountains.TopDownEngine
 			RefreshPoints();
             SetPauseScreen(false);
             SetDeathScreen(false);
+			SetLevelUpScreen(false);
 		}
 
 	    /// <summary>
@@ -199,6 +203,19 @@ namespace MoreMountains.TopDownEngine
             {
                 DeathScreen.SetActive(state);
                 EventSystem.current.sendNavigationEvents = state;
+            }
+        }
+
+		/// <summary>
+        /// Sets the level up screen on or off.
+        /// </summary>
+        /// <param name="state">If set to <c>true</c>, sets level up screen.</param>
+        public virtual void SetLevelUpScreen(bool state)
+        {
+            if (LevelUpScreen != null)
+            {
+                LevelUpScreen.SetActive(state);
+				EventSystem.current.sendNavigationEvents = state;
             }
         }
 
