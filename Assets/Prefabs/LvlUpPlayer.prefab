@@ -5383,7 +5383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb1bdc97ca2ad4488b49192b6b5b3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
   CurrentXP: 0
   InitialXP: 0
   MaximumXP: 5

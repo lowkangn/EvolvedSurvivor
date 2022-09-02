@@ -307,7 +307,7 @@ namespace MoreMountains.TopDownEngine
 	    /// <param name="minXP">Minimum XP.</param>
 	    /// <param name="maxXP">Max XP.</param>
 	    /// <param name="playerID">Player I.</param>
-	    public virtual void UpdateXPBar(float currentXP, float minXP, float maxXP, string playerID)
+	    public virtual void UpdateXPBar(float currentXP, float minXP, float maxXP)
 	    {
 			if (XPBars == null) { return; }
 			if (XPBars.Length <= 0)	{ return; }
@@ -315,10 +315,7 @@ namespace MoreMountains.TopDownEngine
 	    	foreach (MMProgressBar XPBar in XPBars)
 	    	{
 				if (XPBar == null) { continue; }
-				if (XPBar.PlayerID == playerID)
-				{
-					XPBar.UpdateBar(currentXP, minXP, maxXP);
-				}
+				XPBar.UpdateBar(currentXP, minXP, maxXP);
 	    	}
 
 	    }
