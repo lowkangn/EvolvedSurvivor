@@ -45,17 +45,17 @@ namespace MoreMountains.TopDownEngine
         /// <summary>
         /// On Start, we initialize our XP
         /// </summary>
-        protected virtual void Awake()
+        protected void Awake()
 	    {
 			Initialization();
 			SetInitialXP();
 	    }
 
-        protected virtual void Start()
+        protected void Start()
         {
         }
 
-        public virtual void SetInitialXP()
+        public void SetInitialXP()
         {
 		    SetXP(InitialXP);	
         }
@@ -63,7 +63,7 @@ namespace MoreMountains.TopDownEngine
 	    /// <summary>
 	    /// Grabs useful components
 	    /// </summary>
-		public virtual void Initialization()
+		public void Initialization()
 		{
             _XPBar = this.gameObject.GetComponentInParent<MMXPBar>();
 		}
@@ -71,7 +71,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// When the object is enabled (on respawn for example), we restore its initial XP levels
 		/// </summary>
-	    protected virtual void OnEnable()
+	    protected void OnEnable()
 		{
 			if (ResetXPOnEnable)
 			{
@@ -83,7 +83,7 @@ namespace MoreMountains.TopDownEngine
 		/// Called when the character gets XP from picking up XP Items
 		/// </summary>
 		/// <param name="XP">The XP the character gets.</param>
-		public virtual void GetXP(int XP)
+		public void GetXP(int XP)
 		{
 			// Set XP to new XP
 			SetXP(Mathf.Min (CurrentXP + XP, MaximumXP));
@@ -112,7 +112,7 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 	    /// Change the character's max XP based on current level
 	    /// </summary>
-	    public virtual int GetMaximumXP(int currentLevel)
+	    public int GetMaximumXP(int currentLevel)
 	    {
 		    return MaximumXP + 5; // Change this func after play testing
         }	
@@ -120,7 +120,7 @@ namespace MoreMountains.TopDownEngine
 	    /// <summary>
 	    /// Resets the character's XP to its max value
 	    /// </summary>
-	    public virtual void ResetXPToMaxXP()
+	    public void ResetXPToMaxXP()
 	    {
 		    SetXP(MaximumXP);
         }	
@@ -129,7 +129,7 @@ namespace MoreMountains.TopDownEngine
         /// Sets the current XP to the specified new value, and updates the XP bar
         /// </summary>
         /// <param name="newValue"></param>
-        public virtual void SetXP(int newValue)
+        public void SetXP(int newValue)
         {
             CurrentXP = newValue;
             UpdateXPBar(false);
@@ -138,7 +138,7 @@ namespace MoreMountains.TopDownEngine
 	    /// <summary>
 	    /// Updates the character's XP bar progress.
 	    /// </summary>
-		public virtual void UpdateXPBar(bool show)
+		public void UpdateXPBar(bool show)
 	    {
 	    	if (_XPBar != null)
 	    	{
