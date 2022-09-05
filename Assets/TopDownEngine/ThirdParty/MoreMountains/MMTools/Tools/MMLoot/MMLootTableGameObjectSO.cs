@@ -11,10 +11,17 @@ namespace  MoreMountains.Tools
         /// the loot table 
         public MMLootTableGameObject LootTable;
 
+        private int drop_probability = 75;
+
         /// returns an object from the loot table
         public virtual GameObject GetLoot()
         {
-            return LootTable.GetLoot()?.Loot;
+            int random_int = Random.Range(0, 100);
+            if (random_int <= drop_probability) {
+                return LootTable.GetLoot()?.Loot;
+            } else {
+                return null;
+            }
         }
         
         /// <summary>

@@ -212,7 +212,6 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Pick(GameObject picker)
 		{
-			
 		}
 	}
 }

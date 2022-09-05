@@ -21,6 +21,9 @@ namespace MoreMountains.TopDownEngine
 		/// the health bars to update
 		[Tooltip("the health bars to update")]
 		public MMProgressBar[] HealthBars;
+		/// the XP bars to update
+		[Tooltip("the XP bars to update")]
+		public MMProgressBar[] XPBars;
 		/// the dash bars to update
 		[Tooltip("the dash bars to update")]
 		public MMRadialProgressBar[] DashBars;
@@ -33,6 +36,9 @@ namespace MoreMountains.TopDownEngine
 		/// the death screen
 		[Tooltip("the death screen")]
 		public GameObject DeathScreen;
+		/// the level up screen game object
+		[Tooltip("the level up screen game object")]
+		public GameObject LevelUpScreen;
 		/// The mobile buttons
 		[Tooltip("The mobile buttons")]
 		public CanvasGroup Buttons;
@@ -91,6 +97,7 @@ namespace MoreMountains.TopDownEngine
 			RefreshPoints();
             SetPauseScreen(false);
             SetDeathScreen(false);
+			SetLevelUpScreen(false);
 		}
 
 	    /// <summary>
@@ -199,6 +206,19 @@ namespace MoreMountains.TopDownEngine
             }
         }
 
+		/// <summary>
+        /// Sets the level up screen on or off.
+        /// </summary>
+        /// <param name="state">If set to <c>true</c>, sets level up screen.</param>
+        public virtual void SetLevelUpScreen(bool state)
+        {
+            if (LevelUpScreen != null)
+            {
+                LevelUpScreen.SetActive(state);
+				EventSystem.current.sendNavigationEvents = state;
+            }
+        }
+
         /// <summary>
         /// Sets the jetpackbar active or not.
         /// </summary>
@@ -276,6 +296,26 @@ namespace MoreMountains.TopDownEngine
 				{
 					healthBar.UpdateBar(currentHealth,minHealth,maxHealth);
 				}
+	    	}
+
+	    }
+
+		/// <summary>
+	    /// Updates the XP bar.
+	    /// </summary>
+	    /// <param name="currentXP">Current XP.</param>
+	    /// <param name="minXP">Minimum XP.</param>
+	    /// <param name="maxXP">Max XP.</param>
+	    /// <param name="playerID">Player I.</param>
+	    public virtual void UpdateXPBar(float currentXP, float minXP, float maxXP)
+	    {
+			if (XPBars == null) { return; }
+			if (XPBars.Length <= 0)	{ return; }
+
+	    	foreach (MMProgressBar XPBar in XPBars)
+	    	{
+				if (XPBar == null) { continue; }
+				XPBar.UpdateBar(currentXP, minXP, maxXP);
 	    	}
 
 	    }
