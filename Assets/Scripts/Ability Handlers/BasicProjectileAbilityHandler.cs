@@ -34,6 +34,7 @@ namespace TeamOne.EvolvedSurvivor
             this.direction = direction;
 
             isStatsSet = true;
+            colliders = new List<Collider2D>();
         }
 
         // Used to count how many enemies contacted
