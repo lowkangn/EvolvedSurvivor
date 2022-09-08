@@ -48,7 +48,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (!hasActivated)
                 {
-                    Activate();
+                    hasActivated = Activate();
                 }
                 return;
             }
@@ -68,7 +68,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected abstract void Build(TraitChart traitChart);
 
-        protected abstract void Activate();
+        protected abstract bool Activate();
 
         
     }

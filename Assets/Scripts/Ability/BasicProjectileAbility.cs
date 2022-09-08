@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
-using System;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -12,13 +12,12 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] private MMObjectPooler objectPool;
         private bool isActivated = false;
 
-        // Public for now so can set values in inspector, later private when provided by Build()
         // Fire at closest target, knockback (based on speed)
-        public int damage;
-        public int pierceLimit;
-        public int projectileCount;
-        public float projectileSpeed;
-        public float projectileSize;
+        [SerializeField] protected int damage;
+        [SerializeField] protected int pierceLimit;
+        [SerializeField] protected int projectileCount;
+        [SerializeField] protected float projectileSpeed;
+        [SerializeField] protected float projectileSize;
 
         // Calculated during activation
         private Vector3 direction;
@@ -33,7 +32,7 @@ namespace TeamOne.EvolvedSurvivor
             return;
         }
 
-        protected override void Activate()
+        protected override bool Activate()
         {
             GameObject nextGameObject = objectPool.GetPooledGameObject();
 
@@ -84,10 +83,12 @@ namespace TeamOne.EvolvedSurvivor
 
                 // Set stats for the movement handler (sets projectileSpeed)
                 BasicProjectileAbilityHandler handler = nextGameObject.GetComponent<BasicProjectileAbilityHandler>();
-                handler.setSpeedAndDirection(projectileSpeed, direction);
+                handler.setStats(pierceLimit, projectileSpeed, direction);
 
                 nextGameObject.SetActive(true);
             }
+
+            return isEnemyFound;
         }
     }
 }

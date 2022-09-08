@@ -75,8 +75,8 @@ MonoBehaviour:
   InitialHealth: 2
   MaximumHealth: 2
   ResetHealthOnEnable: 1
-  ImmuneToDamage: 0
-  ImmuneToKnockback: 0
+  ImmuneToDamage: 1
+  ImmuneToKnockback: 1
   DamageMMFeedbacks: {fileID: 0}
   FeedbackIsProportionalToDamage: 0
   PreventTakeSelfDamage: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4667d9302e97046b491b509ce881a898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 114285930754520166}
 --- !u!114 &7503784995898631045
 MonoBehaviour:
   m_ObjectHideFlags: 0

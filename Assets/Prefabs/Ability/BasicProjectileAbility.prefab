@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateOnlyOnce: 0
-  coolDown: 0.7
+  coolDown: 0.5
   objectPool: {fileID: -4022970536268849885}
   damage: 100
   pierceLimit: 0
