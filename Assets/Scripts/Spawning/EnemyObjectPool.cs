@@ -26,4 +26,22 @@ public class EnemyObjectPool : MMMultipleObjectPooler
             AddOneObjectToThePool(entry.enemyObject);
         }
     }
+
+    public void RemoveFromPool(WaveEntry entry)
+    {
+        MMMultipleObjectPoolerObject searchedPooler = GetPoolObject(entry.enemyObject);
+
+        if (searchedPooler == null)
+        {
+            return;
+        }
+        else if (searchedPooler.PoolSize < entry.count)
+        {
+            Pool.Remove(searchedPooler);
+        }
+        else
+        {
+            searchedPooler.PoolSize -= entry.count;
+        }
+    }
 }

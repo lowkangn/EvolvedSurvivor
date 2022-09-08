@@ -26,7 +26,7 @@ public class WaveManager : MonoBehaviour
             hasNextWave = true;
         }
 
-        AddAllEnemiesInWave(); 
+        UpdateWithNextWave(); 
     }
 
     private void Update()
@@ -37,16 +37,21 @@ public class WaveManager : MonoBehaviour
         {
             currentWave = waveList.Waves[nextWaveIndex];
             nextWaveIndex++;
-            AddAllEnemiesInWave();
+            UpdateWithNextWave();
             SetNextTimestamp();
         }
     }
 
-    private void AddAllEnemiesInWave()
+    private void UpdateWithNextWave()
     {
-        foreach (WaveEntry entry in currentWave.waveEntries)
+        foreach (WaveEntry entry in currentWave.addToEnemyPool)
         {
             enemyPool.AddToPool(entry);
+        }
+
+        foreach (WaveEntry entry in currentWave.removeFromEnemyPool)
+        {
+            enemyPool.RemoveFromPool(entry);
         }
     }
 

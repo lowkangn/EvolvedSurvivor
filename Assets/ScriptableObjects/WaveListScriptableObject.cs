@@ -13,7 +13,8 @@ public struct WaveEntry
 public struct Wave
 {
     public float timeDelayInSeconds;
-    public List<WaveEntry> waveEntries;
+    public List<WaveEntry> addToEnemyPool;
+    public List<WaveEntry> removeFromEnemyPool;
 }
 
 [CreateAssetMenu(fileName = "WaveList", menuName = "ScriptableObjects/WaveListScriptableObject")]
