@@ -6,7 +6,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class AbilityManager : MonoBehaviour
     {
-        [SerializeField] private GameObject player;
         private Ability[] abilitiesList = new Ability[6];
         private bool[] isAbilityActive = new bool[6];
 
@@ -16,7 +15,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (!isAbilityActive[i])
                 {
-                    newAbility.addPlayerRef(player);
+                    newAbility.addPlayerRef(gameObject);
                     abilitiesList[i] = newAbility;
                     isAbilityActive[i] = true;
                     break;
