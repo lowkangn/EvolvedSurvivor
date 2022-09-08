@@ -6,7 +6,7 @@ using UnityEngine;
 public struct WaveEntry
 {
     public GameObject enemyObject;
-    public int enemyLimit;
+    public int count;
 }
 
 [Serializable]
@@ -21,4 +21,7 @@ public class WaveListScriptableObject : ScriptableObject
 {
     [SerializeField] private Wave firstWave;
     [SerializeField] private List<Wave> waves;
+
+    public Wave FirstWave { get => firstWave; }
+    public List<Wave> Waves { get => waves; }
 }
