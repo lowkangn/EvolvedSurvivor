@@ -54,7 +54,7 @@ public class WaveManager : MonoBehaviour
     {
         if (nextWaveIndex < waveCount)
         {
-            nextWaveTimestamp = waveList
+            nextWaveTimestamp += waveList
                 .Waves[nextWaveIndex].timeDelayInSeconds;
         } 
         else
