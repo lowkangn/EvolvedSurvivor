@@ -7,7 +7,7 @@ namespace TeamOne.EvolvedSurvivor
     [System.Serializable]
     public class TraitChart
     {
-        public static readonly float maxValue = 10;
+        public static readonly float maxValue = 15;
 
         public float damage;
         public float DamageRatio => damage / maxValue;

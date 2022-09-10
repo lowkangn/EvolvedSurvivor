@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f341627bfeffbdc4e8e40f5ba4f9e353, type: 3}
   m_Name: AbilityBaseTraitCharts
   m_EditorClassIdentifier: 
-  abilityBaseTraitCharts: []
+  abilityBaseTraitCharts:
+  - ability: {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1,
+      type: 3}
+    traitChart:
+      damage: 3
+      uptime: 5
+      aoe: 0
+      quantity: 2
+      utility: 1

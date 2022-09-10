@@ -26,7 +26,7 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
 
-            return null;
+            return new TraitChart();
         }
     }
 }
