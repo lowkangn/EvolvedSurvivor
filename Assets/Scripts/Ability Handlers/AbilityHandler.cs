@@ -8,8 +8,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public abstract class AbilityHandler : MonoBehaviour
     {
-        [SerializeField] protected Health health;
-
         protected bool isStatsSet = false;
 
         protected IEnumerator kill()
