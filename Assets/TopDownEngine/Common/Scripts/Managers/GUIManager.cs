@@ -39,6 +39,9 @@ namespace MoreMountains.TopDownEngine
 		/// the level up screen game object
 		[Tooltip("the level up screen game object")]
 		public GameObject LevelUpScreen;
+		/// the merge abilities screen game object
+		[Tooltip("the merge abilities screen game object")]
+		public GameObject MergeScreen;
 		/// The mobile buttons
 		[Tooltip("The mobile buttons")]
 		public CanvasGroup Buttons;
@@ -215,6 +218,19 @@ namespace MoreMountains.TopDownEngine
             if (LevelUpScreen != null)
             {
                 LevelUpScreen.SetActive(state);
+				EventSystem.current.sendNavigationEvents = state;
+            }
+        }
+
+		/// <summary>
+        /// Sets the merge screen on or off.
+        /// </summary>
+        /// <param name="state">If set to <c>true</c>, sets level up screen.</param>
+        public virtual void SetMergeScreen(bool state)
+        {
+            if (MergeScreen != null)
+            {
+                MergeScreen.SetActive(state);
 				EventSystem.current.sendNavigationEvents = state;
             }
         }

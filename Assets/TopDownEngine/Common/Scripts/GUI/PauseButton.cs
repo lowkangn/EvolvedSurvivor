@@ -17,7 +17,6 @@ namespace MoreMountains.TopDownEngine
 	    {
             // we trigger a Pause event for the GameManager and other classes that could be listening to it too
             StartCoroutine(PauseButtonCo());
-
         }	
 
         /// <summary>

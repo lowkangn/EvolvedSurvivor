@@ -43,7 +43,9 @@ namespace MoreMountains.TopDownEngine
         Repaint,
         TogglePause,
         LoadNextScene,
-		LevelUp
+		LevelUp,
+		ShowAddAbilityScreen,
+		ShowMergeScreen
     }
 
 	/// <summary>
@@ -188,6 +190,7 @@ namespace MoreMountains.TopDownEngine
 		protected bool _inventoryOpen = false;
 		protected bool _pauseMenuOpen = false;
 		protected bool _hasLevelUpScreen = false;
+		protected bool _hasMergeScreen = false;
 		protected InventoryInputManager _inventoryInputManager;
         protected int _initialMaximumLives;
         protected int _initialCurrentLives;
@@ -348,6 +351,11 @@ namespace MoreMountains.TopDownEngine
 				_hasLevelUpScreen = false;
 				UnPause(PauseMethods.NoPauseMenu);
 			}
+			if ((GUIManager.HasInstance) && _hasMergeScreen) {
+				GUIManager.Instance.SetMergeScreen(false);
+				_hasMergeScreen = false;
+				UnPause(PauseMethods.NoPauseMenu);
+			}
 			if (_inventoryOpen)
 			{
 				_inventoryOpen = false;
@@ -362,10 +370,46 @@ namespace MoreMountains.TopDownEngine
         {
 			if ((GUIManager.HasInstance))
 			{
+				if (_hasMergeScreen) {
+					GUIManager.Instance.SetMergeScreen(false);	
+					_hasMergeScreen = false;
+				}
 				GUIManager.Instance.SetLevelUpScreen(true);	
 				_hasLevelUpScreen = true;
 			}
 			Pause(PauseMethods.NoPauseMenu);
+        }
+
+		/// <summary>
+        /// Show Add Ability screen
+        /// </summary>
+        public virtual void ShowAddAbilityScreen()
+        {
+			if ((GUIManager.HasInstance))
+			{
+				if (_hasMergeScreen) {
+					GUIManager.Instance.SetMergeScreen(false);	
+					_hasMergeScreen = false;
+				}
+				GUIManager.Instance.SetLevelUpScreen(true);	
+				_hasLevelUpScreen = true;
+			}
+        }
+
+        /// <summary>
+        /// Show Merge Abilities screen
+        /// </summary>
+        public virtual void ShowMergeScreen()
+        {
+			if ((GUIManager.HasInstance))
+			{
+				if (_hasLevelUpScreen) {
+					GUIManager.Instance.SetLevelUpScreen(false);
+					_hasLevelUpScreen = false;
+				}
+				GUIManager.Instance.SetMergeScreen(true);	
+				_hasMergeScreen = true;
+			}
         }
         
         /// <summary>
@@ -516,6 +560,14 @@ namespace MoreMountains.TopDownEngine
 
 				case TopDownEngineEventTypes.LevelUp:
 					LevelUp();
+					break;
+
+				case TopDownEngineEventTypes.ShowAddAbilityScreen:
+					ShowAddAbilityScreen();
+					break;
+
+				case TopDownEngineEventTypes.ShowMergeScreen:
+					ShowMergeScreen();
 					break;
 			}
 		}
