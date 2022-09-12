@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -4022970536268849885}
   - component: {fileID: -8169083388332289705}
   m_Layer: 10
-  m_Name: BasicProjectileAbility
+  m_Name: BasicProjectileAbilityCopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
