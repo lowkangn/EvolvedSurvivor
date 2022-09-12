@@ -5382,7 +5382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689f2ab4dd90144fcbc156eb690d3021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicProj: {fileID: -8169083388332289705, guid: c7b01daf569e24900ae3fa44bb7d146a,
+  basicProj: {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1,
     type: 3}
   abilityManager: {fileID: 905297264760070559}
 --- !u!1 &905297264760070559
@@ -5429,7 +5429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95b51d490eb24cf1a43ff5f60026e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1498750440386690}
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0
