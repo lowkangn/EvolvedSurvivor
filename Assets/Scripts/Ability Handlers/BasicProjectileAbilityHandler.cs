@@ -27,10 +27,10 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
-        public void setStats(int pierceLimit, float projectileSpeed, Vector3 direction)
+        public void setStats(AbilityStat<int> pierceLimit, AbilityStat<float> projectileSpeed, Vector3 direction)
         {
-            this.piercesLeft = pierceLimit;
-            this.projectileSpeed = projectileSpeed;
+            this.piercesLeft = pierceLimit.value;
+            this.projectileSpeed = projectileSpeed.value;
             this.direction = direction;
 
             isStatsSet = true;

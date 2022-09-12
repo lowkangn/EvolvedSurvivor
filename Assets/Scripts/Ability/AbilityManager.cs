@@ -6,12 +6,14 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class AbilityManager : MonoBehaviour
     {
-        private Ability[] abilitiesList = new Ability[6];
-        private bool[] isAbilityActive = new bool[6];
+        private const int MAX_NUM_OF_ABILITIES = 6;
+
+        private Ability[] abilitiesList = new Ability[MAX_NUM_OF_ABILITIES];
+        private bool[] isAbilityActive = new bool[MAX_NUM_OF_ABILITIES];
 
         public void AddAbility(Ability newAbility)
         {
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < MAX_NUM_OF_ABILITIES; i++)
             {
                 if (!isAbilityActive[i])
                 {
