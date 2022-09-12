@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f341627bfeffbdc4e8e40f5ba4f9e353, type: 3}
+  m_Name: AbilityBaseTraitCharts
+  m_EditorClassIdentifier: 
+  abilityBaseTraitCharts:
+  - ability: {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1,
+      type: 3}
+    traitChart:
+      damage: 3
+      uptime: 5
+      aoe: 0
+      quantity: 2
+      utility: 1

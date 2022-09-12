@@ -11,7 +11,7 @@ namespace TeamOne.EvolvedSurvivor
         private bool activateOnlyOnce = false;
         [Header("The ability is activated once every (coolDown) seconds")]
         [SerializeField]
-        protected float coolDown;
+        protected AbilityStat<float> coolDown;
         protected int tier;
         protected TraitChart traitChart;
 
@@ -28,6 +28,7 @@ namespace TeamOne.EvolvedSurvivor
         /// </summary>
         public void BuildAbility(TraitChart traitChart)
         {
+            this.traitChart = traitChart;
             Build(traitChart);
             hasBuilt = true;
         }
@@ -57,7 +58,7 @@ namespace TeamOne.EvolvedSurvivor
             if (coolDownTimer < 0f)
             {
                 Activate();
-                coolDownTimer = coolDown;
+                coolDownTimer = coolDown.value;
             }
         }
 
