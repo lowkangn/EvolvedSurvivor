@@ -10,11 +10,15 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/GUI/AddAbilityButton")]
     public class AddAbilityButton : MonoBehaviour
 	{
+        public GameObject confirmButton;
+
 		/// <summary>
         /// Show add abilities screen event
         /// </summary>
 	    public virtual void ShowAddScreenAction()
 	    {
+            // Remove confirmButton until an ability is pressed
+            confirmButton.SetActive(false);
             StartCoroutine(ShowAddScreenCo());
         }	
 

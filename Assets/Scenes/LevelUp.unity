@@ -6040,12 +6040,12 @@ GameObject:
   - component: {fileID: 640398489}
   - component: {fileID: 640398490}
   m_Layer: 5
-  m_Name: ButtonResume
+  m_Name: ButtonConfirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &640398488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8794,7 +8794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &786858105
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9111,7 +9111,7 @@ GameObject:
   - component: {fileID: 792759190}
   - component: {fileID: 792759191}
   m_Layer: 5
-  m_Name: ButtonResume
+  m_Name: ButtonConfirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9185,6 +9185,7 @@ GameObject:
   - component: {fileID: 839563665}
   - component: {fileID: 839563664}
   - component: {fileID: 839563663}
+  - component: {fileID: 839563669}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -9296,9 +9297,9 @@ MonoBehaviour:
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839563661}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 839563669}
+        m_TargetAssemblyTypeName: AddNewAbility, Assembly-CSharp
+        m_MethodName: AddAbility
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9393,6 +9394,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839563661}
   m_CullTransparentMesh: 0
+--- !u!114 &839563669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839563661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233234de40f10d942bd138e18ce986e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &868287421
 GameObject:
   m_ObjectHideFlags: 0
@@ -10381,6 +10395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c70d9e783a56f041b0e1befadb8458c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &892541815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11104,7 +11119,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0714285, y: 1}
+    m_SensorSize: {x: 2.089087, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -12242,6 +12257,7 @@ GameObject:
   - component: {fileID: 1094732696}
   - component: {fileID: 1094732695}
   - component: {fileID: 1094732694}
+  - component: {fileID: 1094732700}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -12353,9 +12369,9 @@ MonoBehaviour:
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1094732692}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1094732700}
+        m_TargetAssemblyTypeName: AddNewAbility, Assembly-CSharp
+        m_MethodName: AddAbility
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12450,6 +12466,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094732692}
   m_CullTransparentMesh: 0
+--- !u!114 &1094732700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094732692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233234de40f10d942bd138e18ce986e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &1122703682
 GameObject:
   m_ObjectHideFlags: 0
@@ -12889,6 +12918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c70d9e783a56f041b0e1befadb8458c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &1162409468
 GameObject:
   m_ObjectHideFlags: 0
@@ -19567,6 +19597,7 @@ GameObject:
   - component: {fileID: 1874653256}
   - component: {fileID: 1874653255}
   - component: {fileID: 1874653254}
+  - component: {fileID: 1874653260}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -19678,9 +19709,9 @@ MonoBehaviour:
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1874653252}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1874653260}
+        m_TargetAssemblyTypeName: AddNewAbility, Assembly-CSharp
+        m_MethodName: AddAbility
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19775,6 +19806,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874653252}
   m_CullTransparentMesh: 0
+--- !u!114 &1874653260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874653252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233234de40f10d942bd138e18ce986e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &1887300631
 GameObject:
   m_ObjectHideFlags: 0
@@ -20353,6 +20397,7 @@ GameObject:
   - component: {fileID: 1950444780}
   - component: {fileID: 1950444779}
   - component: {fileID: 1950444778}
+  - component: {fileID: 1950444784}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -20464,9 +20509,9 @@ MonoBehaviour:
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1950444776}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1950444784}
+        m_TargetAssemblyTypeName: AddNewAbility, Assembly-CSharp
+        m_MethodName: AddAbility
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20561,6 +20606,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950444776}
   m_CullTransparentMesh: 0
+--- !u!114 &1950444784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950444776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233234de40f10d942bd138e18ce986e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmButton: {fileID: 640398487}
 --- !u!1 &1950656729
 GameObject:
   m_ObjectHideFlags: 0
