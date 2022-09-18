@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca9932fcf4536a4496bf34db289479c, type: 3}
+  m_Name: WaveList
+  m_EditorClassIdentifier: 
+  firstWave:
+    timeDelayInSeconds: 0
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  waves:
+  - timeDelayInSeconds: 10
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 10
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: 75eea87521beb4348be00f716b2b1676,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 10
+    addToEnemyPool: []
+    removeFromEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
+        type: 3}
+      count: 20
