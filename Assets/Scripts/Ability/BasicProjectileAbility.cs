@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Tools;
+using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public class BasicProjectileAbility : Ability
     {
+        
+        [SerializeField]
+        private MMObjectPooler objectPool;
         [SerializeField]
         private AbilityStat<float> damage;
         [SerializeField]
@@ -17,14 +23,40 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<float> projectileSize;
 
+        private const float ATTACK_RADIUS = 13.0f;
+        private Vector3 direction;
+        private bool hasColliderSizeBeenSet = false;
+
         public override void UpgradeAbility(Ability consumedAbility)
         {
             throw new System.NotImplementedException();
         }
 
-        protected override void Activate()
+        protected override bool Activate()
         {
-            print("shoot");
+            GameObject nextGameObject = objectPool.GetPooledGameObject();
+
+            // Set start position to player position
+            setStartPosition(nextGameObject);
+
+            // Find nearest enemy (if exists) and calculate direction
+            bool isEnemyFound = setDirectionIfEnemyFound();
+
+            if (isEnemyFound)
+            {
+                // Set projectile size
+                setProjectileSize(nextGameObject);
+
+                // Set damage
+                setDamage(nextGameObject);
+
+                // Set stats for the AbilityHandler
+                initialiseHandler(nextGameObject);
+
+                nextGameObject.SetActive(true);
+            }
+
+            return isEnemyFound;
         }
 
         protected override void Build(TraitChart traitChart)
@@ -33,7 +65,7 @@ namespace TeamOne.EvolvedSurvivor
             damage.value = (damage.maxValue - damage.minValue) * traitChart.DamageRatio + damage.minValue;
 
             // Uptime
-            coolDown.value = coolDown.maxValue - (coolDown.maxValue - damage.minValue) * traitChart.UptimeRatio;
+            coolDown.value = coolDown.maxValue - (coolDown.maxValue - coolDown.minValue) * traitChart.UptimeRatio;
 
             // AOE
             pierceLimit.value = Mathf.FloorToInt((pierceLimit.maxValue - pierceLimit.minValue) * traitChart.AoeRatio + pierceLimit.minValue);
@@ -44,6 +76,65 @@ namespace TeamOne.EvolvedSurvivor
 
             // Utility
             projectileSpeed.value = (projectileSpeed.maxValue - projectileSpeed.minValue) * traitChart.UtilityRatio + projectileSpeed.minValue;
+        }
+
+        private void setStartPosition(GameObject objToSetPosition)
+        {
+            objToSetPosition.transform.position = playerRef.transform.position;
+        }
+
+        private bool setDirectionIfEnemyFound()
+        {
+            Vector2 playerPos2D = new Vector2(playerRef.transform.position.x, playerRef.transform.position.y);
+            Vector2 projectileRange2D = new Vector2(ATTACK_RADIUS, ATTACK_RADIUS); 
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPos2D, projectileRange2D, 0f, LayerMask.GetMask("Enemies"));
+
+            float nearestDist = -1f;
+            Collider2D nearest;
+            bool isEnemyFound = false;
+
+            foreach (Collider2D currCollider in hitColliders)
+            {
+                Vector3 currDirection = currCollider.GetComponent<Transform>().position - playerRef.transform.position;
+                float dist = currDirection.magnitude;
+                if (nearestDist == -1f || dist < nearestDist)
+                {
+                    nearestDist = dist;
+                    nearest = currCollider;
+                    direction = Vector3.Normalize(currDirection);
+                    if (!isEnemyFound) isEnemyFound = true;
+                }
+            }
+
+            return isEnemyFound;
+        }
+
+        private void setProjectileSize(GameObject objToSetSize)
+        {
+            if (!hasColliderSizeBeenSet)
+            {
+                BoxCollider2D boxCollider = objToSetSize.GetComponent<BoxCollider2D>();
+                float currX = boxCollider.size.x;
+                float currY = boxCollider.size.y;
+                boxCollider.size = new Vector2(currX * projectileSize.value, currY * projectileSize.value);
+                hasColliderSizeBeenSet = true;
+            }
+
+            Transform imageComponent = objToSetSize.transform.Find("Bullet");
+            imageComponent.localScale = new Vector3(projectileSize.value, projectileSize.value, projectileSize.value);
+        }
+
+        private void setDamage(GameObject objToSetDamage)
+        {
+            DamageOnTouch damageOnTouch = objToSetDamage.GetComponent<DamageOnTouch>();
+            damageOnTouch.MinDamageCaused = Mathf.FloorToInt(damage.value);
+            damageOnTouch.MaxDamageCaused = Mathf.FloorToInt(damage.value);
+        }
+
+        private void initialiseHandler(GameObject objToInitialiseHandler)
+        {
+            BasicProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<BasicProjectileAbilityHandler>();
+            handler.setStats(pierceLimit, projectileSpeed, direction);
         }
     }
 }

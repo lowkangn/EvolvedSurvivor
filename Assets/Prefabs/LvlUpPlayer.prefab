@@ -4950,6 +4950,7 @@ GameObject:
   - component: {fileID: 5931704094786376357}
   - component: {fileID: -1686430640849564640}
   - component: {fileID: 7662434310505608298}
+  - component: {fileID: 4566521387090629396}
   m_Layer: 10
   m_Name: LvlUpPlayer
   m_TagString: Player
@@ -5559,6 +5560,21 @@ MonoBehaviour:
   NestDrawnXPBar: 0
   XPBarOffset: {x: 0, y: -2, z: 0}
   AlwaysVisible: 1
+--- !u!114 &4566521387090629396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498750440386690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689f2ab4dd90144fcbc156eb690d3021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
+    type: 3}
+  abilityManager: {fileID: 2549289623482607888}
 --- !u!1 &2549289623482607888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5568,8 +5584,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7500140417639399561}
+  - component: {fileID: 4282004981171803526}
   m_Layer: 10
-  m_Name: Abilities
+  m_Name: Ability Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5586,80 +5603,22 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4665928419845489588}
-  - {fileID: 1087702670453207034}
+  m_Children: []
   m_Father: {fileID: 4001341059962208}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3408851313715036431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1087702670453207034}
-  - component: {fileID: 535470377520723235}
-  - component: {fileID: 7698460201773705948}
-  m_Layer: 10
-  m_Name: Ability2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1087702670453207034
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408851313715036431}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7500140417639399561}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &535470377520723235
+--- !u!114 &4282004981171803526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408851313715036431}
+  m_GameObject: {fileID: 2549289623482607888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Script: {fileID: 11500000, guid: e95b51d490eb24cf1a43ff5f60026e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MutualizeWaitingPools: 0
-  NestWaitingPool: 1
-  NestUnderThis: 0
-  GameObjectToPool: {fileID: 1133100380862132, guid: 1de36169cc62796489b796f8eb45225e,
-    type: 3}
-  PoolSize: 20
-  PoolCanExpand: 1
---- !u!114 &7698460201773705948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408851313715036431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ba6b921c40c774aa147142e3c7d245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityCooldown: 2
-  objectPool: {fileID: 535470377520723235}
-  isLockOn: 0
-  isValidAbility: 1
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,74 +6104,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   RemapContrastZero: 0
   RemapContrastOne: 100
---- !u!1 &5376677749024650759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4665928419845489588}
-  - component: {fileID: 1777837133011452975}
-  - component: {fileID: 4073839478143224877}
-  m_Layer: 10
-  m_Name: Ability1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4665928419845489588
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376677749024650759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7500140417639399561}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1777837133011452975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376677749024650759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MutualizeWaitingPools: 0
-  NestWaitingPool: 1
-  NestUnderThis: 0
-  GameObjectToPool: {fileID: 1133100380862132, guid: 6cb1bd0733d28304086b59aea85d0a84,
-    type: 3}
-  PoolSize: 20
-  PoolCanExpand: 1
---- !u!114 &4073839478143224877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376677749024650759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ba6b921c40c774aa147142e3c7d245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityCooldown: 1
-  objectPool: {fileID: 1777837133011452975}
-  isLockOn: 0
-  isValidAbility: 1
 --- !u!1 &7972998509315848447
 GameObject:
   m_ObjectHideFlags: 0
