@@ -4,16 +4,14 @@ using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class BasicProjectileAbility : Ability
+    public class ExplosiveProjectileAbility : Ability
     {
         [SerializeField]
         private AbilityStat<float> damage;
         [SerializeField]
-        private AbilityStat<int> pierceLimit;
+        private AbilityStat<float> aoeRadius;
         [SerializeField]
         private AbilityStat<int> projectileNumber;
-        [SerializeField]
-        private AbilityStat<float> projectileSpeed;
         [SerializeField]
         private AbilityStat<float> projectileSize;
 
@@ -36,14 +34,14 @@ namespace TeamOne.EvolvedSurvivor
             coolDown.value = coolDown.maxValue - (coolDown.maxValue - damage.minValue) * traitChart.UptimeRatio;
 
             // AOE
-            pierceLimit.value = Mathf.FloorToInt((pierceLimit.maxValue - pierceLimit.minValue) * traitChart.AoeRatio + pierceLimit.minValue);
+            aoeRadius.value = (aoeRadius.maxValue - aoeRadius.minValue) * traitChart.AoeRatio + aoeRadius.minValue;
             projectileSize.value = (projectileSize.maxValue - projectileSize.minValue) * traitChart.AoeRatio + projectileSize.minValue;
 
             // Quantity
             projectileNumber.value = Mathf.FloorToInt((projectileNumber.maxValue - projectileNumber.minValue) * traitChart.QuantityRatio + projectileNumber.minValue);
 
             // Utility
-            projectileSpeed.value = (projectileSpeed.maxValue - projectileSpeed.minValue) * traitChart.UtilityRatio + projectileSpeed.minValue;
+
         }
     }
 }
