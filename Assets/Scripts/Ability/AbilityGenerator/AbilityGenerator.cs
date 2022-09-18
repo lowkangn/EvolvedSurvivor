@@ -11,13 +11,6 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityBaseTraitCharts abilityBaseTraitCharts;
 
-        public int tier;
-
-        private void Start()
-        {
-            GenerateAbility(tier);
-        }
-
         public Ability GenerateAbility(int tier)
         {
             Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
