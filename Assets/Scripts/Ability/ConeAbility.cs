@@ -15,23 +15,18 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<int> coneNumber;
 
-        public override void UpgradeAbility(Ability consumedAbility)
-        {
-            throw new System.NotImplementedException();
-        }
-
         protected override void Activate()
         {
             print("shoot");
         }
 
-        protected override void Build(TraitChart traitChart)
+        protected override void Build()
         {
             // Damage
             damage.value = (damage.maxValue - damage.minValue) * traitChart.DamageRatio + damage.minValue;
 
             // Uptime
-            coolDown.value = coolDown.maxValue - (coolDown.maxValue - damage.minValue) * traitChart.UptimeRatio;
+            coolDown.value = coolDown.maxValue - (coolDown.maxValue - coolDown.minValue) * traitChart.UptimeRatio;
             duration.value = (duration.maxValue - duration.minValue) * traitChart.UptimeRatio + duration.minValue;
 
             // AOE

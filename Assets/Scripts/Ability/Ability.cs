@@ -1,7 +1,7 @@
 using UnityEngine;
 using MoreMountains.Tools;
-using MoreMountains.TopDownEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -28,6 +28,19 @@ namespace TeamOne.EvolvedSurvivor
                 { ElementType.Infect, 0 },
                 { ElementType.Pyro, 0 }
             };
+        }
+
+        public int GetTotalLevel()
+        {
+            return elements.Sum(x => x.Value);
+        }
+
+        public void CombineWith(Element other)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                elements[(ElementType)i] += other.elements[(ElementType)i];
+            }
         }
     }
 
@@ -57,14 +70,29 @@ namespace TeamOne.EvolvedSurvivor
             this.tier = tier;
             this.traitChart = traitChart;
             BuildElement();
-            Build(traitChart);
+            Build();
             hasBuilt = true;
         }
 
         /// <summary>
         /// Updates the ability using the consumed ability.
         /// </summary>
-        public abstract void UpgradeAbility(Ability consumedAbility);
+        public void UpgradeAbility(Ability consumedAbility)
+        {
+            // Element Upgrade
+            tier += consumedAbility.tier;
+            int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
+            if (additionalLevel > 0)
+            {
+                element.CombineWith(consumedAbility.element);
+            }
+
+            // Trait Chart Upgrade
+            traitChart.CombineWith(consumedAbility.traitChart);
+
+            // Build Ability Again
+            Build();
+        }
 
         private void Update()
         {
@@ -90,7 +118,7 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
-        protected abstract void Build(TraitChart traitChart);
+        protected abstract void Build();
 
         protected abstract void Activate();
 
@@ -98,9 +126,9 @@ namespace TeamOne.EvolvedSurvivor
         {
             element = new Element();
 
-            int elementPoints = tier % 2 + tier / 2;
+            int elementLevel = tier % 2 + tier / 2;
 
-            for (int i = 0; i < elementPoints; i++)
+            for (int i = 0; i < elementLevel; i++)
             {
                 ElementType chosenType = (ElementType)Random.Range(0, 5);
                 element.elements[chosenType] += 1;
