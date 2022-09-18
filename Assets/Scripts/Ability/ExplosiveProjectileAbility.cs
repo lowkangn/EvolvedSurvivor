@@ -7,7 +7,7 @@ using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class BasicProjectileAbility : Ability
+    public class ExplosiveProjectileAbility : Ability
     {
         
         [SerializeField]
@@ -15,22 +15,15 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<float> damage;
         [SerializeField]
-        private AbilityStat<int> pierceLimit;
+        private AbilityStat<float> aoeRadius;
         [SerializeField]
         private AbilityStat<int> projectileNumber;
-        [SerializeField]
-        private AbilityStat<float> projectileSpeed;
         [SerializeField]
         private AbilityStat<float> projectileSize;
 
         private const float ATTACK_RADIUS = 13.0f;
         private Vector3 direction;
         private bool hasColliderSizeBeenSet = false;
-
-        public override void UpgradeAbility(Ability consumedAbility)
-        {
-            throw new System.NotImplementedException();
-        }
 
         protected override bool Activate()
         {
@@ -59,7 +52,7 @@ namespace TeamOne.EvolvedSurvivor
             return isEnemyFound;
         }
 
-        protected override void Build(TraitChart traitChart)
+        protected override void Build()
         {
             // Damage
             damage.value = (damage.maxValue - damage.minValue) * traitChart.DamageRatio + damage.minValue;
@@ -68,14 +61,14 @@ namespace TeamOne.EvolvedSurvivor
             coolDown.value = coolDown.maxValue - (coolDown.maxValue - coolDown.minValue) * traitChart.UptimeRatio;
 
             // AOE
-            pierceLimit.value = Mathf.FloorToInt((pierceLimit.maxValue - pierceLimit.minValue) * traitChart.AoeRatio + pierceLimit.minValue);
+            aoeRadius.value = (aoeRadius.maxValue - aoeRadius.minValue) * traitChart.AoeRatio + aoeRadius.minValue;
             projectileSize.value = (projectileSize.maxValue - projectileSize.minValue) * traitChart.AoeRatio + projectileSize.minValue;
 
             // Quantity
             projectileNumber.value = Mathf.FloorToInt((projectileNumber.maxValue - projectileNumber.minValue) * traitChart.QuantityRatio + projectileNumber.minValue);
 
             // Utility
-            projectileSpeed.value = (projectileSpeed.maxValue - projectileSpeed.minValue) * traitChart.UtilityRatio + projectileSpeed.minValue;
+
         }
 
         private void setStartPosition(GameObject objToSetPosition)
