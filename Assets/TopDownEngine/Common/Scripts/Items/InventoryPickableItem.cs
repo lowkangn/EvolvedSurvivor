@@ -5,11 +5,11 @@ using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// An item picker that instantiates an effect and plays a sound on pick
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Items/InventoryPickableItem")]
-    public class InventoryPickableItem : ItemPicker 
+	/// <summary>
+	/// An item picker that instantiates an effect and plays a sound on pick
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Items/InventoryPickableItem")]
+	public class InventoryPickableItem : ItemPicker 
 	{
 		/// The effect to instantiate when the coin is hit
 		[Tooltip("The effect to instantiate when the coin is hit")]

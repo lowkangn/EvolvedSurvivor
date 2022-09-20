@@ -5,13 +5,17 @@ using System;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// A class meant to be used in conjunction with an object pool (simple or multiple)
-    /// to spawn objects regularly, at a frequency randomly chosen between the min and max values set in its inspector
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Character/AI/Automation/TimedSpawner")]
-    public class TimedSpawner : MonoBehaviour 
+	/// <summary>
+	/// A class meant to be used in conjunction with an object pool (simple or multiple)
+	/// to spawn objects regularly, at a frequency randomly chosen between the min and max values set in its inspector
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Character/AI/Automation/TimedSpawner")]
+	public class TimedSpawner : MonoBehaviour 
 	{
+		/// the object pooler associated to this spawner
+		public MMObjectPooler ObjectPooler { get; set; }
+		
+		[Header("Spawn")]
 		/// whether or not this spawner can spawn
 		[Tooltip("whether or not this spawner can spawn")]
 		public bool CanSpawn = true;
@@ -21,12 +25,11 @@ namespace MoreMountains.TopDownEngine
 		/// the maximum frequency possible, in seconds
 		[Tooltip("the maximum frequency possible, in seconds")]
 		public float MaxFrequency = 1f;
-		/// the object pooler associated to this spawner
-		public MMObjectPooler ObjectPooler { get; set; }
 
-        [MMInspectorButton("ToggleSpawn")]
-        /// a test button to spawn an object
-        public bool CanSpawnButton;
+		[Header("Debug")]
+		[MMInspectorButton("ToggleSpawn")]
+		/// a test button to spawn an object
+		public bool CanSpawnButton;
 
 		protected float _lastSpawnTimestamp = 0f;
 		protected float _nextFrequency = 0f;
@@ -66,7 +69,7 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Update()
 		{
 			if ((Time.time - _lastSpawnTimestamp > _nextFrequency)  && CanSpawn)
-            {
+			{
 				Spawn ();
 			}
 		}
@@ -79,7 +82,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			GameObject nextGameObject = ObjectPooler.GetPooledGameObject();
 
-			// mandatory checks		
+			// mandatory checks
 			if (nextGameObject==null) { return; }
 			if (nextGameObject.GetComponent<MMPoolableObject>()==null)
 			{
@@ -95,13 +98,13 @@ namespace MoreMountains.TopDownEngine
 			if (objectHealth != null) 
 			{
 				objectHealth.Revive ();
-            }
+			}
 
-            // we position the object
-            nextGameObject.transform.position = this.transform.position;
+			// we position the object
+			nextGameObject.transform.position = this.transform.position;
 
-            // we reset our timer and determine the next frequency
-            _lastSpawnTimestamp = Time.time;
+			// we reset our timer and determine the next frequency
+			_lastSpawnTimestamp = Time.time;
 			DetermineNextFrequency ();
 		}
 
@@ -113,28 +116,28 @@ namespace MoreMountains.TopDownEngine
 			_nextFrequency = UnityEngine.Random.Range (MinFrequency, MaxFrequency);
 		}
 
-        /// <summary>
-        /// Toggles spawn on and off
-        /// </summary>
-        public virtual void ToggleSpawn()
-        {
-            CanSpawn = !CanSpawn;
-        }
+		/// <summary>
+		/// Toggles spawn on and off
+		/// </summary>
+		public virtual void ToggleSpawn()
+		{
+			CanSpawn = !CanSpawn;
+		}
 
-        /// <summary>
-        /// Turns spawning off
-        /// </summary>
-        public virtual void TurnSpawnOff()
-        {
-            CanSpawn = false;
-        }
+		/// <summary>
+		/// Turns spawning off
+		/// </summary>
+		public virtual void TurnSpawnOff()
+		{
+			CanSpawn = false;
+		}
 
-        /// <summary>
-        /// Turns spawning on
-        /// </summary>
-        public virtual void TurnSpawnOn()
-        {
-            CanSpawn = true;
-        }
+		/// <summary>
+		/// Turns spawning on
+		/// </summary>
+		public virtual void TurnSpawnOn()
+		{
+			CanSpawn = true;
+		}
 	}
 }

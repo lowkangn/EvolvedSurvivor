@@ -20,7 +20,7 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the speed of the character when it's running")]
 		public float RunSpeed = 16f;
 
-        [Header("AutoRun")]
+		[Header("AutoRun")]
 
 		/// whether or not run should auto trigger if you move the joystick far enough
 		[Tooltip("whether or not run should auto trigger if you move the joystick far enough")]
@@ -29,24 +29,24 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the input threshold on the joystick (normalized)")]
 		public float AutoRunThreshold = 0.6f;
 
-        protected const string _runningAnimationParameterName = "Running";
-        protected int _runningAnimationParameter;
-        protected bool _runningStarted = false;
+		protected const string _runningAnimationParameterName = "Running";
+		protected int _runningAnimationParameter;
+		protected bool _runningStarted = false;
 
-        /// <summary>
-        /// At the beginning of each cycle, we check if we've pressed or released the run button
-        /// </summary>
-        protected override void HandleInput()
+		/// <summary>
+		/// At the beginning of each cycle, we check if we've pressed or released the run button
+		/// </summary>
+		protected override void HandleInput()
 		{
-            if (AutoRun)
-            {
-                if (_inputManager.PrimaryMovement.magnitude > AutoRunThreshold)
-                {
-                    _inputManager.RunButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed);
-                }
-            }
+			if (AutoRun)
+			{
+				if (_inputManager.PrimaryMovement.magnitude > AutoRunThreshold)
+				{
+					_inputManager.RunButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed);
+				}
+			}
 
-            if (_inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonDown || _inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed)
+			if (_inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonDown || _inputManager.RunButton.State.CurrentState == MMInput.ButtonStates.ButtonPressed)
 			{
 				RunStart();
 			}				
@@ -54,53 +54,61 @@ namespace MoreMountains.TopDownEngine
 			{
 				RunStop();
 			}
-            else
-            {
-                if (AutoRun)
-                {
-                    if (_inputManager.PrimaryMovement.magnitude <= AutoRunThreshold)
-                    {
-                        _inputManager.RunButton.State.ChangeState(MMInput.ButtonStates.ButtonUp);
-                        RunStop();
-                    }
-                }
-            }          
-        }
+			else
+			{
+				if (AutoRun)
+				{
+					if (_inputManager.PrimaryMovement.magnitude <= AutoRunThreshold)
+					{
+						_inputManager.RunButton.State.ChangeState(MMInput.ButtonStates.ButtonUp);
+						RunStop();
+					}
+				}
+			}          
+		}
 
-        /// <summary>
-        /// Every frame we make sure we shouldn't be exiting our run state
-        /// </summary>
+		/// <summary>
+		/// Every frame we make sure we shouldn't be exiting our run state
+		/// </summary>
 		public override void ProcessAbility()
 		{
 			base.ProcessAbility();
 			HandleRunningExit();
 		}
 
-        /// <summary>
-        /// Checks if we should exit our running state
-        /// </summary>
+		/// <summary>
+		/// Checks if we should exit our running state
+		/// </summary>
 		protected virtual void HandleRunningExit()
 		{
+			if (_condition.CurrentState != CharacterStates.CharacterConditions.Normal)
+			{
+				StopAbilityUsedSfx();
+			}
+			if (_movement.CurrentState == CharacterStates.MovementStates.Running && AbilityInProgressSfx != null && _abilityInProgressSfx == null)
+			{
+				PlayAbilityUsedSfx();
+			}
 			// if we're running and not grounded, we change our state to Falling
 			if (!_controller.Grounded
-                && (_condition.CurrentState == CharacterStates.CharacterConditions.Normal)
-                && (_movement.CurrentState == CharacterStates.MovementStates.Running))
+			    && (_condition.CurrentState == CharacterStates.CharacterConditions.Normal)
+			    && (_movement.CurrentState == CharacterStates.MovementStates.Running))
 			{
 				_movement.ChangeState(CharacterStates.MovementStates.Falling);
-                StopFeedbacks();
-                StopSfx ();
+				StopFeedbacks();
+				StopSfx ();
 			}
 			// if we're not moving fast enough, we go back to idle
 			if ((Mathf.Abs(_controller.CurrentMovement.magnitude) < RunSpeed / 10) && (_movement.CurrentState == CharacterStates.MovementStates.Running))
 			{
 				_movement.ChangeState (CharacterStates.MovementStates.Idle);
-                StopFeedbacks();
-                StopSfx ();
+				StopFeedbacks();
+				StopSfx ();
 			}
 			if (!_controller.Grounded && _abilityInProgressSfx != null)
-            {
-                StopFeedbacks();
-                StopSfx ();
+			{
+				StopFeedbacks();
+				StopSfx ();
 			}
 		}
 
@@ -110,9 +118,9 @@ namespace MoreMountains.TopDownEngine
 		public virtual void RunStart()
 		{		
 			if ( !AbilityAuthorized // if the ability is not permitted
-				|| (!_controller.Grounded) // or if we're not grounded
-				|| (_condition.CurrentState != CharacterStates.CharacterConditions.Normal) // or if we're not in normal conditions
-				|| (_movement.CurrentState != CharacterStates.MovementStates.Walking) ) // or if we're not walking
+			     || (!_controller.Grounded) // or if we're not grounded
+			     || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal) // or if we're not in normal conditions
+			     || (_movement.CurrentState != CharacterStates.MovementStates.Walking) ) // or if we're not walking
 			{
 				// we do nothing and exit
 				return;
@@ -130,9 +138,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				PlayAbilityStartSfx();
 				PlayAbilityUsedSfx();
-                PlayAbilityStartFeedbacks();
-                _runningStarted = true;
-            }
+				PlayAbilityStartFeedbacks();
+				_runningStarted = true;
+			}
 
 			_movement.ChangeState(CharacterStates.MovementStates.Running);
 		}
@@ -140,38 +148,38 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Causes the character to stop running.
 		/// </summary>
-        public virtual void RunStop()
-        {
-            if (_runningStarted)
-            {
-                // if the run button is released, we revert back to the walking speed.
-                if ((_characterMovement != null))
-                {
-                    _characterMovement.ResetSpeed();
-                    _movement.ChangeState(CharacterStates.MovementStates.Idle);
-                }
-                StopFeedbacks();
-                StopSfx();
-                _runningStarted = false;
-            }            
-        }
+		public virtual void RunStop()
+		{
+			if (_runningStarted)
+			{
+				// if the run button is released, we revert back to the walking speed.
+				if ((_characterMovement != null))
+				{
+					_characterMovement.ResetSpeed();
+					_movement.ChangeState(CharacterStates.MovementStates.Idle);
+				}
+				StopFeedbacks();
+				StopSfx();
+				_runningStarted = false;
+			}            
+		}
 
-        /// <summary>
+		/// <summary>
 		/// Stops all run feedbacks
 		/// </summary>
 		protected virtual void StopFeedbacks()
-        {
-            if (_startFeedbackIsPlaying)
-            {
-                StopStartFeedbacks();
-                PlayAbilityStopFeedbacks();
-            }
-        }
+		{
+			if (_startFeedbackIsPlaying)
+			{
+				StopStartFeedbacks();
+				PlayAbilityStopFeedbacks();
+			}
+		}
 
-        /// <summary>
-        /// Stops all run sounds
-        /// </summary>
-        protected virtual void StopSfx()
+		/// <summary>
+		/// Stops all run sounds
+		/// </summary>
+		protected virtual void StopSfx()
 		{
 			StopAbilityUsedSfx();
 			PlayAbilityStopSfx();
@@ -190,7 +198,7 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public override void UpdateAnimator()
 		{
-            MMAnimatorExtensions.UpdateAnimatorBool(_animator, _runningAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Running),_character._animatorParameters, _character.RunAnimatorSanityChecks);
+			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _runningAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Running),_character._animatorParameters, _character.RunAnimatorSanityChecks);
 		}
 	}
 }

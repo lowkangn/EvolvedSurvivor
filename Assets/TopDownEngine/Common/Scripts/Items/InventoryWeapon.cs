@@ -8,15 +8,15 @@ namespace MoreMountains.TopDownEngine
 {	
 	[CreateAssetMenu(fileName = "InventoryWeapon", menuName = "MoreMountains/TopDownEngine/InventoryWeapon", order = 2)]
 	[Serializable]
-    /// <summary>
-    /// Weapon item in the TopDown Engine
-    /// </summary>
-    public class InventoryWeapon : InventoryItem 
+	/// <summary>
+	/// Weapon item in the TopDown Engine
+	/// </summary>
+	public class InventoryWeapon : InventoryItem 
 	{
-        /// the possible auto equip modes
-        public enum AutoEquipModes { NoAutoEquip, AutoEquip, AutoEquipIfEmptyHanded }
+		/// the possible auto equip modes
+		public enum AutoEquipModes { NoAutoEquip, AutoEquip, AutoEquipIfEmptyHanded }
         
-        [Header("Weapon")]
+		[Header("Weapon")]
 		[MMInformation("Here you need to bind the weapon you want to equip when picking that item.",MMInformationAttribute.InformationType.Info,false)]
 		/// the weapon to equip
 		[Tooltip("the weapon to equip")]
@@ -34,33 +34,33 @@ namespace MoreMountains.TopDownEngine
 		public override bool Equip(string playerID)
 		{
 			EquipWeapon (EquippableWeapon, playerID);
-            return true;
+			return true;
 		}
 
-        /// <summary>
-        /// When dropping or unequipping a weapon, we remove it
-        /// </summary>
-        public override bool UnEquip(string playerID)
-        {
-            // if this is a currently equipped weapon, we unequip it
-            if (this.TargetEquipmentInventory(playerID) == null)
-            {
-                return false;
-            }
+		/// <summary>
+		/// When dropping or unequipping a weapon, we remove it
+		/// </summary>
+		public override bool UnEquip(string playerID)
+		{
+			// if this is a currently equipped weapon, we unequip it
+			if (this.TargetEquipmentInventory(playerID) == null)
+			{
+				return false;
+			}
 
-            if (this.TargetEquipmentInventory(playerID).InventoryContains(this.ItemID).Count > 0)
-            {
-                EquipWeapon(null, playerID);
-            }
+			if (this.TargetEquipmentInventory(playerID).InventoryContains(this.ItemID).Count > 0)
+			{
+				EquipWeapon(null, playerID);
+			}
 
-            return true;
-        }
+			return true;
+		}
 
-        /// <summary>
-        /// Grabs the CharacterHandleWeapon component and sets the weapon
-        /// </summary>
-        /// <param name="newWeapon">New weapon.</param>
-        protected virtual void EquipWeapon(Weapon newWeapon, string playerID)
+		/// <summary>
+		/// Grabs the CharacterHandleWeapon component and sets the weapon
+		/// </summary>
+		/// <param name="newWeapon">New weapon.</param>
+		protected virtual void EquipWeapon(Weapon newWeapon, string playerID)
 		{
 			if (EquippableWeapon == null)
 			{
@@ -90,9 +90,9 @@ namespace MoreMountains.TopDownEngine
 			}
 			
 			if (targetHandleWeapon != null)
-            {
-	            targetHandleWeapon.ChangeWeapon(newWeapon, this.ItemID);
-            }
+			{
+				targetHandleWeapon.ChangeWeapon(newWeapon, this.ItemID);
+			}
 		}
 	}
 }

@@ -117,7 +117,7 @@ namespace MoreMountains.InventoryEngine
 				InventoryItem item = ParentInventoryDisplay.TargetInventory.Content[Index];
 				MMInventoryEvent.Trigger(MMInventoryEventType.Click, this, ParentInventoryDisplay.TargetInventoryName, item, 0, Index, ParentInventoryDisplay.PlayerID);
 				// if we're currently moving an object
-				if (ParentInventoryDisplay.CurrentlyBeingMovedItemIndex!=-1)
+				if (InventoryDisplay.CurrentlyBeingMovedItemIndex != -1)
 				{
 					Move();
 				}
@@ -131,8 +131,9 @@ namespace MoreMountains.InventoryEngine
 		public virtual void Move()
 		{
 			if (!SlotEnabled) { return; }
+			
 			// if we're not already moving an object
-			if (ParentInventoryDisplay.CurrentlyBeingMovedItemIndex == -1)
+			if (InventoryDisplay.CurrentlyBeingMovedItemIndex == -1)
 			{
 				// if the slot we're on is empty, we do nothing
 				if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
@@ -144,22 +145,54 @@ namespace MoreMountains.InventoryEngine
 				{
 					// we change the background image
 					TargetImage.sprite = ParentInventoryDisplay.MovedSlotImage;
-					ParentInventoryDisplay.CurrentlyBeingMovedItemIndex=Index;
+					InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = ParentInventoryDisplay;
+					InventoryDisplay.CurrentlyBeingMovedItemIndex = Index;
 				}
 			}
 			// if we ARE moving an object
 			else
 			{
+				bool moveSuccessful = false;
 				// we move the object to a new slot. 
-				if (!ParentInventoryDisplay.TargetInventory.MoveItem(ParentInventoryDisplay.CurrentlyBeingMovedItemIndex,Index))
+				if (ParentInventoryDisplay == InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay)
 				{
-					// if the move couldn't be made (non empty destination slot for example), we play a sound
-					MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
+					if (!ParentInventoryDisplay.TargetInventory.MoveItem(InventoryDisplay.CurrentlyBeingMovedItemIndex, Index))
+					{
+						// if the move couldn't be made (non empty destination slot for example), we play a sound
+						MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
+						moveSuccessful = false;
+					}
+					else
+					{
+						moveSuccessful = true;
+					}
 				}
 				else
 				{
+					if (!ParentInventoryDisplay.AllowMovingObjectsToThisInventory)
+					{
+						moveSuccessful = false;
+					}
+					else
+					{
+						if (!InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay.TargetInventory.MoveItemToInventory(InventoryDisplay.CurrentlyBeingMovedItemIndex, ParentInventoryDisplay.TargetInventory, Index))
+						{
+							// if the move couldn't be made (non empty destination slot for example), we play a sound
+							MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
+							moveSuccessful = false;
+						}
+						else
+						{
+							moveSuccessful = true;
+						}
+					}
+				}
+
+				if (moveSuccessful)
+				{
 					// if the move could be made, we reset our currentlyBeingMoved pointer
-					ParentInventoryDisplay.CurrentlyBeingMovedItemIndex=-1;
+					InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
+					InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = null;
 					MMInventoryEvent.Trigger(MMInventoryEventType.Move, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 				}
 			}
@@ -207,11 +240,12 @@ namespace MoreMountains.InventoryEngine
 			{
 				return;
 			}
-            if (ParentInventoryDisplay.TargetInventory.Content[Index].Drop(ParentInventoryDisplay.PlayerID))
-            {
-                ParentInventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
-                MMInventoryEvent.Trigger(MMInventoryEventType.Drop, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
-            }            
+			if (ParentInventoryDisplay.TargetInventory.Content[Index].Drop(ParentInventoryDisplay.PlayerID))
+			{
+				InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
+				InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = null;
+				MMInventoryEvent.Trigger(MMInventoryEventType.Drop, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
+			}            
 		}
 
 		/// <summary>
@@ -327,6 +361,43 @@ namespace MoreMountains.InventoryEngine
 			{
 				return true;
 			}
-		}	
+		}
+
+		public virtual bool EquipUseButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayEquipUseButton;
+		}
+
+		public virtual bool MoveButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayMoveButton;
+		}
+
+		public virtual bool DropButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayDropButton;
+		}
+
+		public virtual bool EquipButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayEquipButton;
+		}
+
+		public virtual bool UseButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayUseButton;
+		}
+
+		public virtual bool UnequipButtonShouldShow()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index])) { return false; }
+			return ParentInventoryDisplay.TargetInventory.Content[Index].DisplayProperties.DisplayUnequipButton;
+		}
+		
 	}
 }

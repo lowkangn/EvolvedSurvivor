@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114510539804127886}
   - component: {fileID: 114072752581488692}
   - component: {fileID: 114710286730267884}
+  - component: {fileID: 9165270163092382011}
   m_Layer: 10
   m_Name: MinimalCharacter
   m_TagString: Player
@@ -148,10 +149,8 @@ MonoBehaviour:
   GroundedRaycastLength: 5
   MinimumGroundedDistance: 0.2
   GroundedComputationMode: 1
-  AllowPhysicsInteractions: 1
-  ImpactFalloff: 5
-  PushPower: 50
   GroundNormalHeightThreshold: 0.2
+  ImpactFalloff: 5
   MaximumFallSpeed: 40
   SlopeSpeedMultiplier:
     serializedVersion: 2
@@ -211,6 +210,7 @@ MonoBehaviour:
   RunAnimatorSanityChecks: 0
   DisableAnimatorLogs: 1
   CharacterModel: {fileID: 1130127693270128}
+  CharacterHealth: {fileID: 0}
   SendStateChangeEvents: 1
   AdditionalAbilityNodes: []
   CharacterBrain: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   AbsoluteThresholdWeapon: 0.5
   LockVerticalRotation: 1
   RotationSpeedResetSpeed: 2
+  RotationOffsetSmoothSpeed: 1
   ForcedRotation: 0
   ForcedRotationDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &114524877107183236
@@ -527,10 +528,12 @@ MonoBehaviour:
   Invulnerable: 0
   InitialHealth: 100
   MaximumHealth: 100
+  ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 0}
   FeedbackIsProportionalToDamage: 0
+  PreventTakeSelfDamage: 0
   DestroyOnDeath: 1
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
@@ -579,6 +582,30 @@ MonoBehaviour:
   AutoPickItems: []
   AutoEquipWeaponOnStart: {fileID: 0}
   CharacterHandleWeapon: {fileID: 0}
+--- !u!114 &9165270163092382011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167761570092420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e348c4f06a38d348be86f2f28cd124d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  AllowPhysicsInteractions: 1
+  PhysicsInteractionsRaycastLength: 0.05
+  PhysicsInteractionsRaycastOffset: {x: 0, y: 0, z: 0}
+  PushPower: 1850
 --- !u!1 &1749803945586204
 GameObject:
   m_ObjectHideFlags: 0

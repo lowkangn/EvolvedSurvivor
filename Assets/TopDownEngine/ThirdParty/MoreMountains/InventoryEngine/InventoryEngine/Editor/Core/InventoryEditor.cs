@@ -25,9 +25,9 @@ namespace MoreMountains.InventoryEngine
 			}
 		} 
 	   
-	   /// <summary>
-	   /// Custom editor for the inventory panel.
-	   /// </summary>
+		/// <summary>
+		/// Custom editor for the inventory panel.
+		/// </summary>
 		public override void OnInspectorGUI()
 		{
 			serializedObject.Update();
@@ -107,9 +107,9 @@ namespace MoreMountains.InventoryEngine
 		/// On each update
 		/// </summary>
 		public void Update()
-		 {
-		     // We repaint the editor
-		     Repaint();
-		 }	
+		{
+			// We repaint the editor
+			Repaint();
+		}	
 	}
 }

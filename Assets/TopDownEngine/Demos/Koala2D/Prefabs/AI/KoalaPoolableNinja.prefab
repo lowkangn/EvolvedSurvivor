@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4736116768674126
 Transform:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ObstaclesDetectionDistance: 1
-  ObstaclesCheckFrequency: 1
+  ObstaclesCheckFrequency: 0
   MinimumRandomDirection: {x: -1, y: -1}
   MaximumRandomDirection: {x: 1, y: 1}
 --- !u!114 &114113908976523258
@@ -561,7 +561,8 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  DamageCaused: 10
+  MinDamageCaused: 10
+  MaxDamageCaused: 10
   DamageCausedKnockbackType: 1
   DamageCausedKnockbackDirection: 0
   DamageCausedKnockbackForce: {x: 500, y: 500, z: 0}
@@ -10501,6 +10502,8 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
   CooldownDuration: 0
@@ -10669,6 +10672,8 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
   CooldownDuration: 0

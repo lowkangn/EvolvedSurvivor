@@ -7,11 +7,11 @@ using MoreMountains.MMInterface;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// Simple start screen class.
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/GUI/StartScreen")]
-    public class StartScreen : MonoBehaviour
+	/// <summary>
+	/// Simple start screen class.
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/GUI/StartScreen")]
+	public class StartScreen : MonoBehaviour
 	{
 		/// the level to load after the start screen
 		[Tooltip("the level to load after the start screen")]
@@ -27,8 +27,8 @@ namespace MoreMountains.TopDownEngine
 		/// the duration of the fade to black at the end of the level
 		[Tooltip("the duration of the fade to black at the end of the level")]
 		public float FadeOutDuration = 1f;
-        /// the tween type to use to fade the startscreen in and out 
-        [Tooltip("the tween type to use to fade the startscreen in and out ")]
+		/// the tween type to use to fade the startscreen in and out 
+		[Tooltip("the tween type to use to fade the startscreen in and out ")]
 		public MMTweenType Tween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutCubic);
 
 		[Header("Sound Settings Bindings")]
@@ -46,7 +46,7 @@ namespace MoreMountains.TopDownEngine
 		{	
 			GUIManager.Instance.SetHUDActive (false);
 			MMFadeOutEvent.Trigger(FadeInDuration, Tween);
-            Cursor.visible = true;
+			Cursor.visible = true;
 			if (AutoSkipDelay > 1f)
 			{
 				FadeOutDuration = AutoSkipDelay;
@@ -54,9 +54,9 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// On Start, initializes the music and sfx switches
-        /// </summary>
+		/// <summary>
+		/// On Start, initializes the music and sfx switches
+		/// </summary>
 		protected async void Start()
 		{
 			await Task.Delay(1);

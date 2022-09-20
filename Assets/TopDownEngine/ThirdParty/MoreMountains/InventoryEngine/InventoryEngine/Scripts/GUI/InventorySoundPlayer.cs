@@ -219,7 +219,7 @@ namespace MoreMountains.InventoryEngine
 				case MMInventoryEventType.ItemUsed:
 					if (inventoryEvent.EventItem.UsedSound == null)
 					{
-								if (inventoryEvent.EventItem.UseDefaultSoundsIfNull) { this.PlaySound ("use"); 	}
+						if (inventoryEvent.EventItem.UseDefaultSoundsIfNull) { this.PlaySound ("use"); 	}
 					} else
 					{
 						this.PlaySound (inventoryEvent.EventItem.UsedSound, 1f);

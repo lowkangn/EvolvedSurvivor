@@ -34,7 +34,7 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Start()
 		{
 			_keyList = new List<int> ();
-        }
+		}
 
 		/// <summary>
 		/// On enter we store our colliding object
@@ -46,21 +46,21 @@ namespace MoreMountains.TopDownEngine
 			base.OnTriggerEnter2D (collider);
 		}
 
-        protected override void OnTriggerEnter(Collider collider)
-        {
-            _collidingObject = collider.gameObject;
-            base.OnTriggerEnter(collider);
-        }
+		protected override void OnTriggerEnter(Collider collider)
+		{
+			_collidingObject = collider.gameObject;
+			base.OnTriggerEnter(collider);
+		}
 
-        /// <summary>
-        /// When the button is pressed, we check if we have a key in our inventory
-        /// </summary>
-        public override void TriggerButtonAction()
+		/// <summary>
+		/// When the button is pressed, we check if we have a key in our inventory
+		/// </summary>
+		public override void TriggerButtonAction()
 		{
 			if (!CheckNumberOfUses())
-            {
-                PromptError();
-                return;
+			{
+				PromptError();
+				return;
 			}
 
 			if (_collidingObject == null) { return; }
@@ -70,16 +70,16 @@ namespace MoreMountains.TopDownEngine
 				CharacterInventory characterInventory = _collidingObject.MMGetComponentNoAlloc<Character>()?.FindAbility<CharacterInventory> ();
 				if (characterInventory == null)
 				{
-                    PromptError();
-                    return;
+					PromptError();
+					return;
 				}	
 
 				_keyList.Clear ();
 				_keyList = characterInventory.MainInventory.InventoryContains (KeyID);
 				if (_keyList.Count == 0)
 				{
-                    PromptError();
-                    return;
+					PromptError();
+					return;
 				}
 				else
 				{
@@ -88,7 +88,7 @@ namespace MoreMountains.TopDownEngine
 				}
 			}
 
-            TriggerKeyAction ();
+			TriggerKeyAction ();
 			ActivateZone ();
 		}
 
