@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3579630373086814210}
-  - component: {fileID: 7095764258113722623}
+  - component: {fileID: 2718351011253688110}
   m_Layer: 0
-  m_Name: BasicProjectileAbility
+  m_Name: LockOnAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7095764258113722623
+--- !u!114 &2718351011253688110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,31 +41,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2943148802276990048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afa1297db32754d4a9e09302358d4dfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activateOnlyOnce: 0
   coolDown:
-    minValue: 0.2
-    maxValue: 3
+    minValue: 0.5
+    maxValue: 4
     value: 0
   damage:
-    minValue: 1
-    maxValue: 30
+    minValue: 8
+    maxValue: 80
     value: 0
-  pierceLimit:
-    minValue: 1
-    maxValue: 5
+  aoeRadius:
+    minValue: 0
+    maxValue: 8
     value: 0
-  projectileNumber:
+  targetNumber:
     minValue: 1
     maxValue: 6
-    value: 0
-  projectileSpeed:
-    minValue: 20
-    maxValue: 100
-    value: 0
-  projectileSize:
-    minValue: 1
-    maxValue: 5
     value: 0
