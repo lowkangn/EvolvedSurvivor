@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7095764258113722623}
   - component: {fileID: 3404124164898862505}
   m_Layer: 0
-  m_Name: BasicProjectileAbility
+  m_Name: ExplosiveProjectileAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,29 +47,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnlyOnce: 0
   coolDown:
-    minValue: 0.1
-    maxValue: 0.5
+    minValue: 0.5
+    maxValue: 4
     value: 0
+  hasBuilt: 0
   objectPool: {fileID: 3404124164898862505}
   damage:
-    minValue: 10
-    maxValue: 30
+    minValue: 5
+    maxValue: 50
     value: 0
-  pierceLimit:
+  aoeRadius:
     minValue: 0
     maxValue: 3
     value: 0
   projectileNumber:
-    minValue: 0
-    maxValue: 0
-    value: 0
-  projectileSpeed:
-    minValue: 5
-    maxValue: 10
+    minValue: 1
+    maxValue: 6
     value: 0
   projectileSize:
     minValue: 1
-    maxValue: 2
+    maxValue: 5
     value: 0
 --- !u!114 &3404124164898862505
 MonoBehaviour:
