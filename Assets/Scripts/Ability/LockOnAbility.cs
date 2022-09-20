@@ -2,11 +2,14 @@ using UnityEngine;
 using System.Linq;
 using MoreMountains.TopDownEngine;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public class LockOnAbility : Ability
     {
+        [SerializeField]
+        private MMObjectPooler objectPool;
         [SerializeField]
         private AbilityStat<float> damage;
         [SerializeField]
@@ -31,8 +34,14 @@ namespace TeamOne.EvolvedSurvivor
                 }
                 for (int i = 0; i < targetNumber.value && i < onScreenEnemies.Length; i++)
                 {
-                    // Damage chosen enemy
+                    GameObject nextProjectile = objectPool.GetPooledGameObject();
+                    // Choose an enemy and spawn projectile on top of it
                     GameObject chosenEnemy = onScreenEnemies[i];
+                    nextProjectile.transform.parent = chosenEnemy.transform;
+                    nextProjectile.transform.localPosition = new Vector3(0, 0.5f, 0);
+                    nextProjectile.SetActive(true);
+
+                    // hit the enemy and apply AOE
                     enemiesHit.Add(chosenEnemy);
                     Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(chosenEnemy.transform.position, aoeRadius.value, LayerMask.GetMask("Enemies"));
                     foreach (Collider2D enemy in enemiesInRadius)
