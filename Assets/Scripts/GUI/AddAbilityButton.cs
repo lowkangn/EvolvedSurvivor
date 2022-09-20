@@ -31,18 +31,8 @@ namespace MoreMountains.TopDownEngine
             yield return null;
             // we trigger a Pause event for the GameManager and other classes that could be listening to it too
             TopDownEngineEvent.Trigger(TopDownEngineEventTypes.ShowAddAbilityScreen, null);
+
         }
 
-        void OnMouseOver()
-        {
-            //If your mouse hovers over the GameObject with the script attached, output this message
-            Debug.Log("Mouse is over " + this.gameObject.transform.parent.parent.name);
-        }
-
-        void OnMouseExit()
-        {
-            //The mouse is no longer hovering over the GameObject so output this message each frame
-            Debug.Log("Mouse is no longer on " + this.gameObject.transform.parent.parent.name);
-        }
     }
 }
