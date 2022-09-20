@@ -52,19 +52,19 @@ namespace MoreMountains.InventoryEngine
 		/// When drawing the inspector, we display a popup allowing the user to add the item to a specific inventory
 		/// </summary>
 		public override void OnInspectorGUI()
-	     {
-	     	DrawDefaultInspector();
+		{
+			DrawDefaultInspector();
 			if (ItemTarget.Item!=null)
 			{
 				System.Type type = ItemTarget.Item.GetType();
 
 				foreach( FieldInfo fi in type.GetFields() )
-			    {
+				{
 					if (fi.GetValue(ItemTarget.Item)!=null)
 					{
 						EditorGUILayout.LabelField(fi.Name,fi.GetValue(ItemTarget.Item).ToString());
 					}
-			    }
+				}
 				if (_targetInventories.Length>0)
 				{
 					_targetInventoryIndex = EditorGUILayout.Popup(_targetInventoryIndex,_targetInventories);
@@ -73,7 +73,7 @@ namespace MoreMountains.InventoryEngine
 						ItemTarget.Pick(_targetInventories[_targetInventoryIndex]);
 					}
 				}
-	     	}			
+			}			
 		}
 	}
 }

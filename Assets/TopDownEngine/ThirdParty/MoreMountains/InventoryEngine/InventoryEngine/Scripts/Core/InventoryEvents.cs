@@ -41,17 +41,17 @@ namespace MoreMountains.InventoryEngine
 			PlayerID = (playerID != "") ? playerID : "Player1";
 		}
 
-        static MMInventoryEvent e;
-        public static void Trigger(MMInventoryEventType eventType, InventorySlot slot, string targetInventoryName, InventoryItem eventItem, int quantity, int index, string playerID)
-        {
-            e.InventoryEventType = eventType;
-            e.Slot = slot;
-            e.TargetInventoryName = targetInventoryName;
-            e.EventItem = eventItem;
-            e.Quantity = quantity;
-            e.Index = index;
-            e.PlayerID = (playerID != "") ? playerID : "Player1";
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMInventoryEvent e;
+		public static void Trigger(MMInventoryEventType eventType, InventorySlot slot, string targetInventoryName, InventoryItem eventItem, int quantity, int index, string playerID)
+		{
+			e.InventoryEventType = eventType;
+			e.Slot = slot;
+			e.TargetInventoryName = targetInventoryName;
+			e.EventItem = eventItem;
+			e.Quantity = quantity;
+			e.Index = index;
+			e.PlayerID = (playerID != "") ? playerID : "Player1";
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 }

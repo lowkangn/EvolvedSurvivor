@@ -4,38 +4,38 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// This class allows for a 3D character to grab its current weapon's handles, and look wherever it's aiming.
-    /// There's a bit of setup involved. You need to have a CharacterHandleWeapon component on your character, it needs an animator with IKPass active (this is set in the Layers tab of the animator)
-    /// the animator's avatar MUST be set as humanoid
-    /// And you need to put that script on the same gameobject as the animator (otherwise it won't work). 
-    /// Finally, you need to set left and right handles (or only one of these) on your weapon(s). 
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Weapons/Weapon IK")]
-    public class WeaponIK : MonoBehaviour
-    {
-        [Header("Bindings")]
-        /// The transform to use as a target for the left hand
-        [Tooltip("The transform to use as a target for the left hand")]
-        public Transform LeftHandTarget = null;
-        /// The transform to use as a target for the right hand
-        [Tooltip("The transform to use as a target for the right hand")]
-        public Transform RightHandTarget = null;
+	/// <summary>
+	/// This class allows for a 3D character to grab its current weapon's handles, and look wherever it's aiming.
+	/// There's a bit of setup involved. You need to have a CharacterHandleWeapon component on your character, it needs an animator with IKPass active (this is set in the Layers tab of the animator)
+	/// the animator's avatar MUST be set as humanoid
+	/// And you need to put that script on the same gameobject as the animator (otherwise it won't work). 
+	/// Finally, you need to set left and right handles (or only one of these) on your weapon(s). 
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Weapons/Weapon IK")]
+	public class WeaponIK : MonoBehaviour
+	{
+		[Header("Bindings")]
+		/// The transform to use as a target for the left hand
+		[Tooltip("The transform to use as a target for the left hand")]
+		public Transform LeftHandTarget = null;
+		/// The transform to use as a target for the right hand
+		[Tooltip("The transform to use as a target for the right hand")]
+		public Transform RightHandTarget = null;
 
-        [Header("Attachments")]
-        /// whether or not to attach the left hand to its target
-        [Tooltip("whether or not to attach the left hand to its target")]
-        public bool AttachLeftHand = true;
-        /// whether or not to attach the right hand to its target
-        [Tooltip("whether or not to attach the right hand to its target")]
-        public bool AttachRightHand = true;
+		[Header("Attachments")]
+		/// whether or not to attach the left hand to its target
+		[Tooltip("whether or not to attach the left hand to its target")]
+		public bool AttachLeftHand = true;
+		/// whether or not to attach the right hand to its target
+		[Tooltip("whether or not to attach the right hand to its target")]
+		public bool AttachRightHand = true;
         
-        [Header("Head")]
-        /// the minimum and maximum weights to apply to the Head look at weights when using IK 
-        [MMVector("Min","Max")]
-        public Vector2 HeadWeights = new Vector2(0f, 1f);
+		[Header("Head")]
+		/// the minimum and maximum weights to apply to the Head look at weights when using IK 
+		[MMVector("Min","Max")]
+		public Vector2 HeadWeights = new Vector2(0f, 1f);
         
-        protected Animator _animator;
+		protected Animator _animator;
 
 		protected virtual void Start()
 		{
@@ -54,41 +54,41 @@ namespace MoreMountains.TopDownEngine
 
 			//if the IK is active, set the position and rotation directly to the goal. 
 
-            if (AttachLeftHand)
-            {
-                if (LeftHandTarget != null)
-                {
-                    AttachHandToHandle(AvatarIKGoal.LeftHand, LeftHandTarget);
+			if (AttachLeftHand)
+			{
+				if (LeftHandTarget != null)
+				{
+					AttachHandToHandle(AvatarIKGoal.LeftHand, LeftHandTarget);
 
-                    _animator.SetLookAtWeight(HeadWeights.y);
-                    _animator.SetLookAtPosition(LeftHandTarget.position);
-                }
-                else
-                {
-                    DetachHandFromHandle(AvatarIKGoal.LeftHand);
-                }
-            }
+					_animator.SetLookAtWeight(HeadWeights.y);
+					_animator.SetLookAtPosition(LeftHandTarget.position);
+				}
+				else
+				{
+					DetachHandFromHandle(AvatarIKGoal.LeftHand);
+				}
+			}
 			
-            if (AttachRightHand)
-            {
-                if (RightHandTarget != null)
-                {
-                    AttachHandToHandle(AvatarIKGoal.RightHand, RightHandTarget);
-                }
-                else
-                {
-                    DetachHandFromHandle(AvatarIKGoal.RightHand);
-                }
-            }
+			if (AttachRightHand)
+			{
+				if (RightHandTarget != null)
+				{
+					AttachHandToHandle(AvatarIKGoal.RightHand, RightHandTarget);
+				}
+				else
+				{
+					DetachHandFromHandle(AvatarIKGoal.RightHand);
+				}
+			}
 			
 
 		}  
 
-        /// <summary>
-        /// Attaches the hands to the handles
-        /// </summary>
-        /// <param name="hand"></param>
-        /// <param name="handle"></param>
+		/// <summary>
+		/// Attaches the hands to the handles
+		/// </summary>
+		/// <param name="hand"></param>
+		/// <param name="handle"></param>
 		protected virtual void AttachHandToHandle(AvatarIKGoal hand, Transform handle)
 		{
 			_animator.SetIKPositionWeight(hand,1);

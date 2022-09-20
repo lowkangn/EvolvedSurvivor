@@ -40,8 +40,8 @@ namespace MoreMountains.MMInterface
 		[Header("Focus")]
 		/// Bind here the carousel item that should have focus initially
 		public GameObject InitialFocus;
-        /// if this is true, the mouse will be forced back on Start
-        public bool ForceMouseVisible = true;
+		/// if this is true, the mouse will be forced back on Start
+		public bool ForceMouseVisible = true;
 
 		[Header("Keyboard/Gamepad")]
 		/// the number 
@@ -93,10 +93,10 @@ namespace MoreMountains.MMInterface
 				EventSystem.current.SetSelectedGameObject(InitialFocus, null);
 			}
 
-            if (ForceMouseVisible)
-            {
-                Cursor.visible = true;
-            }
+			if (ForceMouseVisible)
+			{
+				Cursor.visible = true;
+			}
 		}
 
 		/// <summary>

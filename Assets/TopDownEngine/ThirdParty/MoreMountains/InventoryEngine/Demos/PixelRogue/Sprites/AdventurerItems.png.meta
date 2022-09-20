@@ -47,6 +47,9 @@ TextureImporter:
   - first:
       213: -6256563695458652631
     second: AdventurerItems_Minigun
+  - first:
+      213: -1982627368618908731
+    second: AdventurerItems_Chest
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -385,7 +388,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -406,7 +409,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -427,7 +430,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -435,6 +438,27 @@ TextureImporter:
       bones: []
       spriteID: 92ee499b7783c29a0800000000000000
       internalID: -6256563695458652631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdventurerItems_Chest
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 19
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3a083a9ea4c74e0800000000000000
+      internalID: -1982627368618908731
       vertices: []
       indices: 
       edges: []
@@ -457,6 +481,7 @@ TextureImporter:
       AdventurerItems_Axe: 21300014
       AdventurerItems_Rifle: 7694205521886297151
       MiniIconRarity: 21300020
+      AdventurerItems_Chest: -1982627368618908731
       AdventurerItems_Sword: 21300008
       MiniIconCost: 21300016
       AdventurerItems_Shotgun: 4201866339775181760

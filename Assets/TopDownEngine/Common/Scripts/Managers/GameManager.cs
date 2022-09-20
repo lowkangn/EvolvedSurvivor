@@ -7,24 +7,24 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// A list of the possible TopDown Engine base events
-    /// LevelStart : triggered by the LevelManager when a level starts
-    ///	LevelComplete : can be triggered when the end of a level is reached
-    /// LevelEnd : same thing
-    ///	Pause : triggered when a pause is starting
-    ///	UnPause : triggered when a pause is ending and going back to normal
-    ///	PlayerDeath : triggered when the player character dies
-    ///	RespawnStarted : triggered when the player character respawn sequence starts
-    ///	RespawnComplete : triggered when the player character respawn sequence ends
-    ///	StarPicked : triggered when a star bonus gets picked
-    ///	GameOver : triggered by the LevelManager when all lives are lost
-    /// CharacterSwap : triggered when the character gets swapped
-    /// CharacterSwitch : triggered when the character gets switched
-    /// Repaint : triggered to ask for a UI refresh
-    /// TogglePause : triggered to request a pause (or unpause)
-    /// </summary>
-    public enum TopDownEngineEventTypes
+	/// <summary>
+	/// A list of the possible TopDown Engine base events
+	/// LevelStart : triggered by the LevelManager when a level starts
+	///	LevelComplete : can be triggered when the end of a level is reached
+	/// LevelEnd : same thing
+	///	Pause : triggered when a pause is starting
+	///	UnPause : triggered when a pause is ending and going back to normal
+	///	PlayerDeath : triggered when the player character dies
+	///	RespawnStarted : triggered when the player character respawn sequence starts
+	///	RespawnComplete : triggered when the player character respawn sequence ends
+	///	StarPicked : triggered when a star bonus gets picked
+	///	GameOver : triggered by the LevelManager when all lives are lost
+	/// CharacterSwap : triggered when the character gets swapped
+	/// CharacterSwitch : triggered when the character gets switched
+	/// Repaint : triggered to ask for a UI refresh
+	/// TogglePause : triggered to request a pause (or unpause)
+	/// </summary>
+	public enum TopDownEngineEventTypes
 	{
 		SpawnCharacterStarts,
 		LevelStart,
@@ -33,18 +33,17 @@ namespace MoreMountains.TopDownEngine
 		Pause,
 		UnPause,
 		PlayerDeath,
-        SpawnComplete,
-        RespawnStarted,
-        RespawnComplete,
-        StarPicked,
+		SpawnComplete,
+		RespawnStarted,
+		RespawnComplete,
+		StarPicked,
 		GameOver,
-        CharacterSwap,
-        CharacterSwitch,
-        Repaint,
-        TogglePause,
-        LoadNextScene,
-		LevelUp
-    }
+		CharacterSwap,
+		CharacterSwitch,
+		Repaint,
+		TogglePause,
+		LoadNextScene
+	}
 
 	/// <summary>
 	/// A type of events used to signal level start and end (for now)
@@ -52,7 +51,7 @@ namespace MoreMountains.TopDownEngine
 	public struct TopDownEngineEvent
 	{
 		public TopDownEngineEventTypes EventType;
-        public Character OriginCharacter;
+		public Character OriginCharacter;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MoreMountains.TopDownEngine.TopDownEngineEvent"/> struct.
@@ -61,17 +60,17 @@ namespace MoreMountains.TopDownEngine
 		public TopDownEngineEvent(TopDownEngineEventTypes eventType, Character originCharacter)
 		{
 			EventType = eventType;
-            OriginCharacter = originCharacter;
+			OriginCharacter = originCharacter;
 		}
 
-        static TopDownEngineEvent e;
-        public static void Trigger(TopDownEngineEventTypes eventType, Character originCharacter)
-        {
-            e.EventType = eventType;
-            e.OriginCharacter = originCharacter;
-            MMEventManager.TriggerEvent(e);
-        }
-    } 
+		static TopDownEngineEvent e;
+		public static void Trigger(TopDownEngineEventTypes eventType, Character originCharacter)
+		{
+			e.EventType = eventType;
+			e.OriginCharacter = originCharacter;
+			MMEventManager.TriggerEvent(e);
+		}
+	} 
 
 	/// <summary>
 	/// A list of the methods available to change the current score
@@ -89,38 +88,38 @@ namespace MoreMountains.TopDownEngine
 	{
 		public PointsMethods PointsMethod;
 		public int Points;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MoreMountains.TopDownEngine.TopDownEnginePointEvent"/> struct.
-        /// </summary>
-        /// <param name="pointsMethod">Points method.</param>
-        /// <param name="points">Points.</param>
-        public TopDownEnginePointEvent(PointsMethods pointsMethod, int points)
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MoreMountains.TopDownEngine.TopDownEnginePointEvent"/> struct.
+		/// </summary>
+		/// <param name="pointsMethod">Points method.</param>
+		/// <param name="points">Points.</param>
+		public TopDownEnginePointEvent(PointsMethods pointsMethod, int points)
 		{
 			PointsMethod = pointsMethod;
 			Points = points;
-        }
+		}
 
-        static TopDownEnginePointEvent e;
-        public static void Trigger(PointsMethods pointsMethod, int points)
-        {
-            e.PointsMethod = pointsMethod;
-            e.Points = points;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static TopDownEnginePointEvent e;
+		public static void Trigger(PointsMethods pointsMethod, int points)
+		{
+			e.PointsMethod = pointsMethod;
+			e.Points = points;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 
-    /// <summary>
-    /// A list of the possible pause methods
-    /// </summary>
+	/// <summary>
+	/// A list of the possible pause methods
+	/// </summary>
 	public enum PauseMethods
 	{
 		PauseMenu,
 		NoPauseMenu
 	}
 
-    /// <summary>
-    /// A class to store points of entry into levels, one per level.
-    /// </summary>
+	/// <summary>
+	/// A class to store points of entry into levels, one per level.
+	/// </summary>
 	public class PointsOfEntryStorage
 	{
 		public string LevelName;
@@ -140,14 +139,14 @@ namespace MoreMountains.TopDownEngine
 	/// </summary>
 	[AddComponentMenu("TopDown Engine/Managers/Game Manager")]
 	public class GameManager : 	MMPersistentSingleton<GameManager>, 
-								MMEventListener<MMGameEvent>, 
-								MMEventListener<TopDownEngineEvent>, 
-								MMEventListener<TopDownEnginePointEvent>
+		MMEventListener<MMGameEvent>, 
+		MMEventListener<TopDownEngineEvent>, 
+		MMEventListener<TopDownEnginePointEvent>
 	{
 		/// the target frame rate for the game
 		[Tooltip("the target frame rate for the game")]
 		public int TargetFrameRate = 300;
-        [Header("Lives")]
+		[Header("Lives")]
 		/// the maximum amount of lives the character can currently have
 		[Tooltip("the maximum amount of lives the character can currently have")]
 		public int MaximumLives = 0;
@@ -155,23 +154,23 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the current number of lives ")]
 		public int CurrentLives = 0;
 
-        [Header("Bindings")]
+		[Header("Bindings")]
 		/// the name of the scene to redirect to when all lives are lost
 		[Tooltip("the name of the scene to redirect to when all lives are lost")]
 		public string GameOverScene;
 
-        [Header("Points")]
-        /// the current number of game points
-        [MMReadOnly]
+		[Header("Points")]
+		/// the current number of game points
+		[MMReadOnly]
 		[Tooltip("the current number of game points")]
 		public int Points;
 
-        [Header("Pause")]
+		[Header("Pause")]
 		/// if this is true, the game will automatically pause when opening an inventory
 		[Tooltip("if this is true, the game will automatically pause when opening an inventory")]
 		public bool PauseGameWhenInventoryOpens = true;
-        /// true if the game is currently paused
-        public bool Paused { get; set; } 
+		/// true if the game is currently paused
+		public bool Paused { get; set; } 
 		// true if we've stored a map position at least once
 		public bool StoredLevelMapPosition{ get; set; }
 		/// the current player
@@ -181,35 +180,34 @@ namespace MoreMountains.TopDownEngine
 		/// the list of points of entry and exit
 		[Tooltip("the list of points of entry and exit")]
 		public List<PointsOfEntryStorage> PointsOfEntry;
-        /// the stored selected character
-        public Character StoredCharacter { get; set; }
+		/// the stored selected character
+		public Character StoredCharacter { get; set; }
 
-        // storage
+		// storage
 		protected bool _inventoryOpen = false;
 		protected bool _pauseMenuOpen = false;
-		protected bool _hasLevelUpScreen = false;
 		protected InventoryInputManager _inventoryInputManager;
-        protected int _initialMaximumLives;
-        protected int _initialCurrentLives;
+		protected int _initialMaximumLives;
+		protected int _initialCurrentLives;
 
-        /// <summary>
-        /// On Awake we initialize our list of points of entry
-        /// </summary>
-        protected override void Awake()
+		/// <summary>
+		/// On Awake we initialize our list of points of entry
+		/// </summary>
+		protected override void Awake()
 		{
 			base.Awake ();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
 		}
 
-	    /// <summary>
-	    /// On Start(), sets the target framerate to whatever's been specified
-	    /// </summary>
-	    protected virtual void Start()
-	    {
+		/// <summary>
+		/// On Start(), sets the target framerate to whatever's been specified
+		/// </summary>
+		protected virtual void Start()
+		{
 			Application.targetFrameRate = TargetFrameRate;
-            _initialCurrentLives = CurrentLives;
-            _initialMaximumLives = MaximumLives;
-        }
+			_initialCurrentLives = CurrentLives;
+			_initialMaximumLives = MaximumLives;
+		}
 					
 		/// <summary>
 		/// this method resets the whole game manager
@@ -220,59 +218,59 @@ namespace MoreMountains.TopDownEngine
 			MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, 1f, 0f, false, 0f, true);
 			Paused = false;
 		}
-        /// <summary>
-        /// Use this method to decrease the current number of lives
-        /// </summary>
-        public virtual void LoseLife()
-        {
-            CurrentLives--;
-        }
+		/// <summary>
+		/// Use this method to decrease the current number of lives
+		/// </summary>
+		public virtual void LoseLife()
+		{
+			CurrentLives--;
+		}
 
-        /// <summary>
-        /// Use this method when a life (or more) is gained
-        /// </summary>
-        /// <param name="lives">Lives.</param>
-        public virtual void GainLives(int lives)
-        {
-            CurrentLives += lives;
-            if (CurrentLives > MaximumLives)
-            {
-                CurrentLives = MaximumLives;
-            }
-        }
+		/// <summary>
+		/// Use this method when a life (or more) is gained
+		/// </summary>
+		/// <param name="lives">Lives.</param>
+		public virtual void GainLives(int lives)
+		{
+			CurrentLives += lives;
+			if (CurrentLives > MaximumLives)
+			{
+				CurrentLives = MaximumLives;
+			}
+		}
 
-        /// <summary>
-        /// Use this method to increase the max amount of lives, and optionnally the current amount as well
-        /// </summary>
-        /// <param name="lives">Lives.</param>
-        /// <param name="increaseCurrent">If set to <c>true</c> increase current.</param>
-        public virtual void AddLives(int lives, bool increaseCurrent)
-        {
-            MaximumLives += lives;
-            if (increaseCurrent)
-            {
-                CurrentLives += lives;
-            }
-        }
+		/// <summary>
+		/// Use this method to increase the max amount of lives, and optionnally the current amount as well
+		/// </summary>
+		/// <param name="lives">Lives.</param>
+		/// <param name="increaseCurrent">If set to <c>true</c> increase current.</param>
+		public virtual void AddLives(int lives, bool increaseCurrent)
+		{
+			MaximumLives += lives;
+			if (increaseCurrent)
+			{
+				CurrentLives += lives;
+			}
+		}
 
-        /// <summary>
-        /// Resets the number of lives to their initial values.
-        /// </summary>
-        public virtual void ResetLives()
-        {
-            CurrentLives = _initialCurrentLives;
-            MaximumLives = _initialMaximumLives;
-        }
+		/// <summary>
+		/// Resets the number of lives to their initial values.
+		/// </summary>
+		public virtual void ResetLives()
+		{
+			CurrentLives = _initialCurrentLives;
+			MaximumLives = _initialMaximumLives;
+		}
 
-        /// <summary>
-        /// Adds the points in parameters to the current game points.
-        /// </summary>
-        /// <param name="pointsToAdd">Points to add.</param>
-        public virtual void AddPoints(int pointsToAdd)
+		/// <summary>
+		/// Adds the points in parameters to the current game points.
+		/// </summary>
+		/// <param name="pointsToAdd">Points to add.</param>
+		public virtual void AddPoints(int pointsToAdd)
 		{
 			Points += pointsToAdd;
-            GUIManager.Instance.RefreshPoints();
-        }
+			GUIManager.Instance.RefreshPoints();
+		}
 		
 		/// <summary>
 		/// use this to set the current points to the one you pass as a parameter
@@ -281,13 +279,13 @@ namespace MoreMountains.TopDownEngine
 		public virtual void SetPoints(int points)
 		{
 			Points = points;
-            GUIManager.Instance.RefreshPoints();
-        }
+			GUIManager.Instance.RefreshPoints();
+		}
 		
-        /// <summary>
-        /// Enables the inventory input manager if found
-        /// </summary>
-        /// <param name="status"></param>
+		/// <summary>
+		/// Enables the inventory input manager if found
+		/// </summary>
+		/// <param name="status"></param>
 		protected virtual void SetActiveInventoryInputManager(bool status)
 		{
 			_inventoryInputManager = GameObject.FindObjectOfType<InventoryInputManager> ();
@@ -309,9 +307,9 @@ namespace MoreMountains.TopDownEngine
 
 			// if time is not already stopped		
 			if (Time.timeScale>0.0f)
-            {
-                MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, 0f, 0f, false, 0f, true);
-                Instance.Paused=true;
+			{
+				MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, 0f, 0f, false, 0f, true);
+				Instance.Paused=true;
 				if ((GUIManager.HasInstance) && (pauseMethod == PauseMethods.PauseMenu))
 				{
 					GUIManager.Instance.SetPauseScreen(true);	
@@ -330,51 +328,33 @@ namespace MoreMountains.TopDownEngine
 			LevelManager.Instance.ToggleCharacterPause();
 		}
         
-        /// <summary>
-        /// Unpauses the game
-        /// </summary>
-        public virtual void UnPause(PauseMethods pauseMethod = PauseMethods.PauseMenu)
-        {
-            MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Unfreeze, 1f, 0f, false, 0f, false);
-            Instance.Paused = false;
+		/// <summary>
+		/// Unpauses the game
+		/// </summary>
+		public virtual void UnPause(PauseMethods pauseMethod = PauseMethods.PauseMenu)
+		{
+			MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Unfreeze, 1f, 0f, false, 0f, false);
+			Instance.Paused = false;
 			if ((GUIManager.HasInstance) && (pauseMethod == PauseMethods.PauseMenu))
 			{ 
 				GUIManager.Instance.SetPauseScreen(false);
 				_pauseMenuOpen = false;
 				SetActiveInventoryInputManager (true);
 			}
-			if ((GUIManager.HasInstance) && _hasLevelUpScreen) {
-				GUIManager.Instance.SetLevelUpScreen(false);
-				_hasLevelUpScreen = false;
-				UnPause(PauseMethods.NoPauseMenu);
-			}
 			if (_inventoryOpen)
 			{
 				_inventoryOpen = false;
-            }
-            LevelManager.Instance.ToggleCharacterPause();
-        }
-
-		/// <summary>
-        /// Pause game and show Level up screen
-        /// </summary>
-        public virtual void LevelUp()
-        {
-			if ((GUIManager.HasInstance))
-			{
-				GUIManager.Instance.SetLevelUpScreen(true);	
-				_hasLevelUpScreen = true;
 			}
-			Pause(PauseMethods.NoPauseMenu);
-        }
+			LevelManager.Instance.ToggleCharacterPause();
+		}
         
-        /// <summary>
-        /// Stores the points of entry for the level whose name you pass as a parameter.
-        /// </summary>
-        /// <param name="levelName">Level name.</param>
-        /// <param name="entryIndex">Entry index.</param>
-        /// <param name="exitIndex">Exit index.</param>
-        public virtual void StorePointsOfEntry(string levelName, int entryIndex, Character.FacingDirections facingDirection)
+		/// <summary>
+		/// Stores the points of entry for the level whose name you pass as a parameter.
+		/// </summary>
+		/// <param name="levelName">Level name.</param>
+		/// <param name="entryIndex">Entry index.</param>
+		/// <param name="exitIndex">Exit index.</param>
+		public virtual void StorePointsOfEntry(string levelName, int entryIndex, Character.FacingDirections facingDirection)
 		{
 			if (PointsOfEntry.Count > 0)
 			{
@@ -437,75 +417,75 @@ namespace MoreMountains.TopDownEngine
 			PointsOfEntry.Clear ();
 		}
 
-        /// <summary>
+		/// <summary>
 		/// Deletes all save files
 		/// </summary>
 		public virtual void ResetAllSaves()
-        {
-            MMSaveLoadManager.DeleteSaveFolder("InventoryEngine");
-            MMSaveLoadManager.DeleteSaveFolder("TopDownEngine");
-            MMSaveLoadManager.DeleteSaveFolder("MMAchievements");
-        }
+		{
+			MMSaveLoadManager.DeleteSaveFolder("InventoryEngine");
+			MMSaveLoadManager.DeleteSaveFolder("TopDownEngine");
+			MMSaveLoadManager.DeleteSaveFolder("MMAchievements");
+		}
 
-        /// <summary>
-        /// Stores the selected character for use in upcoming levels
-        /// </summary>
-        /// <param name="selectedCharacter">Selected character.</param>
-        public virtual void StoreSelectedCharacter(Character selectedCharacter)
-        {
-            StoredCharacter = selectedCharacter;
-        }
+		/// <summary>
+		/// Stores the selected character for use in upcoming levels
+		/// </summary>
+		/// <param name="selectedCharacter">Selected character.</param>
+		public virtual void StoreSelectedCharacter(Character selectedCharacter)
+		{
+			StoredCharacter = selectedCharacter;
+		}
 
-        /// <summary>
-        /// Clears the selected character.
-        /// </summary>
-        public virtual void ClearSelectedCharacter()
-        {
-            StoredCharacter = null;
-        }
+		/// <summary>
+		/// Clears the selected character.
+		/// </summary>
+		public virtual void ClearSelectedCharacter()
+		{
+			StoredCharacter = null;
+		}
 
-        /// <summary>
-        /// Catches MMGameEvents and acts on them, playing the corresponding sounds
-        /// </summary>
-        /// <param name="gameEvent">MMGameEvent event.</param>
-        public virtual void OnMMEvent(MMGameEvent gameEvent)
+		/// <summary>
+		/// Catches MMGameEvents and acts on them, playing the corresponding sounds
+		/// </summary>
+		/// <param name="gameEvent">MMGameEvent event.</param>
+		public virtual void OnMMEvent(MMGameEvent gameEvent)
 		{
 			switch (gameEvent.EventName)
 			{
 				case "inventoryOpens":
-                    if (PauseGameWhenInventoryOpens)
-                    {
-                        Pause(PauseMethods.NoPauseMenu);
-                    }					
+					if (PauseGameWhenInventoryOpens)
+					{
+						Pause(PauseMethods.NoPauseMenu);
+					}					
 					break;
 
 				case "inventoryCloses":
-                    if (PauseGameWhenInventoryOpens)
-                    {
-                        Pause(PauseMethods.NoPauseMenu);
-                    }
+					if (PauseGameWhenInventoryOpens)
+					{
+						Pause(PauseMethods.NoPauseMenu);
+					}
 					break;
 			}
 		}
 
-        /// <summary>
-        /// Catches TopDownEngineEvents and acts on them, playing the corresponding sounds
-        /// </summary>
-        /// <param name="engineEvent">TopDownEngineEvent event.</param>
-        public virtual void OnMMEvent(TopDownEngineEvent engineEvent)
+		/// <summary>
+		/// Catches TopDownEngineEvents and acts on them, playing the corresponding sounds
+		/// </summary>
+		/// <param name="engineEvent">TopDownEngineEvent event.</param>
+		public virtual void OnMMEvent(TopDownEngineEvent engineEvent)
 		{
 			switch (engineEvent.EventType)
 			{
-                case TopDownEngineEventTypes.TogglePause:
-                    if (Paused)
-                    {
-                        TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
-                    }
-                    else
-                    {
-                        TopDownEngineEvent.Trigger(TopDownEngineEventTypes.Pause, null);
-                    }
-                    break;
+				case TopDownEngineEventTypes.TogglePause:
+					if (Paused)
+					{
+						TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
+					}
+					else
+					{
+						TopDownEngineEvent.Trigger(TopDownEngineEventTypes.Pause, null);
+					}
+					break;
 				case TopDownEngineEventTypes.Pause:
 					Pause ();
 					break;
@@ -513,30 +493,26 @@ namespace MoreMountains.TopDownEngine
 				case TopDownEngineEventTypes.UnPause:
 					UnPause ();
 					break;
-
-				case TopDownEngineEventTypes.LevelUp:
-					LevelUp();
-					break;
 			}
 		}
 
-        /// <summary>
-        /// Catches TopDownEnginePointsEvents and acts on them, playing the corresponding sounds
-        /// </summary>
-        /// <param name="pointEvent">TopDownEnginePointEvent event.</param>
-        public virtual void OnMMEvent(TopDownEnginePointEvent pointEvent)
+		/// <summary>
+		/// Catches TopDownEnginePointsEvents and acts on them, playing the corresponding sounds
+		/// </summary>
+		/// <param name="pointEvent">TopDownEnginePointEvent event.</param>
+		public virtual void OnMMEvent(TopDownEnginePointEvent pointEvent)
 		{
-            switch (pointEvent.PointsMethod)
-            {
-                case PointsMethods.Set:
-                    SetPoints(pointEvent.Points);
-                    break;
+			switch (pointEvent.PointsMethod)
+			{
+				case PointsMethods.Set:
+					SetPoints(pointEvent.Points);
+					break;
 
-                case PointsMethods.Add:
-                    AddPoints(pointEvent.Points);
-                    break;
-            }
-        }
+				case PointsMethods.Add:
+					AddPoints(pointEvent.Points);
+					break;
+			}
+		}
 
 		/// <summary>
 		/// OnDisable, we start listening to events.

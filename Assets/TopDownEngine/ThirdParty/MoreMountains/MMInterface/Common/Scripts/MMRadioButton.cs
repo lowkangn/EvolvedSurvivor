@@ -38,7 +38,7 @@ namespace MoreMountains.MMInterface
 			foreach (MMRadioButton radioButton in radioButtons) 
 			{
 				if ((radioButton.RadioButtonGroupName == RadioButtonGroupName)
-					&& (radioButton != this))
+				    && (radioButton != this))
 				{
 					_group.Add (radioButton);
 				}

@@ -54,46 +54,46 @@ namespace MoreMountains.InventoryEngine
 			RemainingQuantity = Quantity;
 		}
         
-        /// <summary>
-        /// Triggered when something collides with the picker
-        /// </summary>
-        /// <param name="collider">Other.</param>
-        public virtual void OnTriggerEnter(Collider collider)
-        {
-            // if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
-            if (!collider.CompareTag("Player"))
-            {
-                return;
-            }
-
-            string playerID = "Player1";
-            InventoryCharacterIdentifier identifier = collider.GetComponent<InventoryCharacterIdentifier>();
-            if (identifier != null)
-            {
-	            playerID = identifier.PlayerID;
-            }
-
-            Pick(Item.TargetInventoryName, playerID);
-        }
-
-        /// <summary>
-        /// Triggered when something collides with the picker
-        /// </summary>
-        /// <param name="collider">Other.</param>
-        public virtual void OnTriggerEnter2D (Collider2D collider) 
+		/// <summary>
+		/// Triggered when something collides with the picker
+		/// </summary>
+		/// <param name="collider">Other.</param>
+		public virtual void OnTriggerEnter(Collider collider)
 		{
-            // if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
-            if (!collider.CompareTag("Player"))
+			// if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
+			if (!collider.CompareTag("Player"))
 			{
 				return;
 			}
 
-            string playerID = "Player1";
-            InventoryCharacterIdentifier identifier = collider.GetComponent<InventoryCharacterIdentifier>();
-            if (identifier != null)
-            {
-	            playerID = identifier.PlayerID;
-            }
+			string playerID = "Player1";
+			InventoryCharacterIdentifier identifier = collider.GetComponent<InventoryCharacterIdentifier>();
+			if (identifier != null)
+			{
+				playerID = identifier.PlayerID;
+			}
+
+			Pick(Item.TargetInventoryName, playerID);
+		}
+
+		/// <summary>
+		/// Triggered when something collides with the picker
+		/// </summary>
+		/// <param name="collider">Other.</param>
+		public virtual void OnTriggerEnter2D (Collider2D collider) 
+		{
+			// if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
+			if (!collider.CompareTag("Player"))
+			{
+				return;
+			}
+
+			string playerID = "Player1";
+			InventoryCharacterIdentifier identifier = collider.GetComponent<InventoryCharacterIdentifier>();
+			if (identifier != null)
+			{
+				playerID = identifier.PlayerID;
+			}
 
 			Pick(Item.TargetInventoryName, playerID);
 		}		
@@ -141,11 +141,11 @@ namespace MoreMountains.InventoryEngine
 				MMInventoryEvent.Trigger(MMInventoryEventType.Pick, null, Item.TargetInventoryName, Item, _pickedQuantity, 0, playerID);
 			}				
 			if (Item.Pick(playerID))
-            {
-                RemainingQuantity = RemainingQuantity - _pickedQuantity;
-                PickSuccess();
-                DisableObjectIfNeeded();
-            }			
+			{
+				RemainingQuantity = RemainingQuantity - _pickedQuantity;
+				PickSuccess();
+				DisableObjectIfNeeded();
+			}			
 		}
 
 		/// <summary>

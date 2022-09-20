@@ -19,10 +19,10 @@ namespace MoreMountains.MMInterface
 		public float FaderOpenDuration = 0.2f;
 		public float FaderCloseDuration = 0.2f;
 		public float FaderOpacity = 0.8f;
-        public MMTweenType Tween = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
-        public int ID = 0;
+		public MMTweenType Tween = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public int ID = 0;
 
-        protected Animator _animator;
+		protected Animator _animator;
         
 
 		/// <summary>

@@ -8,7 +8,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.EventSystems;
 #if UNITY_EDITOR
-	using UnityEditor;
+using UnityEditor;
 #endif
 
 namespace MoreMountains.InventoryEngine
@@ -85,6 +85,9 @@ namespace MoreMountains.InventoryEngine
 		/// if this is true, we'll draw slots even if they don't contain an object. Otherwise we don't draw them
 		[MMInformation("If you set this to true, empty slots will be drawn, otherwise they'll be hidden from the player.",MMInformationAttribute.InformationType.Info,false)]
 		public bool DrawEmptySlots=true;
+		/// if this is true, the Player will be allowed to move objects from another inventory to this one, using the Move button
+		[MMInformation("if this is true, the Player will be allowed to move objects from another inventory to this one, using the Move button.",MMInformationAttribute.InformationType.Info,false)]
+		public bool AllowMovingObjectsToThisInventory = false;
 
 		[Header("Inventory Padding")]
 		[MMInformation("Here you can define the padding between the borders of the inventory panel and the slots.",MMInformationAttribute.InformationType.Info,false)]
@@ -177,11 +180,12 @@ namespace MoreMountains.InventoryEngine
 		/// the inventory the focus should return to after an action
 		public InventoryDisplay ReturnInventory { get; protected set; }	
 		/// whether this inventory display is open or not
-		public bool IsOpen { get; protected set; }	
+		public bool IsOpen { get; protected set; }
 
 		/// the item currently being moved
-		[MMHidden]
-		public int CurrentlyBeingMovedItemIndex = -1;
+
+		public static InventoryDisplay CurrentlyBeingMovedFromInventoryDisplay;
+		public static int CurrentlyBeingMovedItemIndex = -1;
 
 		protected List<ItemQuantity> _contentLastUpdate;	
 		protected List<int> _comparison;	
@@ -399,7 +403,7 @@ namespace MoreMountains.InventoryEngine
 				AddGridLayoutGroup();
 				DrawInventoryContent();
 				#if UNITY_EDITOR
-					EditorUtility.SetDirty(gameObject);
+				EditorUtility.SetDirty(gameObject);
 				#endif
 			}
 			else
@@ -688,9 +692,9 @@ namespace MoreMountains.InventoryEngine
 			}
 			
 			if (SlotContainer.Count > 0)
-            {
-                SlotContainer[0].Select();
-            }		
+			{
+				SlotContainer[0].Select();
+			}		
 
 			if (EventSystem.current.currentSelectedGameObject == null) 		
 			{	
@@ -828,9 +832,9 @@ namespace MoreMountains.InventoryEngine
 
 				case MMInventoryEventType.Move:
 					this.ReturnInventoryFocus();
-                    UpdateSlot(inventoryEvent.Index);
+					UpdateSlot(inventoryEvent.Index);
 
-                    break;
+					break;
 
 				case MMInventoryEventType.ItemUsed:
 					this.ReturnInventoryFocus();
@@ -868,17 +872,17 @@ namespace MoreMountains.InventoryEngine
 
 				case MMInventoryEventType.InventoryOpens:
 					Focus();
-					CurrentlyBeingMovedItemIndex = -1;
+					InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
 					IsOpen = true;
 					EventSystem.current.sendNavigationEvents = true;
 					break;
 
 				case MMInventoryEventType.InventoryCloses:
-					CurrentlyBeingMovedItemIndex = -1;
+					InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
 					EventSystem.current.sendNavigationEvents = false;
 					IsOpen = false;
 					SetCurrentlySelectedSlot (inventoryEvent.Slot);
-				break;
+					break;
 
 				case MMInventoryEventType.ContentChanged:
 					ContentHasChanged ();

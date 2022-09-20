@@ -4,9 +4,9 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {	
-    /// <summary>
-    /// A thrown object type of projectile, useful for grenades and such
-    /// </summary>
+	/// <summary>
+	/// A thrown object type of projectile, useful for grenades and such
+	/// </summary>
 	[RequireComponent(typeof(Rigidbody2D))]
 	[AddComponentMenu("TopDown Engine/Weapons/ThrownObject")]
 	public class ThrownObject : Projectile 
@@ -14,9 +14,9 @@ namespace MoreMountains.TopDownEngine
 		protected Vector2 _throwingForce;
 		protected bool _forceApplied = false;
 
-        /// <summary>
-        /// On init, we grab our rigidbody
-        /// </summary>
+		/// <summary>
+		/// On init, we grab our rigidbody
+		/// </summary>
 		protected override void Initialization()
 		{
 			base.Initialization();

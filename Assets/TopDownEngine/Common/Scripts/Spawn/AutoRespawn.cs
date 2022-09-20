@@ -25,7 +25,7 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("if this is true, this gameobject will be disabled on kill")]
 		public bool DisableGameObjectOnKill = true;        
 
-        [Header("Checkpoints")]
+		[Header("Checkpoints")]
 		/// if this is true, the object will always respawn, whether or not it's associated to a checkpoint
 		[Tooltip("if this is true, the object will always respawn, whether or not it's associated to a checkpoint")]
 		public bool IgnoreCheckpointsAlwaysRespawn = true;
@@ -37,15 +37,15 @@ namespace MoreMountains.TopDownEngine
 		/// if this has a value superior to 0, this object will respawn at its last position X seconds after its death
 		[Tooltip("if this has a value superior to 0, this object will respawn at its last position X seconds after its death")]
 		public float AutoRespawnDuration = 0f;
-        /// the amount of times this object can auto respawn
+		/// the amount of times this object can auto respawn
 		[Tooltip("the amount of times this object can auto respawn, negative value : infinite")]
-        public int AutoRespawnAmount = 3;
-        /// the remaining amounts of respawns (readonly, controlled by the class at runtime)
+		public int AutoRespawnAmount = 3;
+		/// the remaining amounts of respawns (readonly, controlled by the class at runtime)
 		[Tooltip("the remaining amounts of respawns (readonly, controlled by the class at runtime)")]
-        [MMReadOnly]
-        public int AutoRespawnRemainingAmount = 3;
-        /// the effect to instantiate when the player respawns
-        [Tooltip("the effect to instantiate when the player respawns")]
+		[MMReadOnly]
+		public int AutoRespawnRemainingAmount = 3;
+		/// the effect to instantiate when the player respawns
+		[Tooltip("the effect to instantiate when the player respawns")]
 		public GameObject RespawnEffect;
 		/// the sfx to play when the player respawns
 		[Tooltip("the sfx to play when the player respawns")]
@@ -58,7 +58,8 @@ namespace MoreMountains.TopDownEngine
 		protected MonoBehaviour[] _otherComponents;
 		protected Collider2D _collider2D;
 		protected Renderer _renderer;
-        protected Health _health;
+		protected Character _character;
+		protected Health _health;
 		protected bool _reviving = false;
 		protected float _timeOfDeath = 0f;
 		protected bool _firstRespawn = true;
@@ -70,20 +71,25 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Start()
 		{
-            AutoRespawnRemainingAmount = AutoRespawnAmount;
-            _otherComponents = this.gameObject.GetComponents<MonoBehaviour>() ;
+			AutoRespawnRemainingAmount = AutoRespawnAmount;
+			_otherComponents = this.gameObject.GetComponents<MonoBehaviour>() ;
 			_collider2D = this.gameObject.GetComponent<Collider2D> ();
 			_renderer = this.gameObject.GetComponent<Renderer> ();
-            _health = this.gameObject.GetComponent<Health>();
-            _aiBrain = this.gameObject.GetComponent<AIBrain>();
-            _initialPosition = this.transform.position;
+			_character = this.gameObject.GetComponent<Character>();
+			_health = this.gameObject.GetComponent<Health>();
+			_aiBrain = this.gameObject.GetComponent<AIBrain>();
+			if ((_aiBrain == null) && (_character != null))
+			{
+				_aiBrain = _character.CharacterBrain;
+			}
+			_initialPosition = this.transform.position;
 		}
 
 		/// <summary>
-	    /// When the player respawns, we reinstate this agent.
-	    /// </summary>
-	    /// <param name="checkpoint">Checkpoint.</param>
-	    /// <param name="player">Player.</param>
+		/// When the player respawns, we reinstate this agent.
+		/// </summary>
+		/// <param name="checkpoint">Checkpoint.</param>
+		/// <param name="player">Player.</param>
 		public virtual void OnPlayerRespawn (CheckPoint checkpoint, Character player)
 		{
 			if (RepositionToInitOnPlayerRespawn)
@@ -95,12 +101,12 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (_health != null)
 				{
-                    _health.Revive();
+					_health.Revive();
 				}
 				Revive ();
-            }
-            AutoRespawnRemainingAmount = AutoRespawnAmount;
-        }
+			}
+			AutoRespawnRemainingAmount = AutoRespawnAmount;
+		}
 
 		/// <summary>
 		/// On Update we check whether we should be reviving this agent
@@ -111,18 +117,18 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (_timeOfDeath + AutoRespawnDuration < Time.time)
 				{
-                    if (AutoRespawnAmount == 0)
-                    {
-                        return;
-                    }
-                    if (AutoRespawnAmount > 0)
-                    {
-                        if (AutoRespawnRemainingAmount <= 0)
-                        {
-                            return;
-                        }
-                        AutoRespawnRemainingAmount -= 1;
-                    }
+					if (AutoRespawnAmount == 0)
+					{
+						return;
+					}
+					if (AutoRespawnAmount > 0)
+					{
+						if (AutoRespawnRemainingAmount <= 0)
+						{
+							return;
+						}
+						AutoRespawnRemainingAmount -= 1;
+					}
 					Revive ();
 					_reviving = false;
 				}
@@ -144,16 +150,16 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-                if (DisableAllComponentsOnKill)
-                {
-                    foreach (MonoBehaviour component in _otherComponents)
-                    {
-                        if (component != this)
-                        {
-                            component.enabled = false;
-                        }
-                    }
-                }
+				if (DisableAllComponentsOnKill)
+				{
+					foreach (MonoBehaviour component in _otherComponents)
+					{
+						if (component != this)
+						{
+							component.enabled = false;
+						}
+					}
+				}
 				
 				if (_collider2D != null) { _collider2D.enabled = false;	}
 				if (_renderer != null)	{ _renderer.enabled = false; }
@@ -174,29 +180,29 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-                if (DisableAllComponentsOnKill)
-                {
-                    foreach (MonoBehaviour component in _otherComponents)
-                    {
-                        component.enabled = true;
-                    }
-                }
+				if (DisableAllComponentsOnKill)
+				{
+					foreach (MonoBehaviour component in _otherComponents)
+					{
+						component.enabled = true;
+					}
+				}
 				
 				if (_collider2D != null) { _collider2D.enabled = true;	}
 				if (_renderer != null)	{ _renderer.enabled = true; }
 				InstantiateRespawnEffect ();
 				PlayRespawnSound ();
 			}
-            if (_health != null)
-            {
-                _health.Revive();
-            }
-            if (_aiBrain != null)
-            {
-	            _aiBrain.ResetBrain();
-            }
-            OnRevive?.Invoke();
-        }
+			if (_health != null)
+			{
+				_health.Revive();
+			}
+			if (_aiBrain != null)
+			{
+				_aiBrain.ResetBrain();
+			}
+			OnRevive?.Invoke();
+		}
 
 		/// <summary>
 		/// Instantiates the respawn effect at the object's position

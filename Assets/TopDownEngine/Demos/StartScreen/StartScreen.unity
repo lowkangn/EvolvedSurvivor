@@ -1211,6 +1211,7 @@ MonoBehaviour:
   CurrentCheckpoint: {fileID: 0}
   PointsOfEntry: []
   IntroFadeDuration: 0.1
+  SpawnDelay: 0
   OutroFadeDuration: 0.1
   FaderID: 0
   FadeCurve:
@@ -3497,6 +3498,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 0.2
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
@@ -3589,6 +3591,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 0.2
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
@@ -3646,6 +3649,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 1
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
@@ -3808,6 +3812,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 0.2
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
@@ -3935,6 +3940,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 0.2
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
@@ -3977,6 +3983,52 @@ MonoBehaviour:
     m_RotationOrder: 4
   RemapIntensityZero: 0
   RemapIntensityOne: 1
+  InterpolateColor: 0
+  ColorCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.05
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.95
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RemapColorZero: 0
+  RemapColorOne: 1
+  TargetColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &264282852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9174,6 +9226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba4d91aba2b904b86f231d7b44df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   Mode: 1
   MaximumDurationInADirection: 8
@@ -9197,7 +9250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec89e4158bf96841b9bc830fc5385ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrainActive: 1
   Owner: {fileID: 0}
   States:
   - StateName: MoveRandomly
@@ -9209,6 +9261,9 @@ MonoBehaviour:
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
+  BrainActive: 1
+  ResetBrainOnStart: 1
+  ResetBrainOnEnable: 0
   ActionsFrequency: 0.5
   DecisionFrequency: 10
   RandomizeFrequencies: 0
@@ -9359,9 +9414,7 @@ MonoBehaviour:
   MinimumGroundedDistance: 0.2
   GroundedComputationMode: 1
   GroundNormalHeightThreshold: 0.1
-  AllowPhysicsInteractions: 1
   ImpactFalloff: 5
-  PushPower: 50
   MaximumFallSpeed: 40
   SlopeSpeedMultiplier:
     serializedVersion: 2
@@ -10118,6 +10171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba4d91aba2b904b86f231d7b44df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   Mode: 1
   MaximumDurationInADirection: 8
@@ -10141,7 +10195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec89e4158bf96841b9bc830fc5385ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrainActive: 1
   Owner: {fileID: 0}
   States:
   - StateName: MoveRandomly
@@ -10153,6 +10206,9 @@ MonoBehaviour:
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
+  BrainActive: 1
+  ResetBrainOnStart: 1
+  ResetBrainOnEnable: 0
   ActionsFrequency: 0.5
   DecisionFrequency: 10
   RandomizeFrequencies: 0
@@ -10303,9 +10359,7 @@ MonoBehaviour:
   MinimumGroundedDistance: 0.2
   GroundedComputationMode: 1
   GroundNormalHeightThreshold: 0.1
-  AllowPhysicsInteractions: 1
   ImpactFalloff: 5
-  PushPower: 50
   MaximumFallSpeed: 40
   SlopeSpeedMultiplier:
     serializedVersion: 2
@@ -19331,7 +19385,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7765466, y: 1}
+    m_SensorSize: {x: 1.7773279, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22848,7 +22902,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2.4
+  m_Text: 3.0
 --- !u!222 &1745617613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26015,6 +26069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba4d91aba2b904b86f231d7b44df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   Mode: 1
   MaximumDurationInADirection: 8
@@ -26038,7 +26093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec89e4158bf96841b9bc830fc5385ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrainActive: 1
   Owner: {fileID: 0}
   States:
   - StateName: MoveRandomly
@@ -26050,6 +26104,9 @@ MonoBehaviour:
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
+  BrainActive: 1
+  ResetBrainOnStart: 1
+  ResetBrainOnEnable: 0
   ActionsFrequency: 0.5
   DecisionFrequency: 10
   RandomizeFrequencies: 0
@@ -26200,9 +26257,7 @@ MonoBehaviour:
   MinimumGroundedDistance: 0.2
   GroundedComputationMode: 1
   GroundNormalHeightThreshold: 0.1
-  AllowPhysicsInteractions: 1
   ImpactFalloff: 5
-  PushPower: 50
   MaximumFallSpeed: 40
   SlopeSpeedMultiplier:
     serializedVersion: 2
@@ -27796,6 +27851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba4d91aba2b904b86f231d7b44df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   Mode: 1
   MaximumDurationInADirection: 8
@@ -27819,7 +27875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec89e4158bf96841b9bc830fc5385ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrainActive: 1
   Owner: {fileID: 0}
   States:
   - StateName: MoveRandomly
@@ -27831,6 +27886,9 @@ MonoBehaviour:
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
+  BrainActive: 1
+  ResetBrainOnStart: 1
+  ResetBrainOnEnable: 0
   ActionsFrequency: 0.5
   DecisionFrequency: 10
   RandomizeFrequencies: 0
@@ -28110,9 +28168,7 @@ MonoBehaviour:
   MinimumGroundedDistance: 0.2
   GroundedComputationMode: 1
   GroundNormalHeightThreshold: 0.1
-  AllowPhysicsInteractions: 1
   ImpactFalloff: 5
-  PushPower: 50
   MaximumFallSpeed: 40
   SlopeSpeedMultiplier:
     serializedVersion: 2

@@ -20,7 +20,7 @@ namespace MoreMountains.InventoryEngine
 		{
 			base.Use(playerID);
 			Debug.LogFormat("bomb explosion");
-            return true;
+			return true;
 		}		
 	}
 }

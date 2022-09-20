@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 namespace MoreMountains.InventoryEngine
 {
-    [CanEditMultipleObjects]
-    [CustomEditor(typeof(InventoryDisplay),true)]
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(InventoryDisplay),true)]
 	/// <summary>
 	/// Custom editor for the InventoryDisplay component
 	/// </summary>

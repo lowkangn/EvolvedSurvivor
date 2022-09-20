@@ -44,8 +44,8 @@ namespace MoreMountains.TopDownEngine
 		/// if this is true, the weapon mode will be forced to the selected WeaponForcedMode
 		[Tooltip("if this is true, the weapon mode will be forced to the selected WeaponForcedMode")]
 		public bool ForceWeaponMode = false;
-        /// use this to force a control mode for weapons
-        [MMCondition("ForceWeaponMode", true)]
+		/// use this to force a control mode for weapons
+		[MMCondition("ForceWeaponMode", true)]
 		[Tooltip("use this to force a control mode for weapons")]
 		public WeaponAim.AimControls WeaponForcedMode;
 		/// if this is true, mobile controls will be hidden in editor mode, regardless of the current build target or the forced mode
@@ -66,14 +66,14 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the minimum horizontal and vertical value you need to reach to trigger movement on an analog controller (joystick for example)")]
 		public Vector2 Threshold = new Vector2(0.1f, 0.4f);
 
-        [Header("Camera Rotation")]
-        [MMInformation("Here you can decide whether or not camera rotation should impact your input. That can be useful in, for example, a 3D isometric game, if you want 'up' to mean some other direction than Vector3.up/forward.", MMInformationAttribute.InformationType.Info, false)]
-        /// if this is true, any directional input coming into this input manager will be rotated to align with the current camera orientation
+		[Header("Camera Rotation")]
+		[MMInformation("Here you can decide whether or not camera rotation should impact your input. That can be useful in, for example, a 3D isometric game, if you want 'up' to mean some other direction than Vector3.up/forward.", MMInformationAttribute.InformationType.Info, false)]
+		/// if this is true, any directional input coming into this input manager will be rotated to align with the current camera orientation
 		[Tooltip("if this is true, any directional input coming into this input manager will be rotated to align with the current camera orientation")]
-        public bool RotateInputBasedOnCameraDirection = false;
+		public bool RotateInputBasedOnCameraDirection = false;
         
-        /// the jump button, used for jumps and validation
-        public MMInput.IMButton JumpButton { get; protected set; }
+		/// the jump button, used for jumps and validation
+		public MMInput.IMButton JumpButton { get; protected set; }
 		/// the run button
 		public MMInput.IMButton RunButton { get; protected set; }
 		/// the dash button
@@ -82,67 +82,69 @@ namespace MoreMountains.TopDownEngine
 		public MMInput.IMButton CrouchButton { get; protected set; }
 		/// the shoot button
 		public MMInput.IMButton ShootButton { get; protected set; }
-        /// the activate button, used for interactions with zones
-        public MMInput.IMButton InteractButton { get; protected set; }
-        /// the shoot button
-        public MMInput.IMButton SecondaryShootButton { get; protected set; }
-        /// the reload button
-        public MMInput.IMButton ReloadButton { get; protected set; }
-        /// the pause button
-        public MMInput.IMButton PauseButton { get; protected set; }
-        /// the time control button
-        public MMInput.IMButton TimeControlButton { get; protected set; }
-        /// the button used to switch character (either via model or prefab switch)
-        public MMInput.IMButton SwitchCharacterButton { get; protected set; }
-        /// the switch weapon button
-        public MMInput.IMButton SwitchWeaponButton { get; protected set; }
+		/// the activate button, used for interactions with zones
+		public MMInput.IMButton InteractButton { get; protected set; }
+		/// the shoot button
+		public MMInput.IMButton SecondaryShootButton { get; protected set; }
+		/// the reload button
+		public MMInput.IMButton ReloadButton { get; protected set; }
+		/// the pause button
+		public MMInput.IMButton PauseButton { get; protected set; }
+		/// the time control button
+		public MMInput.IMButton TimeControlButton { get; protected set; }
+		/// the button used to switch character (either via model or prefab switch)
+		public MMInput.IMButton SwitchCharacterButton { get; protected set; }
+		/// the switch weapon button
+		public MMInput.IMButton SwitchWeaponButton { get; protected set; }
 		/// the shoot axis, used as a button (non analogic)
 		public MMInput.ButtonStates ShootAxis { get; protected set; }
-        /// the shoot axis, used as a button (non analogic)
-        public MMInput.ButtonStates SecondaryShootAxis { get; protected set; }
-        /// the primary movement value (used to move the character around)
-        public Vector2 PrimaryMovement { get { return _primaryMovement; } }
-        /// the secondary movement (usually the right stick on a gamepad), used to aim
-        public Vector2 SecondaryMovement { get { return _secondaryMovement; } }
-        /// the primary movement value (used to move the character around)
-        public Vector2 LastNonNullPrimaryMovement { get; set; }
-        /// the secondary movement (usually the right stick on a gamepad), used to aim
-        public Vector2 LastNonNullSecondaryMovement { get; set; }
-        /// the camera rotation axis input value
-        public float CameraRotationInput { get { return _cameraRotationInput; } }
+		/// the shoot axis, used as a button (non analogic)
+		public MMInput.ButtonStates SecondaryShootAxis { get; protected set; }
+		/// the primary movement value (used to move the character around)
+		public Vector2 PrimaryMovement { get { return _primaryMovement; } }
+		/// the secondary movement (usually the right stick on a gamepad), used to aim
+		public Vector2 SecondaryMovement { get { return _secondaryMovement; } }
+		/// the primary movement value (used to move the character around)
+		public Vector2 LastNonNullPrimaryMovement { get; set; }
+		/// the secondary movement (usually the right stick on a gamepad), used to aim
+		public Vector2 LastNonNullSecondaryMovement { get; set; }
+		/// the camera rotation axis input value
+		public float CameraRotationInput { get { return _cameraRotationInput; } }
+		/// the current camera angle
+		public float CameraAngle { get { return _cameraAngle; } }
 
-        protected Camera _targetCamera;
-        protected bool _camera3D;
-        protected float _cameraAngle;
-        protected List<MMInput.IMButton> ButtonList;
-        protected Vector2 _primaryMovement = Vector2.zero;
-        protected Vector2 _secondaryMovement = Vector2.zero;
-        protected float _cameraRotationInput = 0f;
-        protected string _axisHorizontal;
+		protected Camera _targetCamera;
+		protected bool _camera3D;
+		protected float _cameraAngle;
+		protected List<MMInput.IMButton> ButtonList;
+		protected Vector2 _primaryMovement = Vector2.zero;
+		protected Vector2 _secondaryMovement = Vector2.zero;
+		protected float _cameraRotationInput = 0f;
+		protected string _axisHorizontal;
 		protected string _axisVertical;
 		protected string _axisSecondaryHorizontal;
 		protected string _axisSecondaryVertical;
 		protected string _axisShoot;
-        protected string _axisShootSecondary;
-        protected string _axisCamera;
+		protected string _axisShootSecondary;
+		protected string _axisCamera;
 
-        /// <summary>
-        /// On Start we look for what mode to use, and initialize our axis and buttons
-        /// </summary>
-        protected virtual void Start()
+		/// <summary>
+		/// On Start we look for what mode to use, and initialize our axis and buttons
+		/// </summary>
+		protected virtual void Start()
 		{
-            Initialization();
-        }
+			Initialization();
+		}
 
-        /// <summary>
-        /// On init we auto detect control schemes, and initialize our buttons and axis
-        /// </summary>
-        protected virtual void Initialization()
-        {
-            ControlsModeDetection();
-            InitializeButtons();
-            InitializeAxis();
-        }
+		/// <summary>
+		/// On init we auto detect control schemes, and initialize our buttons and axis
+		/// </summary>
+		protected virtual void Initialization()
+		{
+			ControlsModeDetection();
+			InitializeButtons();
+			InitializeAxis();
+		}
 
 		/// <summary>
 		/// Turns mobile controls on or off depending on what's been defined in the inspector, and what target device we're on
@@ -188,31 +190,31 @@ namespace MoreMountains.TopDownEngine
 			ButtonList = new List<MMInput.IMButton> ();
 			ButtonList.Add(JumpButton = new MMInput.IMButton (PlayerID, "Jump", JumpButtonDown, JumpButtonPressed, JumpButtonUp));
 			ButtonList.Add(RunButton  = new MMInput.IMButton (PlayerID, "Run", RunButtonDown, RunButtonPressed, RunButtonUp));
-            ButtonList.Add(InteractButton = new MMInput.IMButton(PlayerID, "Interact", InteractButtonDown, InteractButtonPressed, InteractButtonUp));
-            ButtonList.Add(DashButton  = new MMInput.IMButton (PlayerID, "Dash", DashButtonDown, DashButtonPressed, DashButtonUp));
+			ButtonList.Add(InteractButton = new MMInput.IMButton(PlayerID, "Interact", InteractButtonDown, InteractButtonPressed, InteractButtonUp));
+			ButtonList.Add(DashButton  = new MMInput.IMButton (PlayerID, "Dash", DashButtonDown, DashButtonPressed, DashButtonUp));
 			ButtonList.Add(CrouchButton  = new MMInput.IMButton (PlayerID, "Crouch", CrouchButtonDown, CrouchButtonPressed, CrouchButtonUp));
-            ButtonList.Add(SecondaryShootButton = new MMInput.IMButton(PlayerID, "SecondaryShoot", SecondaryShootButtonDown, SecondaryShootButtonPressed, SecondaryShootButtonUp));
-            ButtonList.Add(ShootButton = new MMInput.IMButton (PlayerID, "Shoot", ShootButtonDown, ShootButtonPressed, ShootButtonUp)); 
+			ButtonList.Add(SecondaryShootButton = new MMInput.IMButton(PlayerID, "SecondaryShoot", SecondaryShootButtonDown, SecondaryShootButtonPressed, SecondaryShootButtonUp));
+			ButtonList.Add(ShootButton = new MMInput.IMButton (PlayerID, "Shoot", ShootButtonDown, ShootButtonPressed, ShootButtonUp)); 
 			ButtonList.Add(ReloadButton = new MMInput.IMButton (PlayerID, "Reload", ReloadButtonDown, ReloadButtonPressed, ReloadButtonUp));
 			ButtonList.Add(SwitchWeaponButton = new MMInput.IMButton (PlayerID, "SwitchWeapon", SwitchWeaponButtonDown, SwitchWeaponButtonPressed, SwitchWeaponButtonUp));
-            ButtonList.Add(PauseButton = new MMInput.IMButton(PlayerID, "Pause", PauseButtonDown, PauseButtonPressed, PauseButtonUp));
-            ButtonList.Add(TimeControlButton = new MMInput.IMButton(PlayerID, "TimeControl", TimeControlButtonDown, TimeControlButtonPressed, TimeControlButtonUp));
-            ButtonList.Add(SwitchCharacterButton = new MMInput.IMButton(PlayerID, "SwitchCharacter", SwitchCharacterButtonDown, SwitchCharacterButtonPressed, SwitchCharacterButtonUp));
-        }
+			ButtonList.Add(PauseButton = new MMInput.IMButton(PlayerID, "Pause", PauseButtonDown, PauseButtonPressed, PauseButtonUp));
+			ButtonList.Add(TimeControlButton = new MMInput.IMButton(PlayerID, "TimeControl", TimeControlButtonDown, TimeControlButtonPressed, TimeControlButtonUp));
+			ButtonList.Add(SwitchCharacterButton = new MMInput.IMButton(PlayerID, "SwitchCharacter", SwitchCharacterButtonDown, SwitchCharacterButtonPressed, SwitchCharacterButtonUp));
+		}
 
-        /// <summary>
-        /// Initializes the axis strings.
-        /// </summary>
-        protected virtual void InitializeAxis()
+		/// <summary>
+		/// Initializes the axis strings.
+		/// </summary>
+		protected virtual void InitializeAxis()
 		{
 			_axisHorizontal = PlayerID+"_Horizontal";
 			_axisVertical = PlayerID+"_Vertical";
 			_axisSecondaryHorizontal = PlayerID+"_SecondaryHorizontal";
 			_axisSecondaryVertical = PlayerID+"_SecondaryVertical";
 			_axisShoot = PlayerID+"_ShootAxis";
-            _axisShootSecondary = PlayerID + "_SecondaryShootAxis";
-            _axisCamera = PlayerID + "_CameraRotationAxis";
-        }
+			_axisShootSecondary = PlayerID + "_SecondaryShootAxis";
+			_axisCamera = PlayerID + "_CameraRotationAxis";
+		}
 
 		/// <summary>
 		/// On LateUpdate, we process our button states
@@ -232,31 +234,31 @@ namespace MoreMountains.TopDownEngine
 				SetMovement();	
 				SetSecondaryMovement ();
 				SetShootAxis ();
-                SetCameraRotationAxis();
+				SetCameraRotationAxis();
 				GetInputButtons ();
-                GetLastNonNullValues();
+				GetLastNonNullValues();
 			}									
 		}
 
-        /// <summary>
-        /// Gets the last non null values for both primary and secondary axis
-        /// </summary>
-        protected virtual void GetLastNonNullValues()
-        {
-            if (_primaryMovement.magnitude > Threshold.x)
-            {
-                LastNonNullPrimaryMovement = _primaryMovement;
-            }
-            if (_secondaryMovement.magnitude > Threshold.x)
-            {
-                LastNonNullSecondaryMovement = _secondaryMovement;
-            }
-        }
+		/// <summary>
+		/// Gets the last non null values for both primary and secondary axis
+		/// </summary>
+		protected virtual void GetLastNonNullValues()
+		{
+			if (_primaryMovement.magnitude > Threshold.x)
+			{
+				LastNonNullPrimaryMovement = _primaryMovement;
+			}
+			if (_secondaryMovement.magnitude > Threshold.x)
+			{
+				LastNonNullSecondaryMovement = _secondaryMovement;
+			}
+		}
 
-        /// <summary>
-        /// If we're not on mobile, watches for input changes, and updates our buttons states accordingly
-        /// </summary>
-        protected virtual void GetInputButtons()
+		/// <summary>
+		/// If we're not on mobile, watches for input changes, and updates our buttons states accordingly
+		/// </summary>
+		protected virtual void GetInputButtons()
 		{
 			foreach(MMInput.IMButton button in ButtonList)
 			{
@@ -283,7 +285,7 @@ namespace MoreMountains.TopDownEngine
 			// for each button, if we were at ButtonDown this frame, we go to ButtonPressed. If we were at ButtonUp, we're now Off
 			foreach (MMInput.IMButton button in ButtonList)
 			{
-                if (button.State.CurrentState == MMInput.ButtonStates.ButtonDown)
+				if (button.State.CurrentState == MMInput.ButtonStates.ButtonDown)
 				{
 					button.State.ChangeState(MMInput.ButtonStates.ButtonPressed);				
 				}	
@@ -310,9 +312,9 @@ namespace MoreMountains.TopDownEngine
 				{
 					_primaryMovement.x = Input.GetAxisRaw(_axisHorizontal);
 					_primaryMovement.y = Input.GetAxisRaw(_axisVertical);
-                }
-                _primaryMovement = ApplyCameraRotation(_primaryMovement);
-            }
+				}
+				_primaryMovement = ApplyCameraRotation(_primaryMovement);
+			}
 		}
 
 		/// <summary>
@@ -331,9 +333,9 @@ namespace MoreMountains.TopDownEngine
 				{
 					_secondaryMovement.x = Input.GetAxisRaw(_axisSecondaryHorizontal);
 					_secondaryMovement.y = Input.GetAxisRaw(_axisSecondaryVertical);
-                }
-                _secondaryMovement = ApplyCameraRotation(_secondaryMovement);
-            }
+				}
+				_secondaryMovement = ApplyCameraRotation(_secondaryMovement);
+			}
 		}
 
 		/// <summary>
@@ -344,17 +346,17 @@ namespace MoreMountains.TopDownEngine
 			if (!IsMobile && InputDetectionActive)
 			{
 				ShootAxis = MMInput.ProcessAxisAsButton (_axisShoot, Threshold.y, ShootAxis);
-                SecondaryShootAxis = MMInput.ProcessAxisAsButton(_axisShootSecondary, Threshold.y, SecondaryShootAxis, MMInput.AxisTypes.Positive);
-            }
+				SecondaryShootAxis = MMInput.ProcessAxisAsButton(_axisShootSecondary, Threshold.y, SecondaryShootAxis, MMInput.AxisTypes.Positive);
+			}
 		}
 
-        /// <summary>
-        /// Grabs camera rotation input and stores it
-        /// </summary>
-        protected virtual void SetCameraRotationAxis()
-        {
-            _cameraRotationInput = Input.GetAxis(_axisCamera);
-        }
+		/// <summary>
+		/// Grabs camera rotation input and stores it
+		/// </summary>
+		protected virtual void SetCameraRotationAxis()
+		{
+			_cameraRotationInput = Input.GetAxis(_axisCamera);
+		}
 
 		/// <summary>
 		/// If you're using a touch joystick, bind your main joystick to this method
@@ -366,9 +368,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				_primaryMovement.x = movement.x;
 				_primaryMovement.y = movement.y;
-            }
-            _primaryMovement = ApplyCameraRotation(_primaryMovement);
-        }
+			}
+			_primaryMovement = ApplyCameraRotation(_primaryMovement);
+		}
 
 		/// <summary>
 		/// If you're using a touch joystick, bind your secondary joystick to this method
@@ -380,9 +382,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				_secondaryMovement.x = movement.x;
 				_secondaryMovement.y = movement.y;
-            }
-            _secondaryMovement = ApplyCameraRotation(_secondaryMovement);
-        }
+			}
+			_secondaryMovement = ApplyCameraRotation(_secondaryMovement);
+		}
 
 		/// <summary>
 		/// If you're using touch arrows, bind your left/right arrows to this method
@@ -432,42 +434,42 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// Sets an associated camera, used to rotate input based on camera position
-        /// </summary>
-        /// <param name="targetCamera"></param>
-        /// <param name="rotationAxis"></param>
-        public virtual void SetCamera(Camera targetCamera, bool camera3D)
-        {
-            _targetCamera = targetCamera;
-            _camera3D = camera3D;
-        }
+		/// <summary>
+		/// Sets an associated camera, used to rotate input based on camera position
+		/// </summary>
+		/// <param name="targetCamera"></param>
+		/// <param name="rotationAxis"></param>
+		public virtual void SetCamera(Camera targetCamera, bool camera3D)
+		{
+			_targetCamera = targetCamera;
+			_camera3D = camera3D;
+		}
 
-        /// <summary>
-        /// Rotates input based on camera orientation
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public virtual Vector2 ApplyCameraRotation(Vector2 input)
-        {
-            if (RotateInputBasedOnCameraDirection)
-            {
-                if (_camera3D)
-                {
-                    _cameraAngle = _targetCamera.transform.localEulerAngles.y;
-                    return MMMaths.RotateVector2(input, -_cameraAngle);
-                }
-                else
-                {
-                    _cameraAngle = _targetCamera.transform.localEulerAngles.z;
-                    return MMMaths.RotateVector2(input, _cameraAngle);
-                }
-            }
-            else
-            {
-                return input;
-            }
-        }
+		/// <summary>
+		/// Rotates input based on camera orientation
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public virtual Vector2 ApplyCameraRotation(Vector2 input)
+		{
+			if (RotateInputBasedOnCameraDirection)
+			{
+				if (_camera3D)
+				{
+					_cameraAngle = _targetCamera.transform.localEulerAngles.y;
+					return MMMaths.RotateVector2(input, -_cameraAngle);
+				}
+				else
+				{
+					_cameraAngle = _targetCamera.transform.localEulerAngles.z;
+					return MMMaths.RotateVector2(input, _cameraAngle);
+				}
+			}
+			else
+			{
+				return input;
+			}
+		}
 
 		/// <summary>
 		/// If we lose focus, we reset the states of all buttons
@@ -475,7 +477,7 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="hasFocus"></param>
 		protected void OnApplicationFocus(bool hasFocus)
 		{
-			if (!hasFocus && ResetButtonStatesOnFocusLoss)
+			if (!hasFocus && ResetButtonStatesOnFocusLoss && (ButtonList != null))
 			{
 				foreach (MMInput.IMButton button in ButtonList)
 				{
@@ -504,32 +506,32 @@ namespace MoreMountains.TopDownEngine
 		public virtual void ReloadButtonPressed()	{ ReloadButton.State.ChangeState (MMInput.ButtonStates.ButtonPressed); }
 		public virtual void ReloadButtonUp()		{ ReloadButton.State.ChangeState (MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void InteractButtonDown() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
-        public virtual void InteractButtonPressed() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
-        public virtual void InteractButtonUp() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+		public virtual void InteractButtonDown() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void InteractButtonPressed() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void InteractButtonUp() { InteractButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void ShootButtonDown()		{ ShootButton.State.ChangeState (MMInput.ButtonStates.ButtonDown); }
+		public virtual void ShootButtonDown()		{ ShootButton.State.ChangeState (MMInput.ButtonStates.ButtonDown); }
 		public virtual void ShootButtonPressed()	{ ShootButton.State.ChangeState (MMInput.ButtonStates.ButtonPressed); }
 		public virtual void ShootButtonUp()			{ ShootButton.State.ChangeState (MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void SecondaryShootButtonDown() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
-        public virtual void SecondaryShootButtonPressed() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
-        public virtual void SecondaryShootButtonUp() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+		public virtual void SecondaryShootButtonDown() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SecondaryShootButtonPressed() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SecondaryShootButtonUp() { SecondaryShootButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void PauseButtonDown() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
-        public virtual void PauseButtonPressed() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
-        public virtual void PauseButtonUp() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+		public virtual void PauseButtonDown() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void PauseButtonPressed() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void PauseButtonUp() { PauseButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void TimeControlButtonDown() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
-        public virtual void TimeControlButtonPressed() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
-        public virtual void TimeControlButtonUp() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+		public virtual void TimeControlButtonDown() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void TimeControlButtonPressed() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void TimeControlButtonUp() { TimeControlButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void SwitchWeaponButtonDown()		{ SwitchWeaponButton.State.ChangeState (MMInput.ButtonStates.ButtonDown); }
+		public virtual void SwitchWeaponButtonDown()		{ SwitchWeaponButton.State.ChangeState (MMInput.ButtonStates.ButtonDown); }
 		public virtual void SwitchWeaponButtonPressed()		{ SwitchWeaponButton.State.ChangeState (MMInput.ButtonStates.ButtonPressed); }
 		public virtual void SwitchWeaponButtonUp()			{ SwitchWeaponButton.State.ChangeState (MMInput.ButtonStates.ButtonUp); }
 
-        public virtual void SwitchCharacterButtonDown() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
-        public virtual void SwitchCharacterButtonPressed() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
-        public virtual void SwitchCharacterButtonUp() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
-    }
+		public virtual void SwitchCharacterButtonDown() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonDown); }
+		public virtual void SwitchCharacterButtonPressed() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonPressed); }
+		public virtual void SwitchCharacterButtonUp() { SwitchCharacterButton.State.ChangeState(MMInput.ButtonStates.ButtonUp); }
+	}
 }

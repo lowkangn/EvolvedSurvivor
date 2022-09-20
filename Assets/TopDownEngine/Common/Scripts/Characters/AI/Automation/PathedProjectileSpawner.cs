@@ -4,11 +4,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// Spawns pathed projectiles
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Character/AI/Automation/PathedProjectileSpawner")]
-    public class PathedProjectileSpawner : MonoBehaviour 
+	/// <summary>
+	/// Spawns pathed projectiles
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Character/AI/Automation/PathedProjectileSpawner")]
+	public class PathedProjectileSpawner : MonoBehaviour 
 	{
 		[MMInformation("A GameObject with this component will spawn projectiles at the specified fire rate.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the pathed projectile's destination
@@ -29,18 +29,18 @@ namespace MoreMountains.TopDownEngine
 		
 		protected float _nextShotInSeconds;
 
-	    /// <summary>
-	    /// Initialization
-	    /// </summary>
-	    protected virtual void Start () 
+		/// <summary>
+		/// Initialization
+		/// </summary>
+		protected virtual void Start () 
 		{
 			_nextShotInSeconds=FireRate;
 		}
 
-	    /// <summary>
-	    /// Every frame, we check if we need to instantiate a new projectile
-	    /// </summary>
-	    protected virtual void Update () 
+		/// <summary>
+		/// Every frame, we check if we need to instantiate a new projectile
+		/// </summary>
+		protected virtual void Update () 
 		{
 			if((_nextShotInSeconds -= Time.deltaTime)>0)
 				return;

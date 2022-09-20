@@ -22,7 +22,7 @@ namespace MoreMountains.InventoryEngine
 		/// </summary>
 		protected virtual void Start()
 		{
-            MMGameEvent.Trigger("Load");
+			MMGameEvent.Trigger("Load");
 		}
 	}
 }
