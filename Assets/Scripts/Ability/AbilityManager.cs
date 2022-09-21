@@ -6,37 +6,33 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class AbilityManager : MonoBehaviour
     {
+        public List<Ability> Abilities { get; private set; } = new();
         [SerializeField]
-        private const int MAX_NUM_OF_ABILITIES = 6;
+        private int maxNumOfAbilities = 6;
 
-        [SerializeField]
-        private Ability[] abilitiesList = new Ability[MAX_NUM_OF_ABILITIES];
-        private bool[] isAbilityActive = new bool[MAX_NUM_OF_ABILITIES];
-
-        public void AddAbility(Ability newAbility)
+        public bool CanAddAbility()
         {
-            for (var i = 0; i < MAX_NUM_OF_ABILITIES; i++)
+            return Abilities.Count >= maxNumOfAbilities;
+        }
+
+        public bool AddAbility(Ability newAbility)
+        {
+            if (CanAddAbility())
             {
-                if (!isAbilityActive[i])
-                {
-                    newAbility.addPlayerRef(gameObject);
-                    abilitiesList[i] = newAbility;
-                    isAbilityActive[i] = true;
-                    break;
-                }
+                return false;
             }
+
+            Abilities.Add(newAbility);
+            newAbility.transform.SetParent(transform, false);
+            return true;
         }
 
-        public void ReplaceAbility(Ability abilityToAdd, int abilityToReplace)
+        public void RemoveAbility(Ability ability)
         {
-            RemoveAbility(abilityToReplace);
-            AddAbility(abilityToAdd);
-        }
-
-        private void RemoveAbility(int abilityToRemove)
-        {
-            abilitiesList[abilityToRemove] = null;
-            isAbilityActive[abilityToRemove] = false;
+            if (!Abilities.Remove(ability))
+            {
+                Debug.LogError("Cannot find " + ability.name + " ");
+            }
         }
     }
 }
