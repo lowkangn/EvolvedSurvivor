@@ -56,6 +56,7 @@ namespace TeamOne.EvolvedSurvivor
         protected TraitChart traitChart;
         protected Element element;
 
+        [SerializeField]
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
@@ -107,7 +108,8 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (!hasActivated)
                 {
-                    hasActivated = Activate();
+                    Activate();
+                    hasActivated = true;
                 }
                 return;
             }

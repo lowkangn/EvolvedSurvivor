@@ -25,7 +25,7 @@ namespace TeamOne.EvolvedSurvivor
         private Vector3 direction;
         private bool hasColliderSizeBeenSet = false;
 
-        protected override bool Activate()
+        protected override void Activate()
         {
             GameObject nextGameObject = objectPool.GetPooledGameObject();
 
@@ -48,8 +48,6 @@ namespace TeamOne.EvolvedSurvivor
 
                 nextGameObject.SetActive(true);
             }
-
-            return isEnemyFound;
         }
 
         protected override void Build()
@@ -127,7 +125,7 @@ namespace TeamOne.EvolvedSurvivor
         private void initialiseHandler(GameObject objToInitialiseHandler)
         {
             BasicProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<BasicProjectileAbilityHandler>();
-            handler.setStats(pierceLimit, projectileSpeed, direction);
+            //handler.setStats(pierceLimit, projectileSpeed, direction);
         }
     }
 }

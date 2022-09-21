@@ -6,8 +6,10 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class AbilityManager : MonoBehaviour
     {
+        [SerializeField]
         private const int MAX_NUM_OF_ABILITIES = 6;
 
+        [SerializeField]
         private Ability[] abilitiesList = new Ability[MAX_NUM_OF_ABILITIES];
         private bool[] isAbilityActive = new bool[MAX_NUM_OF_ABILITIES];
 
