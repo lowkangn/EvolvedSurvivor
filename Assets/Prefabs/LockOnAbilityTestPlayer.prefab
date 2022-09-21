@@ -5068,6 +5068,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   FacingMode: 3
+  FacingBase: 0
   ModelShouldFlip: 1
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
   ModelFlipValueRight: {x: 1, y: 1, z: 1}
@@ -5134,10 +5135,12 @@ MonoBehaviour:
   MaximumHealth: 100
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
-  ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 5423255612875023378}
   FeedbackIsProportionalToDamage: 0
   PreventTakeSelfDamage: 0
+  ImmuneToKnockback: 0
+  ImmuneToKnockbackIfZeroDamage: 0
+  KnockbackForceMultiplier: 1
   DestroyOnDeath: 0
   DelayBeforeDestruction: 0
   PointsWhenDestroyed: 0
@@ -5155,6 +5158,7 @@ MonoBehaviour:
   ColorMaterialPropertyName: _Color
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
+  TargetDamageResistanceProcessor: {fileID: 0}
   TargetAnimator: {fileID: 0}
   DisableAnimatorLogs: 1
 --- !u!114 &3232828586372639423
@@ -5325,6 +5329,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   FollowTargetMode: 2
   NestDrawnHealthBar: 0
+  Billboard: 0
   InstantiatedOnDeath: {fileID: 0}
   HealthBarOffset: {x: 0, y: -0.5, z: 0}
   AlwaysVisible: 1
@@ -5486,10 +5491,14 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
+  CanPlay: 1
   CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1
@@ -6095,10 +6104,14 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
+  CanPlay: 1
   CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1
@@ -6141,7 +6154,7 @@ PrefabInstance:
     - target: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
         type: 3}
       propertyPath: damage.value
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
         type: 3}
@@ -6160,9 +6173,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
         type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
+        type: 3}
       propertyPath: targetNumber.value
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
+        type: 3}
+      propertyPath: effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2199092362402569371}
     - target: {fileID: 2943148802276990048, guid: 3b5fef118d5dd754cb084d77694eef4c,
         type: 3}
       propertyPath: m_Name
@@ -6237,7 +6260,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 9152929946638411166}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6331383179042945534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
@@ -6249,13 +6272,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9152929946638411166}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6331383179042945534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2943148802276990048, guid: 3b5fef118d5dd754cb084d77694eef4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9152929946638411166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2199092362402569371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331383179042945534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223bc677e7875d84fa8ffaf19483bd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!114 &6538163007807255216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
     type: 3}
   m_PrefabInstance: {fileID: 9152929946638411166}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6331383179042945534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
