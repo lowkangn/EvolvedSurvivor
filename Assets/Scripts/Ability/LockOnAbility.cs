@@ -55,7 +55,7 @@ namespace TeamOne.EvolvedSurvivor
                 {
                     if (enemy.tag == "Enemy")
                     {
-                        enemy.GetComponent<Health>().Damage(Mathf.RoundToInt(damage.value), gameObject, 0.5f, 0f, Vector3.zero);
+                        enemy.GetComponent<Health>().Damage(damage.value, gameObject, 0.5f, 0f, Vector3.zero);
                     }
                 }
             }
