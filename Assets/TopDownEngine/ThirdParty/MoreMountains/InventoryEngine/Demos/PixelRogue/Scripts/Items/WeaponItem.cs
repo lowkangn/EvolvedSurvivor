@@ -23,7 +23,7 @@ namespace MoreMountains.InventoryEngine
 		{
 			base.Equip(playerID);
 			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(WeaponSprite,this);
-            return true;
+			return true;
 		}
 
 		/// <summary>
@@ -33,8 +33,8 @@ namespace MoreMountains.InventoryEngine
 		{
 			base.UnEquip(playerID);
 			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(null,this);
-            return true;
-        }
+			return true;
+		}
 		
 	}
 }

@@ -31,14 +31,14 @@ namespace MoreMountains.TopDownEngine
 			EventType = eventType;
 		}
 
-        static MMCharacterEvent e;
-        public static void Trigger(Character character, MMCharacterEventTypes eventType)
-        {
-            e.TargetCharacter = character;
-            e.EventType = eventType;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMCharacterEvent e;
+		public static void Trigger(Character character, MMCharacterEventTypes eventType)
+		{
+			e.TargetCharacter = character;
+			e.EventType = eventType;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 	
 	public enum MMLifeCycleEventTypes { Death, Revive }
 
@@ -90,15 +90,15 @@ namespace MoreMountains.TopDownEngine
 			PreviousHealth = previousHealth;
 		}
 
-        static MMDamageTakenEvent e;
-        public static void Trigger(Character affectedCharacter, GameObject instigator, float currentHealth, float damageCaused, float previousHealth)
-        {
-            e.AffectedCharacter = affectedCharacter;
-            e.Instigator = instigator;
-            e.CurrentHealth = currentHealth;
-            e.DamageCaused = damageCaused;
-            e.PreviousHealth = previousHealth;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMDamageTakenEvent e;
+		public static void Trigger(Character affectedCharacter, GameObject instigator, float currentHealth, float damageCaused, float previousHealth)
+		{
+			e.AffectedCharacter = affectedCharacter;
+			e.Instigator = instigator;
+			e.CurrentHealth = currentHealth;
+			e.DamageCaused = damageCaused;
+			e.PreviousHealth = previousHealth;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 }

@@ -9,8 +9,7 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "MOREMOUNTAINS_TOOLS"
-    ],
-    "versionDefines": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

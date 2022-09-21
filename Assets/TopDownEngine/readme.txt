@@ -1,5 +1,5 @@
 TopDown Engine
-v2.4
+v3.0
 
 The TopDown Engine is a complete Unity 2D and 3D top down game engine.
 Basically it'll allow you to create your own top down game.

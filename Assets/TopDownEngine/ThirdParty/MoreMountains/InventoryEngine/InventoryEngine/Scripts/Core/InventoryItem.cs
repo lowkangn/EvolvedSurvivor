@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
 using System;
 
-
 namespace MoreMountains.InventoryEngine
 {
+	[Serializable]
+	public class InventoryItemDisplayProperties
+	{
+		public bool DisplayEquipUseButton = true;
+		public bool DisplayMoveButton = true;
+		public bool DisplayDropButton = true;
+		public bool DisplayEquipButton = true;
+		public bool DisplayUseButton = true;
+		public bool DisplayUnequipButton = true;
+	}
+	
 	[Serializable]
 	/// <summary>
 	/// Base class for inventory items, meant to be extended.
@@ -38,7 +47,7 @@ namespace MoreMountains.InventoryEngine
 		[MMCondition("Consumable", true)] 
 		public int ConsumeQuantity = 1;
 		/// whether or not this item can be equipped - important, this is only the INITIAL state of this object, IsEquippable is to be used anytime after that
-        public bool Equippable = false;
+		public bool Equippable = false;
 		/// if this is true, this item will be removed from its original inventory when equipped, and moved to its EquipmentInventory
 		public bool MoveWhenEquipped = true;
 		
@@ -48,12 +57,15 @@ namespace MoreMountains.InventoryEngine
 		public bool CanMoveObject=true;
 		/// if this is true, objects can be swapped with another object
 		public bool CanSwapObject=true;
-        /// whether or not this object can be used
-        public virtual bool IsUsable {  get { return Usable;  } }
-        /// whether or not this object can be equipped
-        public virtual bool IsEquippable { get { return Equippable; } }
+		/// a set of properties defining whether or not to show inventory action buttons when that item is selected 
+		public InventoryItemDisplayProperties DisplayProperties;
+		
+		/// whether or not this object can be used
+		public virtual bool IsUsable {  get { return Usable;  } }
+		/// whether or not this object can be equipped
+		public virtual bool IsEquippable { get { return Equippable; } }
 
-        [HideInInspector]
+		[HideInInspector]
 		/// the base quantity of this item
 		public int Quantity = 1;
 

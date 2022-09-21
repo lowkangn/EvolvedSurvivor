@@ -25,7 +25,7 @@ namespace MoreMountains.InventoryEngine
 		public KeyCode UpKeyAlt = KeyCode.None;
 	        
 	        
-        public string VerticalAxisName = "Vertical";
+		public string VerticalAxisName = "Vertical";
 
 		protected bool _pause = false;
 

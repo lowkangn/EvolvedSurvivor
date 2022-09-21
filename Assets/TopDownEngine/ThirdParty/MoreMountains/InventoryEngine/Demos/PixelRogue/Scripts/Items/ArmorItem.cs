@@ -22,8 +22,8 @@ namespace MoreMountains.InventoryEngine
 		{
 			base.Equip(playerID);
 			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetArmor(ArmorIndex);
-            return true;
-        }	
+			return true;
+		}	
 
 		/// <summary>
 		/// What happens when the armor is unequipped
@@ -32,7 +32,7 @@ namespace MoreMountains.InventoryEngine
 		{
 			base.UnEquip(playerID);
 			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetArmor(0);
-            return true;
-        }		
+			return true;
+		}		
 	}
 }

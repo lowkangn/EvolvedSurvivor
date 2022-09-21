@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowsAPlayer: 1
   ConfineCameraToLevelBounds: 0
+  ListenToSetConfinerEvents: 1
   TargetCharacter: {fileID: 0}
 --- !u!114 &24112865
 MonoBehaviour:
@@ -7724,6 +7725,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060530881921866, guid: 2513a92f10a3a1746bfe8e1034ae9f1a,
+        type: 3}
+      propertyPath: PushPower
+      value: 1850
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060530881921866, guid: 2513a92f10a3a1746bfe8e1034ae9f1a,
+        type: 3}
+      propertyPath: PhysicsInteractionsRaycastLength
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 136012123907159096, guid: 2513a92f10a3a1746bfe8e1034ae9f1a,
         type: 3}
       propertyPath: m_Enabled
@@ -8506,6 +8517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowsAPlayer: 1
   ConfineCameraToLevelBounds: 0
+  ListenToSetConfinerEvents: 1
   TargetCharacter: {fileID: 0}
 --- !u!4 &1921122604
 Transform:
@@ -9320,6 +9332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowsAPlayer: 1
   ConfineCameraToLevelBounds: 0
+  ListenToSetConfinerEvents: 1
   TargetCharacter: {fileID: 0}
 --- !u!114 &2142876468
 MonoBehaviour:

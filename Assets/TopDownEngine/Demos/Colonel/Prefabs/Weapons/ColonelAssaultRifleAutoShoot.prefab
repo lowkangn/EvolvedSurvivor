@@ -73,6 +73,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   MaximumSlopeElevation: 50
+  AvoidNullAim: 1
 --- !u!114 &-6282721447207995984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +187,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8448
   HitscanMaxDistance: 100
-  MinDamageCaused: 15
-  MaxDamageCaused: 5
+  MinDamageCaused: 5
+  MaxDamageCaused: 15
   DamageCausedInvincibilityDuration: 0.2
   HitDamageable: {fileID: 0}
   DamageableImpactParticles: {fileID: 5693645334419586965}
@@ -9832,8 +9833,11 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
@@ -9908,8 +9912,11 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
@@ -9984,8 +9991,11 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
