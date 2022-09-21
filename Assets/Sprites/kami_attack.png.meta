@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b9e2dc8134254e41ad571b942a1d45a
+guid: 7da3f911744f50543abc795250ae02e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: marine_walk 1_0
+      name: kami_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c707c7085c953f5469cba9e04b831a32
-      internalID: 2114947507
+      spriteID: ff24d930b0384f14784f11cff20f1549
+      internalID: -74280260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_1
+      name: kami_attack_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a4583a171941ec49a7c30b56fb15b1f
-      internalID: -79571452
+      spriteID: 86f7027516088c84e9e7ed784975e33b
+      internalID: 530775451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_2
+      name: kami_attack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e867ccdf9f62b0e4a98f39be4014b2c4
-      internalID: 1058578241
+      spriteID: 8aa5a1bdb90422a42b06e5b8d3a9474f
+      internalID: 273812156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_3
+      name: kami_attack_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8e4564598003c2428d94f0f0fcc32f3
-      internalID: 679881802
+      spriteID: 858b89bb0cff75745bb51cf660a767ed
+      internalID: 744432783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_4
+      name: kami_attack_4
       rect:
         serializedVersion: 2
         x: 128
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6868180716c4620498c4b468aff45eae
-      internalID: -746846952
+      spriteID: 69e976c0f8b6a38428e735818396f10d
+      internalID: -713108501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_5
+      name: kami_attack_5
       rect:
         serializedVersion: 2
         x: 160
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3de24c9f5d3b974c9246189a68822d4
-      internalID: 1172142351
+      spriteID: 0e1008ecc97132344a8de847435dfe71
+      internalID: -99542148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_6
+      name: kami_attack_6
       rect:
         serializedVersion: 2
         x: 192
@@ -256,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70e154f6c57f4384e9873f1f3728e7ac
-      internalID: 1172903922
+      spriteID: 33e47c5519947e645a2d0116b804e160
+      internalID: 265276004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_7
+      name: kami_attack_7
       rect:
         serializedVersion: 2
         x: 224
@@ -277,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8552bf40ae78bec47adef6c8f752abb4
-      internalID: 141257622
+      spriteID: b815f57c34c8d6145a5dfcc2a5c4f959
+      internalID: -717077633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_8
+      name: kami_attack_8
       rect:
         serializedVersion: 2
         x: 256
@@ -298,14 +298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df6d9c03a24b5f84c823961636001185
-      internalID: -1416435204
+      spriteID: 402807230a5ae1a48a34b70907dd7784
+      internalID: 197965900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: marine_walk 1_9
+      name: kami_attack_9
       rect:
         serializedVersion: 2
         x: 288
@@ -319,134 +319,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f1b17651555e90439af19aad3764726
-      internalID: 1036483766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_10
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ef13ef4742ae114b91e1d686b405581
-      internalID: 223082461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_11
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c4e67ea3a1b60b448f8479eeca14c53
-      internalID: 1588579521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_12
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b207ed155c389554c9455c95d516c37f
-      internalID: 1688361915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_13
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0883aa080585da46a0398dd03a77d66
-      internalID: 1606628452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_14
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6ce433011c2297468d4f1e1e97a947e
-      internalID: 1491411070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: marine_walk 1_15
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 407485b2021b34b4296884841581d4f0
-      internalID: 119481807
+      spriteID: ca83d645bb764704c8ac88d93025a357
+      internalID: 140558824
       vertices: []
       indices: 
       edges: []
@@ -454,7 +328,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a054bb93e1515ef4b845cd1ca3164233
+    spriteID: 553ae4cb45245374db4a9092793f2a16
     internalID: 0
     vertices: []
     indices: 
@@ -462,22 +336,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      marine_walk 1_13: 1606628452
-      marine_walk 1_15: 119481807
-      marine_walk 1_5: 1172142351
-      marine_walk 1_8: -1416435204
-      marine_walk 1_6: 1172903922
-      marine_walk 1_2: 1058578241
-      marine_walk 1_12: 1688361915
-      marine_walk 1_0: 2114947507
-      marine_walk 1_4: -746846952
-      marine_walk 1_7: 141257622
-      marine_walk 1_10: 223082461
-      marine_walk 1_11: 1588579521
-      marine_walk 1_14: 1491411070
-      marine_walk 1_1: -79571452
-      marine_walk 1_9: 1036483766
-      marine_walk 1_3: 679881802
+      kami_attack_3: 744432783
+      kami_attack_4: -713108501
+      kami_attack_5: -99542148
+      kami_attack_9: 140558824
+      kami_attack_2: 273812156
+      kami_attack_0: -74280260
+      kami_attack_7: -717077633
+      kami_attack_6: 265276004
+      kami_attack_1: 530775451
+      kami_attack_8: 197965900
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
