@@ -14,9 +14,14 @@ namespace TeamOne.EvolvedSurvivor
         public delegate void DamageAreaEvent();
         public DamageAreaEvent OnHit;
 
-        private Collider damageCollider;
+        private Collider2D damageCollider;
         private Damage damage;
         private float lastRepeatingTime;
+
+        private void Start()
+        {
+            damageCollider = GetComponent<Collider2D>();
+        }
 
         public void SetDamage(Damage damage)
         {
