@@ -14,6 +14,9 @@ public class WorldTile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        worldScroller.UpdatePlayerPosition(x, y);
+        if (collision.CompareTag("Player"))
+        {
+            worldScroller.UpdatePlayerPosition(x, y);
+        }    
     }
 }
