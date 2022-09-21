@@ -14,23 +14,17 @@ namespace TeamOne.EvolvedSurvivor
         public delegate void DamageAreaEvent();
         public DamageAreaEvent OnHit;
 
-        private Collider2D damageCollider;
         private Damage damage;
         private float lastRepeatingTime;
-
-        private void Start()
-        {
-            damageCollider = GetComponent<Collider2D>();
-        }
 
         public void SetDamage(Damage damage)
         {
             this.damage = damage;
         }
 
-        public void SetActive(bool active)
+        public void DisableDamageArea()
         {
-            damageCollider.enabled = active;
+            gameObject.SetActive(false);
         }
 
         private void Collide(Collider2D collision)
@@ -40,14 +34,14 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            OnHit.Invoke();
+            // OnHit.Invoke();
 
             DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
             damageReceiver?.TakeDamage(damage);
 
             if (disableOnHit)
             {
-                SetActive(false);
+                DisableDamageArea();
             }
         }
 
