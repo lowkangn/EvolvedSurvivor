@@ -27,10 +27,7 @@ namespace TeamOne.EvolvedSurvivor
         [Header("Fixed stats")]
         [SerializeField]
         private float projectileSpeed;
-        [SerializeField]
-        private float enemyDetectionRadius;
 
-        private Vector3 direction;
         private bool hasColliderSizeBeenSet = false;
 
         protected override void Activate()
@@ -46,18 +43,15 @@ namespace TeamOne.EvolvedSurvivor
                 setStartPosition(nextGameObject);
 
                 // Find nearest enemy (if exists) and calculate direction
-                bool isEnemyFound = setDirectionIfEnemyFound();
+                Vector3 nearestDirection = setDirectionIfEnemyFound(onScreenEnemies);
 
-                if (isEnemyFound)
-                {
-                    // Set projectile size
-                    setProjectileSize(nextGameObject);
+                // Set projectile size
+                setProjectileSize(nextGameObject);
 
-                    // Set stats for the AbilityHandler
-                    initialiseHandler(nextGameObject);
+                // Set stats for the AbilityHandler
+                initialiseHandler(nextGameObject, nearestDirection);
 
-                    nextGameObject.SetActive(true);
-                }
+                nextGameObject.SetActive(true);
             }
         }
 
@@ -85,14 +79,14 @@ namespace TeamOne.EvolvedSurvivor
             objToSetPosition.transform.position = transform.position;
         }
 
-        private bool setDirectionIfEnemyFound()
+        private Vector3 setDirectionIfEnemyFound(GameObject[] onScreenEnemies)
         {
             Vector2 playerPos2D = new Vector2(transform.position.x, transform.position.y);
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPos2D, enemyDetectionRadius, LayerMask.GetMask("Enemies"));
+            Collider2D[] hitColliders = Array.ConvertAll(onScreenEnemies, x => x.GetComponent<Collider2D>());
 
             float nearestDist = -1f;
+            Vector3 direction = new Vector3(0, 0, 0);
             Collider2D nearest;
-            bool isEnemyFound = false;
 
             foreach (Collider2D currCollider in hitColliders)
             {
@@ -103,11 +97,10 @@ namespace TeamOne.EvolvedSurvivor
                     nearestDist = dist;
                     nearest = currCollider;
                     direction = Vector3.Normalize(currDirection);
-                    if (!isEnemyFound) isEnemyFound = true;
                 }
             }
 
-            return isEnemyFound;
+            return direction;
         }
 
         private void setProjectileSize(GameObject objToSetSize)
@@ -125,7 +118,7 @@ namespace TeamOne.EvolvedSurvivor
             imageComponent.localScale = new Vector3(projectileSize.value, projectileSize.value, projectileSize.value);
         }
 
-        private void initialiseHandler(GameObject objToInitialiseHandler)
+        private void initialiseHandler(GameObject objToInitialiseHandler, Vector3 direction)
         {
             ExplosiveProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<ExplosiveProjectileAbilityHandler>();
             handler.setStats(damage, aoeRadius, projectileSpeed, direction);
