@@ -10,14 +10,19 @@ namespace TeamOne.EvolvedSurvivor
     {
         [SerializeField]
         private float radius = 0.8f;
-        private float damageMultiplier = 0.5f;
         private float damage;
+        private float damageMultiplier;
 
-        public PlasmaStatusEffect(float damageMultiplier)
+        public PlasmaStatusEffect(float damage)
         {
-            this.damageMultiplier = damageMultiplier;
+            this.damage = damage;
         }
-    
+
+        public override void Build(int tier, float utilityRatio, float maxMagnitude)
+        {
+            
+        }
+
         public override void Apply(GameObject enemy)
         {
             Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(enemy.transform.position, radius, LayerMask.GetMask("Enemies"));
@@ -39,7 +44,7 @@ namespace TeamOne.EvolvedSurvivor
                         }
                     }
                 }
-                nearest.GetComponent<Health>().Damage(damage, gameObject, 0.5f, 0f, Vector3.zero);
+                nearest.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage * damageMultiplier, gameObject));
             }
         }
     }

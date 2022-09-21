@@ -5,17 +5,16 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class LockOnAbilityHandler : AbilityHandler
     {
-        [SerializeField]
-        private float timeOnScreen = 0.5f;
-        void OnEnable()
+        float timeOnScreen = 0.5f;
+        private void OnEnable()
         {
-            StartCoroutine(wait());
+            StartCoroutine(WaitAndKillCoroutine());
         }
 
-        IEnumerator wait()
+        IEnumerator WaitAndKillCoroutine()
         {
-            yield return new WaitForSecondsRealtime(timeOnScreen);
-            StartCoroutine(kill());
+            yield return new WaitForSeconds(timeOnScreen);
+            StartCoroutine(KillCoroutine());
         }
     }
 }

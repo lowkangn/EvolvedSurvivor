@@ -9,24 +9,24 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private float duration;
 
-        public CryoStatusEffect(float duration)
+        public override void Build(int tier, float utilityRatio, float maxMagnitude)
         {
-            this.duration = duration;
+
         }
 
-        public override void Apply(GameObject enemy)
+        public override void Apply(GameObject target)
         {
-            enemy.GetComponent<Character>().Freeze();
+            target.GetComponent<Character>().Freeze();
             // TODO: Replace with new damageontouch script when avail
-            enemy.GetComponent<DamageOnTouch>().enabled = false;
-            StartCoroutine(FreezeFor(duration, enemy));
+            //target.GetComponent<DamageOnTouch>().enabled = false;
+            StartCoroutine(FreezeFor(duration, target));
         }
 
-        IEnumerator FreezeFor(float seconds, GameObject enemy)
+        IEnumerator FreezeFor(float seconds, GameObject target)
         {
             yield return new WaitForSeconds(seconds);
-            enemy.GetComponent<Character>().UnFreeze();
-            enemy.GetComponent<DamageOnTouch>().enabled = true;
+            target.GetComponent<Character>().UnFreeze();
+            //enemy.GetComponent<DamageOnTouch>().enabled = true;
         }
     }
 }

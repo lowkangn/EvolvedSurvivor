@@ -56,12 +56,12 @@ namespace TeamOne.EvolvedSurvivor
         protected TraitChart traitChart;
         protected Element element;
         [SerializeField]
-        protected List<StatusEffect> effects;
-
+        protected Damage projDamage;
         [SerializeField]
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
+        
 
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 

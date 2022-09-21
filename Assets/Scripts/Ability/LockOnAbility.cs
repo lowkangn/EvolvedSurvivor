@@ -33,43 +33,21 @@ namespace TeamOne.EvolvedSurvivor
                 {
                     // Choose an enemy and spawn projectile on top of it
                     GameObject chosenEnemy = onScreenEnemies[i];
-                    SpawnProjectileOnTarget(chosenEnemy);
-
-                    // hit the enemy and hit all enemies in AOE radius
-                    enemiesHit.Add(chosenEnemy);
-                    Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(chosenEnemy.transform.position, aoeRadius.value, LayerMask.GetMask("Enemies"));
-                    foreach (Collider2D enemy in enemiesInRadius)
-                    {
-                        enemiesHit.Add(enemy.gameObject);
-                    }
+                    DamageAndSpawnProjectileOnTarget(chosenEnemy);
                 }
-
-                // Iterate over hit enemies and damage all of them
-                DamageAllEnemies(enemiesHit);
             }
         }
 
-        private void SpawnProjectileOnTarget(GameObject target)
+        private void DamageAndSpawnProjectileOnTarget(GameObject target)
         {
             GameObject nextProjectile = objectPool.GetPooledGameObject();
             nextProjectile.transform.parent = target.transform;
-            nextProjectile.transform.localPosition = new Vector3(0, 0.5f, 0);
+            nextProjectile.transform.localPosition = new Vector3(0, 0.5f);
+            nextProjectile.GetComponent<DamageArea>().SetDamage(projDamage);
+            nextProjectile.GetComponent<CircleCollider2D>().radius = aoeRadius.value;
+            target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
+            nextProjectile.GetComponent<DamageArea>().AddAlreadyHit(target);
             nextProjectile.SetActive(true);
-        }
-
-        private void DamageAllEnemies(HashSet<GameObject> targets)
-        {
-            foreach (GameObject target in targets)
-            {
-                if (target.tag == "Enemy")
-                {
-                    target.GetComponent<Health>().Damage(damage.value, gameObject, 0.5f, 0f, Vector3.zero);
-                    foreach (StatusEffect effect in effects)
-                    {
-                        effect.Apply(target);
-                    }
-                }
-            }
         }
 
         protected override void Build()
@@ -87,7 +65,10 @@ namespace TeamOne.EvolvedSurvivor
             targetNumber.value = Mathf.FloorToInt((targetNumber.maxValue - targetNumber.minValue) * traitChart.QuantityRatio + targetNumber.minValue);
 
             // Utility
-            
+
+
+            // Set up projDamage
+            projDamage.damage = damage.value;
         }
     }
 }
