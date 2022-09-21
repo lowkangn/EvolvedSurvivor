@@ -71,12 +71,12 @@ namespace TeamOne.EvolvedSurvivor
 
         private void setStartPosition(GameObject objToSetPosition)
         {
-            objToSetPosition.transform.position = playerRef.transform.position;
+            objToSetPosition.transform.position = transform.position;
         }
 
         private bool setDirectionIfEnemyFound()
         {
-            Vector2 playerPos2D = new Vector2(playerRef.transform.position.x, playerRef.transform.position.y);
+            Vector2 playerPos2D = new Vector2(transform.position.x, transform.position.y);
             Vector2 projectileRange2D = new Vector2(ATTACK_RADIUS, ATTACK_RADIUS); 
             Collider2D[] hitColliders = Physics2D.OverlapBoxAll(playerPos2D, projectileRange2D, 0f, LayerMask.GetMask("Enemies"));
 
@@ -86,7 +86,7 @@ namespace TeamOne.EvolvedSurvivor
 
             foreach (Collider2D currCollider in hitColliders)
             {
-                Vector3 currDirection = currCollider.GetComponent<Transform>().position - playerRef.transform.position;
+                Vector3 currDirection = currCollider.GetComponent<Transform>().position - transform.position;
                 float dist = currDirection.magnitude;
                 if (nearestDist == -1f || dist < nearestDist)
                 {

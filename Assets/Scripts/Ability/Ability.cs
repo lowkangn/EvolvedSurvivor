@@ -61,8 +61,6 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasActivated;
         private float coolDownTimer;
 
-        protected GameObject playerRef;
-
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
         /// E.g., Speed, Damage, CoolDown, etc.
@@ -135,11 +133,6 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
-        public void addPlayerRef(GameObject player)
-        {
-            playerRef = player;
-        }
-        
         protected abstract void Build();
 
         protected abstract void Activate();
