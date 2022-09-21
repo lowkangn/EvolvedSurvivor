@@ -13,7 +13,9 @@ namespace TeamOne.EvolvedSurvivor
 
         public Ability GenerateAbility(int tier)
         {
-            Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
+            // For testing
+            Ability chosenAbility = abilityPrefabs[Random.Range(0, 1)];
+            //Ability chosenAbility = abilityPrefabs[0];
             TraitChart baseTraitChart = abilityBaseTraitCharts.GetAbilityBaseTraitChart(chosenAbility);
 
             float totalTraitPoints = 5 * tier;
