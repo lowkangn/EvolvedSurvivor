@@ -55,6 +55,8 @@ namespace TeamOne.EvolvedSurvivor
         protected int tier;
         protected TraitChart traitChart;
         protected Element element;
+        [SerializeField]
+        protected List<StatusEffect> effects;
 
         [SerializeField]
         private bool hasBuilt = false;
