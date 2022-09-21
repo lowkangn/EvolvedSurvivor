@@ -53,10 +53,14 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
+  CanPlay: 1
   CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1
@@ -84,6 +88,7 @@ MonoBehaviour:
   - rid: 6080257986607185921
   KeepPlayModeChanges: 0
   PerformanceMode: 0
+  ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
@@ -167,6 +172,7 @@ MonoBehaviour:
         RandomParticleSystems: []
         MoveToPosition: 0
         ActivateOnPlay: 0
+        StopSystemOnInit: 1
 --- !u!1 &7638376544883403920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,6 +5105,7 @@ GameObject:
   - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
+  - component: {fileID: -7701108648509300170}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -5256,6 +5263,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   FacingMode: 3
+  FacingBase: 0
   ModelShouldFlip: 0
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
   ModelFlipValueRight: {x: 1, y: 1, z: 1}
@@ -5321,10 +5329,12 @@ MonoBehaviour:
   MaximumHealth: 100
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
-  ImmuneToKnockback: 0
   DamageMMFeedbacks: {fileID: 6573627114560633500}
   FeedbackIsProportionalToDamage: 0
   PreventTakeSelfDamage: 0
+  ImmuneToKnockback: 0
+  ImmuneToKnockbackIfZeroDamage: 0
+  KnockbackForceMultiplier: 1
   DestroyOnDeath: 1
   DelayBeforeDestruction: 0.5
   PointsWhenDestroyed: 0
@@ -5342,6 +5352,7 @@ MonoBehaviour:
   ColorMaterialPropertyName: _Color
   UseMaterialPropertyBlocks: 0
   MasterHealth: {fileID: 0}
+  TargetDamageResistanceProcessor: {fileID: 0}
   TargetAnimator: {fileID: 7733979718309451076}
   DisableAnimatorLogs: 1
 --- !u!114 &7751210001397076598
@@ -5356,7 +5367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec89e4158bf96841b9bc830fc5385ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BrainActive: 1
   Owner: {fileID: 0}
   States:
   - StateName: Detecting
@@ -5380,6 +5390,9 @@ MonoBehaviour:
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
+  BrainActive: 1
+  ResetBrainOnStart: 1
+  ResetBrainOnEnable: 0
   ActionsFrequency: 0
   DecisionFrequency: 0
   RandomizeFrequencies: 0
@@ -5397,6 +5410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f11b4fea1cac9d43860e5c5e194c852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   OnlyRunOnce: 1
 --- !u!114 &3726143494263872085
@@ -5424,6 +5438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47557c9dd44293a41bc6710b083332de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializationMode: 0
   Label: 
   MinimumDistance: 0.1
 --- !u!114 &7751781705664415068
@@ -5441,13 +5456,20 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  Owner: {fileID: 0}
+  TriggerFilter: 195
   MinDamageCaused: 8
   MaxDamageCaused: 10
+  TypedDamages: []
   DamageCausedKnockbackType: 0
   DamageCausedKnockbackDirection: 0
   DamageCausedKnockbackForce: {x: 500, y: 500, z: 0}
   InvincibilityDuration: 1
-  DamageOnTriggerEnterOnly: 0
+  RepeatDamageOverTime: 0
+  AmountOfRepeats: 3
+  DurationBetweenRepeats: 1
+  DamageOverTimeInterruptible: 1
+  RepeatedDamageType: {fileID: 0}
   DamageTakenEveryTime: 0
   DamageTakenDamageable: 0
   DamageTakenNonDamageable: 0
@@ -5456,7 +5478,16 @@ MonoBehaviour:
   DamageTakenInvincibilityDuration: 0
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}
-  Owner: {fileID: 0}
+  HitAnythingFeedback: {fileID: 0}
+  HitDamageableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HitNonDamageableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HitAnythingEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3135418408013145896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5470,6 +5501,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoundsBasedOn: 1
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
   LifeTime: 0
 --- !u!114 &8557347373184591496
 MonoBehaviour:
@@ -5485,6 +5522,88 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolableObject: {fileID: 3135418408013145896}
   despawnDistance: 35
+--- !u!114 &-7701108648509300170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9bf1ac07f3659498e89157301c9746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootMode: 2
+  GameObjectToLoot: {fileID: 0}
+  LootTable:
+    ObjectsToLoot: []
+    WeightsTotal: 0
+  LootTableSO: {fileID: 11400000, guid: c9a31e4b64f864748b8a7f01eb2bf2f8, type: 2}
+  SpawnLootOnDeath: 1
+  SpawnLootOnDamage: 0
+  PoolLoot: 0
+  PoolSize: 20
+  MutualizedPoolName: 
+  CanSpawn: 1
+  Delay: 0
+  Quantity: {x: 1, y: 1}
+  SpawnProperties:
+    Shape: 0
+    NormalToSpawnPlane: {x: 0, y: 0, z: 1}
+    MinimumSphereRadius: 0.1
+    MaximumSphereRadius: 0.5
+    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
+    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
+    MinimumNormalAxisOffset: 0
+    MaximumNormalAxisOffset: 0
+    UseNormalAxisOffsetCurve: 0
+    NormalOffsetCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    NormalOffsetCurveRemapZero: 0
+    NormalOffsetCurveRemapOne: 1
+    InvertNormalOffsetCurve: 0
+    MinimumRotation: {x: 0, y: 0, z: 0}
+    MaximumRotation: {x: 0, y: 0, z: 0}
+    MinimumScale: {x: 1, y: 1, z: 1}
+    MaximumScale: {x: 1, y: 1, z: 1}
+  MaximumQuantity: 100
+  RemainingQuantity: 100
+  AvoidObstacles: 1
+  DimensionMode: 0
+  AvoidObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  AvoidRadius: 0.5
+  MaxAvoidAttempts: 5
+  LootFeedback: {fileID: 0}
+  DrawGizmos: 0
+  GizmosQuantity: 1000
+  GizmosColor: {r: 1, g: 0.9940462, b: 0.9009434, a: 1}
+  GimosSize: 0.1
+  SpawnLootButton: 0
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10555,10 +10674,14 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
+  CanPlay: 1
   CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1

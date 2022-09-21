@@ -26,15 +26,15 @@ MonoBehaviour:
         type: 3}
       count: 5
     removeFromEnemyPool: []
-  - timeDelayInSeconds: 10
+  - timeDelayInSeconds: 15
     addToEnemyPool:
     - enemyObject: {fileID: 7639002971553439240, guid: 75eea87521beb4348be00f716b2b1676,
         type: 3}
       count: 5
     removeFromEnemyPool: []
-  - timeDelayInSeconds: 10
-    addToEnemyPool: []
-    removeFromEnemyPool:
-    - enemyObject: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
+  - timeDelayInSeconds: 30
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: 960401c10892c0342835ac865fa9aa5e,
         type: 3}
-      count: 20
+      count: 10
+    removeFromEnemyPool: []
