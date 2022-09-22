@@ -41,37 +41,5 @@ namespace TeamOne.EvolvedSurvivor
                 elements[(ElementType)i] += other.elements[(ElementType)i];
             }
         }
-
-        public StatusEffect GenerateEffect(ElementType type, float utilityRatio, float magnitude)
-        {
-            float levelRatio = (float)elements[type] / maxLevel;
-            StatusEffect effect;
-            switch (type)
-            {
-                case ElementType.Plasma:
-                    effect = new PlasmaStatusEffect();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
-                    break;
-                case ElementType.Cryo:
-                    effect = new CryoStatusEffect();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
-                    break;
-                case ElementType.Force:
-                    effect = new PlasmaStatusEffect();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
-                    break;
-                case ElementType.Infect:
-                    effect = new PlasmaStatusEffect();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
-                    break;
-                case ElementType.Pyro:
-                    effect = new PlasmaStatusEffect();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
-                    break;
-                default:
-                    throw new System.Exception("Element Type invalid");
-            }
-            return effect;
-        }
     }
 }
