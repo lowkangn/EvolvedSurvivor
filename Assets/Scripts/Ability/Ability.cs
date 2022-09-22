@@ -69,7 +69,7 @@ namespace TeamOne.EvolvedSurvivor
             // Build Ability Again
             Build();
         }
-        private void Start()
+        private void Awake()
         {
             elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
             elementMagnitudes.Add(ElementType.Cryo, maxCryoMagnitude);
@@ -114,6 +114,37 @@ namespace TeamOne.EvolvedSurvivor
                 ElementType chosenType = (ElementType)Random.Range(0, 5);
                 element.elements[chosenType] += 1;
             }
+        }
+        protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float magnitude)
+        {
+            float levelRatio = (float)element.elements[type] / Element.maxLevel;
+            StatusEffect effect;
+            switch (type)
+            {
+                case ElementType.Plasma:
+                    effect = gameObject.AddComponent<PlasmaStatusEffect>();
+                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    break;
+                case ElementType.Cryo:
+                    effect = gameObject.AddComponent<CryoStatusEffect>();
+                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    break;
+                case ElementType.Force:
+                    effect = gameObject.AddComponent<ForceStatusEffect>();
+                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    break;
+                case ElementType.Infect:
+                    effect = gameObject.AddComponent<InfectStatusEffect>();
+                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    break;
+                case ElementType.Pyro:
+                    effect = gameObject.AddComponent<PyroStatusEffect>();
+                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    break;
+                default:
+                    throw new System.Exception("Element Type invalid");
+            }
+            return effect;
         }
 
         protected abstract void Build();

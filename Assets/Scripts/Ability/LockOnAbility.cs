@@ -70,7 +70,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    projDamage.effects.Add(element.GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    projDamage.effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
                 }
             }
 

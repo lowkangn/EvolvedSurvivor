@@ -10,6 +10,15 @@ namespace TeamOne.EvolvedSurvivor
         private List<Ability> abilityPrefabs;
         [SerializeField]
         private AbilityBaseTraitCharts abilityBaseTraitCharts;
+        [SerializeField]
+        private AbilityManager abilityManager;
+
+        // For Testing
+        /*private void Start()
+        {
+            Ability newAbility = GenerateAbility(1);
+            abilityManager.AddAbility(newAbility);
+        }*/
 
         public Ability GenerateAbility(int tier)
         {
