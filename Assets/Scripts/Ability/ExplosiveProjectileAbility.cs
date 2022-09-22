@@ -40,16 +40,16 @@ namespace TeamOne.EvolvedSurvivor
                 GameObject nextGameObject = objectPool.GetPooledGameObject();
 
                 // Set start position to player position
-                setStartPosition(nextGameObject);
+                SetStartPosition(nextGameObject);
 
                 // Find nearest enemy (if exists) and calculate direction
-                Vector3 nearestDirection = setDirectionIfEnemyFound(onScreenEnemies);
+                Vector3 nearestDirection = SetDirectionIfEnemyFound(onScreenEnemies);
 
                 // Set projectile size
-                setProjectileSize(nextGameObject);
+                SetProjectileSize(nextGameObject);
 
                 // Set stats for the AbilityHandler
-                initialiseHandler(nextGameObject, nearestDirection);
+                InitialiseHandler(nextGameObject, nearestDirection);
 
                 nextGameObject.SetActive(true);
             }
@@ -74,12 +74,12 @@ namespace TeamOne.EvolvedSurvivor
 
         }
 
-        private void setStartPosition(GameObject objToSetPosition)
+        private void SetStartPosition(GameObject objToSetPosition)
         {
             objToSetPosition.transform.position = transform.position;
         }
 
-        private Vector3 setDirectionIfEnemyFound(GameObject[] onScreenEnemies)
+        private Vector3 SetDirectionIfEnemyFound(GameObject[] onScreenEnemies)
         {
             Vector2 playerPos2D = new Vector2(transform.position.x, transform.position.y);
             Collider2D[] hitColliders = Array.ConvertAll(onScreenEnemies, x => x.GetComponent<Collider2D>());
@@ -103,7 +103,7 @@ namespace TeamOne.EvolvedSurvivor
             return direction;
         }
 
-        private void setProjectileSize(GameObject objToSetSize)
+        private void SetProjectileSize(GameObject objToSetSize)
         {
             if (!hasColliderSizeBeenSet)
             {
@@ -118,10 +118,10 @@ namespace TeamOne.EvolvedSurvivor
             imageComponent.localScale = new Vector3(projectileSize.value, projectileSize.value, projectileSize.value);
         }
 
-        private void initialiseHandler(GameObject objToInitialiseHandler, Vector3 direction)
+        private void InitialiseHandler(GameObject objToInitialiseHandler, Vector3 direction)
         {
             ExplosiveProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<ExplosiveProjectileAbilityHandler>();
-            handler.setStats(damage, aoeRadius, projectileSpeed, direction);
+            handler.SetStats(damage, aoeRadius, projectileSpeed, direction);
         }
 
         private bool IsOnScreen(Transform enemy)

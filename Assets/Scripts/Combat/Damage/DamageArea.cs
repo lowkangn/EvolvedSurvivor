@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -13,6 +14,7 @@ namespace TeamOne.EvolvedSurvivor
         
         public delegate void DamageAreaEvent();
         public DamageAreaEvent OnHit;
+        public UnityEvent OnHitEvent;
 
         private Collider2D damageCollider;
         private Damage damage;
@@ -40,7 +42,7 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            OnHit.Invoke();
+            OnHitEvent.Invoke();
 
             DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
             damageReceiver?.TakeDamage(damage);
