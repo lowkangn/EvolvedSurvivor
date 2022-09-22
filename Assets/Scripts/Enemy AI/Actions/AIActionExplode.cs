@@ -8,6 +8,7 @@ using UnityEngine;
 public class AIActionExplode : AIAction
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private float explosionDuration = 1f;
 
     public bool OnlyRunOnce = true;
 
@@ -21,6 +22,8 @@ public class AIActionExplode : AIAction
         {
             MMAnimatorExtensions.UpdateAnimatorBoolIfExists(animator, explodeParameterName, true);
             _alreadyRan = true;
+            _brain.BrainActive = false;
+            Invoke("DestroyObject", explosionDuration);
         }
     }
 
@@ -31,5 +34,10 @@ public class AIActionExplode : AIAction
     {
         base.OnEnterState();
         _alreadyRan = false;
+    }
+
+    private void DestroyObject()
+    {
+        gameObject.SetActive(false);
     }
 }
