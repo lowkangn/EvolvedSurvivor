@@ -11,6 +11,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         private float damage;
         private float aoeRadius;
+        private float colliderSize;
         private float projectileSpeed;
         private Vector3 direction;
 
@@ -30,17 +31,18 @@ namespace TeamOne.EvolvedSurvivor
                 // If projectile has reached its pierceLimit, deactivate it
                 if (piercesLeft < 0)
                 {
-                    StartCoroutine(kill());
+                    StartCoroutine(KillCoroutine());
                 }
             }
         }
 
         // Sets the stats of the projectile and activates it
-        public void SetStats(AbilityStat<float> damage, AbilityStat<float> aoeRadius, float projectileSpeed, Vector3 direction)
+        public void SetStats(AbilityStat<float> damage, AbilityStat<float> aoeRadius, float colliderSize, float projectileSpeed, Vector3 direction)
         {
             // Initialise various stats
             this.damage = damage.value;
             this.aoeRadius = aoeRadius.value;
+            this.colliderSize = colliderSize;
             this.projectileSpeed = projectileSpeed;
             this.direction = direction;
 
@@ -98,7 +100,7 @@ namespace TeamOne.EvolvedSurvivor
                     {
                         Damage damageObj = new Damage(damage, gameObject, new Vector3(0, 0, 0));
                         DamageHandler handler = gameObject.GetComponent<DamageHandler>();
-                        Damage processedDamageObj = handler.ProcessOutGoingDamage(damageObj);
+                        Damage processedDamageObj = handler.ProcessOutgoingDamage(damageObj);
                         DamageReceiver enemyReceiver = enemy.GetComponent<DamageReceiver>();
                         enemyReceiver.TakeDamage(processedDamageObj);
                     }
@@ -109,7 +111,7 @@ namespace TeamOne.EvolvedSurvivor
         // Simulates the explosion: There's an explosion transform that's just a red circle, so when the 'explosion' happens we activate the circle by setting the size
         private IEnumerator flash(Transform explosion, BoxCollider2D collider)
         {
-            explosion.localScale = new Vector3(aoeRadius / collider.size.x, aoeRadius / collider.size.y, 0);
+            explosion.localScale = new Vector3(aoeRadius / colliderSize, aoeRadius / colliderSize, 0);
             yield return new WaitForSeconds(0.1f);
 
             piercesLeft--;

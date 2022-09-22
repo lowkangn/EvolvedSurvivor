@@ -45,11 +45,11 @@ namespace TeamOne.EvolvedSurvivor
                 // Find nearest enemy (if exists) and calculate direction
                 Vector3 nearestDirection = SetDirectionIfEnemyFound(onScreenEnemies);
 
-                // Set projectile size
-                SetProjectileSize(nextGameObject);
-
                 // Set stats for the AbilityHandler
                 InitialiseHandler(nextGameObject, nearestDirection);
+
+                // Set projectile size
+                SetProjectileSize(nextGameObject);
 
                 nextGameObject.SetActive(true);
             }
@@ -120,8 +120,11 @@ namespace TeamOne.EvolvedSurvivor
 
         private void InitialiseHandler(GameObject objToInitialiseHandler, Vector3 direction)
         {
+            BoxCollider2D collider = objToInitialiseHandler.GetComponent<BoxCollider2D>();
+            float colliderSize = collider.size.x;
+
             ExplosiveProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<ExplosiveProjectileAbilityHandler>();
-            handler.SetStats(damage, aoeRadius, projectileSpeed, direction);
+            handler.SetStats(damage, aoeRadius, colliderSize, projectileSpeed, direction);
         }
 
         private bool IsOnScreen(Transform enemy)

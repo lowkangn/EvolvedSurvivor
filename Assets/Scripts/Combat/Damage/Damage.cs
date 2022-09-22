@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -10,7 +9,6 @@ namespace TeamOne.EvolvedSurvivor
     {
         public float damage;
         public GameObject instigator;
-        public Vector3 direction;
         public Vector3 direction = Vector3.zero;
         public List<StatusEffect> effects = new List<StatusEffect>();
 
