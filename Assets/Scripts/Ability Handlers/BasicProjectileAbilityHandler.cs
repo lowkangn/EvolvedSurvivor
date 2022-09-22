@@ -22,7 +22,7 @@ namespace TeamOne.EvolvedSurvivor
                 // If projectile has reached its pierceLimit, deactvivate it
                 if (piercesLeft < 0)
                 {
-                    StartCoroutine(kill());
+                    StartCoroutine(KillCoroutine());
                 }
             }
         }
