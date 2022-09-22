@@ -13,11 +13,13 @@ public class AIActionBecomeAlert : AIAction
 
     protected bool _alreadyRan = false;
 
+    private const string alertParameterName = "Alert";
+
     public override void PerformAction()
     {
         if (OnlyRunOnce && !_alreadyRan)
         {
-            MMAnimatorExtensions.UpdateAnimatorBoolIfExists(animator, "Alert", true);
+            MMAnimatorExtensions.UpdateAnimatorBoolIfExists(animator, alertParameterName, true);
             _alreadyRan = true;
         }
     }
@@ -29,5 +31,14 @@ public class AIActionBecomeAlert : AIAction
     {
         base.OnEnterState();
         _alreadyRan = false;
+    }
+
+    /// <summary>
+    /// On exit state we exit alert animation state
+    /// </summary>
+    public override void OnExitState()
+    {
+        base.OnExitState();
+        MMAnimatorExtensions.UpdateAnimatorBoolIfExists(animator, alertParameterName, false);
     }
 }
