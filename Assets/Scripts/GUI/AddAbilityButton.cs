@@ -18,7 +18,7 @@ namespace MoreMountains.TopDownEngine
 	    public virtual void ShowAddScreenAction()
 	    {
             // Remove confirmButton until an ability is pressed
-            confirmButton.SetActive(false);
+            // confirmButton.SetActive(false);
             StartCoroutine(ShowAddScreenCo());
         }	
 

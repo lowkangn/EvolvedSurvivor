@@ -6,18 +6,25 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
 {
-    public class AddNewAbility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class AddNewAbility : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        public GameObject confirmButton;
         public GameObject text;
 
-        public virtual void AddAbility() {
-            // Prints the button that was clicked
-            // Debug.Log(this.gameObject.transform.parent.parent.name);
+        private GameObject abilitySlot;
+        private bool canAddAbilities;
 
-            // Set confirm button active
-            confirmButton.SetActive(true);
-        } 
+        void Start() {
+            canAddAbilities = false;
+
+            // Gets the first empty currentAbilities slot (Only can add to this)
+            for (int i = 1; i < 7; i++) {
+                abilitySlot = GameObject.Find("CurrentAbilities/Button" + i.ToString());
+                if (abilitySlot.transform.Find("Ability") == null) {
+                    canAddAbilities = true;
+                    break;
+                }
+            }
+        }
 
         //Detect if the Cursor starts to pass over the button
         public void OnPointerEnter(PointerEventData pointerEventData)
@@ -29,6 +36,16 @@ namespace MoreMountains.Tools
         public void OnPointerExit(PointerEventData pointerEventData)
         {
             text.GetComponent<Text>().text = "";
+        }
+
+        public void OnPointerClick(PointerEventData pointerEventData)
+        {
+            if (canAddAbilities) {
+                Transform ability = transform.Find("Ability");
+                abilitySlot.GetComponent<AddAbility>().AddAbilityToCurrent(ability);
+            } else {
+                text.GetComponent<Text>().text = "Current Abilities are full.";
+            }
         }
     }
 }
