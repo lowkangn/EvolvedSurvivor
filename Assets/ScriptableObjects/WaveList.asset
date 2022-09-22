@@ -19,10 +19,4 @@ MonoBehaviour:
         type: 3}
       count: 5
     removeFromEnemyPool: []
-  waves:
-  - timeDelayInSeconds: 10
-    addToEnemyPool:
-    - enemyObject: {fileID: 7639002971553439240, guid: 47d6d2bb35635004483439ba78668cfd,
-        type: 3}
-      count: 5
-    removeFromEnemyPool: []
+  waves: []
