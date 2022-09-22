@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &333614100760703564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7281349887063499830}
+  - component: {fileID: 9123175519311780728}
+  - component: {fileID: 6456022181978216503}
+  m_Layer: 13
+  m_Name: Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7281349887063499830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333614100760703564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7644420123034665450}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9123175519311780728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333614100760703564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  Owner: {fileID: 0}
+  TriggerFilter: 195
+  MinDamageCaused: 10
+  MaxDamageCaused: 20
+  TypedDamages: []
+  DamageCausedKnockbackType: 1
+  DamageCausedKnockbackDirection: 0
+  DamageCausedKnockbackForce: {x: 10, y: 10, z: 0}
+  InvincibilityDuration: 0.5
+  RepeatDamageOverTime: 0
+  AmountOfRepeats: 3
+  DurationBetweenRepeats: 1
+  DamageOverTimeInterruptible: 1
+  RepeatedDamageType: {fileID: 0}
+  DamageTakenEveryTime: 0
+  DamageTakenDamageable: 0
+  DamageTakenNonDamageable: 0
+  DamageTakenKnockbackType: 0
+  DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
+  DamageTakenInvincibilityDuration: 0.5
+  HitDamageableFeedback: {fileID: 0}
+  HitNonDamageableFeedback: {fileID: 0}
+  HitAnythingFeedback: {fileID: 0}
+  HitDamageableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HitNonDamageableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  HitAnythingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!58 &6456022181978216503
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333614100760703564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &7627577554204155481
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +319,7 @@ Transform:
   - {fileID: 7640585316212620760}
   - {fileID: 7599440865510819291}
   - {fileID: 716568376196000346}
+  - {fileID: 7281349887063499830}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,8 +336,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.625}
-  m_Size: {x: 0.9, y: 1.1}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.9, y: 0.9}
   m_Direction: 0
 --- !u!50 &3529223580954060387
 Rigidbody2D:
@@ -571,7 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   Radius: 5.5
-  DetectionOriginOffset: {x: 0, y: 0.625, z: 0}
+  DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -596,8 +693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 1.1
-  DetectionOriginOffset: {x: 0, y: 0.625, z: 0}
+  Radius: 1
+  DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -605,7 +702,7 @@ MonoBehaviour:
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 256
-  ObstaclesDetectionMode: 0
+  ObstaclesDetectionMode: 1
   CanTargetSelf: 0
   TargetCheckFrequency: 1
   OverlapMaximum: 10
@@ -640,6 +737,8 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   animator: {fileID: 7733979718309451076}
+  explosionDuration: 1
+  explosion: {fileID: 333614100760703564}
   OnlyRunOnce: 1
 --- !u!114 &7751781705664415068
 MonoBehaviour:
@@ -749,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7639620610091389554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.625, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -842,7 +941,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_Direction: 0
 --- !u!1 &7932186192500545181
 GameObject:

@@ -1,4 +1,5 @@
 using MoreMountains.Tools;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -7,22 +8,27 @@ using UnityEngine;
 [AddComponentMenu("Scripts/EnemyAI/Actions/AIActionExplode")]
 public class AIActionExplode : AIAction
 {
+    private const string explodeParameterName = "Explode";
+
     [SerializeField] private Animator animator;
-    [SerializeField] private float explosionDuration = 1f;
+    [SerializeField] private float explosionDuration = 1.0f;
+
+    [SerializeField] private GameObject explosion;
 
     public bool OnlyRunOnce = true;
 
     protected bool _alreadyRan = false;
-
-    private const string explodeParameterName = "Explode";
 
     public override void PerformAction()
     {
         if (OnlyRunOnce && !_alreadyRan)
         {
             MMAnimatorExtensions.UpdateAnimatorBoolIfExists(animator, explodeParameterName, true);
+
             _alreadyRan = true;
             _brain.BrainActive = false;
+
+            StartCoroutine("DamagePlayerIfClose");
             Invoke("DestroyObject", explosionDuration);
         }
     }
@@ -34,6 +40,17 @@ public class AIActionExplode : AIAction
     {
         base.OnEnterState();
         _alreadyRan = false;
+    }
+
+    private IEnumerator DamagePlayerIfClose()
+    {
+        yield return new WaitForSeconds(explosionDuration / 2);
+
+        explosion.SetActive(true);
+        
+        yield return new WaitForSeconds(0.1f);
+
+        explosion.SetActive(false);
     }
 
     private void DestroyObject()
