@@ -10,7 +10,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         protected bool isStatsSet = false;
 
-        protected IEnumerator kill()
+        protected IEnumerator KillCoroutine()
         {
             yield return new WaitForSecondsRealtime(0.1f);
             gameObject.SetActive(false);

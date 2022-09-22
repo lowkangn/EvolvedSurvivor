@@ -1,6 +1,5 @@
 using MoreMountains.TopDownEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -19,9 +18,31 @@ namespace TeamOne.EvolvedSurvivor
         public void ProcessIncomingDamage(Damage damage)
         {
             // TODO: Process damage reduction, force application, debuffs, etc
-
+            foreach (StatusEffect effect in damage.effects)
+            {
+                effect.Apply(gameObject, damage);
+            }
             // Reduce health
             health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
+        }
+
+        public void ApplyDamageOverTime(Damage damage, float duration, float tickRate)
+        {
+            int ticks = Mathf.FloorToInt(duration / tickRate);
+            damage.damage = damage.damage / ticks;
+            StartCoroutine(DamageOverTimeCoroutine(damage, ticks, tickRate));
+        }
+
+        IEnumerator DamageOverTimeCoroutine(Damage damage, int ticks, float tickRate)
+        {
+            int ticksRemaining = ticks;
+
+            while (ticksRemaining > 0)
+            {
+                health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
+                yield return new WaitForSeconds(tickRate);
+                ticksRemaining--;
+            }
         }
 
         /// <summary>
@@ -29,7 +50,7 @@ namespace TeamOne.EvolvedSurvivor
         /// </summary>
         /// <param name="damage">The base damage</param>
         /// <returns>The actual damage</returns>
-        public Damage ProcessOutGoingDamage(Damage damage)
+        public Damage ProcessOutgoingDamage(Damage damage)
         {
             // TODO: Process passive abilities such as Global Damage Up
 

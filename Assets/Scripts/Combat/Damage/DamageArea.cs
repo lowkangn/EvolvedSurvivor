@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -11,12 +12,13 @@ namespace TeamOne.EvolvedSurvivor
         public bool repeating = false;
         public float repeatingRate = 0.5f;
         
-        public delegate void DamageAreaEvent();
-        public DamageAreaEvent OnHit;
+        public UnityEvent OnHitEvent;
 
+        [SerializeField]
         private Collider2D damageCollider;
         private Damage damage;
         private float lastRepeatingTime;
+        private HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
 
         private void Start()
         {
@@ -33,6 +35,11 @@ namespace TeamOne.EvolvedSurvivor
             damageCollider.enabled = active;
         }
 
+        public void AddAlreadyHit(GameObject obj)
+        {
+            alreadyHit.Add(obj);
+        }
+
         private void Collide(Collider2D collision)
         {
             if (!targetTags.Contains(collision.tag))
@@ -40,10 +47,13 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            OnHit.Invoke();
+            OnHitEvent.Invoke();
 
-            DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
-            damageReceiver?.TakeDamage(damage);
+            if (!alreadyHit.Contains(collision.gameObject))
+            {
+                DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
+                damageReceiver?.TakeDamage(damage);
+            }
 
             if (disableOnHit)
             {
