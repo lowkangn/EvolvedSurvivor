@@ -5105,11 +5105,8 @@ GameObject:
   - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
-  - component: {fileID: 8279119929944044028}
-  - component: {fileID: -1247144168376652691}
-  - component: {fileID: 3267041766997053056}
-  - component: {fileID: 1843793258204799761}
-  - component: {fileID: 3854929952050393771}
+  - component: {fileID: 1829793730187617262}
+  - component: {fileID: 3894667998108833989}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -5452,7 +5449,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
   m_Name: 
@@ -5526,122 +5523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolableObject: {fileID: 3135418408013145896}
   despawnDistance: 35
---- !u!114 &8279119929944044028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d9bf1ac07f3659498e89157301c9746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LootMode: 2
-  GameObjectToLoot: {fileID: 0}
-  LootTable:
-    ObjectsToLoot: []
-    WeightsTotal: 0
-  LootTableSO: {fileID: 11400000, guid: c9a31e4b64f864748b8a7f01eb2bf2f8, type: 2}
-  SpawnLootOnDeath: 1
-  SpawnLootOnDamage: 0
-  PoolLoot: 0
-  PoolSize: 20
-  MutualizedPoolName: 
-  CanSpawn: 1
-  Delay: 0
-  Quantity: {x: 1, y: 1}
-  SpawnProperties:
-    Shape: 0
-    NormalToSpawnPlane: {x: 0, y: 0, z: 1}
-    MinimumSphereRadius: 0.1
-    MaximumSphereRadius: 0.5
-    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
-    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
-    MinimumNormalAxisOffset: 0
-    MaximumNormalAxisOffset: 0
-    UseNormalAxisOffsetCurve: 0
-    NormalOffsetCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    NormalOffsetCurveRemapZero: 0
-    NormalOffsetCurveRemapOne: 1
-    InvertNormalOffsetCurve: 0
-    MinimumRotation: {x: 0, y: 0, z: 0}
-    MaximumRotation: {x: 0, y: 0, z: 0}
-    MinimumScale: {x: 1, y: 1, z: 1}
-    MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumQuantity: 100
-  RemainingQuantity: 100
-  AvoidObstacles: 1
-  DimensionMode: 0
-  AvoidObstaclesLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  AvoidRadius: 0.5
-  MaxAvoidAttempts: 5
-  LootFeedback: {fileID: 0}
-  DrawGizmos: 0
-  GizmosQuantity: 1000
-  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
-  GimosSize: 1
-  SpawnLootButton: 0
---- !u!114 &-1247144168376652691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTags:
-  - Player
-  disableOnHit: 0
-  repeating: 1
-  repeatingRate: 1
-  OnHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3267041766997053056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invincibilityDurationAfterTakingDamage: 1
---- !u!114 &1843793258204799761
+--- !u!114 &1829793730187617262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5653,7 +5535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426a609012772bb45b2563884833949f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3854929952050393771
+--- !u!114 &3894667998108833989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5662,9 +5544,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7639002971553439240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e993a8a0c1e864c17b81bae8f5aa5ca1, type: 3}
+  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invincibilityDurationAfterTakingDamage: 0
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0
