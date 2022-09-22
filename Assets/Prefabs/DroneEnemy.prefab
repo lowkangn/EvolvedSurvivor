@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 3726143494263872085}
   - component: {fileID: 7751773710183483230}
   - component: {fileID: -5175038348024878791}
+  - component: {fileID: -6336170453095142254}
   - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
@@ -479,11 +480,13 @@ MonoBehaviour:
         TrueState: 
         FalseState: Detecting
       - Decision: {fileID: -5175038348024878791}
-        TrueState: 
+        TrueState: Alert
         FalseState: 
   - StateName: Alert
     Actions:
-      array: []
+      array:
+      - {fileID: -6336170453095142254}
+      - {fileID: 7751773710183483230}
     Transitions:
       array: []
   TimeInThisState: 0
@@ -553,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 1
+  Radius: 5
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
@@ -566,6 +569,22 @@ MonoBehaviour:
   CanTargetSelf: 0
   TargetCheckFrequency: 1
   OverlapMaximum: 10
+--- !u!114 &-6336170453095142254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e394af2ed79a0647b3774cd3620ab9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  animator: {fileID: 7733979718309451076}
+  OnlyRunOnce: 1
 --- !u!114 &7751781705664415068
 MonoBehaviour:
   m_ObjectHideFlags: 0

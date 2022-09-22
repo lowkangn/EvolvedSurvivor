@@ -15,8 +15,8 @@ MonoBehaviour:
   firstWave:
     timeDelayInSeconds: 0
     addToEnemyPool:
-    - enemyObject: {fileID: 7639002971553439240, guid: 960401c10892c0342835ac865fa9aa5e,
+    - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
         type: 3}
-      count: 5
+      count: 1
     removeFromEnemyPool: []
   waves: []
