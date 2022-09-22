@@ -5,45 +5,6 @@ using System.Linq;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public enum ElementType
-    {
-        Plasma = 0,
-        Cryo = 1,
-        Force = 2,
-        Infect = 3,
-        Pyro = 4
-    }
-
-    public class Element
-    {
-        public Dictionary<ElementType, int> elements;
-
-        public Element()
-        {
-            elements = new Dictionary<ElementType, int>()
-            {
-                { ElementType.Plasma, 0 },
-                { ElementType.Cryo, 0 },
-                { ElementType.Force, 0 },
-                { ElementType.Infect, 0 },
-                { ElementType.Pyro, 0 }
-            };
-        }
-
-        public int GetTotalLevel()
-        {
-            return elements.Sum(x => x.Value);
-        }
-
-        public void CombineWith(Element other)
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                elements[(ElementType)i] += other.elements[(ElementType)i];
-            }
-        }
-    }
-
     public abstract class Ability : MonoBehaviour
     {
         [Header("Whether this ability will be activated while it is active")]
@@ -56,12 +17,24 @@ namespace TeamOne.EvolvedSurvivor
         protected TraitChart traitChart;
         protected Element element;
         [SerializeField]
-        protected Damage projDamage;
+        protected Damage projDamage = new Damage();
         [SerializeField]
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
-        
+
+        [Header("Element Magnitudes")]
+        [SerializeField]
+        private float maxPlasmaMagnitude;
+        [SerializeField]
+        private float maxCryoMagnitude;
+        [SerializeField]
+        private float maxForceMagnitude;
+        [SerializeField]
+        private float maxInfectMagnitude;
+        [SerializeField]
+        private float maxPyroMagnitude;
+        protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
 
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
@@ -95,6 +68,14 @@ namespace TeamOne.EvolvedSurvivor
 
             // Build Ability Again
             Build();
+        }
+        private void Start()
+        {
+            elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
+            elementMagnitudes.Add(ElementType.Cryo, maxCryoMagnitude);
+            elementMagnitudes.Add(ElementType.Force, maxForceMagnitude);
+            elementMagnitudes.Add(ElementType.Infect, maxInfectMagnitude);
+            elementMagnitudes.Add(ElementType.Pyro, maxPyroMagnitude);
         }
 
         private void Update()

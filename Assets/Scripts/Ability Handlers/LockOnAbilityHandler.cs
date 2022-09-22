@@ -5,15 +5,31 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class LockOnAbilityHandler : AbilityHandler
     {
-        float timeOnScreen = 0.5f;
+        //private float timeOnScreen = 0.3f;
+        public ParticleSystem particles;
+        private float particleRadius = 0;
+
         private void OnEnable()
         {
+            
+            if (particleRadius > 0)
+            {
+                ParticleSystem.ShapeModule shape = particles.shape;
+                shape.radius = particleRadius;
+                GetComponent<DamageArea>().SetActive(true);
+                particles.Play();
+            }
             StartCoroutine(WaitAndKillCoroutine());
+        }
+
+        public void SetParticleRadius(float radius)
+        {
+            particleRadius = radius;
         }
 
         IEnumerator WaitAndKillCoroutine()
         {
-            yield return new WaitForSeconds(timeOnScreen);
+            yield return new WaitUntil(() => particles.isStopped); ;
             StartCoroutine(KillCoroutine());
         }
     }

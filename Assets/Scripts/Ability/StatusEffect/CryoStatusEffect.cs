@@ -9,16 +9,16 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private float duration;
 
-        public override void Build(int tier, float utilityRatio, float maxMagnitude)
+        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
         {
-
+            duration = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target)
+        public override void Apply(GameObject target, Damage damage)
         {
             target.GetComponent<Character>().Freeze();
             // TODO: Replace with new damageontouch script when avail
-            //target.GetComponent<DamageOnTouch>().enabled = false;
+            // target.GetComponent<DamageOnTouch>().enabled = false;
             StartCoroutine(FreezeFor(duration, target));
         }
 

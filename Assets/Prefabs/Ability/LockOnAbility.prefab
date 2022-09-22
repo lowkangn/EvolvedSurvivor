@@ -56,6 +56,11 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 1
+  maxPlasmaMagnitude: 1.5
+  maxCryoMagnitude: 1
+  maxForceMagnitude: 5
+  maxInfectMagnitude: 3
+  maxPyroMagnitude: 1.5
   objectPool: {fileID: 8988950983226355129}
   damage:
     minValue: 8

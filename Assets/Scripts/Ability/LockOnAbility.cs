@@ -42,9 +42,10 @@ namespace TeamOne.EvolvedSurvivor
         {
             GameObject nextProjectile = objectPool.GetPooledGameObject();
             nextProjectile.transform.parent = target.transform;
-            nextProjectile.transform.localPosition = new Vector3(0, 0.5f);
+            nextProjectile.transform.localPosition = Vector3.zero;
             nextProjectile.GetComponent<DamageArea>().SetDamage(projDamage);
             nextProjectile.GetComponent<CircleCollider2D>().radius = aoeRadius.value;
+            nextProjectile.GetComponent<LockOnAbilityHandler>().SetParticleRadius(aoeRadius.value);
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
             nextProjectile.GetComponent<DamageArea>().AddAlreadyHit(target);
             nextProjectile.SetActive(true);
@@ -65,10 +66,17 @@ namespace TeamOne.EvolvedSurvivor
             targetNumber.value = Mathf.FloorToInt((targetNumber.maxValue - targetNumber.minValue) * traitChart.QuantityRatio + targetNumber.minValue);
 
             // Utility
-
+            foreach (KeyValuePair<ElementType, int> el in element.elements)
+            {
+                if (el.Value > 0)
+                {
+                    projDamage.effects.Add(element.GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                }
+            }
 
             // Set up projDamage
             projDamage.damage = damage.value;
+            projDamage.instigator = gameObject;
         }
     }
 }

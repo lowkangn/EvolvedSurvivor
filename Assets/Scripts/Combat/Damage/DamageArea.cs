@@ -53,7 +53,6 @@ namespace TeamOne.EvolvedSurvivor
             {
                 DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
                 damageReceiver?.TakeDamage(damage);
-                alreadyHit.Add(collision.gameObject);
             }
 
             if (disableOnHit)

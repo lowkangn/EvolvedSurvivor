@@ -1,29 +1,19 @@
-using MoreMountains.TopDownEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public class PlasmaStatusEffect : StatusEffect
     {
+        private readonly float radius = 0.8f;
         [SerializeField]
-        private float radius = 0.8f;
-        private float damage;
         private float damageMultiplier;
 
-        public PlasmaStatusEffect(float damage)
+        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
         {
-            this.damage = damage;
+            damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Build(int tier, float utilityRatio, float maxMagnitude)
-        {
-            
-        }
-
-        public override void Apply(GameObject enemy)
+        public override void Apply(GameObject enemy, Damage damage)
         {
             Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(enemy.transform.position, radius, LayerMask.GetMask("Enemies"));
             if (enemiesInRadius.Length > 0)
@@ -44,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
                         }
                     }
                 }
-                nearest.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage * damageMultiplier, gameObject));
+                nearest.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage.damage * damageMultiplier, gameObject));
             }
         }
     }
