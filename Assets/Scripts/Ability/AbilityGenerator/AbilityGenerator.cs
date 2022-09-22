@@ -14,11 +14,11 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityManager abilityManager;
 
         // For Testing
-        /*private void Start()
+        private void Start()
         {
             Ability newAbility = GenerateAbility(1);
             abilityManager.AddAbility(newAbility);
-        }*/
+        }
 
         public Ability GenerateAbility(int tier)
         {
