@@ -18,8 +18,8 @@ namespace TeamOne.EvolvedSurvivor
 
         public override void Apply(GameObject target, Damage damage)
         {
-            damage.damage = damage.damage * damageMultiplier;
-            target.GetComponent<DamageHandler>().ApplyDamageOverTime(damage, duration, tickRate);
+            Damage dot = new Damage(damage.damage * damageMultiplier, damage.instigator);
+            target.GetComponent<DamageHandler>().ApplyDamageOverTime(dot, duration, tickRate);
         }
 
     }

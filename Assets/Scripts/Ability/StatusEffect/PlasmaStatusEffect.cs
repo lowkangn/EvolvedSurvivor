@@ -34,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
                         }
                     }
                 }
-                nearest.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage.damage * damageMultiplier, gameObject));
+                nearest?.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage.damage * damageMultiplier, gameObject));
             }
         }
     }
