@@ -19,7 +19,7 @@ namespace MoreMountains.Tools
             // Gets the first empty currentAbilities slot (Only can add to this)
             for (int i = 1; i < 7; i++) {
                 abilitySlot = GameObject.Find("CurrentAbilities/Button" + i.ToString());
-                if (abilitySlot.transform.Find("Ability") == null) {
+                if (FindChildWithTag(abilitySlot, "AbilitySprite") == null) {
                     canAddAbilities = true;
                     break;
                 }
@@ -41,11 +41,25 @@ namespace MoreMountains.Tools
         public void OnPointerClick(PointerEventData pointerEventData)
         {
             if (canAddAbilities) {
-                Transform ability = transform.Find("Ability");
+                GameObject ability = FindChildWithTag(this.gameObject, "AbilitySprite");
+                // Transform ability = transform.Find("Ability");
                 abilitySlot.GetComponent<AddAbility>().AddAbilityToCurrent(ability);
             } else {
                 text.GetComponent<Text>().text = "Current Abilities are full.";
             }
+        }
+
+        GameObject FindChildWithTag(GameObject parent, string tag) {
+            GameObject child = null;
+            
+            foreach(Transform transform in parent.transform) {
+                if(transform.CompareTag(tag)) {
+                    child = transform.gameObject;
+                    break;
+                }
+            }
+            
+            return child;
         }
     }
 }

@@ -16,7 +16,7 @@ public class ChooseAbility : MonoBehaviour, IPointerClickHandler
     
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        child = gameObject.transform.Find("Ability");
+        GameObject child = FindChildWithTag(this.gameObject, "AbilitySprite");
         if (child != null) {
             // Check for empty pri/sec slot
             PriSecSlotUI priSlotUI = priSlot.GetComponent<PriSecSlotUI>();
@@ -32,10 +32,24 @@ public class ChooseAbility : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void AddAbility(Transform ability) {
-        ability.SetParent(gameObject.transform);
-        RectTransform rectTransform = ability.GetComponent<RectTransform>();
+    public void AddAbility(GameObject ability) {
+        Transform abilityTransform = ability.transform;
+        abilityTransform.SetParent(gameObject.transform);
+        RectTransform rectTransform = abilityTransform.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.localScale = new Vector3(60, 60, 1);
     }
+
+    GameObject FindChildWithTag(GameObject parent, string tag) {
+        GameObject child = null;
+        
+        foreach(Transform transform in parent.transform) {
+            if(transform.CompareTag(tag)) {
+                child = transform.gameObject;
+                break;
+            }
+        }
+        
+        return child;
+    }  
 }
