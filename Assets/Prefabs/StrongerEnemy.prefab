@@ -5628,6 +5628,7 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  damageCollider: {fileID: 0}
 --- !u!114 &5189776141768763899
 MonoBehaviour:
   m_ObjectHideFlags: 0

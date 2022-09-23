@@ -33,7 +33,7 @@ namespace TeamOne.EvolvedSurvivor
         protected override void Activate()
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] onScreenEnemies = enemies.Where(x => IsOnScreen(x.transform)).ToArray();
+            GameObject[] onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToArray();
 
             if (onScreenEnemies.Length > 0)
             {
@@ -125,13 +125,6 @@ namespace TeamOne.EvolvedSurvivor
 
             ExplosiveProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<ExplosiveProjectileAbilityHandler>();
             handler.SetStats(damage, aoeRadius, colliderSize, projectileSpeed, direction);
-        }
-
-        private bool IsOnScreen(Transform enemy)
-        {
-            Camera mainCamera = Camera.main;
-            Vector3 screenPoint = mainCamera.WorldToViewportPoint(enemy.transform.position);
-            return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
         }
     }
 }
