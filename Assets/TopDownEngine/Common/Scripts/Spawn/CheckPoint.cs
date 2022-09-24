@@ -5,32 +5,32 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// An event to trigger when a checkpoint is reached
-    /// </summary>
-    public struct CheckPointEvent
-    {
-        public int Order;
-        public CheckPointEvent(int order)
-        {
-            Order = order;
-        }
+	/// <summary>
+	/// An event to trigger when a checkpoint is reached
+	/// </summary>
+	public struct CheckPointEvent
+	{
+		public int Order;
+		public CheckPointEvent(int order)
+		{
+			Order = order;
+		}
 
-        static CheckPointEvent e;
-        public static void Trigger(int order)
-        {
-            e.Order = order;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static CheckPointEvent e;
+		public static void Trigger(int order)
+		{
+			e.Order = order;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 
-    /// <summary>
-    /// Checkpoint class. Will make the player respawn at this point if it dies.
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Spawn/Checkpoint")]
+	/// <summary>
+	/// Checkpoint class. Will make the player respawn at this point if it dies.
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Spawn/Checkpoint")]
 	public class CheckPoint : MonoBehaviour 
 	{
-        [Header("Spawn")]
+		[Header("Spawn")]
 		[MMInformation("Add this script to a (preferrably empty) GameObject and it'll be added to the level's checkpoint list, allowing you to respawn from there. If you bind it to the LevelManager's starting point, that's where your character will spawn at the start of the level. And here you can decide whether the character should spawn facing left or right.",MMInformationAttribute.InformationType.Info,false)]
 		/// the facing direction the character should face when spawning from this checkpoint
 		[Tooltip("the facing direction the character should face when spawning from this checkpoint")]
@@ -42,12 +42,12 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the order of the checkpoint")]
 		public int CheckPointOrder;
         
-	    protected List<Respawnable> _listeners;
+		protected List<Respawnable> _listeners;
 
-	    /// <summary>
-	    /// Initializes the list of listeners
-	    /// </summary>
-	    protected virtual void Awake () 
+		/// <summary>
+		/// Initializes the list of listeners
+		/// </summary>
+		protected virtual void Awake () 
 		{
 			_listeners = new List<Respawnable>();
 		}
@@ -66,10 +66,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 		
-        /// <summary>
-        /// Assigns the Respawnable to this checkpoint
-        /// </summary>
-        /// <param name="listener"></param>
+		/// <summary>
+		/// Assigns the Respawnable to this checkpoint
+		/// </summary>
+		/// <param name="listener"></param>
 		public virtual void AssignObjectToCheckPoint (Respawnable listener) 
 		{
 			_listeners.Add(listener);
@@ -81,29 +81,29 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="collider">Something colliding with the water.</param>
 		protected virtual void OnTriggerEnter2D(Collider2D collider)
 		{
-            TriggerEnter(collider.gameObject);            
-        }
+			TriggerEnter(collider.gameObject);            
+		}
 
-        protected virtual void OnTriggerEnter(Collider collider)
-        {
-            TriggerEnter(collider.gameObject);
-        }
+		protected virtual void OnTriggerEnter(Collider collider)
+		{
+			TriggerEnter(collider.gameObject);
+		}
 
-        protected virtual void TriggerEnter(GameObject collider)
-        {
-            Character character = collider.GetComponent<Character>();
+		protected virtual void TriggerEnter(GameObject collider)
+		{
+			Character character = collider.GetComponent<Character>();
 
-            if (character == null) { return; }
-            if (character.CharacterType != Character.CharacterTypes.Player) { return; }
-            if (!LevelManager.HasInstance) { return; }
-            LevelManager.Instance.SetCurrentCheckpoint(this);
-            CheckPointEvent.Trigger(CheckPointOrder);
-        }
+			if (character == null) { return; }
+			if (character.CharacterType != Character.CharacterTypes.Player) { return; }
+			if (!LevelManager.HasInstance) { return; }
+			LevelManager.Instance.SetCurrentCheckpoint(this);
+			CheckPointEvent.Trigger(CheckPointOrder);
+		}
 
-        /// <summary>
-        /// On DrawGizmos, we draw lines to show the path the object will follow
-        /// </summary>
-        protected virtual void OnDrawGizmos()
+		/// <summary>
+		/// On DrawGizmos, we draw lines to show the path the object will follow
+		/// </summary>
+		protected virtual void OnDrawGizmos()
 		{	
 			#if UNITY_EDITOR
 

@@ -17,8 +17,8 @@ namespace MoreMountains.TopDownEngine
     public class InputSystemManagerEventsBased : InputManager
     {   
         public void OnJump(InputAction.CallbackContext context) { BindButton(context, JumpButton); }
-        public void OnPrimaryMovement(InputAction.CallbackContext context) { _primaryMovement = context.ReadValue<Vector2>();  }
-        public void OnSecondaryMovement(InputAction.CallbackContext context) { _secondaryMovement = context.ReadValue<Vector2>(); }
+        public void OnPrimaryMovement(InputAction.CallbackContext context) { _primaryMovement = ApplyCameraRotation(context.ReadValue<Vector2>());  }
+        public void OnSecondaryMovement(InputAction.CallbackContext context) { _secondaryMovement = ApplyCameraRotation(context.ReadValue<Vector2>()); }
         public void OnRun(InputAction.CallbackContext context) { BindButton(context, RunButton); }
         public void OnDash(InputAction.CallbackContext context) { BindButton(context, DashButton); }
         public void OnCrouch(InputAction.CallbackContext context) { BindButton(context, CrouchButton); }
@@ -71,6 +71,11 @@ namespace MoreMountains.TopDownEngine
         public override void SetSecondaryMovement()
         {
             //do nothing
+        }
+        
+        protected override void SetCameraRotationAxis()
+        {
+            // do nothing
         }
 
         protected override void SetShootAxis()

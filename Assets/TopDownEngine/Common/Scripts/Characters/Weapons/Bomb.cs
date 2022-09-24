@@ -4,13 +4,13 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Weapons/Bomb")]
-    public class Bomb : MonoBehaviour 
+	/// <summary>
+	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Weapons/Bomb")]
+	public class Bomb : MonoBehaviour 
 	{
-        /// the shape of the bomb's damage area
+		/// the shape of the bomb's damage area
 		public enum DamageAreaShapes { Rectangle, Circle }
 
 		[Header("Explosion")]
@@ -52,17 +52,17 @@ namespace MoreMountains.TopDownEngine
 		protected Color _flickerColor = new Color32(255, 20, 20, 255);
 		protected MaterialPropertyBlock _propertyBlock;
 		
-        /// <summary>
-        /// On enable, we initialize our bomb
-        /// </summary>
+		/// <summary>
+		/// On enable, we initialize our bomb
+		/// </summary>
 		protected virtual void OnEnable()
 		{
 			Initialization ();
 		}
 
-        /// <summary>
-        /// Initializes the bomb
-        /// </summary>
+		/// <summary>
+		/// Initializes the bomb
+		/// </summary>
 		protected virtual void Initialization()
 		{
 			if (DamageAreaCollider == null)
@@ -94,9 +94,9 @@ namespace MoreMountains.TopDownEngine
 			_damageAreaActive = false;
 		}
 
-        /// <summary>
-        /// On update, makes our bomb flicker, activates the damage area and destroys the bomb if needed
-        /// </summary>
+		/// <summary>
+		/// On update, makes our bomb flicker, activates the damage area and destroys the bomb if needed
+		/// </summary>
 		protected virtual void Update()
 		{
 			_timeSinceStart += Time.deltaTime;
@@ -129,9 +129,9 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// Destroys the bomb
-        /// </summary>
+		/// <summary>
+		/// Destroys the bomb
+		/// </summary>
 		protected virtual void DestroyBomb()
 		{
 			_renderer.enabled = true;
@@ -149,9 +149,9 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-        /// <summary>
-        /// Instantiates a VFX at the bomb's position
-        /// </summary>
+		/// <summary>
+		/// Instantiates a VFX at the bomb's position
+		/// </summary>
 		protected virtual void InstantiateExplosionEffect()
 		{
 			// instantiates the destroy effect
@@ -162,9 +162,9 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// Plays a sound on explosion
-        /// </summary>
+		/// <summary>
+		/// Plays a sound on explosion
+		/// </summary>
 		protected virtual void PlayExplosionSound()
 		{
 			if (ExplosionSfx!=null)

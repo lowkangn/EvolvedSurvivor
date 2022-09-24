@@ -5952,7 +5952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCooldown: 1
-  objectPool: {fileID: 0}
+  objectPool: {fileID: 1528563546983632212}
   isLockOn: 0
   isValidAbility: 1
 --- !u!1 &7332492725362169047

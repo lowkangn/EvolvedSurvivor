@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// A class that combines a progress bar and a text display
-    /// and that can be used to display the current ammo level of a weapon
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/GUI/AmmoDisplay")]
-    public class AmmoDisplay : MMProgressBar 
+	/// <summary>
+	/// A class that combines a progress bar and a text display
+	/// and that can be used to display the current ammo level of a weapon
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/GUI/AmmoDisplay")]
+	public class AmmoDisplay : MMProgressBar 
 	{
 		/// the ID of the AmmoDisplay 
 		[Tooltip("the ID of the AmmoDisplay ")]

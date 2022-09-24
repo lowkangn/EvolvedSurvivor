@@ -18,7 +18,7 @@ namespace MoreMountains.TopDownEngine
 		public int HandleWeaponID = 1;
 
 
-        protected CharacterHandleWeapon _characterHandleWeapon;
+		protected CharacterHandleWeapon _characterHandleWeapon;
 
 
 		/// <summary>

@@ -2,10 +2,14 @@
     "name": "MoreMountains.TopDownEngine",
     "references": [
         "GUID:4a1cb1490dc4df8409b2580d6b44e75e",
-        "GUID:dad624460036b51448e1b1849358a96a",
+        "GUID:8087d854c1f812e4b9a74437dfc524e0",
         "GUID:8a258d69670d9a54d943dd0e57ffea8a",
         "GUID:8f27f7a0f8da9854cb7c86f15d58fe82",
-        "GUID:f8c8b3c2341ca9d41a84e23d5e80af4a"
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:d60799ab2a985554ea1a39cd38695018",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:ba880a3c55a41254a91d85dd28666dda",
+        "GUID:1dbcca72f42070548a895178556c5bc3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -13,12 +17,23 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "MOREMOUNTAINS_TOOLS",
-        "MOREMOUNTAINS_FEEDBACKS",
-        "MOREMOUNTAINS_INVENTORYENGINE",
-        "MOREMOUNTAINS_INTERFACE"
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0.0",
+            "define": "MM_INPUTSYSTEM"
+        },
+        {
+            "name": "com.unity.cinemachine",
+            "expression": "1.0.0",
+            "define": "MM_CINEMACHINE"
+        },
+        {
+            "name": "com.unity.postprocessing",
+            "expression": "1.0.0",
+            "define": "MM_POSTPROCESSING"
+        }
     ],
-    "versionDefines": [],
     "noEngineReferences": false
 }

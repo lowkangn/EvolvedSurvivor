@@ -26,7 +26,7 @@ namespace MoreMountains.Tools
 			if (HealthBarTarget.HealthBarType == MMHealthBar.HealthBarTypes.Prefab)
 			{
 				Editor.DrawPropertiesExcluding(serializedObject, new string[] {"Size","BackgroundPadding", "SortingLayerName", "InitialRotationAngles", "ForegroundColor", "DelayedColor", "BorderColor", "BackgroundColor", "Delay", "LerpFrontBar", "LerpFrontBarSpeed", "LerpDelayedBar", "LerpDelayedBarSpeed", "BumpScaleOnChange", "BumpDuration", "BumpAnimationCurve" });
-            }
+			}
 
 			if (HealthBarTarget.HealthBarType == MMHealthBar.HealthBarTypes.Drawn)
 			{

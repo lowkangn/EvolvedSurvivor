@@ -11,8 +11,8 @@ namespace MoreMountains.TopDownEngine
 	public class FinishLevel : ButtonActivated
 	{
 		[Header("Finish Level")]
-        /// the exact name of the level to transition to 
-        [Tooltip("the exact name of the level to transition to ")]
+		/// the exact name of the level to transition to 
+		[Tooltip("the exact name of the level to transition to ")]
 		public string LevelName;
 
 		/// <summary>
@@ -31,16 +31,16 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Loads the next level
 		/// </summary>
-	    public virtual void GoToNextLevel()
-	    {
-	    	if (LevelManager.HasInstance)
-	    	{
+		public virtual void GoToNextLevel()
+		{
+			if (LevelManager.HasInstance)
+			{
 				LevelManager.Instance.GotoLevel(LevelName);
-	    	}
-	    	else
-	    	{
-		        MMSceneLoadingManager.LoadScene(LevelName);
 			}
-	    }
+			else
+			{
+				MMSceneLoadingManager.LoadScene(LevelName);
+			}
+		}
 	}
 }

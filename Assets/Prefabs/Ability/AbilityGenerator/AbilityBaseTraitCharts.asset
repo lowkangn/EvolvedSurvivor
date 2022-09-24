@@ -18,6 +18,46 @@ MonoBehaviour:
     traitChart:
       damage: 3
       uptime: 5
-      aoe: 0
+      aoe: 4
       quantity: 2
       utility: 1
+  - ability: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
+      type: 3}
+    traitChart:
+      damage: 4
+      uptime: 3
+      aoe: 1
+      quantity: 5
+      utility: 2
+  - ability: {fileID: 2642282004900592126, guid: b9ace2defa25dc2459fc9902a9a1652f,
+      type: 3}
+    traitChart:
+      damage: 5
+      uptime: 2
+      aoe: 4
+      quantity: 1
+      utility: 3
+  - ability: {fileID: 1970516297173918025, guid: c7a1a74fabda05b41a459255ba26124f,
+      type: 3}
+    traitChart:
+      damage: 1
+      uptime: 3
+      aoe: 5
+      quantity: 2
+      utility: 4
+  - ability: {fileID: -5987010200417845135, guid: 67bd8155ad6f8564c953e9ee6b20c83e,
+      type: 3}
+    traitChart:
+      damage: 1
+      uptime: 4
+      aoe: 1
+      quantity: 4
+      utility: 5
+  - ability: {fileID: 7623764801203598919, guid: 2f740adb53893b04a88f1a0b1a7f9516,
+      type: 3}
+    traitChart:
+      damage: 4
+      uptime: 1
+      aoe: 3
+      quantity: 4
+      utility: 3

@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2943148802276990048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3579630373086814210}
+  - component: {fileID: 2718351011253688110}
+  - component: {fileID: 8988950983226355129}
+  m_Layer: 0
+  m_Name: LockOnAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3579630373086814210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2718351011253688110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnlyOnce: 0
+  coolDown:
+    minValue: 0.5
+    maxValue: 4
+    value: 0
+  projDamage:
+    damage: 0
+    instigator: {fileID: 2943148802276990048}
+    direction: {x: 0, y: 0, z: 0}
+    effects: []
+  hasBuilt: 1
+  maxPlasmaMagnitude: 1.5
+  maxCryoMagnitude: 1
+  maxForceMagnitude: 5
+  maxInfectMagnitude: 3
+  maxPyroMagnitude: 1.5
+  objectPool: {fileID: 8988950983226355129}
+  damage:
+    minValue: 8
+    maxValue: 80
+    value: 8
+  aoeRadius:
+    minValue: 0
+    maxValue: 2.5
+    value: 1
+  targetNumber:
+    minValue: 1
+    maxValue: 6
+    value: 1
+--- !u!114 &8988950983226355129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 8937330420288252024, guid: b19449a05dbabbc42a262c3604f22ecc,
+    type: 3}
+  PoolSize: 8
+  PoolCanExpand: 1

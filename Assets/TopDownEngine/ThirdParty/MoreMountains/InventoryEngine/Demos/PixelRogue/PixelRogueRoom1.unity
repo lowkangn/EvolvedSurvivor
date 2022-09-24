@@ -294,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21293878, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21226608, guid: 8e3b87501a6ef0246a7a5e8e2dc5e4f9, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3b87501a6ef0246a7a5e8e2dc5e4f9, type: 3}
@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21293878, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
@@ -1571,7 +1571,7 @@ PrefabInstance:
     - target: {fileID: 224878282277031776, guid: 21bbf2e974b14e2468230a1da74b7a63,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.999878
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 224878282277031776, guid: 21bbf2e974b14e2468230a1da74b7a63,
         type: 3}
@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21287504, guid: 34ef20a1c78365e4d90691ae5ce029a8, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34ef20a1c78365e4d90691ae5ce029a8, type: 3}
@@ -1863,13 +1863,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d1c3722a3a0749afb21ea8728d132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawContentInInspector: 1
+  PlayerID: Player1
   Content:
   - {fileID: 0}
   InventoryType: 1
   TargetTransform: {fileID: 513236672}
   Persistent: 1
   ResetThisInventorySaveOnStart: 0
+  DrawContentInInspector: 1
 --- !u!4 &798296816
 Transform:
   m_ObjectHideFlags: 0
@@ -1913,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d1c3722a3a0749afb21ea8728d132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawContentInInspector: 1
+  PlayerID: Player1
   Content:
   - {fileID: 0}
   - {fileID: 0}
@@ -1943,6 +1944,7 @@ MonoBehaviour:
   TargetTransform: {fileID: 513236672}
   Persistent: 1
   ResetThisInventorySaveOnStart: 0
+  DrawContentInInspector: 1
 --- !u!4 &801302917
 Transform:
   m_ObjectHideFlags: 0
@@ -1986,13 +1988,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d1c3722a3a0749afb21ea8728d132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawContentInInspector: 1
+  PlayerID: Player1
   Content:
   - {fileID: 0}
   InventoryType: 1
   TargetTransform: {fileID: 513236672}
   Persistent: 1
   ResetThisInventorySaveOnStart: 0
+  DrawContentInInspector: 1
 --- !u!4 &841542542
 Transform:
   m_ObjectHideFlags: 0
@@ -2109,7 +2112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21235474, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
@@ -2158,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21286302, guid: 0f6882b0de0be6743861da4384873383, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6882b0de0be6743861da4384873383, type: 3}
@@ -2207,7 +2210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21271502, guid: 75ead9d9c4f35e348b491055d205f968, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ead9d9c4f35e348b491055d205f968, type: 3}
@@ -2304,6 +2307,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DemoCharacter: {fileID: 360718979}
+  LeftKey: 276
+  LeftKeyAlt: 0
+  RightKey: 275
+  RightKeyAlt: 0
+  DownKey: 274
+  DownKeyAlt: 0
+  UpKey: 273
+  UpKeyAlt: 0
+  VerticalAxisName: Vertical
 --- !u!4 &1011127303
 Transform:
   m_ObjectHideFlags: 0
@@ -2441,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpdateInterval: 0.3
+  Mode: 0
 --- !u!1 &1380803658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,7 +2483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286d1c3722a3a0749afb21ea8728d132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawContentInInspector: 1
+  PlayerID: Player1
   Content:
   - {fileID: 0}
   - {fileID: 0}
@@ -2479,6 +2492,7 @@ MonoBehaviour:
   TargetTransform: {fileID: 513236672}
   Persistent: 1
   ResetThisInventorySaveOnStart: 0
+  DrawContentInInspector: 1
 --- !u!4 &1380803660
 Transform:
   m_ObjectHideFlags: 0
@@ -2550,7 +2564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21224222, guid: 91029e093b01d0246b933ad8e3fe3ce1, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91029e093b01d0246b933ad8e3fe3ce1, type: 3}
@@ -2662,7 +2676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21293878, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
@@ -2719,7 +2733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21235474, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
@@ -2778,7 +2792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21293878, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c4c98e1efab2c469628f8660223920, type: 3}
@@ -2878,7 +2892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21235474, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
@@ -3081,7 +3095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21235474, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}

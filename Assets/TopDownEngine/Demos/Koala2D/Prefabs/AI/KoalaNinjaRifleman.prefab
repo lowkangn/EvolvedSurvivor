@@ -5589,7 +5589,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ObstaclesDetectionDistance: 1
-  ObstaclesCheckFrequency: 1
+  ObstaclesCheckFrequency: 0
   MinimumRandomDirection: {x: -1, y: -1}
   MaximumRandomDirection: {x: 1, y: 1}
 --- !u!1 &2325619290637431437

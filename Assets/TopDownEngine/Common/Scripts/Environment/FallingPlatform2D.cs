@@ -4,15 +4,15 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// Add this script to a platform and it'll fall down when walked upon by a playable character
-    /// Add an AutoRespawn component to your platform and it'll get reset when your character dies
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Environment/Falling Platform 2D")]
-    public class FallingPlatform2D : MonoBehaviour 
+	/// <summary>
+	/// Add this script to a platform and it'll fall down when walked upon by a playable character
+	/// Add an AutoRespawn component to your platform and it'll get reset when your character dies
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Environment/Falling Platform 2D")]
+	public class FallingPlatform2D : MonoBehaviour 
 	{
-        /// the possible states for the falling platform
-        public enum FallingPlatformStates { Idle, Shaking, Falling, ColliderOff }
+		/// the possible states for the falling platform
+		public enum FallingPlatformStates { Idle, Shaking, Falling, ColliderOff }
 
 		/// the current state of the falling platform
 		[MMReadOnly]
@@ -36,7 +36,7 @@ namespace MoreMountains.TopDownEngine
 		protected Collider2D _collider;
 		protected Vector3 _initialPosition;
 		protected float _timeLeftBeforeFall;
-        protected float _fallStartedAt;
+		protected float _fallStartedAt;
 		protected bool _contact = false;
 
 		/// <summary>
@@ -52,16 +52,16 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Initialization()
 		{
-            // we get the animator
-            State = FallingPlatformStates.Idle;
-            _animator = GetComponent<Animator>();
+			// we get the animator
+			State = FallingPlatformStates.Idle;
+			_animator = GetComponent<Animator>();
 			_collider = GetComponent<Collider2D> ();
-            _collider.enabled = true;
-            _bounds =LevelManager.Instance.LevelBounds;
+			_collider.enabled = true;
+			_bounds =LevelManager.Instance.LevelBounds;
 			_initialPosition = this.transform.position;
 			_timeLeftBeforeFall = TimeBeforeFall;
 
-        }
+		}
 
 		/// <summary>
 		/// This is called every frame.
@@ -78,20 +78,20 @@ namespace MoreMountains.TopDownEngine
 
 			if (_timeLeftBeforeFall < 0)
 			{
-                if (State != FallingPlatformStates.Falling)
-                {
-                    _fallStartedAt = Time.time;
-                }
-                State = FallingPlatformStates.Falling;
+				if (State != FallingPlatformStates.Falling)
+				{
+					_fallStartedAt = Time.time;
+				}
+				State = FallingPlatformStates.Falling;
 			}
 
-            if (State == FallingPlatformStates.Falling)
-            {
-                if (Time.time - _fallStartedAt >= DelayBetweenFallAndColliderOff)
-                {
-                    _collider.enabled = false;
-                }
-            }            
+			if (State == FallingPlatformStates.Falling)
+			{
+				if (Time.time - _fallStartedAt >= DelayBetweenFallAndColliderOff)
+				{
+					_collider.enabled = false;
+				}
+			}            
 		}
 
 		/// <summary>
@@ -102,8 +102,8 @@ namespace MoreMountains.TopDownEngine
 			this.gameObject.SetActive (false);					
 			this.transform.position = _initialPosition;		
 			_timeLeftBeforeFall = TimeBeforeFall;
-            State = FallingPlatformStates.Idle;
-        }
+			State = FallingPlatformStates.Idle;
+		}
 
 		/// <summary>
 		/// Updates the block's animator.
@@ -111,18 +111,18 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void UpdateAnimator()
 		{				
 			if (_animator!=null)
-            {
-                MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Idle", (State == FallingPlatformStates.Idle));
-                MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Shaking", (State == FallingPlatformStates.Shaking));
-                MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Falling", (State == FallingPlatformStates.Falling));
-            }
+			{
+				MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Idle", (State == FallingPlatformStates.Idle));
+				MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Shaking", (State == FallingPlatformStates.Shaking));
+				MMAnimatorExtensions.UpdateAnimatorBool(_animator, "Falling", (State == FallingPlatformStates.Falling));
+			}
 		}
 
-        /// <summary>
-        /// Triggered when a TopDownController touches the platform
-        /// </summary>
-        /// <param name="controller">The TopDown controller that collides with the platform.</param>		
-        public virtual void OnTriggerStay2D(Collider2D collider)
+		/// <summary>
+		/// Triggered when a TopDownController touches the platform
+		/// </summary>
+		/// <param name="controller">The TopDown controller that collides with the platform.</param>		
+		public virtual void OnTriggerStay2D(Collider2D collider)
 		{
 			TopDownController2D controller = collider.gameObject.MMGetComponentNoAlloc<TopDownController2D>();
 			if (controller == null)
@@ -130,30 +130,30 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 
-            if (State == FallingPlatformStates.Falling)
-            {
-                return;
-            }
+			if (State == FallingPlatformStates.Falling)
+			{
+				return;
+			}
 
 			if (TimeBeforeFall>0)
 			{
 				_contact = true;
-                State = FallingPlatformStates.Shaking;
+				State = FallingPlatformStates.Shaking;
 			}	
 			else
 			{
 				if (!InevitableFall)
 				{
 					_contact = false;
-                    State = FallingPlatformStates.Idle;
-                }
+					State = FallingPlatformStates.Idle;
+				}
 			}
 		}
-        /// <summary>
-        /// Triggered when a TopDownController exits the platform
-        /// </summary>
-        /// <param name="controller">The TopDown controller that collides with the platform.</param>
-        protected virtual void OnTriggerExit2D(Collider2D collider)
+		/// <summary>
+		/// Triggered when a TopDownController exits the platform
+		/// </summary>
+		/// <param name="controller">The TopDown controller that collides with the platform.</param>
+		protected virtual void OnTriggerExit2D(Collider2D collider)
 		{
 			if (InevitableFall)
 			{
@@ -166,20 +166,20 @@ namespace MoreMountains.TopDownEngine
 
 			_contact = false;
 			if (State == FallingPlatformStates.Shaking)
-            {
-                State = FallingPlatformStates.Idle;
-            }
+			{
+				State = FallingPlatformStates.Idle;
+			}
 		}
 
-        /// <summary>
-        /// On Revive, we restore this platform's state
-        /// </summary>
+		/// <summary>
+		/// On Revive, we restore this platform's state
+		/// </summary>
 		protected virtual void OnRevive()
 		{
 			this.transform.position = _initialPosition;		
 			_timeLeftBeforeFall = TimeBeforeFall;
-            State = FallingPlatformStates.Idle;
+			State = FallingPlatformStates.Idle;
 
-        }
+		}
 	}
 }

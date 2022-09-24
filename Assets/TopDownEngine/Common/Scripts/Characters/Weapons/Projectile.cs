@@ -5,9 +5,9 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {	
-    /// <summary>
-    /// Projectile class to be used along with projectile weapons
-    /// </summary>
+	/// <summary>
+	/// Projectile class to be used along with projectile weapons
+	/// </summary>
 	[AddComponentMenu("TopDown Engine/Weapons/Projectile")]
 	public class Projectile : MMPoolableObject  
 	{
@@ -27,7 +27,7 @@ namespace MoreMountains.TopDownEngine
 
 		/// the speed of the object (relative to the level's speed)
 		[Tooltip("the speed of the object (relative to the level's speed)")]
-		public float Speed=0;
+		public float Speed = 0;
 		/// the acceleration of the object over time. Starts accelerating on enable.
 		[Tooltip("the acceleration of the object over time. Starts accelerating on enable.")]
 		public float Acceleration = 0;
@@ -40,8 +40,8 @@ namespace MoreMountains.TopDownEngine
 		/// the flip factor to apply if and when the projectile is mirrored
 		[Tooltip("the flip factor to apply if and when the projectile is mirrored")]
 		public Vector3 FlipValue = new Vector3(-1,1,1);
-        /// the flip factor to apply if and when the projectile is mirrored
-        [Tooltip("the flip factor to apply if and when the projectile is mirrored")]
+		/// the flip factor to apply if and when the projectile is mirrored
+		[Tooltip("the flip factor to apply if and when the projectile is mirrored")]
 		public bool ProjectileIsFacingRight = true;
 
 		[Header("Spawn")]
@@ -53,10 +53,11 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("should the projectile damage its owner?")]
 		public bool DamageOwner = false;
 
-        /// Returns the associated damage on touch zone
-        public DamageOnTouch TargetDamageOnTouch { get { return _damageOnTouch; } }
+		/// Returns the associated damage on touch zone
+		public DamageOnTouch TargetDamageOnTouch { get { return _damageOnTouch; } }
+		public Weapon SourceWeapon { get { return _weapon; } }
 
-        protected Weapon _weapon;
+		protected Weapon _weapon;
 		protected GameObject _owner;
 		protected Vector3 _movement;
 		protected float _initialSpeed;
@@ -64,7 +65,7 @@ namespace MoreMountains.TopDownEngine
 		protected DamageOnTouch _damageOnTouch;
 		protected WaitForSeconds _initialInvulnerabilityDurationWFS;
 		protected Collider _collider;
-        protected Collider2D _collider2D;
+		protected Collider2D _collider2D;
 		protected Rigidbody _rigidBody;
 		protected Rigidbody2D _rigidBody2D;
 		protected bool _facingRightInitially;
@@ -72,18 +73,18 @@ namespace MoreMountains.TopDownEngine
 		protected Vector3 _initialLocalScale;
 		protected bool _shouldMove = true;
 		protected Health _health;
-        protected bool _spawnerIsFacingRight;
+		protected bool _spawnerIsFacingRight;
 
-        /// <summary>
-        /// On awake, we store the initial speed of the object 
-        /// </summary>
-        protected virtual void Awake ()
+		/// <summary>
+		/// On awake, we store the initial speed of the object 
+		/// </summary>
+		protected virtual void Awake ()
 		{
 			_facingRightInitially = ProjectileIsFacingRight;
 			_initialSpeed = Speed;
 			_health = GetComponent<Health> ();
 			_collider = GetComponent<Collider> ();
-            _collider2D = GetComponent<Collider2D>();
+			_collider2D = GetComponent<Collider2D>();
 			_spriteRenderer = GetComponent<SpriteRenderer> ();
 			_damageOnTouch = GetComponent<DamageOnTouch>();
 			_rigidBody = GetComponent<Rigidbody> ();
@@ -102,8 +103,8 @@ namespace MoreMountains.TopDownEngine
 			if (_damageOnTouch == null) { yield break; }
 			if (_weapon == null) { yield break; }
 
-            _damageOnTouch.ClearIgnoreList();
-            _damageOnTouch.IgnoreGameObject(_weapon.Owner.gameObject);
+			_damageOnTouch.ClearIgnoreList();
+			_damageOnTouch.IgnoreGameObject(_weapon.Owner.gameObject);
 			yield return _initialInvulnerabilityDurationWFS;
 			if (DamageOwner)
 			{
@@ -121,22 +122,22 @@ namespace MoreMountains.TopDownEngine
 			if (_spriteRenderer != null) {	_spriteRenderer.flipX = _initialFlipX;	}
 			transform.localScale = _initialLocalScale;	
 			_shouldMove = true;
-            _damageOnTouch?.InitializeFeedbacks();
+			_damageOnTouch?.InitializeFeedbacks();
 
-            if (_collider != null)
-            {
-                _collider.enabled = true;
-            }
-            if (_collider2D != null)
-            {
-                _collider2D.enabled = true;
-            }
+			if (_collider != null)
+			{
+				_collider.enabled = true;
+			}
+			if (_collider2D != null)
+			{
+				_collider2D.enabled = true;
+			}
 		}
 
-        /// <summary>
-        /// On update(), we move the object based on the level's speed and the object's speed, and apply acceleration
-        /// </summary>
-        protected virtual void FixedUpdate ()
+		/// <summary>
+		/// On update(), we move the object based on the level's speed and the object's speed, and apply acceleration
+		/// </summary>
+		protected virtual void FixedUpdate ()
 		{
 			base.Update ();
 			if (_shouldMove)
@@ -172,9 +173,9 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="spawnerIsFacingRight">If set to <c>true</c> spawner is facing right.</param>
 		public virtual void SetDirection(Vector3 newDirection, Quaternion newRotation, bool spawnerIsFacingRight = true)
 		{
-            _spawnerIsFacingRight = spawnerIsFacingRight;
+			_spawnerIsFacingRight = spawnerIsFacingRight;
 
-            if (DirectionCanBeChangedBySpawner)
+			if (DirectionCanBeChangedBySpawner)
 			{
 				Direction = newDirection;
 			}
@@ -224,90 +225,100 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
         
-        /// <summary>
-        /// Flip the projectile
-        /// </summary>
-        protected virtual void Flip(bool state)
-        {
-            if (_spriteRenderer != null)
-            {
-                _spriteRenderer.flipX = state;
-            }
-            else
-            {
-                this.transform.localScale = Vector3.Scale(this.transform.localScale, FlipValue);
-            }
-        }
+		/// <summary>
+		/// Flip the projectile
+		/// </summary>
+		protected virtual void Flip(bool state)
+		{
+			if (_spriteRenderer != null)
+			{
+				_spriteRenderer.flipX = state;
+			}
+			else
+			{
+				this.transform.localScale = Vector3.Scale(this.transform.localScale, FlipValue);
+			}
+		}
 
-        /// <summary>
-        /// Sets the projectile's parent weapon.
-        /// </summary>
-        /// <param name="newWeapon">New weapon.</param>
-        public virtual void SetWeapon(Weapon newWeapon)
+		/// <summary>
+		/// Sets the projectile's parent weapon.
+		/// </summary>
+		/// <param name="newWeapon">New weapon.</param>
+		public virtual void SetWeapon(Weapon newWeapon)
 		{
 			_weapon = newWeapon;
 		}
 
-        /// <summary>
-        /// Sets the damage caused by the projectile's DamageOnTouch to the specified value
-        /// </summary>
-        /// <param name="newDamage"></param>
-        public virtual void SetDamage(int minDamage, int maxDamage)
-        {
-	        if (_damageOnTouch != null)
-	        {
-		        _damageOnTouch.MinDamageCaused = minDamage;
-		        _damageOnTouch.MaxDamageCaused = maxDamage;
-	        }
-        }
+		/// <summary>
+		/// Sets the damage caused by the projectile's DamageOnTouch to the specified value
+		/// </summary>
+		/// <param name="newDamage"></param>
+		public virtual void SetDamage(int minDamage, int maxDamage)
+		{
+			if (_damageOnTouch != null)
+			{
+				_damageOnTouch.MinDamageCaused = minDamage;
+				_damageOnTouch.MaxDamageCaused = maxDamage;
+			}
+		}
         
-        /// <summary>
-        /// Sets the projectile's owner.
-        /// </summary>
-        /// <param name="newOwner">New owner.</param>
-        public virtual void SetOwner(GameObject newOwner)
-        {
-            _owner = newOwner;
-            DamageOnTouch damageOnTouch = this.gameObject.MMGetComponentNoAlloc<DamageOnTouch>();
-            if (damageOnTouch != null)
-            {
-                damageOnTouch.Owner = newOwner;
-                damageOnTouch.Owner = newOwner;
-                if (!DamageOwner)
-                {
-                    damageOnTouch.IgnoreGameObject(newOwner);
-                }
-            }
-        }
+		/// <summary>
+		/// Sets the projectile's owner.
+		/// </summary>
+		/// <param name="newOwner">New owner.</param>
+		public virtual void SetOwner(GameObject newOwner)
+		{
+			_owner = newOwner;
+			DamageOnTouch damageOnTouch = this.gameObject.MMGetComponentNoAlloc<DamageOnTouch>();
+			if (damageOnTouch != null)
+			{
+				damageOnTouch.Owner = newOwner;
+				damageOnTouch.Owner = newOwner;
+				if (!DamageOwner)
+				{
+					damageOnTouch.ClearIgnoreList();
+					damageOnTouch.IgnoreGameObject(newOwner);
+				}
+			}
+		}
 
-        /// <summary>
-        /// On death, disables colliders and prevents movement
-        /// </summary>
+		/// <summary>
+		/// Returns the current Owner of the projectile
+		/// </summary>
+		/// <returns></returns>
+		public virtual GameObject GetOwner()
+		{
+			return _owner;
+		}
+
+		/// <summary>
+		/// On death, disables colliders and prevents movement
+		/// </summary>
 		public virtual void StopAt()
 		{
-            if (_collider != null)
-            {
-                _collider.enabled = false;
-            }
-            if (_collider2D != null)
-            {
-                _collider2D.enabled = false;
-            }
+			if (_collider != null)
+			{
+				_collider.enabled = false;
+			}
+			if (_collider2D != null)
+			{
+				_collider2D.enabled = false;
+			}
 			
 			_shouldMove = false;
 		}
 
-        /// <summary>
-        /// On death, we stop our projectile
-        /// </summary>
+		/// <summary>
+		/// On death, we stop our projectile
+		/// </summary>
 		protected virtual void OnDeath()
 		{
 			StopAt ();
 		}
 
-        /// <summary>
-        /// On enable, we trigger a short invulnerability
-        /// </summary>
+		/// <summary>
+		/// On enable, we trigger a short invulnerability
+		/// </summary>
 		protected override void OnEnable ()
 		{
 			base.OnEnable ();
@@ -324,9 +335,9 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// On disable, we plug our OnDeath method to the health component
-        /// </summary>
+		/// <summary>
+		/// On disable, we plug our OnDeath method to the health component
+		/// </summary>
 		protected override void OnDisable()
 		{
 			base.OnDisable ();

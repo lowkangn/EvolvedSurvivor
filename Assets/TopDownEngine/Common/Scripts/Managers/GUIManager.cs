@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.TopDownEngine
 {
-    /// <summary>
-    /// Handles all GUI effects and changes
-    /// </summary>
-    [AddComponentMenu("TopDown Engine/Managers/GUIManager")]
-    public class GUIManager : MMSingleton<GUIManager> 
+	/// <summary>
+	/// Handles all GUI effects and changes
+	/// </summary>
+	[AddComponentMenu("TopDown Engine/Managers/GUIManager")]
+	public class GUIManager : MMSingleton<GUIManager> 
 	{
 		/// the main canvas
 		[Tooltip("the main canvas")]
@@ -21,9 +21,6 @@ namespace MoreMountains.TopDownEngine
 		/// the health bars to update
 		[Tooltip("the health bars to update")]
 		public MMProgressBar[] HealthBars;
-		/// the XP bars to update
-		[Tooltip("the XP bars to update")]
-		public MMProgressBar[] XPBars;
 		/// the dash bars to update
 		[Tooltip("the dash bars to update")]
 		public MMRadialProgressBar[] DashBars;
@@ -36,12 +33,6 @@ namespace MoreMountains.TopDownEngine
 		/// the death screen
 		[Tooltip("the death screen")]
 		public GameObject DeathScreen;
-		/// the level up screen game object
-		[Tooltip("the level up screen game object")]
-		public GameObject LevelUpScreen;
-		/// the merge abilities screen game object
-		[Tooltip("the merge abilities screen game object")]
-		public GameObject MergeScreen;
 		/// The mobile buttons
 		[Tooltip("The mobile buttons")]
 		public CanvasGroup Buttons;
@@ -54,14 +45,14 @@ namespace MoreMountains.TopDownEngine
 		/// the points counter
 		[Tooltip("the points counter")]
 		public Text PointsText;
-        /// the pattern to apply to format the display of points
-        [Tooltip("the pattern to apply to format the display of points")]
-        public string PointsTextPattern = "000000";
+		/// the pattern to apply to format the display of points
+		[Tooltip("the pattern to apply to format the display of points")]
+		public string PointsTextPattern = "000000";
 
 
-        protected float _initialJoystickAlpha;
+		protected float _initialJoystickAlpha;
 		protected float _initialButtonsAlpha;
-        protected bool _initialized = false;
+		protected bool _initialized = false;
 
 		/// <summary>
 		/// Initialization
@@ -70,66 +61,65 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.Awake();
 
-            Initialization();
+			Initialization();
 		}
 
-        protected virtual void Initialization()
-        {
-            if (_initialized)
-            {
-                return;
-            }
+		protected virtual void Initialization()
+		{
+			if (_initialized)
+			{
+				return;
+			}
 
-            if (Joystick != null)
-            {
-                _initialJoystickAlpha = Joystick.alpha;
-            }
-            if (Buttons != null)
-            {
-                _initialButtonsAlpha = Buttons.alpha;
-            }
+			if (Joystick != null)
+			{
+				_initialJoystickAlpha = Joystick.alpha;
+			}
+			if (Buttons != null)
+			{
+				_initialButtonsAlpha = Buttons.alpha;
+			}
 
-            _initialized = true;
-        }
+			_initialized = true;
+		}
 
-	    /// <summary>
-	    /// Initialization
-	    /// </summary>
-	    protected virtual void Start()
+		/// <summary>
+		/// Initialization
+		/// </summary>
+		protected virtual void Start()
 		{
 			RefreshPoints();
-            SetPauseScreen(false);
-            SetDeathScreen(false);
-			SetLevelUpScreen(false);
+			SetPauseScreen(false);
+			SetDeathScreen(false);
 		}
 
-	    /// <summary>
-	    /// Sets the HUD active or inactive
-	    /// </summary>
-	    /// <param name="state">If set to <c>true</c> turns the HUD active, turns it off otherwise.</param>
-	    public virtual void SetHUDActive(bool state)
-	    {
-	        if (HUD!= null)
-	        { 
-	            HUD.SetActive(state);
-	        }
-	        if (PointsText!= null)
-	        { 
-	            PointsText.enabled = state;
-	        }
-	    }
+		/// <summary>
+		/// Sets the HUD active or inactive
+		/// </summary>
+		/// <param name="state">If set to <c>true</c> turns the HUD active, turns it off otherwise.</param>
+		public virtual void SetHUDActive(bool state)
+		{
+			if (HUD!= null)
+			{ 
+				HUD.SetActive(state);
+			}
+			if (PointsText!= null)
+			{ 
+				PointsText.enabled = state;
+			}
+		}
 
-	    /// <summary>
-	    /// Sets the avatar active or inactive
-	    /// </summary>
-	    /// <param name="state">If set to <c>true</c> turns the HUD active, turns it off otherwise.</param>
-	    public virtual void SetAvatarActive(bool state)
-	    {
-	        if (HUD != null)
-	        {
-	            HUD.SetActive(state);
-	        }
-	    }
+		/// <summary>
+		/// Sets the avatar active or inactive
+		/// </summary>
+		/// <param name="state">If set to <c>true</c> turns the HUD active, turns it off otherwise.</param>
+		public virtual void SetAvatarActive(bool state)
+		{
+			if (HUD != null)
+			{
+				HUD.SetActive(state);
+			}
+		}
 
 		/// <summary>
 		/// Called by the input manager, this method turns controls visible or not depending on what's been chosen
@@ -137,10 +127,10 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="state">If set to <c>true</c> state.</param>
 		/// <param name="movementControl">Movement control.</param>
 		public virtual void SetMobileControlsActive(bool state, InputManager.MovementControls movementControl = InputManager.MovementControls.Joystick)
-        {
-            Initialization();
+		{
+			Initialization();
             
-            if (Joystick != null)
+			if (Joystick != null)
 			{
 				Joystick.gameObject.SetActive(state);
 				if (state && movementControl == InputManager.MovementControls.Joystick)
@@ -183,63 +173,37 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        /// <summary>
-        /// Sets the pause screen on or off.
-        /// </summary>
-        /// <param name="state">If set to <c>true</c>, sets the pause.</param>
-        public virtual void SetPauseScreen(bool state)
-        {
-            if (PauseScreen != null)
-            {
-                PauseScreen.SetActive(state);
-                EventSystem.current.sendNavigationEvents = state;
-            }
-        }
-
-        /// <summary>
-        /// Sets the death screen on or off.
-        /// </summary>
-        /// <param name="state">If set to <c>true</c>, sets the pause.</param>
-        public virtual void SetDeathScreen(bool state)
-        {
-            if (DeathScreen != null)
-            {
-                DeathScreen.SetActive(state);
-                EventSystem.current.sendNavigationEvents = state;
-            }
-        }
+		/// <summary>
+		/// Sets the pause screen on or off.
+		/// </summary>
+		/// <param name="state">If set to <c>true</c>, sets the pause.</param>
+		public virtual void SetPauseScreen(bool state)
+		{
+			if (PauseScreen != null)
+			{
+				PauseScreen.SetActive(state);
+				EventSystem.current.sendNavigationEvents = state;
+			}
+		}
 
 		/// <summary>
-        /// Sets the level up screen on or off.
-        /// </summary>
-        /// <param name="state">If set to <c>true</c>, sets level up screen.</param>
-        public virtual void SetLevelUpScreen(bool state)
-        {
-            if (LevelUpScreen != null)
-            {
-                LevelUpScreen.SetActive(state);
+		/// Sets the death screen on or off.
+		/// </summary>
+		/// <param name="state">If set to <c>true</c>, sets the pause.</param>
+		public virtual void SetDeathScreen(bool state)
+		{
+			if (DeathScreen != null)
+			{
+				DeathScreen.SetActive(state);
 				EventSystem.current.sendNavigationEvents = state;
-            }
-        }
+			}
+		}
 
 		/// <summary>
-        /// Sets the merge screen on or off.
-        /// </summary>
-        /// <param name="state">If set to <c>true</c>, sets level up screen.</param>
-        public virtual void SetMergeScreen(bool state)
-        {
-            if (MergeScreen != null)
-            {
-                MergeScreen.SetActive(state);
-				EventSystem.current.sendNavigationEvents = state;
-            }
-        }
-
-        /// <summary>
-        /// Sets the jetpackbar active or not.
-        /// </summary>
-        /// <param name="state">If set to <c>true</c>, sets the pause.</param>
-        public virtual void SetDashBar(bool state, string playerID)
+		/// Sets the jetpackbar active or not.
+		/// </summary>
+		/// <param name="state">If set to <c>true</c>, sets the pause.</param>
+		public virtual void SetDashBar(bool state, string playerID)
 		{
 			if (DashBars == null)
 			{
@@ -249,14 +213,14 @@ namespace MoreMountains.TopDownEngine
 			foreach (MMRadialProgressBar jetpackBar in DashBars)
 			{
 				if (jetpackBar != null)
-		        { 
-		        	if (jetpackBar.PlayerID == playerID)
-		        	{
+				{ 
+					if (jetpackBar.PlayerID == playerID)
+					{
 						jetpackBar.gameObject.SetActive(state);
-		        	}					
-		        }
+					}					
+				}
 			}	        
-	    }
+		}
 
 		/// <summary>
 		/// Sets the ammo displays active or not
@@ -287,62 +251,42 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public virtual void RefreshPoints()
 		{
-	        if (PointsText!= null)
-	        { 
-	    		PointsText.text = GameManager.Instance.Points.ToString(PointsTextPattern);
-	        }
-	    }
+			if (PointsText!= null)
+			{ 
+				PointsText.text = GameManager.Instance.Points.ToString(PointsTextPattern);
+			}
+		}
 
-	    /// <summary>
-	    /// Updates the health bar.
-	    /// </summary>
-	    /// <param name="currentHealth">Current health.</param>
-	    /// <param name="minHealth">Minimum health.</param>
-	    /// <param name="maxHealth">Max health.</param>
-	    /// <param name="playerID">Player I.</param>
-	    public virtual void UpdateHealthBar(float currentHealth,float minHealth,float maxHealth,string playerID)
-	    {
+		/// <summary>
+		/// Updates the health bar.
+		/// </summary>
+		/// <param name="currentHealth">Current health.</param>
+		/// <param name="minHealth">Minimum health.</param>
+		/// <param name="maxHealth">Max health.</param>
+		/// <param name="playerID">Player I.</param>
+		public virtual void UpdateHealthBar(float currentHealth,float minHealth,float maxHealth,string playerID)
+		{
 			if (HealthBars == null) { return; }
 			if (HealthBars.Length <= 0)	{ return; }
 
-	    	foreach (MMProgressBar healthBar in HealthBars)
-	    	{
+			foreach (MMProgressBar healthBar in HealthBars)
+			{
 				if (healthBar == null) { continue; }
 				if (healthBar.PlayerID == playerID)
 				{
 					healthBar.UpdateBar(currentHealth,minHealth,maxHealth);
 				}
-	    	}
+			}
 
-	    }
+		}
 
 		/// <summary>
-	    /// Updates the XP bar.
-	    /// </summary>
-	    /// <param name="currentXP">Current XP.</param>
-	    /// <param name="minXP">Minimum XP.</param>
-	    /// <param name="maxXP">Max XP.</param>
-	    /// <param name="playerID">Player I.</param>
-	    public virtual void UpdateXPBar(float currentXP, float minXP, float maxXP)
-	    {
-			if (XPBars == null) { return; }
-			if (XPBars.Length <= 0)	{ return; }
-
-	    	foreach (MMProgressBar XPBar in XPBars)
-	    	{
-				if (XPBar == null) { continue; }
-				XPBar.UpdateBar(currentXP, minXP, maxXP);
-	    	}
-
-	    }
-
-	    /// <summary>
-	    /// Updates the dash bars.
-	    /// </summary>
-	    /// <param name="currentFuel">Current fuel.</param>
-	    /// <param name="minFuel">Minimum fuel.</param>
-	    /// <param name="maxFuel">Max fuel.</param>
-	    /// <param name="playerID">Player I.</param>
+		/// Updates the dash bars.
+		/// </summary>
+		/// <param name="currentFuel">Current fuel.</param>
+		/// <param name="minFuel">Minimum fuel.</param>
+		/// <param name="maxFuel">Max fuel.</param>
+		/// <param name="playerID">Player I.</param>
 		public virtual void UpdateDashBars(float currentFuel, float minFuel, float maxFuel,string playerID)
 		{
 			if (DashBars == null)
@@ -351,14 +295,14 @@ namespace MoreMountains.TopDownEngine
 			}
 
 			foreach (MMRadialProgressBar dashbar in DashBars)
-	    	{
+			{
 				if (dashbar == null) { return; }
 				if (dashbar.PlayerID == playerID)
 				{
 					dashbar.UpdateBar(currentFuel,minFuel,maxFuel);	
-		    	}    
+				}    
 			}
-	    }
+		}
 
 		/// <summary>
 		/// Updates the (optional) ammo displays.
@@ -381,7 +325,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (ammoDisplay == null) { return; }
 				if ((ammoDisplay.PlayerID == playerID) && (ammoDisplayID == ammoDisplay.AmmoDisplayID))
-                {
+				{
 					ammoDisplay.UpdateAmmoDisplays (magazineBased, totalAmmo, maxAmmo, ammoInMagazine, magazineSize, displayTotal);
 				}    
 			}

@@ -1,6 +1,4 @@
 ﻿using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -31,8 +29,9 @@ namespace MoreMountains.TopDownEngine
         {
             base.Initialization();
 
-            InputActions.PlayerControls.PrimaryMovement.performed += context => _primaryMovement = context.ReadValue<Vector2>();
-            InputActions.PlayerControls.SecondaryMovement.performed += context => _secondaryMovement = context.ReadValue<Vector2>();
+            InputActions.PlayerControls.PrimaryMovement.performed += context => _primaryMovement = ApplyCameraRotation(context.ReadValue<Vector2>());
+            InputActions.PlayerControls.SecondaryMovement.performed += context => _secondaryMovement = ApplyCameraRotation(context.ReadValue<Vector2>());
+            InputActions.PlayerControls.CameraRotation.performed += context => _cameraRotationInput = context.ReadValue<float>();
 
             InputActions.PlayerControls.Jump.performed += context => { BindButton(context, JumpButton); };
             InputActions.PlayerControls.Run.performed += context => { BindButton(context, RunButton); };
@@ -88,6 +87,11 @@ namespace MoreMountains.TopDownEngine
         protected override void SetShootAxis()
         {
             //do nothing
+        }
+        
+        protected override void SetCameraRotationAxis()
+        {
+            // do nothing
         }
 
         /// <summary>

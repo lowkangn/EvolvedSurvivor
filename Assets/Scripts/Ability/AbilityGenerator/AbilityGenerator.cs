@@ -10,7 +10,16 @@ namespace TeamOne.EvolvedSurvivor
         private List<Ability> abilityPrefabs;
         [SerializeField]
         private AbilityBaseTraitCharts abilityBaseTraitCharts;
-      
+        [SerializeField]
+        private AbilityManager abilityManager;
+
+        // For Testing
+        /*private void Start()
+        {
+            Ability newAbility = GenerateAbility(10);
+            abilityManager.AddAbility(newAbility);
+        }*/
+
         public Ability GenerateAbility(int tier)
         {
             Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
@@ -77,7 +86,7 @@ namespace TeamOne.EvolvedSurvivor
             actualTraitChart.quantity = quantity;
             actualTraitChart.utility = utility;
             Ability abilityInstance = Instantiate(chosenAbility);
-            abilityInstance.BuildAbility(actualTraitChart);
+            abilityInstance.BuildAbility(tier, actualTraitChart);
 
             return abilityInstance;
         }

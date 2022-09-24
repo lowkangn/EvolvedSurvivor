@@ -10,6 +10,9 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/GUI/MergeAbilityButton")]
     public class MergeAbilityButton : MonoBehaviour
 	{
+        public GameObject uiCamera;
+        private ESGUIManager esGuiManager;
+
 		/// <summary>
         /// Show merge abilities screen event
         /// </summary>
@@ -25,8 +28,10 @@ namespace MoreMountains.TopDownEngine
         protected virtual IEnumerator ShowMergeScreenCo()
         {
             yield return null;
+            esGuiManager = uiCamera.GetComponent<ESGUIManager>();
+            esGuiManager.ShowMergeAbilitiesScreen();
             // we trigger a Pause event for the GameManager and other classes that could be listening to it too
-            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.ShowMergeScreen, null);
+            // TopDownEngineEvent.Trigger(TopDownEngineEventTypes.ShowMergeScreen, null);
         }
     }
 }
