@@ -7,12 +7,11 @@ namespace MoreMountains.TopDownEngine
     /// <summary>
     /// A simple component meant to be added to the Add Ability button to show Add Ability screen
     /// </summary>
-    [AddComponentMenu("TopDown Engine/GUI/AddAbilityButton")]
-    public class AddAbilityButton : MonoBehaviour
+    [AddComponentMenu("TopDown Engine/GUI/AddAbilityTitleButton")]
+    public class AddAbilityTitleButton : MonoBehaviour
 	{
         // public GameObject confirmButton;
-        public GameObject uiCamera;
-        private ESGUIManager esGuiManager;
+        [SerializeField] private ESGUIManager esGuiManager;
 
 		/// <summary>
         /// Show add abilities screen event
@@ -31,11 +30,7 @@ namespace MoreMountains.TopDownEngine
         protected virtual IEnumerator ShowAddScreenCo()
         {
             yield return null;
-            esGuiManager = uiCamera.GetComponent<ESGUIManager>();
             esGuiManager.ShowLevelUpScreen();
-            // // we trigger a Pause event for the GameManager and other classes that could be listening to it too
-            // TopDownEngineEvent.Trigger(TopDownEngineEventTypes.ShowAddAbilityScreen, null);
-
         }
 
     }
