@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolableObject: {fileID: 3135418408013145896}
-  despawnDistance: 35
+  despawnDistance: 20
 --- !u!114 &1564510507529899692
 MonoBehaviour:
   m_ObjectHideFlags: 0

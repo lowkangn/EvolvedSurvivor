@@ -2057,8 +2057,8 @@ MonoBehaviour:
   spawnProperties:
     Shape: 0
     NormalToSpawnPlane: {x: 0, y: 0, z: 1}
-    MinimumSphereRadius: 18
-    MaximumSphereRadius: 20
+    MinimumSphereRadius: 16
+    MaximumSphereRadius: 16
     MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
     MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
     MinimumNormalAxisOffset: 0
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   NestWaitingPool: 1
   NestUnderThis: 0
   Pool:
-  - GameObjectToPool: {fileID: 7639002971553439240, guid: 960401c10892c0342835ac865fa9aa5e,
+  - GameObjectToPool: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
       type: 3}
     PoolSize: 0
     PoolCanExpand: 0
@@ -9456,7 +9456,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 1
+  antialiasingMode: 0
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
