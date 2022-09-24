@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 61951514383847170}
   - component: {fileID: 50202276758696708}
   - component: {fileID: 1160196920553933891}
-  - component: {fileID: 5843927863143632482}
-  - component: {fileID: 6265467108691241403}
   m_Layer: 18
   m_Name: TestTestProjectile
   m_TagString: Untagged
@@ -15128,13 +15126,16 @@ GameObject:
   m_Component:
   - component: {fileID: 5097761734708730983}
   - component: {fileID: 6886216322009173158}
+  - component: {fileID: 6988839669842274897}
+  - component: {fileID: 3501665895007366478}
+  - component: {fileID: 2847304535016208754}
   m_Layer: 18
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5097761734708730983
 Transform:
   m_ObjectHideFlags: 0
@@ -15144,7 +15145,7 @@ Transform:
   m_GameObject: {fileID: 5606419625138214098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4775525016880594}
@@ -15203,6 +15204,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6988839669842274897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606419625138214098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - Enemy
+  disableOnHit: 0
+  repeating: 0
+  repeatingRate: 0.5
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  damageCollider: {fileID: 3501665895007366478}
+--- !u!58 &3501665895007366478
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606419625138214098}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &2847304535016208754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606419625138214098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invincibilityDurationAfterTakingDamage: 0
 --- !u!1 &8832793643731794437
 GameObject:
   m_ObjectHideFlags: 0
