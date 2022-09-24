@@ -6820,7 +6820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefabs:
-  - {fileID: 114873785417298432, guid: 7e51470fd29eb494683703c31bb1860e, type: 3}
+  - {fileID: 114873785417298432, guid: 0935a9d3f160cf94bb94f68c5a92483d, type: 3}
   AutoAttributePlayerIDs: 1
   SceneCharacters: []
   InitialSpawnPoint: {fileID: 2098349108}
@@ -9004,8 +9004,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.773585, y: 1}
-
+    m_SensorSize: {x: 1.6319444, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14457,14 +14456,23 @@ MonoBehaviour:
   HideContainerOnStart: 1
   InputOnlyWhenOpen: 1
   ToggleInventoryKey: 105
+  ToggleInventoryAltKey: 356
   CancelKey: 27
+  CancelKeyAlt: 357
   MoveKey: 0
+  MoveAltKey: joystick button 2
   EquipKey: 0
+  EquipAltKey: home
   UseKey: 0
+  UseAltKey: end
   EquipOrUseKey: 0
+  EquipOrUseAltKey: joystick button 0
   DropKey: 0
+  DropAltKey: joystick button 1
   NextInvKey: 0
+  NextInvAltKey: joystick button 4
   PrevInvKey: 0
+  PrevInvAltKey: joystick button 5
   CloseList: []
   ManageButtons: 0
   ManageButtonsMode: 1
