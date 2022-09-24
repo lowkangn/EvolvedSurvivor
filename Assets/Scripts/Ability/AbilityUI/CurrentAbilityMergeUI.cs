@@ -16,13 +16,15 @@ public class CurrentAbilityMergeUI : MonoBehaviour, IPointerClickHandler
     {
         if (abilitySprite != null) {
             // Check for empty pri/sec slot
-            bool isPriEmpty = priSlotUI.getIsEmpty();
-            bool isSecEmpty = secSlotUI.getIsEmpty();
+            bool isPriEmpty = priSlotUI.IsEmpty();
+            bool isSecEmpty = secSlotUI.IsEmpty();
 
             if (isPriEmpty) {
                 priSlotUI.AddAbility(abilitySprite);
+                abilitySprite = null;
             } else if (isSecEmpty) {
                 secSlotUI.AddAbility(abilitySprite);
+                abilitySprite = null;
             }
         }
     }
@@ -30,6 +32,7 @@ public class CurrentAbilityMergeUI : MonoBehaviour, IPointerClickHandler
     public void AddAbility(GameObject ability) {
         Transform abilityTransform = ability.transform;
         abilityTransform.SetParent(gameObject.transform);
+        abilitySprite = ability;
         RectTransform rectTransform = abilityTransform.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.localScale = new Vector3(smallSpriteSize, smallSpriteSize, 1);

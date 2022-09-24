@@ -21,7 +21,7 @@ public class PriSecSlotUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         isEmpty = true;
     }
 
-    public bool getIsEmpty() {
+    public bool IsEmpty() {
         return isEmpty;
     }
 

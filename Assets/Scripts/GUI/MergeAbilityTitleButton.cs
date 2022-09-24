@@ -12,7 +12,7 @@ namespace MoreMountains.TopDownEngine
 	{
         [SerializeField] private ESGUIManager esGuiManager;
 
-		/// <summary>
+        /// <summary>
         /// Show merge abilities screen event
         /// </summary>
 	    public virtual void ShowMergeScreenAction()

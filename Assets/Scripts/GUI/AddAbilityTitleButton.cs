@@ -32,6 +32,5 @@ namespace MoreMountains.TopDownEngine
             yield return null;
             esGuiManager.ShowLevelUpScreen();
         }
-
     }
 }
