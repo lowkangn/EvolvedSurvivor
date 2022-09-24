@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 61951514383847170}
   - component: {fileID: 50202276758696708}
   - component: {fileID: 1160196920553933891}
-  - component: {fileID: 5843927863143632482}
-  - component: {fileID: 6265467108691241403}
   m_Layer: 18
   m_Name: TestTestProjectile
   m_TagString: Untagged
@@ -121,40 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4667d9302e97046b491b509ce881a898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5843927863143632482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133100380862132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTags:
-  - Enemy
-  disableOnHit: 0
-  repeating: 0
-  repeatingRate: 0.5
-  OnHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  damageCollider: {fileID: 61951514383847170}
---- !u!114 &6265467108691241403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133100380862132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invincibilityDurationAfterTakingDamage: 0
 --- !u!1 &1134012051856824
 GameObject:
   m_ObjectHideFlags: 0

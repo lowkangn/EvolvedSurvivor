@@ -56,11 +56,6 @@ namespace TeamOne.EvolvedSurvivor
             Transform explosion = gameObject.transform.Find("Explosion");
             explosion.localScale = new Vector3(0, 0, 0);
 
-            // Initialise DamageArea
-            DamageArea area = GetComponent<DamageArea>();
-            Damage damageObj = new Damage(damage.value, gameObject, direction);
-            area.SetDamage(damageObj);
-
             // Activate projectile
             isStatsSet = true;
         }
