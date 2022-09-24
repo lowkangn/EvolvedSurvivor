@@ -72,47 +72,38 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            // Some complication here: DamageArea component detects collision with the first enemy and deals damage accordingly, but we must manually damage the others in the AOE
+            // If collided, set up explosion object then activate
             if (!colliders.Contains(other))
             {
                 isHit = true;
                 colliders.Add(other);
 
-                Transform explosion = gameObject.transform.Find("Explosion");
-                BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
-                StartCoroutine(flash(explosion, collider));
+                GameObject explosion = (gameObject.transform.Find("Explosion")).gameObject;
 
-                HashSet<GameObject> enemiesHit = new HashSet<GameObject>();
+                // Set circle size
+                explosion.transform.localScale = new Vector3(aoeRadius / colliderSize, aoeRadius / colliderSize, 0);
 
-                Collider2D[] enemiesInRadius = Physics2D.OverlapCircleAll(transform.position, aoeRadius, LayerMask.GetMask("Enemies"));
-                foreach (Collider2D enemy in enemiesInRadius)
-                {
-                    if (enemy != other)
-                    {
-                        enemiesHit.Add(enemy.gameObject);
-                    }
-                }
+                // Set DamageArea
+                DamageArea area = explosion.GetComponent<DamageArea>();
+                DamageHandler handler = explosion.GetComponent<DamageHandler>();
+                Damage damageObj = new Damage(damage, explosion);
+                Damage processedDamageObj = handler.ProcessOutgoingDamage(damageObj);
+                area.SetDamage(processedDamageObj);
 
-                // For each enemy in aoeRadius that isn't the one that was initially hit, deal damage
-                foreach (GameObject enemy in enemiesHit)
-                {
-                    if (enemy.tag == "Enemy")
-                    {
-                        Damage damageObj = new Damage(damage, gameObject, new Vector3(0, 0, 0));
-                        DamageHandler handler = gameObject.GetComponent<DamageHandler>();
-                        Damage processedDamageObj = handler.ProcessOutgoingDamage(damageObj);
-                        DamageReceiver enemyReceiver = enemy.GetComponent<DamageReceiver>();
-                        enemyReceiver.TakeDamage(processedDamageObj);
-                    }
-                }
+                StartCoroutine(ActivateExplosionEffect(explosion));
             }
         }
 
-        // Simulates the explosion: There's an explosion transform that's just a red circle, so when the 'explosion' happens we activate the circle by setting the size
-        private IEnumerator flash(Transform explosion, BoxCollider2D collider)
+        // Activates and deactivates AOE
+        private IEnumerator ActivateExplosionEffect(GameObject explosion)
         {
-            explosion.localScale = new Vector3(aoeRadius / colliderSize, aoeRadius / colliderSize, 0);
+            // Activate AOE
+            explosion.SetActive(true);
+
             yield return new WaitForSeconds(0.1f);
+
+            // Deactivate AOE
+            explosion.SetActive(false);
 
             piercesLeft--;
         }
