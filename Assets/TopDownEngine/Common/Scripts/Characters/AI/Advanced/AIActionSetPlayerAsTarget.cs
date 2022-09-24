@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
 	/// <summary>
-	/// An AIACtion used to set the current Player character as the target
+	/// An AIAction used to set the current Player character as the target
 	/// </summary>
 	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetPlayerAsTarget")]
 	public class AIActionSetPlayerAsTarget : AIAction

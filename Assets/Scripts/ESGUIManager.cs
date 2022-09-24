@@ -82,10 +82,12 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
     {
         bool isTogglePauseEvent = eventType.EventType == TopDownEngineEventTypes.TogglePause;
 
-        if (isTogglePauseEvent && isLevelUpScreenVisible)
-        {
+        if (isTogglePauseEvent && isLevelUpScreenVisible) {
             isLevelUpScreenVisible = false;
             LevelUpScreen.SetActive(false);
+        } else if (isTogglePauseEvent && isMergeAbilitiesScreenVisible) {
+            isMergeAbilitiesScreenVisible = false;
+            MergeAbilitiesScreen.SetActive(false);
         }
     }
 

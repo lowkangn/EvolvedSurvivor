@@ -120,6 +120,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelUp.unity
     guid: 03ca7ad3f43ee854daf636ffe4b71710
   - enabled: 1
-    path: Assets/Scenes/LevelUpCopy.unity
+    path: Assets/Scenes/LevelUpUI.unity
     guid: 8cd92ed4b4209d044b908a694c3064f3
   m_configObjects: {}

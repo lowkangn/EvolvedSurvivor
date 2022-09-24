@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aec96df4fc5b1747bde209fab901149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: LevelUpCopy
+  levelName: LevelUpUI
 --- !u!1 &606067519
 GameObject:
   m_ObjectHideFlags: 0
