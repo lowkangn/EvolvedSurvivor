@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 61951514383847170}
   - component: {fileID: 50202276758696708}
   - component: {fileID: 1160196920553933891}
+  - component: {fileID: 5843927863143632482}
+  - component: {fileID: 6265467108691241403}
   m_Layer: 18
   m_Name: TestTestProjectile
   m_TagString: Untagged

@@ -75,7 +75,7 @@ MonoBehaviour:
     maxValue: 4
     value: 0
   targetNumber:
-    minValue: 1
+    minValue: 2
     maxValue: 5
     value: 0
 --- !u!114 &2083275470673497951

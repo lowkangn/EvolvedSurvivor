@@ -28,14 +28,14 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void Activate()
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToArray();
-            Collider2D[] enemyColliders = Array.ConvertAll(onScreenEnemies, x => x.GetComponent<Collider2D>());
-            Vector3[] enemyPositions = Array.ConvertAll(enemyColliders, x => x.GetComponent<Transform>().position); 
+            List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+            List<GameObject> onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToList();
+            List<Collider2D> enemyColliders = onScreenEnemies.ConvertAll(x => x.GetComponent<Collider2D>());
+            List<Vector3> enemyPositions = enemyColliders.ConvertAll(x => x.GetComponent<Transform>().position); 
 
-            if (onScreenEnemies.Length > 0)
+            if (onScreenEnemies.Count > 0)
             {
-                Vector3[] positions = GetSpawnPositions(enemyPositions);
+                List<Vector3> positions = GetSpawnPositions(enemyPositions);
 
                 foreach (Vector3 position in positions)
                 {
@@ -93,13 +93,13 @@ namespace TeamOne.EvolvedSurvivor
             abilityHandler.SetDuration(duration.value);
         }
 
-        private Vector3[] GetSpawnPositions(Vector3[] enemyPositions)
+        private List<Vector3> GetSpawnPositions(List<Vector3> enemyPositions)
         {
             List<Vector3> spawnPositions = new List<Vector3>();
 
             for (int i = 0; i < targetNumber.value; i++)
             {
-                if (enemyPositions.Length != 0)
+                if (enemyPositions.Count != 0)
                 {
                     Vector3 nearest = GetNearest(enemyPositions);
                     spawnPositions.Add(nearest);
@@ -107,10 +107,10 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
 
-            return spawnPositions.ToArray();
+            return spawnPositions;
         }
 
-        private Vector3 GetNearest(Vector3[] enemyPositions)
+        private Vector3 GetNearest(List<Vector3> enemyPositions)
         {
 
             float nearestDist = -1f;
@@ -131,7 +131,7 @@ namespace TeamOne.EvolvedSurvivor
             return nearest;
         }
 
-        private Vector3[] RemoveEnemiesAlreadyInAoe(Vector3[] enemyPositions, Vector3 aoeCenter)
+        private List<Vector3> RemoveEnemiesAlreadyInAoe(List<Vector3> enemyPositions, Vector3 aoeCenter)
         {
             List<Vector3> enemiesOutsideAoe = new List<Vector3>();
 
@@ -146,7 +146,7 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
 
-            return enemiesOutsideAoe.ToArray();
+            return enemiesOutsideAoe;
         }
     }
 }
