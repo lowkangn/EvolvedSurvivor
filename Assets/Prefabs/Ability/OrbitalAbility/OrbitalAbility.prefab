@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: -5987010200417845135}
+  - component: {fileID: 2436280037825302281}
+  - component: {fileID: -33881474214889835}
   m_Layer: 0
   m_Name: OrbitalAbility
   m_TagString: Untagged
@@ -46,22 +48,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnlyOnce: 0
   coolDown:
-    minValue: 3
-    maxValue: 6
+    minValue: 10
+    maxValue: 12
     value: 0
+  hasBuilt: 0
   damage:
     minValue: 6
     maxValue: 60
     value: 0
   duration:
-    minValue: 1
-    maxValue: 3
+    minValue: 6
+    maxValue: 9
     value: 0
   projectileSize:
-    minValue: 1
+    minValue: 3
     maxValue: 10
     value: 0
   orbitalNumber:
-    minValue: 1
-    maxValue: 5
+    minValue: 3
+    maxValue: 10
     value: 0
+  radius: 5
+--- !u!114 &2436280037825302281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4521543b793912b48b3ca056fe2738be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 120
+--- !u!114 &-33881474214889835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 5653475107230960953, guid: 9d06c804530d90441a099e5fd17a00ed,
+    type: 3}
+  PoolSize: 20
+  PoolCanExpand: 1
