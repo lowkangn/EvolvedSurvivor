@@ -18,10 +18,10 @@ namespace TeamOne.EvolvedSurvivor
         public void ProcessIncomingDamage(Damage damage)
         {
             // TODO: Process damage reduction, force application, debuffs, etc
-            foreach (StatusEffect effect in damage.effects)
+            /*foreach (StatusEffect effect in damage.effects)
             {
                 effect.Apply(gameObject, damage);
-            }
+            }*/
             // Reduce health
             health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
         }

@@ -6036,9 +6036,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
         type: 3}
-      propertyPath: abilityPrefabs.Array.data[0]
+      propertyPath: abilityPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c,
+      objectReference: {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1,
+        type: 3}
+    - target: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
+        type: 3}
+      propertyPath: abilityPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1,
         type: 3}
     - target: {fileID: 5216245990438975313, guid: 37bf9e28cbd21f54983c44e915067df5,
         type: 3}

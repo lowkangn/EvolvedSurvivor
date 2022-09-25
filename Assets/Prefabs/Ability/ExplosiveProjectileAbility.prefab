@@ -50,7 +50,17 @@ MonoBehaviour:
     minValue: 1
     maxValue: 2
     value: 0
+  projDamage:
+    damage: 0
+    instigator: {fileID: 2943148802276990048}
+    direction: {x: 0, y: 0, z: 0}
+    effects: []
   hasBuilt: 0
+  maxPlasmaMagnitude: 0
+  maxCryoMagnitude: 0
+  maxForceMagnitude: 0
+  maxInfectMagnitude: 0
+  maxPyroMagnitude: 0
   objectPool: {fileID: 3404124164898862505}
   damage:
     minValue: 5
@@ -69,7 +79,6 @@ MonoBehaviour:
     maxValue: 5
     value: 0
   projectileSpeed: 5
-  enemyDetectionRadius: 13
 --- !u!114 &3404124164898862505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +94,7 @@ MonoBehaviour:
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
   NestUnderThis: 0
-  GameObjectToPool: {fileID: 1133100380862132, guid: ea5b4e15e1583472dacd2aa7c84bb1bf,
+  GameObjectToPool: {fileID: 1133100380862132, guid: f471958256ce34941985c5fd7a7f8eca,
     type: 3}
   PoolSize: 20
   PoolCanExpand: 1
