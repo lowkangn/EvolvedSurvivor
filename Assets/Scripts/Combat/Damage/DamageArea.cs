@@ -14,16 +14,9 @@ namespace TeamOne.EvolvedSurvivor
         
         public UnityEvent OnHitEvent;
 
-        [SerializeField]
-        private Collider2D damageCollider;
         private Damage damage;
         private float lastRepeatingTime;
         private HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
-
-        private void Start()
-        {
-            damageCollider = GetComponent<Collider2D>();
-        }
 
         public void SetDamage(Damage damage)
         {
@@ -32,7 +25,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public void SetActive(bool active)
         {
-            damageCollider.enabled = active;
+            gameObject.SetActive(active);
         }
 
         public void AddAlreadyHit(GameObject obj)
