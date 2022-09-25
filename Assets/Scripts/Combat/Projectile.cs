@@ -27,7 +27,7 @@ namespace TeamOne.EvolvedSurvivor
                 lifeTime -= Time.deltaTime;
                 if (lifeTime < 0f)
                 {
-                    DisableDamageArea();
+                    SetActive(false);
                 }
             }
         }

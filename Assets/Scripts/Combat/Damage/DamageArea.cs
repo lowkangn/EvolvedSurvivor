@@ -32,7 +32,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public void SetActive(bool active)
         {
-            damageCollider.enabled = active;
+            gameObject.SetActive(active);
         }
 
         public void AddAlreadyHit(GameObject obj)

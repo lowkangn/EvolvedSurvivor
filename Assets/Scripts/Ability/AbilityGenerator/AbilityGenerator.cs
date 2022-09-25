@@ -1,3 +1,4 @@
+using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,16 +15,17 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityManager abilityManager;
 
         // For Testing
-        /*private void Start()
+        private void Start()
         {
+            abilityManager = LevelManager.Instance.Players[0].GetComponentInChildren<AbilityManager>();
             Ability newAbility = GenerateAbility(10);
             abilityManager.AddAbility(newAbility);
-        }*/
+        }
 
         public Ability GenerateAbility(int tier)
         {
             // For random selection of all abilities
-            // Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
+            Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
 
             // For testing ExplosiveProjectileAbility
             // Ability chosenAbility = abilityPrefabs[0];
@@ -32,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
             // Ability chosenAbility = abilityPrefabs[1];
 
             // For testing ZonalAbility
-            Ability chosenAbility = abilityPrefabs[3];
+            // Ability chosenAbility = abilityPrefabs[3];
 
 
             TraitChart baseTraitChart = abilityBaseTraitCharts.GetAbilityBaseTraitChart(chosenAbility);
