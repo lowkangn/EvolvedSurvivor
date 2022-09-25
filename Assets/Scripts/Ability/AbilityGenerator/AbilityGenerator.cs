@@ -11,17 +11,7 @@ namespace TeamOne.EvolvedSurvivor
         private List<Ability> abilityPrefabs;
         [SerializeField]
         private AbilityBaseTraitCharts abilityBaseTraitCharts;
-        [SerializeField]
-        private AbilityManager abilityManager;
-
-        // For Testing
-        private void Start()
-        {
-            abilityManager = LevelManager.Instance.Players[0].GetComponentInChildren<AbilityManager>();
-            Ability newAbility = GenerateAbility(10);
-            abilityManager.AddAbility(newAbility);
-        }
-
+        
         public Ability GenerateAbility(int tier)
         {
             // For random selection of all abilities
