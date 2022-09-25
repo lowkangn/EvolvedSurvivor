@@ -5022,8 +5022,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7638588149240438170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.196, z: 0}
-  m_LocalScale: {x: 0.8231, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: -0.002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7644420123034665450}
@@ -5105,11 +5105,12 @@ GameObject:
   - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
-  - component: {fileID: 3705619253243491979}
-  - component: {fileID: 7867589581018264756}
-  - component: {fileID: 2526142069760031561}
+  - component: {fileID: 3895018529336057819}
+  - component: {fileID: 560260766162801752}
+  - component: {fileID: -5534447137170697443}
+  - component: {fileID: -6019659113267063078}
   m_Layer: 13
-  m_Name: RangedMarineEnemy
+  m_Name: LvlUpEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5147,8 +5148,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 0.625}
-  m_Size: {x: 2, y: 2.6}
+  m_Offset: {x: 0, y: 0.625}
+  m_Size: {x: 1, y: 1.5}
   m_Direction: 0
 --- !u!50 &3529223580954060387
 Rigidbody2D:
@@ -5338,7 +5339,7 @@ MonoBehaviour:
   ImmuneToKnockbackIfZeroDamage: 0
   KnockbackForceMultiplier: 1
   DestroyOnDeath: 1
-  DelayBeforeDestruction: 1
+  DelayBeforeDestruction: 0.5
   PointsWhenDestroyed: 0
   RespawnAtInitialLocation: 0
   DisableControllerOnDeath: 1
@@ -5450,7 +5451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
   m_Name: 
@@ -5523,8 +5524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolableObject: {fileID: 3135418408013145896}
-  despawnDistance: 20
---- !u!114 &3705619253243491979
+  despawnDistance: 35
+--- !u!114 &3895018529336057819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5552,9 +5553,9 @@ MonoBehaviour:
   Quantity: {x: 1, y: 1}
   SpawnProperties:
     Shape: 0
-    NormalToSpawnPlane: {x: 0, y: 1, z: 0}
-    MinimumSphereRadius: 1
-    MaximumSphereRadius: 2
+    NormalToSpawnPlane: {x: 0, y: 0, z: 1}
+    MinimumSphereRadius: 0.1
+    MaximumSphereRadius: 0.5
     MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
     MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
     MinimumNormalAxisOffset: 0
@@ -5603,10 +5604,27 @@ MonoBehaviour:
   LootFeedback: {fileID: 0}
   DrawGizmos: 0
   GizmosQuantity: 1000
-  GizmosColor: {r: 0.827451, g: 0.827451, b: 0.827451, a: 1}
+  GizmosColor: {r: 1, g: 0.9940462, b: 0.9009434, a: 1}
   GimosSize: 0.1
   SpawnLootButton: 0
---- !u!114 &7867589581018264756
+--- !u!114 &560260766162801752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - Player
+  disableOnHit: 0
+  repeating: 1
+  repeatingRate: 1
+--- !u!114 &-5534447137170697443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5618,8 +5636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityDurationAfterTakingDamage: 0
---- !u!114 &2526142069760031561
+  invincibilityDurationAfterTakingDamage: 1
+--- !u!114 &-6019659113267063078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10599,12 +10617,12 @@ SpriteRenderer:
   m_SortingLayerID: 47421343
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e76a89184d522a41bd74ddcc2a5b407, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aba7b5c63d9ec304b89edc574d32d4bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10620,7 +10638,7 @@ Animator:
   m_GameObject: {fileID: 7639620610091389554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 79d6adc5201144e45a1f46f451931e92, type: 2}
+  m_Controller: {fileID: 22100000, guid: d7409d88ace7ca245b60e0240311dba4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10643,8 +10661,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 0}
-  m_Size: {x: 1.8, y: 2.4}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.75, y: 1.25}
   m_Direction: 0
 --- !u!1 &7932186192500545181
 GameObject:
