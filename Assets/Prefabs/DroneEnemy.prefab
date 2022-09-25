@@ -294,11 +294,12 @@ GameObject:
   - component: {fileID: 6424938918185667639}
   - component: {fileID: -6336170453095142254}
   - component: {fileID: 4977188553063413043}
-  - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
   - component: {fileID: 2578632580249319661}
   - component: {fileID: 5729126716184588717}
+  - component: {fileID: 7423655912554669546}
+  - component: {fileID: 1054985055661093005}
   m_Layer: 13
   m_Name: DroneEnemy
   m_TagString: Enemy
@@ -742,53 +743,6 @@ MonoBehaviour:
   explosionDuration: 1
   explosion: {fileID: 333614100760703564}
   OnlyRunOnce: 1
---- !u!114 &7751781705664415068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  Owner: {fileID: 0}
-  TriggerFilter: 195
-  MinDamageCaused: 8
-  MaxDamageCaused: 10
-  TypedDamages: []
-  DamageCausedKnockbackType: 0
-  DamageCausedKnockbackDirection: 0
-  DamageCausedKnockbackForce: {x: 500, y: 500, z: 0}
-  InvincibilityDuration: 1
-  RepeatDamageOverTime: 0
-  AmountOfRepeats: 3
-  DurationBetweenRepeats: 1
-  DamageOverTimeInterruptible: 1
-  RepeatedDamageType: {fileID: 0}
-  DamageTakenEveryTime: 0
-  DamageTakenDamageable: 0
-  DamageTakenNonDamageable: 0
-  DamageTakenKnockbackType: 0
-  DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
-  DamageTakenInvincibilityDuration: 0
-  HitDamageableFeedback: {fileID: 0}
-  HitNonDamageableFeedback: {fileID: 0}
-  HitAnythingFeedback: {fileID: 0}
-  HitDamageableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  HitNonDamageableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  HitAnythingEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3135418408013145896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,6 +802,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426a609012772bb45b2563884833949f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7423655912554669546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - Player
+  disableOnHit: 0
+  repeating: 1
+  repeatingRate: 1
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1054985055661093005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 5
+  damageHandler: {fileID: 2578632580249319661}
+  damageArea: {fileID: 7423655912554669546}
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0

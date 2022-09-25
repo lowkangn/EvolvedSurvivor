@@ -5102,15 +5102,15 @@ GameObject:
   - component: {fileID: 3408037924599025843}
   - component: {fileID: 3726143494263872085}
   - component: {fileID: 7751773710183483230}
-  - component: {fileID: 7751781705664415068}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
   - component: {fileID: 3895018529336057819}
   - component: {fileID: 560260766162801752}
   - component: {fileID: -5534447137170697443}
   - component: {fileID: -6019659113267063078}
+  - component: {fileID: 6078198106312669534}
   m_Layer: 13
-  m_Name: LvlUpEnemy
+  m_Name: RangedMarineEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5148,8 +5148,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.625}
-  m_Size: {x: 1, y: 1.5}
+  m_Offset: {x: -0.1, y: 0.625}
+  m_Size: {x: 1.6, y: 2.1}
   m_Direction: 0
 --- !u!50 &3529223580954060387
 Rigidbody2D:
@@ -5444,53 +5444,6 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   MinimumDistance: 0.1
---- !u!114 &7751781705664415068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76891b3b532f84acaaeed44c357bd00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  Owner: {fileID: 0}
-  TriggerFilter: 195
-  MinDamageCaused: 8
-  MaxDamageCaused: 10
-  TypedDamages: []
-  DamageCausedKnockbackType: 0
-  DamageCausedKnockbackDirection: 0
-  DamageCausedKnockbackForce: {x: 500, y: 500, z: 0}
-  InvincibilityDuration: 1
-  RepeatDamageOverTime: 0
-  AmountOfRepeats: 3
-  DurationBetweenRepeats: 1
-  DamageOverTimeInterruptible: 1
-  RepeatedDamageType: {fileID: 0}
-  DamageTakenEveryTime: 0
-  DamageTakenDamageable: 0
-  DamageTakenNonDamageable: 0
-  DamageTakenKnockbackType: 0
-  DamageTakenKnockbackForce: {x: 0, y: 0, z: 0}
-  DamageTakenInvincibilityDuration: 0
-  HitDamageableFeedback: {fileID: 0}
-  HitNonDamageableFeedback: {fileID: 0}
-  HitAnythingFeedback: {fileID: 0}
-  HitDamageableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  HitNonDamageableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  HitAnythingEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3135418408013145896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5577,9 @@ MonoBehaviour:
   disableOnHit: 0
   repeating: 1
   repeatingRate: 1
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-5534447137170697443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5649,6 +5605,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426a609012772bb45b2563884833949f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6078198106312669534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 10
+  damageHandler: {fileID: -5534447137170697443}
+  damageArea: {fileID: 560260766162801752}
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10617,7 +10588,7 @@ SpriteRenderer:
   m_SortingLayerID: 47421343
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aba7b5c63d9ec304b89edc574d32d4bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e76a89184d522a41bd74ddcc2a5b407, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10638,7 +10609,7 @@ Animator:
   m_GameObject: {fileID: 7639620610091389554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: d7409d88ace7ca245b60e0240311dba4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 79d6adc5201144e45a1f46f451931e92, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10661,8 +10632,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.75, y: 1.25}
+  m_Offset: {x: -0.1, y: 0}
+  m_Size: {x: 1.5, y: 2}
   m_Direction: 0
 --- !u!1 &7932186192500545181
 GameObject:

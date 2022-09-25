@@ -3388,7 +3388,7 @@ MonoBehaviour:
   NestWaitingPool: 1
   NestUnderThis: 0
   Pool:
-  - GameObjectToPool: {fileID: 7639002971553439240, guid: 818519afaa8b3d94a8957ce54b1533a2,
+  - GameObjectToPool: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
       type: 3}
     PoolSize: 0
     PoolCanExpand: 0
@@ -9004,7 +9004,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6319444, y: 1}
+    m_SensorSize: {x: 1.7482638, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14456,23 +14456,14 @@ MonoBehaviour:
   HideContainerOnStart: 1
   InputOnlyWhenOpen: 1
   ToggleInventoryKey: 105
-  ToggleInventoryAltKey: 356
   CancelKey: 27
-  CancelKeyAlt: 357
   MoveKey: 0
-  MoveAltKey: joystick button 2
   EquipKey: 0
-  EquipAltKey: home
   UseKey: 0
-  UseAltKey: end
   EquipOrUseKey: 0
-  EquipOrUseAltKey: joystick button 0
   DropKey: 0
-  DropAltKey: joystick button 1
   NextInvKey: 0
-  NextInvAltKey: joystick button 4
   PrevInvKey: 0
-  PrevInvAltKey: joystick button 5
   CloseList: []
   ManageButtons: 0
   ManageButtonsMode: 1
@@ -16066,6 +16057,7 @@ MonoBehaviour:
   XPBars:
   - {fileID: 786858106}
   LevelUpScreen: {fileID: 41283751}
+  MergeAbilitiesScreen: {fileID: 0}
 --- !u!1 &1981068012
 GameObject:
   m_ObjectHideFlags: 0

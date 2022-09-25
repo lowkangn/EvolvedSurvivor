@@ -154,4 +154,3 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
-  damageCollider: {fileID: 0}
