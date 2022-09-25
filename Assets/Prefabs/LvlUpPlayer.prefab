@@ -4951,6 +4951,8 @@ GameObject:
   - component: {fileID: -1686430640849564640}
   - component: {fileID: 7662434310505608298}
   - component: {fileID: 4566521387090629396}
+  - component: {fileID: -2279264641038752913}
+  - component: {fileID: -498341420955445292}
   m_Layer: 10
   m_Name: LvlUpPlayer
   m_TagString: Player
@@ -5580,6 +5582,31 @@ MonoBehaviour:
   generator: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
     type: 3}
   abilityManager: {fileID: 2549289623482607888}
+--- !u!114 &-2279264641038752913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498750440386690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invincibilityDurationAfterTakingDamage: 1
+--- !u!114 &-498341420955445292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498750440386690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426a609012772bb45b2563884833949f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2549289623482607888
 GameObject:
   m_ObjectHideFlags: 0
