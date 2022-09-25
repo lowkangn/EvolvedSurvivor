@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -11,20 +12,32 @@ namespace TeamOne.EvolvedSurvivor
         public bool repeating = false;
         public float repeatingRate = 0.5f;
         
-        public delegate void DamageAreaEvent();
-        public DamageAreaEvent OnHit;
+        public UnityEvent OnHitEvent;
 
+        [SerializeField]
+        private Collider2D damageCollider;
         private Damage damage;
         private float lastRepeatingTime;
+        private HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
+
+        private void Start()
+        {
+            damageCollider = GetComponent<Collider2D>();
+        }
 
         public void SetDamage(Damage damage)
         {
             this.damage = damage;
         }
 
-        public void DisableDamageArea()
+        public void SetActive(bool active)
         {
-            gameObject.SetActive(false);
+            damageCollider.enabled = active;
+        }
+
+        public void AddAlreadyHit(GameObject obj)
+        {
+            alreadyHit.Add(obj);
         }
 
         private void Collide(Collider2D collision)
@@ -34,14 +47,17 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            // OnHit.Invoke();
+            OnHitEvent.Invoke();
 
-            DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
-            damageReceiver?.TakeDamage(damage);
+            if (!alreadyHit.Contains(collision.gameObject))
+            {
+                DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
+                damageReceiver?.TakeDamage(damage);
+            }
 
             if (disableOnHit)
             {
-                DisableDamageArea();
+                SetActive(false);
             }
         }
 

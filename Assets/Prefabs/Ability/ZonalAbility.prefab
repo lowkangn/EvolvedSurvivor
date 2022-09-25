@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: 1970516297173918025}
+  - component: {fileID: 2083275470673497951}
   m_Layer: 0
   m_Name: ZonalAbility
   m_TagString: Untagged
@@ -49,7 +50,18 @@ MonoBehaviour:
     minValue: 5
     maxValue: 10
     value: 0
+  projDamage:
+    damage: 0
+    instigator: {fileID: 0}
+    direction: {x: 0, y: 0, z: 0}
+    effects: []
   hasBuilt: 0
+  maxPlasmaMagnitude: 0
+  maxCryoMagnitude: 0
+  maxForceMagnitude: 0
+  maxInfectMagnitude: 0
+  maxPyroMagnitude: 0
+  objectPool: {fileID: 2083275470673497951}
   damage:
     minValue: 4
     maxValue: 40
@@ -63,6 +75,25 @@ MonoBehaviour:
     maxValue: 4
     value: 0
   targetNumber:
-    minValue: 1
+    minValue: 2
     maxValue: 5
     value: 0
+--- !u!114 &2083275470673497951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 4745785239986105255, guid: 6725acaef71d24636902934fb5a6cc25,
+    type: 3}
+  PoolSize: 20
+  PoolCanExpand: 1

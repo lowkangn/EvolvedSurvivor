@@ -241,6 +241,7 @@ MonoBehaviour:
   CurrentCheckpoint: {fileID: 0}
   PointsOfEntry: []
   IntroFadeDuration: 0.1
+  SpawnDelay: 0
   OutroFadeDuration: 0.1
   FaderID: 0
   FadeCurve:
@@ -976,7 +977,7 @@ MonoBehaviour:
   NestWaitingPool: 1
   NestUnderThis: 0
   Pool:
-  - GameObjectToPool: {fileID: 7639002971553439240, guid: a4113dcf22413f746b8823b5aded526f,
+  - GameObjectToPool: {fileID: 7639002971553439240, guid: 60a8b54476140c34b9b6fbc97bf98bfe,
       type: 3}
     PoolSize: 10
     PoolCanExpand: 0
@@ -4545,6 +4546,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PercentageText: {fileID: 0}
+  PercentageTextMeshPro: {fileID: 0}
   TextPrefix: 
   TextSuffix: 
   TextValueMultiplier: 1
@@ -4741,19 +4743,19 @@ MonoBehaviour:
   ToggleInventoryAltKey: 356
   CancelKey: 27
   CancelKeyAlt: 357
-  MoveKey: insert
+  MoveKey: 
   MoveAltKey: joystick button 2
-  EquipKey: home
+  EquipKey: 
   EquipAltKey: home
-  UseKey: end
+  UseKey: 
   UseAltKey: end
-  EquipOrUseKey: space
+  EquipOrUseKey: 
   EquipOrUseAltKey: joystick button 0
-  DropKey: delete
+  DropKey: 
   DropAltKey: joystick button 1
-  NextInvKey: page up
+  NextInvKey: 
   NextInvAltKey: joystick button 4
-  PrevInvKey: page down
+  PrevInvKey: 
   PrevInvAltKey: joystick button 5
   CloseList: []
   ManageButtons: 0
@@ -5541,6 +5543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PercentageText: {fileID: 0}
+  PercentageTextMeshPro: {fileID: 0}
   TextPrefix: 
   TextSuffix: 
   TextValueMultiplier: 1
@@ -6403,7 +6406,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8330435, y: 1}
+    m_SensorSize: {x: 1.8747826, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6886,7 +6889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetCamera: {fileID: 20803881695467360}
-  PressedOpacity: 0.5
   HorizontalAxisEnabled: 1
   VerticalAxisEnabled: 1
   MaxRange: 1.5
@@ -6905,9 +6907,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  JoystickNormalizedValue:
+    m_PersistentCalls:
+      m_Calls: []
+  JoystickMagnitudeValue:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
   RotatingIndicator: {fileID: 0}
   RotatingIndicatorThreshold: 0.1
-  _joystickValue: {x: 0, y: 0}
+  PressedOpacity: 0.5
+  InterpolateOpacity: 1
+  InterpolateOpacitySpeed: 1
+  RawValue: {x: 0, y: 0}
+  NormalizedValue: {x: 0, y: 0}
+  Magnitude: 0
+  DrawGizmos: 1
 --- !u!114 &114301929081186190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8572,6 +8595,7 @@ MonoBehaviour:
   TargetChoiceInventory: {fileID: 0}
   ItemClass: 0
   DrawEmptySlots: 1
+  AllowMovingObjectsToThisInventory: 0
   PaddingTop: 32
   PaddingRight: 32
   PaddingBottom: 32
@@ -8604,7 +8628,6 @@ MonoBehaviour:
   QtyAlignment: 8
   PreviousInventory: {fileID: 114897949542950768}
   NextInventory: {fileID: 114897949542950768}
-  CurrentlyBeingMovedItemIndex: -1
 --- !u!114 &114541822002951690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10682,14 +10705,12 @@ MonoBehaviour:
   HUD: {fileID: 1924039025767684}
   HealthBars:
   - {fileID: 114131458424308994}
-  XPBars: []
   DashBars:
   - {fileID: 0}
   AmmoDisplays:
   - {fileID: 114014137498773508}
   PauseScreen: {fileID: 1644779010652244}
   DeathScreen: {fileID: 1384185620639520}
-  LevelUpScreen: {fileID: 0}
   Buttons: {fileID: 225331056197056374}
   Arrows: {fileID: 225100136777150330}
   Joystick: {fileID: 225876072938944056}
@@ -11159,6 +11180,7 @@ MonoBehaviour:
   TargetChoiceInventory: {fileID: 114524912906520228}
   ItemClass: 2
   DrawEmptySlots: 1
+  AllowMovingObjectsToThisInventory: 0
   PaddingTop: 32
   PaddingRight: 32
   PaddingBottom: 32
@@ -11191,7 +11213,6 @@ MonoBehaviour:
   QtyAlignment: 8
   PreviousInventory: {fileID: 0}
   NextInventory: {fileID: 0}
-  CurrentlyBeingMovedItemIndex: -1
 --- !u!114 &114904113802980572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15898,6 +15919,7 @@ MonoBehaviour:
   Channel: 0
   ShakeDuration: 0.2
   PlayOnAwake: 0
+  PermanentShake: 0
   Interruptible: 1
   AlwaysResetTargetValuesAfterShake: 0
   CooldownBetweenShakes: 0
