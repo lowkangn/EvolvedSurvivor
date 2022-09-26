@@ -4,9 +4,9 @@ using TeamOne.EvolvedSurvivor;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MergeSystem : MonoBehaviour
+public class MergeAbilityHandler : MonoBehaviour
 {
-    // The UI would call this class to get the result of merging pri & sec ability
+    // The UI would call this class to get the result of merging primary & secondary ability
     [SerializeField]
     public PriSecSlotUI primaryAbilitySlot;
     [SerializeField]

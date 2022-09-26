@@ -4,7 +4,7 @@ using UnityEngine;
 using TeamOne.EvolvedSurvivor;
 
 // This class is added to the Current Abilities in Level Up screen
-public class CurrentAbilityLevelUpUI : MonoBehaviour
+public class CurrentAbilityUI : MonoBehaviour
 {
     [SerializeField] private GameObject abilityInButton;
     public int smallSpriteSize = 60; // Sprite size in "Current Abilities" 

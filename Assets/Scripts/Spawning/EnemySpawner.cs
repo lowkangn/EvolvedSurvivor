@@ -16,6 +16,7 @@ public class EnemySpawner : TimedSpawner
     private void OnDisable()
     {
         spawnManager.PlayerSpawnEvent.RemoveListener(AttachToPlayer);
+        ObjectPooler.DestroyObjectPool();
     }
 
     protected override void Spawn()

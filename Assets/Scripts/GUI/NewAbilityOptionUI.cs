@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using TeamOne.EvolvedSurvivor;
 
-namespace MoreMountains.Tools
+namespace TeamOne.EvolvedSurvivor
 {
     // This class is added to the New Abilities on the Level Up screen
-    public class NewAbilityLevelUpUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class NewAbilityOptionUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Text textObj;
         [SerializeField] private GameObject abilitySprite; // Ability in the NewAbility button
         [SerializeField] private Ability ability; 
         [SerializeField] private GameObject[] currentAbilities; // Current Abilities bar
-        [SerializeField] private LevelUpSystem lvlUpSystem;
+        [SerializeField] private AddAbilityHandler lvlUpSystem;
         public int newAbilitySpriteSize = 200;
 
         private GameObject abilitySlot; // First empty currentAbilities slot
@@ -48,8 +47,8 @@ namespace MoreMountains.Tools
         public void OnPointerClick(PointerEventData pointerEventData)
         {
             if (canAddAbilities) {
-                abilitySlot.GetComponent<CurrentAbilityLevelUpUI>().AddAbilityToCurrent(ability.sprite);
-                lvlUpSystem.SetCurrentSelectedAbility(ability);                
+                abilitySlot.GetComponent<CurrentAbilityUI>().AddAbilityToCurrent(ability.sprite);
+                lvlUpSystem.SetCurrentSelectedAbility(ability);
             } else {
                 textObj.text = "Current Abilities are full.";
             }
