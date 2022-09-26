@@ -30,7 +30,10 @@ public class LevelUpSystem : MonoBehaviour
     {
         foreach (Ability ability in NewAbilities)
         {
-            Destroy(ability.gameObject);
+            if (ability != null)
+            {
+                Destroy(ability.gameObject);
+            }
         }
     }
 
@@ -67,5 +70,6 @@ public class LevelUpSystem : MonoBehaviour
                 Destroy(ability.gameObject);
             }
         }
+        NewAbilities = new Ability[4];
     }
 }

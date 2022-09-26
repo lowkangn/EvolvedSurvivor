@@ -9,7 +9,7 @@ public class CurrentAbilityMergeUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private PriSecSlotUI priSlotUI;
     [SerializeField] private PriSecSlotUI secSlotUI;
-    [SerializeField] private GameObject abilitySprite;
+    private GameObject abilitySprite;
     private Ability ability;
 
     public int smallSpriteSize = 60; // Sprite size in "Current Abilities" 
