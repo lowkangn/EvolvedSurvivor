@@ -525,7 +525,7 @@ MonoBehaviour:
   - {fileID: 256469537}
   - {fileID: 2122726268}
   - {fileID: 738727254}
-  lvlUpSystem: {fileID: 970627504}
+  lvlUpSystem: {fileID: 0}
   newAbilitySpriteSize: 200
 --- !u!114 &133443036
 MonoBehaviour:
@@ -737,8 +737,8 @@ GameObject:
   - component: {fileID: 146701506}
   - component: {fileID: 146701505}
   - component: {fileID: 146701504}
-  - component: {fileID: 146701503}
   - component: {fileID: 146701502}
+  - component: {fileID: 146701507}
   - component: {fileID: 146701501}
   m_Layer: 5
   m_Name: Background
@@ -820,84 +820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7437225490c3443b6d19ca7cc00196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &146701503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146701498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a286771fa86194e979f187a1691a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interactable: 1
-  ButtonPressedFirstTime:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: PauseButtonAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonReleased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 146701498}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 970627507}
-        m_TargetAssemblyTypeName: LevelUpScreenManager, Assembly-CSharp
-        m_MethodName: SwitchToAddAbilityMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  DisabledSprite: {fileID: 0}
-  DisabledChangeColor: 0
-  DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-  PressedSprite: {fileID: 0}
-  PressedChangeColor: 0
-  PressedColor: {r: 1, g: 1, b: 1, a: 1}
-  HighlightedSprite: {fileID: 0}
-  HighlightedChangeColor: 0
-  HighlightedColor: {r: 0.21960784, g: 0.8, b: 0.8862745, a: 1}
-  PressedOpacity: 1
-  IdleOpacity: 1
-  DisabledOpacity: 1
-  PressedFirstTimeDelay: 0
-  ReleasedDelay: 0
-  BufferDuration: 0
-  Animator: {fileID: 1974443262}
-  IdleAnimationParameterName: Idle
-  DisabledAnimationParameterName: Disabled
-  PressedAnimationParameterName: Pressed
-  MouseMode: 1
 --- !u!225 &146701504
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -923,7 +845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
+  m_Color: {r: 0, g: 0.2784314, b: 0.32156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -948,6 +870,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146701498}
   m_CullTransparentMesh: 0
+--- !u!114 &146701507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146701498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b41a7602dac9084d8fe2d85ebfdd902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: 1
+  ButtonPressedFirstTime:
+    m_PersistentCalls:
+      m_Calls: []
+  ButtonReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  ButtonPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 970627507}
+        m_TargetAssemblyTypeName: LevelUpScreenManager, Assembly-CSharp
+        m_MethodName: SwitchToAddAbilityMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DisabledSprite: {fileID: 0}
+  DisabledChangeColor: 0
+  DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+  PressedSprite: {fileID: 0}
+  PressedChangeColor: 0
+  PressedColor: {r: 1, g: 1, b: 1, a: 1}
+  HighlightedSprite: {fileID: 0}
+  HighlightedChangeColor: 1
+  HighlightedColor: {r: 0.21960784, g: 0.8, b: 0.8862745, a: 1}
+  PressedOpacity: 1
+  IdleOpacity: 1
+  DisabledOpacity: 1
+  PressedFirstTimeDelay: 0
+  ReleasedDelay: 0
+  BufferDuration: 0
+  Animator: {fileID: 1974443262}
+  IdleAnimationParameterName: Idle
+  DisabledAnimationParameterName: Disabled
+  PressedAnimationParameterName: Pressed
+  MouseMode: 1
+  startsHighlighted: 1
+  highlightedTextColor: {r: 1, g: 1, b: 1, a: 1}
+  normalTextColor: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
+  buttonText: {fileID: 935775530}
 --- !u!1 &168818711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,8 +1321,8 @@ GameObject:
   - component: {fileID: 262218021}
   - component: {fileID: 262218020}
   - component: {fileID: 262218019}
-  - component: {fileID: 262218018}
   - component: {fileID: 262218017}
+  - component: {fileID: 262218022}
   - component: {fileID: 262218016}
   m_Layer: 5
   m_Name: Background
@@ -1424,85 +1404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7437225490c3443b6d19ca7cc00196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &262218018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262218013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a286771fa86194e979f187a1691a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Interactable: 1
-  ButtonPressedFirstTime:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonReleased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MoreMountains.TopDownEngine.MergeAbilityButton,
-          Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 970627507}
-        m_TargetAssemblyTypeName: LevelUpScreenManager, Assembly-CSharp
-        m_MethodName: SwitchToMergeMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  DisabledSprite: {fileID: 0}
-  DisabledChangeColor: 0
-  DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-  PressedSprite: {fileID: 0}
-  PressedChangeColor: 0
-  PressedColor: {r: 1, g: 1, b: 1, a: 1}
-  HighlightedSprite: {fileID: 0}
-  HighlightedChangeColor: 0
-  HighlightedColor: {r: 0.21960784, g: 0.8, b: 0.8862745, a: 1}
-  PressedOpacity: 1
-  IdleOpacity: 1
-  DisabledOpacity: 1
-  PressedFirstTimeDelay: 0
-  ReleasedDelay: 0
-  BufferDuration: 0
-  Animator: {fileID: 940088978}
-  IdleAnimationParameterName: Idle
-  DisabledAnimationParameterName: Disabled
-  PressedAnimationParameterName: Pressed
-  MouseMode: 1
 --- !u!225 &262218019
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1553,6 +1454,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262218013}
   m_CullTransparentMesh: 0
+--- !u!114 &262218022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262218013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b41a7602dac9084d8fe2d85ebfdd902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interactable: 1
+  ButtonPressedFirstTime:
+    m_PersistentCalls:
+      m_Calls: []
+  ButtonReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  ButtonPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 970627507}
+        m_TargetAssemblyTypeName: LevelUpScreenManager, Assembly-CSharp
+        m_MethodName: SwitchToMergeMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DisabledSprite: {fileID: 0}
+  DisabledChangeColor: 0
+  DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+  PressedSprite: {fileID: 0}
+  PressedChangeColor: 0
+  PressedColor: {r: 1, g: 1, b: 1, a: 1}
+  HighlightedSprite: {fileID: 0}
+  HighlightedChangeColor: 1
+  HighlightedColor: {r: 0.21960784, g: 0.8, b: 0.8862745, a: 1}
+  PressedOpacity: 1
+  IdleOpacity: 1
+  DisabledOpacity: 1
+  PressedFirstTimeDelay: 0
+  ReleasedDelay: 0
+  BufferDuration: 0
+  Animator: {fileID: 940088978}
+  IdleAnimationParameterName: Idle
+  DisabledAnimationParameterName: Disabled
+  PressedAnimationParameterName: Pressed
+  MouseMode: 1
+  startsHighlighted: 0
+  highlightedTextColor: {r: 1, g: 1, b: 1, a: 1}
+  normalTextColor: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
+  buttonText: {fileID: 1954662558}
 --- !u!1 &329839812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,7 +2769,7 @@ MonoBehaviour:
   - {fileID: 256469537}
   - {fileID: 2122726268}
   - {fileID: 738727254}
-  lvlUpSystem: {fileID: 970627504}
+  lvlUpSystem: {fileID: 0}
   newAbilitySpriteSize: 200
 --- !u!114 &547716740
 MonoBehaviour:
@@ -2974,7 +2933,7 @@ MonoBehaviour:
   - {fileID: 256469537}
   - {fileID: 2122726268}
   - {fileID: 738727254}
-  lvlUpSystem: {fileID: 970627504}
+  lvlUpSystem: {fileID: 0}
   newAbilitySpriteSize: 200
 --- !u!114 &553896071
 MonoBehaviour:
@@ -4417,7 +4376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 920790291}
   m_Layer: 5
-  m_Name: MergeMenu
+  m_Name: MergeAbilitiesMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4650,7 +4609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4933,16 +4892,14 @@ GameObject:
   - component: {fileID: 970627503}
   - component: {fileID: 970627506}
   - component: {fileID: 970627505}
-  - component: {fileID: 970627504}
   - component: {fileID: 970627507}
-  - component: {fileID: 970627508}
   m_Layer: 5
   m_Name: LevelUpSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &970627503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4965,30 +4922,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &970627504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970627502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8843e7abef5e44aa3be496f4f943dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NewAbilitiesButtons:
-  - {fileID: 1016921412}
-  - {fileID: 133443035}
-  - {fileID: 553896070}
-  - {fileID: 547716739}
-  CurrentAbilitiesButtons:
-  - {fileID: 2018458887}
-  - {fileID: 928890187}
-  - {fileID: 1528013274}
-  - {fileID: 256469539}
-  - {fileID: 2122726270}
-  - {fileID: 738727256}
 --- !u!114 &970627505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5040,29 +4973,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addAbilityMenu: {fileID: 1435552052}
-  mergeMenu: {fileID: 920790290}
---- !u!114 &970627508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970627502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb337a41483618247a926c9ee6646cb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryAbilitySlot: {fileID: 382646022}
-  secondaryAbilitySlot: {fileID: 1482554688}
-  outputSlot: {fileID: 1689159247}
-  CurrentAbilitiesButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  mergeAbilityMenu: {fileID: 920790290}
+  addAbilityHeaderButton: {fileID: 0}
+  mergeAbilityHeaderButton: {fileID: 0}
 --- !u!1 &1013143262
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,7 +5198,7 @@ MonoBehaviour:
   - {fileID: 256469537}
   - {fileID: 2122726268}
   - {fileID: 738727254}
-  lvlUpSystem: {fileID: 970627504}
+  lvlUpSystem: {fileID: 0}
   newAbilitySpriteSize: 200
 --- !u!61 &1016921413
 BoxCollider2D:
@@ -6353,7 +6266,7 @@ MonoBehaviour:
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 970627504}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelUpSystem, Assembly-CSharp
         m_MethodName: SaveCurrentAbilities
         m_Mode: 1
@@ -13136,7 +13049,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7264808, y: 1}
+    m_SensorSize: {x: 1.7247387, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

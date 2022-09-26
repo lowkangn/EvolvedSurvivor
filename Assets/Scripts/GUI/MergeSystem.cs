@@ -34,10 +34,10 @@ public class MergeSystem : MonoBehaviour
         int numOfCurrentAbilities = Abilities.Count;
 
         // Add ability to current ability buttons
-        for (int i = 0; i < numOfCurrentAbilities; i++)
+        /*for (int i = 0; i < numOfCurrentAbilities; i++)
         {
             CurrentAbilitiesButtons[i].AddAbility(Abilities[i]);
-        }
+        }*/
     }
 
     // output ability & prefab (big box) if valid pri & sec
