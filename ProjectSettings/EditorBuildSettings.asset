@@ -122,4 +122,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelUpUI.unity
     guid: 8cd92ed4b4209d044b908a694c3064f3
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 089154fb0bd8ef442937e83f68569cea
+  - enabled: 1
+    path: Assets/Scenes/TestUI.unity
+    guid: 00738bcbc55a417438ec00d6cec80cac
   m_configObjects: {}

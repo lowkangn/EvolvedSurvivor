@@ -22,6 +22,7 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
+        public GameObject sprite;
 
         [Header("Element Magnitudes")]
         [SerializeField]
@@ -150,5 +151,9 @@ namespace TeamOne.EvolvedSurvivor
         protected abstract void Build();
 
         protected abstract void Activate();
+
+        public GameObject GetSprite() {
+            return this.sprite;
+        }
     }
 }

@@ -56,6 +56,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 1
+  sprite: {fileID: 1088698761620328221, guid: e7968df1ef3e72a4a84c6a3abdb68586, type: 3}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 1
   maxForceMagnitude: 5
