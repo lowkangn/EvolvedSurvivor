@@ -24,6 +24,7 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasActivated;
         private float coolDownTimer;
         public GameObject sprite;
+        private bool isActive;
 
         [Header("Element Magnitudes")]
         [SerializeField]
@@ -50,6 +51,7 @@ namespace TeamOne.EvolvedSurvivor
             BuildElement();
             Build();
             hasBuilt = true;
+            isActive = true;
         }
 
         private void CopyAbility(Ability other)
@@ -119,7 +121,7 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            if (activateOnlyOnce)
+            if (activateOnlyOnce && isActive)
             {
                 if (!hasActivated)
                 {
@@ -129,11 +131,14 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            coolDownTimer -= Time.deltaTime;
-            if (coolDownTimer < 0f)
+            if (isActive)
             {
-                Activate();
-                coolDownTimer = coolDown.value;
+                coolDownTimer -= Time.deltaTime;
+                if (coolDownTimer < 0f)
+                {
+                    Activate();
+                    coolDownTimer = coolDown.value;
+                }
             }
         }
 
@@ -184,6 +189,11 @@ namespace TeamOne.EvolvedSurvivor
         protected abstract void Build();
 
         protected abstract void Activate();
+
+        public void Stop()
+        {
+            isActive = false;
+        }
 
         public GameObject GetSprite() {
             return this.sprite;

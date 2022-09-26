@@ -35,5 +35,13 @@ namespace TeamOne.EvolvedSurvivor
             }
             Destroy(ability.gameObject);
         }
+
+        public void StopAllAbilities()
+        {
+            foreach (Ability ability in Abilities)
+            {
+                ability.Stop();
+            }
+        }
     }
 }
