@@ -81,6 +81,11 @@ namespace TeamOne.EvolvedSurvivor
                 else
                 {
                     SpawnExplosiveProjectile(targets[targetIndex]);
+                    targetIndex++;
+                    if (targetIndex >= targets.Count)
+                    {
+                        targetIndex = 0;
+                    }
                 }
 
                 yield return new WaitForSeconds(projectileSpawnInterval);
