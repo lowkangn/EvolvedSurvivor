@@ -17,8 +17,6 @@ public class CurrentAbilityLevelUpUI : MonoBehaviour
         }
 
         // Clone abilitySprite sprite and set its parent to 'current abilitySprite' button
-        // SetAbility(ability);
-        // GameObject abilitySprite = ability.sprite;
 
         Transform abilityTransform = Instantiate(abilitySprite.transform);
         abilityTransform.SetParent(gameObject.transform);
@@ -28,9 +26,5 @@ public class CurrentAbilityLevelUpUI : MonoBehaviour
         rectTransform.localPosition = new Vector3(rectTransform.anchoredPosition.x,
                                     rectTransform.anchoredPosition.y, 0f); // To set z value to 0
         rectTransform.localScale = new Vector3(smallSpriteSize, smallSpriteSize, 1);
-    }
-
-    public void SetAbility(GameObject ability) {
-        this.abilityInButton = ability;
     }
 }

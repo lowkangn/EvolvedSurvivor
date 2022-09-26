@@ -26,6 +26,14 @@ public class LevelUpSystem : MonoBehaviour
         GetCurrentAbilities();
     }
 
+    private void OnDisable()
+    {
+        foreach (Ability ability in NewAbilities)
+        {
+            Destroy(ability.gameObject);
+        }
+    }
+
     // Generate 4 new abilities in Level Up screen
     void GetNewAbilities() {
         for (int i = 0; i < 4; i++) {

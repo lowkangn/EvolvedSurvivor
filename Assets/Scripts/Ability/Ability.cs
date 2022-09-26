@@ -14,6 +14,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected AbilityStat<float> coolDown;
         protected int tier;
+        private readonly int maxTier = 10;
         protected TraitChart traitChart;
         protected Element element;
         [SerializeField]
@@ -51,25 +52,57 @@ namespace TeamOne.EvolvedSurvivor
             hasBuilt = true;
         }
 
-        /// <summary>
-        /// Updates the ability using the consumed ability.
-        /// </summary>
-        public void UpgradeAbility(Ability consumedAbility)
+        private void CopyAbility(Ability other)
         {
-            // Element Upgrade
-            tier += consumedAbility.tier;
-            int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
-            if (additionalLevel > 0)
-            {
-                element.CombineWith(consumedAbility.element);
-            }
-
-            // Trait Chart Upgrade
-            traitChart.CombineWith(consumedAbility.traitChart);
-
-            // Build Ability Again
+            tier = other.tier;
+            traitChart = other.traitChart;
+            element = other.element;
             Build();
+            hasBuilt = true;
         }
+
+        /// <summary>
+        /// Creates a new ability based on this ability and the consumed ability
+        /// </summary>
+        public Ability UpgradeAbility(Ability consumedAbility)
+        {
+            if (CanUpgrade(consumedAbility))
+            {
+                Ability newAbility = Instantiate(gameObject).GetComponent<Ability>();
+                newAbility.CopyAbility(this);
+                // Element Upgrade
+                newAbility.tier = tier + consumedAbility.tier;
+                int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
+                if (additionalLevel > 0)
+                {
+                    newAbility.element.CombineWith(consumedAbility.element);
+                }
+
+                // Trait Chart Upgrade
+                newAbility.traitChart.CombineWith(consumedAbility.traitChart);
+
+                // Build Ability Again
+                newAbility.Build();
+                return newAbility;
+            } else
+            {
+                throw new System.Exception("Trying to upgrade past max tier");
+            }
+        }
+
+        /// <summary>
+        /// Checks that the ability can be upgraded if combined tier does not exceed max.
+        /// </summary>
+        public bool CanUpgrade(Ability consumedAbility)
+        {
+            if (tier + consumedAbility.tier > maxTier)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         private void Awake()
         {
             elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
