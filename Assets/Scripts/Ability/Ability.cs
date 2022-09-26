@@ -14,6 +14,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected AbilityStat<float> coolDown;
         protected int tier;
+        private readonly int maxTier = 10;
         protected TraitChart traitChart;
         protected Element element;
         [SerializeField]
@@ -22,6 +23,8 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
+        public GameObject sprite;
+        private bool isActive;
 
         [Header("Element Magnitudes")]
         [SerializeField]
@@ -48,27 +51,56 @@ namespace TeamOne.EvolvedSurvivor
             BuildElement();
             Build();
             hasBuilt = true;
+            isActive = true;
+        }
+
+        private void CopyAbility(Ability other)
+        {
+            tier = other.tier;
+            traitChart = other.traitChart;
+            element = other.element;
+            Build();
+            hasBuilt = true;
         }
 
         /// <summary>
-        /// Updates the ability using the consumed ability.
+        /// Creates a new ability based on this ability and the consumed ability
         /// </summary>
-        public void UpgradeAbility(Ability consumedAbility)
+        public Ability UpgradeAbility(Ability consumedAbility)
         {
-            // Element Upgrade
-            tier += consumedAbility.tier;
-            int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
-            if (additionalLevel > 0)
+            if (CanUpgrade(consumedAbility))
             {
-                element.CombineWith(consumedAbility.element);
+                Ability newAbility = Instantiate(gameObject).GetComponent<Ability>();
+                newAbility.CopyAbility(this);
+                // Element Upgrade
+                newAbility.tier = tier + consumedAbility.tier;
+                int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
+                if (additionalLevel > 0)
+                {
+                    newAbility.element.CombineWith(consumedAbility.element);
+                }
+
+                // Trait Chart Upgrade
+                newAbility.traitChart.CombineWith(consumedAbility.traitChart);
+
+                // Build Ability Again
+                newAbility.Build();
+                return newAbility;
+            } else
+            {
+                throw new System.Exception("Trying to upgrade past max tier");
             }
-
-            // Trait Chart Upgrade
-            traitChart.CombineWith(consumedAbility.traitChart);
-
-            // Build Ability Again
-            Build();
         }
+
+        /// <summary>
+        /// Checks that the ability can be upgraded if combined tier does not exceed max.
+        /// </summary>
+        public bool CanUpgrade(Ability consumedAbility)
+        {
+            return (tier + consumedAbility.tier > maxTier);
+        }
+
+
         private void Awake()
         {
             elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
@@ -85,7 +117,7 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            if (activateOnlyOnce)
+            if (activateOnlyOnce && isActive)
             {
                 if (!hasActivated)
                 {
@@ -95,11 +127,14 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            coolDownTimer -= Time.deltaTime;
-            if (coolDownTimer < 0f)
+            if (isActive)
             {
-                Activate();
-                coolDownTimer = coolDown.value;
+                coolDownTimer -= Time.deltaTime;
+                if (coolDownTimer < 0f)
+                {
+                    Activate();
+                    coolDownTimer = coolDown.value;
+                }
             }
         }
 
@@ -150,5 +185,14 @@ namespace TeamOne.EvolvedSurvivor
         protected abstract void Build();
 
         protected abstract void Activate();
+
+        public void Stop()
+        {
+            isActive = false;
+        }
+
+        public GameObject GetSprite() {
+            return this.sprite;
+        }
     }
 }

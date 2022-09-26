@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TeamOne.EvolvedSurvivor;
 
 namespace MoreMountains.Tools
 {
@@ -10,8 +11,11 @@ namespace MoreMountains.Tools
     public class NewAbilityUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Text textObj;
-        [SerializeField] private GameObject ability; // Ability in the NewAbility button
+        [SerializeField] private GameObject abilitySprite; // Ability in the NewAbility button
+        [SerializeField] private Ability ability; 
         [SerializeField] private GameObject[] currentAbilities; // Current Abilities bar
+        [SerializeField] private LevelUpSystem lvlUpSystem;
+        public int newAbilitySpriteSize = 200;
 
         private GameObject abilitySlot; // First empty currentAbilities slot
         private bool canAddAbilities;
@@ -44,10 +48,31 @@ namespace MoreMountains.Tools
         public void OnPointerClick(PointerEventData pointerEventData)
         {
             if (canAddAbilities) {
-                abilitySlot.GetComponent<CurrentAbilityLevelUpUI>().AddAbilityToCurrent(ability);
+                abilitySlot.GetComponent<CurrentAbilityLevelUpUI>().AddAbilityToCurrent(ability.sprite);
+                lvlUpSystem.SetCurrentSelectedAbility(ability);                
             } else {
                 textObj.text = "Current Abilities are full.";
             }
+        }
+
+        public void AddAbilityToButton(Ability ability) {
+            
+            this.ability = ability;
+            this.abilitySprite = ability.sprite;
+            // SetAbility(abilitySprite);
+            // GameObject abilitySprite = ability.sprite;
+
+            Transform abilityTransform = Instantiate(abilitySprite.transform);
+            abilityTransform.SetParent(gameObject.transform);
+            RectTransform rectTransform = abilityTransform.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.localPosition = new Vector3(rectTransform.anchoredPosition.x,
+                            rectTransform.anchoredPosition.y, 0f); // To set z value to 0
+            rectTransform.localScale = new Vector3(newAbilitySpriteSize, newAbilitySpriteSize, 1);
+        }
+        
+        public void SetAbility(GameObject abilitySprite) {
+            this.abilitySprite = abilitySprite;
         }
     }
 }

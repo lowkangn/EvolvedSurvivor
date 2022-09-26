@@ -33,6 +33,15 @@ namespace TeamOne.EvolvedSurvivor
             {
                 Debug.LogError("Cannot find " + ability.name + " ");
             }
+            Destroy(ability.gameObject);
+        }
+
+        public void StopAllAbilities()
+        {
+            foreach (Ability ability in Abilities)
+            {
+                ability.Stop();
+            }
         }
     }
 }

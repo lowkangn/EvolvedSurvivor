@@ -51,7 +51,18 @@ MonoBehaviour:
     minValue: 10
     maxValue: 12
     value: 0
+  projDamage:
+    damage: 0
+    instigator: {fileID: 0}
+    direction: {x: 0, y: 0, z: 0}
+    effects: []
   hasBuilt: 0
+  sprite: {fileID: 1088698761620328221, guid: a8095727d762de54d9b51626c8c81f31, type: 3}
+  maxPlasmaMagnitude: 0
+  maxCryoMagnitude: 0
+  maxForceMagnitude: 0
+  maxInfectMagnitude: 0
+  maxPyroMagnitude: 0
   damage:
     minValue: 6
     maxValue: 60
