@@ -18,12 +18,8 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
     /// the level up screen game object
     [Tooltip("the level up screen game object")]
     public GameObject LevelUpScreen;
-    /// the Merge Abilities screen game object
-    [Tooltip("the Merge Abilities screen game object")]
-    public GameObject MergeAbilitiesScreen;
 
     private bool isLevelUpScreenVisible = false;
-    private bool isMergeAbilitiesScreenVisible = false;
 
     private void OnEnable()
     {
@@ -46,16 +42,12 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
     {
         if (LevelUpScreen != null)
         {
-            if (isMergeAbilitiesScreenVisible) {
-                MergeAbilitiesScreen.SetActive(false);
-                isMergeAbilitiesScreenVisible = false;
-            }
             isLevelUpScreenVisible = true;
             LevelUpScreen.SetActive(true);
             EventSystem.current.sendNavigationEvents = true;
             
             // if time is not already stopped		
-			if (Time.timeScale>0.0f){
+			if (Time.timeScale > 0f){
                 gameManager.Pause(PauseMethods.NoPauseMenu);
             }
         }
@@ -85,31 +77,6 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
         if (isTogglePauseEvent && isLevelUpScreenVisible) {
             isLevelUpScreenVisible = false;
             LevelUpScreen.SetActive(false);
-        } else if (isTogglePauseEvent && isMergeAbilitiesScreenVisible) {
-            isMergeAbilitiesScreenVisible = false;
-            MergeAbilitiesScreen.SetActive(false);
-        }
-    }
-
-    /// <summary>
-    /// Shows the MergeAbilities screen.
-    /// </summary>
-    public void ShowMergeAbilitiesScreen()
-    {
-        if (MergeAbilitiesScreen != null)
-        {
-            if (isLevelUpScreenVisible) {
-                LevelUpScreen.SetActive(false);
-                isLevelUpScreenVisible = false;
-            }
-            isMergeAbilitiesScreenVisible = true;
-            MergeAbilitiesScreen.SetActive(true);
-            EventSystem.current.sendNavigationEvents = true;
-
-            // if time is not already stopped		
-			if (Time.timeScale>0.0f){
-                gameManager.Pause(PauseMethods.NoPauseMenu);
-            }
         }
     }
 }

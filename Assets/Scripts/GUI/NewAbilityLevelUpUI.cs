@@ -8,7 +8,7 @@ using TeamOne.EvolvedSurvivor;
 namespace MoreMountains.Tools
 {
     // This class is added to the New Abilities on the Level Up screen
-    public class NewAbilityUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class NewAbilityLevelUpUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Text textObj;
         [SerializeField] private GameObject abilitySprite; // Ability in the NewAbility button

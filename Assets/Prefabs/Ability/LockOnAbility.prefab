@@ -64,9 +64,9 @@ MonoBehaviour:
   maxPyroMagnitude: 1.5
   objectPool: {fileID: 8988950983226355129}
   damage:
-    minValue: 8
+    minValue: 20
     maxValue: 80
-    value: 8
+    value: 20
   aoeRadius:
     minValue: 0
     maxValue: 2.5

@@ -5,7 +5,7 @@ using TeamOne.EvolvedSurvivor;
 
 public class LevelUpSystem : MonoBehaviour
 {
-    [SerializeField] private MoreMountains.Tools.NewAbilityUI[] NewAbilitiesButtons;
+    [SerializeField] private MoreMountains.Tools.NewAbilityLevelUpUI[] NewAbilitiesButtons;
     [SerializeField] private CurrentAbilityLevelUpUI[] CurrentAbilitiesButtons;
     private Ability currentSelectedAbility; 
 
