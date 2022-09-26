@@ -97,11 +97,7 @@ namespace TeamOne.EvolvedSurvivor
         /// </summary>
         public bool CanUpgrade(Ability consumedAbility)
         {
-            if (tier + consumedAbility.tier > maxTier)
-            {
-                return false;
-            }
-            return true;
+            return (tier + consumedAbility.tier > maxTier);
         }
 
 
