@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,31 +26,64 @@ namespace TeamOne.EvolvedSurvivor
         [Header("Fixed stats")]
         [SerializeField]
         private float projectileSpeed;
+        [SerializeField]
+        private float projectileSpawnInterval;
 
-        private bool hasColliderSizeBeenSet = false;
+        [Header("The target detector for aiming")]
+        [SerializeField]
+        private TargetDetector targetDetector;
 
         protected override void Activate()
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToArray();
+            StartCoroutine(SpawnProjectiles(projectileNumber.value));
+        }
 
-            if (onScreenEnemies.Length > 0)
+        private void SpawnExplosiveProjectile(Transform target=null)
+        {
+            ExplosiveProjectile projectile = objectPool.GetPooledGameObject().GetComponent<ExplosiveProjectile>();
+            projectile.transform.position = transform.position;
+            projectile.SetActive(true);
+
+            // Set damage
+            Damage damage = new Damage();
+            damage.damage = this.damage.value;
+            damage = damageHandler.ProcessOutgoingDamage(damage);
+
+            projectile.SetDamage(damage);
+            projectile.SetExplosionRadius(aoeRadius.value);
+            projectile.SetSize(projectileSize.value);
+
+            // Set motion
+            Vector2 direction;
+            if (target == null)
             {
-                GameObject nextGameObject = objectPool.GetPooledGameObject();
+                direction = Random.insideUnitCircle;
+            }
+            else
+            {
+                direction = (target.position - transform.position).normalized;
+            }
+            Vector2 motion = direction * projectileSpeed;
+            projectile.SetMotion(motion);
+        }
 
-                // Set start position to player position
-                SetStartPosition(nextGameObject);
+        private IEnumerator SpawnProjectiles(int projectileCount)
+        {
+            List<Transform> targets = targetDetector.ScanTargets();
+            int targetIndex = 0;
 
-                // Find nearest enemy (if exists) and calculate direction
-                Vector3 nearestDirection = SetDirectionIfEnemyFound(onScreenEnemies);
+            for (int i = 0; i < projectileCount; i++)
+            {
+                if (targets.Count == 0)
+                {
+                    SpawnExplosiveProjectile();
+                }
+                else
+                {
+                    SpawnExplosiveProjectile(targets[targetIndex]);
+                }
 
-                // Set stats for the AbilityHandler
-                InitialiseHandler(nextGameObject, nearestDirection);
-
-                // Set projectile size
-                SetProjectileSize(nextGameObject);
-
-                nextGameObject.SetActive(true);
+                yield return new WaitForSeconds(projectileSpawnInterval);
             }
         }
 
@@ -72,59 +104,6 @@ namespace TeamOne.EvolvedSurvivor
 
             // Utility
 
-        }
-
-        private void SetStartPosition(GameObject objToSetPosition)
-        {
-            objToSetPosition.transform.position = transform.position;
-        }
-
-        private Vector3 SetDirectionIfEnemyFound(GameObject[] onScreenEnemies)
-        {
-            Vector2 playerPos2D = new Vector2(transform.position.x, transform.position.y);
-            Collider2D[] hitColliders = Array.ConvertAll(onScreenEnemies, x => x.GetComponent<Collider2D>());
-
-            float nearestDist = -1f;
-            Vector3 direction = new Vector3(0, 0, 0);
-            Collider2D nearest;
-
-            foreach (Collider2D currCollider in hitColliders)
-            {
-                Vector3 currDirection = currCollider.GetComponent<Transform>().position - transform.position;
-                float dist = currDirection.magnitude;
-                if (nearestDist == -1f || dist < nearestDist)
-                {
-                    nearestDist = dist;
-                    nearest = currCollider;
-                    direction = Vector3.Normalize(currDirection);
-                }
-            }
-
-            return direction;
-        }
-
-        private void SetProjectileSize(GameObject objToSetSize)
-        {
-            if (!hasColliderSizeBeenSet)
-            {
-                BoxCollider2D boxCollider = objToSetSize.GetComponent<BoxCollider2D>();
-                float currX = boxCollider.size.x;
-                float currY = boxCollider.size.y;
-                boxCollider.size = new Vector2(currX * projectileSize.value, currY * projectileSize.value);
-                hasColliderSizeBeenSet = true;
-            }
-
-            Transform imageComponent = objToSetSize.transform.Find("Bullet");
-            imageComponent.localScale = new Vector3(projectileSize.value, projectileSize.value, projectileSize.value);
-        }
-
-        private void InitialiseHandler(GameObject objToInitialiseHandler, Vector3 direction)
-        {
-            BoxCollider2D collider = objToInitialiseHandler.GetComponent<BoxCollider2D>();
-            float colliderSize = collider.size.x;
-
-            ExplosiveProjectileAbilityHandler handler = objToInitialiseHandler.GetComponent<ExplosiveProjectileAbilityHandler>();
-            handler.SetStats(damage, aoeRadius, colliderSize, projectileSpeed, direction);
         }
     }
 }

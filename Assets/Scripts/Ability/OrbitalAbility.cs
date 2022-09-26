@@ -31,7 +31,7 @@ namespace TeamOne.EvolvedSurvivor
             for (int i = 0; i < orbitalNumber.value; i++)
             {
                 Projectile projectile = objectPool.GetPooledGameObject().GetComponent<Projectile>();
-                projectile.gameObject.SetActive(true);
+                projectile.SetActive(true);
 
                 // Attach to ability transform
                 projectile.transform.SetParent(transform);
@@ -39,7 +39,8 @@ namespace TeamOne.EvolvedSurvivor
                 // Set damage
                 Damage damage = new Damage();
                 damage.damage = this.damage.value;
-                // TODO: process damage with DamageHandler
+                damage = damageHandler.ProcessOutgoingDamage(damage);
+
                 projectile.SetDamage(damage);
                 projectile.SetSize(projectileSize.value);
 

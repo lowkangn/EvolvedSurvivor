@@ -6,30 +6,22 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class Projectile : DamageArea
     {
-        private bool hasLifeTime = false;
-        private float lifeTime;
+        private Vector3 motion;
 
         public void SetSize(float size)
         {
             transform.localScale = Vector3.one * size;
         }
 
-        public void SetLifeTime(float lifeTime)
+        public void SetMotion(Vector2 motion)
         {
-            hasLifeTime = true;
-            this.lifeTime = lifeTime;
+            this.motion = motion;
         }
 
-        private void Update()
+        protected override void Update()
         {
-            if (hasLifeTime)
-            {
-                lifeTime -= Time.deltaTime;
-                if (lifeTime < 0f)
-                {
-                    SetActive(false);
-                }
-            }
+            base.Update();
+            transform.position += motion * Time.deltaTime;
         }
     }
 }
