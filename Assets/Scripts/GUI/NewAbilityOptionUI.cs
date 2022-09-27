@@ -14,8 +14,8 @@ namespace TeamOne.EvolvedSurvivor
 
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
-            levelUpManager.AddNewAbility(ability);
-            addAbilityHandler.SetCurrentSelectedAbility(ability);
+            this.levelUpManager.AddNewAbility(ability);
+            this.addAbilityHandler.SetCurrentSelectedAbility(ability);
         }
     }
 }

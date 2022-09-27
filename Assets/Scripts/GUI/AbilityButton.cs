@@ -6,29 +6,49 @@ namespace TeamOne.EvolvedSurvivor
 {
     public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private Text textObj;
+        [SerializeField] protected Text textObj;
         [SerializeField] protected Image abilityImage;
         [SerializeField] protected Ability ability;
 
-        public void AddAbilityToButton(Ability ability)
+        protected bool isEmpty = true;
+
+        public bool IsEmpty()
+        {
+            return this.isEmpty;
+        }
+
+        public virtual void AddAbilityToButton(Ability ability)
         {
 
             this.ability = ability;
+            this.abilityImage.gameObject.SetActive(true);
             this.abilityImage.sprite = ability.GetSprite();
+            this.isEmpty = false;
         }
 
         public abstract void OnPointerClick(PointerEventData eventData);
 
         // Detect if the Cursor starts to pass over the button
-        public void OnPointerEnter(PointerEventData eventData)
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            textObj.text = "Description";
+            this.textObj.text = "Description";
         }
 
         // Detect when Cursor leaves the button
-        public void OnPointerExit(PointerEventData eventData)
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
-            textObj.text = "";
+            this.textObj.text = "";
+        }
+
+        public virtual void RemoveAbility()
+        {
+            if (!this.isEmpty)
+            {
+                this.isEmpty = true;
+                this.ability = null;
+                this.abilityImage.sprite = null;
+                this.abilityImage.gameObject.SetActive(false);
+            }
         }
     }
 }

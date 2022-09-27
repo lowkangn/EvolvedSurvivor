@@ -1,69 +1,88 @@
-using System.Collections;
-using System.Collections.Generic;
 using TeamOne.EvolvedSurvivor;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MergeAbilityHandler : MonoBehaviour
 {
     // The UI would call this class to get the result of merging primary & secondary ability
     [SerializeField]
-    public PriSecSlotUI primaryAbilitySlot;
+    private AbilityMergeSlotUI primaryAbilitySlot;
     [SerializeField]
-    public PriSecSlotUI secondaryAbilitySlot;
+    private AbilityMergeSlotUI secondaryAbilitySlot;
     [SerializeField]
-    public MergeOutputSlotUI outputSlot;
+    private MergeOutputSlotUI outputSlot;
+    [SerializeField]
+    private LevelUpScreenManager levelUpManager;
+    [SerializeField]
+    private GameObject confirmButton;
 
-    private GameObject player;
     private AbilityManager abilityManager;
-    void OnEnable()
+    
+
+    private void Awake()
     {
-        if (player == null)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        this.abilityManager = player.GetComponentInChildren<AbilityManager>();    
+    }
+
+    public bool AddAbility(Ability ability, CurrentAbilityUI sourceSlot)
+    {
+        if (this.primaryAbilitySlot.IsEmpty())
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-            abilityManager = player.GetComponentInChildren<AbilityManager>();
+            this.primaryAbilitySlot.AddAbilityToButton(ability, sourceSlot);
+            return true;
+        } 
+        else if (this.secondaryAbilitySlot.IsEmpty())
+        {
+            this.secondaryAbilitySlot.AddAbilityToButton(ability, sourceSlot);
+            return true;
         }
-        GetCurrentAbilities();
-    }
-    void GetCurrentAbilities()
-    {
-        // Get player's current abilities
-        List<Ability> Abilities = abilityManager.Abilities;
-        int numOfCurrentAbilities = Abilities.Count;
 
-        // Add ability to current ability buttons
-        /*for (int i = 0; i < numOfCurrentAbilities; i++)
-        {
-            CurrentAbilitiesButtons[i].AddAbility(Abilities[i]);
-        }*/
+        return false;
     }
 
-    // output ability & prefab (big box) if valid pri & sec
+    // Output ability & prefab (big box) if valid primary & secondary abilities are selected
     public void UpdateOutput()
     {
-        Ability primary = primaryAbilitySlot.GetAbility();
-        Ability secondary = secondaryAbilitySlot.GetAbility();
-        if (!primary.IsUnityNull() && !secondary.IsUnityNull() && primary.CanUpgrade(secondary))
+        if (this.primaryAbilitySlot.IsEmpty() || this.secondaryAbilitySlot.IsEmpty())
         {
-            Ability outputAbility = primary.UpgradeAbility(secondary);
-            outputSlot.AddAbility(outputAbility);
+            this.outputSlot.ClearSlot();
+            confirmButton.SetActive(false);
         } 
         else
         {
-            outputSlot.ClearSlot();
+            Ability primary = this.primaryAbilitySlot.GetAbility();
+            Ability secondary = this.secondaryAbilitySlot.GetAbility();
+
+            if (primary.CanUpgrade(secondary))
+            {
+                Ability outputAbility = primary.UpgradeAbility(secondary);
+                this.outputSlot.AddAbilityToButton(outputAbility);
+                confirmButton.SetActive(true);
+            }
         }
     }
 
     public void MergeAbilities()
     {
-        if (!outputSlot.IsEmpty())
-        {
-            Ability primary = primaryAbilitySlot.GetAbility();
-            Ability secondary = secondaryAbilitySlot.GetAbility();
-            Ability newAbility = outputSlot.GetAbility();
-            abilityManager.RemoveAbility(primary);
-            abilityManager.RemoveAbility(secondary);
-            abilityManager.AddAbility(newAbility);
-        }
+        Ability primary = this.primaryAbilitySlot.GetAbility();
+        Ability secondary = this.secondaryAbilitySlot.GetAbility();
+        Ability newAbility = this.outputSlot.GetAbility();
+
+        this.abilityManager.RemoveAbility(primary);
+        this.abilityManager.RemoveAbility(secondary);
+        this.abilityManager.AddAbility(newAbility);
+
+        primaryAbilitySlot.RemoveAbility();
+        secondaryAbilitySlot.RemoveAbility();
+        outputSlot.RemoveAbility();
+    }
+
+    public void ClearInput()
+    {
+        primaryAbilitySlot.ClearSelection();
+        secondaryAbilitySlot.ClearSelection();
+        outputSlot.ClearSlot();
+
+        confirmButton.SetActive(false);
     }
 }

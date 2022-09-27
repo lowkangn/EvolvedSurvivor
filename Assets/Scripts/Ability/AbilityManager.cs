@@ -12,12 +12,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public bool CanAddAbility()
         {
-            return Abilities.Count >= maxNumOfAbilities;
+            return Abilities.Count < maxNumOfAbilities;
         }
 
         public bool AddAbility(Ability newAbility)
         {
-            if (CanAddAbility())
+            if (!CanAddAbility())
             {
                 return false;
             }

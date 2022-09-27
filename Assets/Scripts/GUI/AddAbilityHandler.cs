@@ -1,10 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 using TeamOne.EvolvedSurvivor;
 
 public class AddAbilityHandler : MonoBehaviour
 {
     [SerializeField] private NewAbilityOptionUI[] NewAbilitiesButtons;
+    [SerializeField] private GameObject confirmButton;
+
     private Ability currentSelectedAbility;
 
     private Ability[] NewAbilities;
@@ -28,13 +29,8 @@ public class AddAbilityHandler : MonoBehaviour
         GenerateNewAbilities();
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
-        if (currentSelectedAbility != null)
-        {
-            SaveSelectedAbility();
-        }
-
         ClearUnselectedAbilities();
     }
 
@@ -50,12 +46,17 @@ public class AddAbilityHandler : MonoBehaviour
 
     public void SetCurrentSelectedAbility(Ability ability) 
     {
-        this.currentSelectedAbility = ability;
+        if (abilityManager.CanAddAbility())
+        {
+            this.currentSelectedAbility = ability;
+            confirmButton.SetActive(true);
+        }
     }
 
     public void ClearCurrentSelectedAbility()
     {
         this.currentSelectedAbility = null;
+        confirmButton.SetActive(false);
     }
 
     // Save selected ability to player's current abilities

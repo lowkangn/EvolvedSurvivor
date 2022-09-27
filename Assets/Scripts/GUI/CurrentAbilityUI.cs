@@ -1,26 +1,35 @@
 using TeamOne.EvolvedSurvivor;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 // This class is added to the Current Abilities in Level Up screen
 public class CurrentAbilityUI : AbilityButton
 {
+    [SerializeField] private MergeAbilityHandler mergeAbilityHandler;
+
     private bool isEnabled;
 
     public void DisableButton()
     {
-        isEnabled = false;
+        this.isEnabled = false;
     }
 
     public void EnableButton()
     {
-        isEnabled = true;
+        this.isEnabled = true;
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (isEnabled && ability != null)
+        if (this.isEnabled && this.ability != null)
         {
-
+            bool wasAdded = this.mergeAbilityHandler.AddAbility(ability, this);
+            
+            if (wasAdded)
+            {
+                this.mergeAbilityHandler.UpdateOutput();
+                this.RemoveAbility();
+            }
         }
     }
 }

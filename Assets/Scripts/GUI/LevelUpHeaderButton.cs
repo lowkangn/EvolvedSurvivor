@@ -17,13 +17,16 @@ public class LevelUpHeaderButton : MMTouchButton
     [Header("Header buttons")]
     [SerializeField] private LevelUpHeaderButton[] headerButtons;
 
+    private new void Awake()
+    {
+        
+    }
+
     private void Start()
     {
-        ReturnToInitialSpriteAutomatically = false;
-
         if (startsSelected)
         {
-            SetSelectAppearance();
+            SetSelected();
         }
     }
 
@@ -31,7 +34,7 @@ public class LevelUpHeaderButton : MMTouchButton
     {
         base.OnPointerDown(data);
 
-        SetSelectAppearance();
+        SetSelected();
 
         foreach (LevelUpHeaderButton headerButton in headerButtons)
         {
@@ -41,12 +44,24 @@ public class LevelUpHeaderButton : MMTouchButton
 
     public void ResetAppearance()
     {
+        if (_image == null)
+        {
+            Initialization();
+            ReturnToInitialSpriteAutomatically = false;
+        }
+
         _image.color = _initialColor;
         buttonText.color = unselectedTextColor;
     }
 
-    private void SetSelectAppearance()
+    public void SetSelected()
     {
+        if (_image == null)
+        {
+            Initialization();
+            ReturnToInitialSpriteAutomatically = false;
+        }
+        
         _image.color = selectedButtonColor;
         buttonText.color = selectedTextColor;
     }
