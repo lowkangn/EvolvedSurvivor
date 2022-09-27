@@ -5102,6 +5102,9 @@ GameObject:
   - component: {fileID: 3408037924599025843}
   - component: {fileID: 3726143494263872085}
   - component: {fileID: 7751773710183483230}
+  - component: {fileID: -6325841705534562056}
+  - component: {fileID: 7592192615028657320}
+  - component: {fileID: -6232343430091109303}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
   - component: {fileID: 3895018529336057819}
@@ -5109,6 +5112,7 @@ GameObject:
   - component: {fileID: -5534447137170697443}
   - component: {fileID: -6019659113267063078}
   - component: {fileID: 6078198106312669534}
+  - component: {fileID: 8359986885604814273}
   m_Layer: 13
   m_Name: RangedMarineEnemy
   m_TagString: Enemy
@@ -5390,6 +5394,22 @@ MonoBehaviour:
       - Decision: {fileID: 3726143494263872085}
         TrueState: 
         FalseState: Detecting
+      - Decision: {fileID: 7592192615028657320}
+        TrueState: Shooting
+        FalseState: 
+  - StateName: Shooting
+    Actions:
+      array:
+      - {fileID: -6232343430091109303}
+      - {fileID: -6325841705534562056}
+    Transitions:
+      array:
+      - Decision: {fileID: 3726143494263872085}
+        TrueState: 
+        FalseState: Detecting
+      - Decision: {fileID: 7592192615028657320}
+        TrueState: 
+        FalseState: Moving
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -5444,6 +5464,65 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   MinimumDistance: 0.1
+--- !u!114 &-6325841705534562056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd571705d968cb4f871af393946f91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  objectPool: {fileID: 8359986885604814273}
+  timeForEachShot: 1.5
+  damageValue: 10
+  projectileSpeed: 8
+--- !u!114 &7592192615028657320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a946a428cb16e1409d657b9041c69be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  Radius: 8
+  DetectionOriginOffset: {x: 0, y: 0, z: 0}
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  ObstacleDetection: 1
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  ObstaclesDetectionMode: 1
+  CanTargetSelf: 0
+  TargetCheckFrequency: 1
+  OverlapMaximum: 10
+--- !u!114 &-6232343430091109303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1148b739e4c74b8478868d1834fbcd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  Mode: 0
 --- !u!114 &3135418408013145896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5620,6 +5699,25 @@ MonoBehaviour:
   damageValue: 10
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
+--- !u!114 &8359986885604814273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 1133100380862132, guid: 6cb1bd0733d28304086b59aea85d0a84,
+    type: 3}
+  PoolSize: 5
+  PoolCanExpand: 1
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0
