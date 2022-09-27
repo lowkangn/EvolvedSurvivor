@@ -57,7 +57,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 1088698761620328221, guid: 4f1a9156aa71d594987d119102fe2fce, type: 3}
   maxPlasmaMagnitude: 0
   maxCryoMagnitude: 0
   maxForceMagnitude: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     value: 0
   projectileSize:
     minValue: 1
-    maxValue: 5
+    maxValue: 2
     value: 0
   projectileSpeed: 15
   projectileSpawnInterval: 0.15
@@ -152,3 +152,4 @@ MonoBehaviour:
     m_Bits: 8192
   targetTags:
   - Enemy
+  onScreen: 0

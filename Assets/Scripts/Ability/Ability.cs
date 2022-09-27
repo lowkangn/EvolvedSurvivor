@@ -134,7 +134,7 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            if (isActive)
+            if (isActive && damageHandler != null)
             {
                 coolDownTimer -= Time.deltaTime;
                 if (coolDownTimer < 0f)
