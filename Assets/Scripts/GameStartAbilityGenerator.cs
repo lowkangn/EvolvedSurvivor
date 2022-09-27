@@ -8,10 +8,11 @@ namespace TeamOne.EvolvedSurvivor
     {
         [SerializeField] private AbilityGenerator generator;
         [SerializeField] private GameObject abilityManager;
+        [SerializeField] private int startLevel = 1;
 
         void Start()
         {
-            Ability newAbility = generator.GenerateAbility(1);
+            Ability newAbility = generator.GenerateAbility(startLevel);
             AbilityManager manager = abilityManager.GetComponent<AbilityManager>();
             manager.AddAbility(newAbility);
         }

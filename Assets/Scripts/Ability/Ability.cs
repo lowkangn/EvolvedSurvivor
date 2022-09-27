@@ -38,6 +38,8 @@ namespace TeamOne.EvolvedSurvivor
         private float maxPyroMagnitude;
         protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
 
+        protected DamageHandler damageHandler;
+
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
         /// E.g., Speed, Damage, CoolDown, etc.
@@ -51,6 +53,11 @@ namespace TeamOne.EvolvedSurvivor
             Build();
             hasBuilt = true;
             isActive = true;
+        }
+
+        public void SetOwner(Transform owner)
+        {
+            damageHandler = owner.GetComponentInParent<DamageHandler>();
         }
 
         private void CopyAbility(Ability other)
@@ -126,7 +133,7 @@ namespace TeamOne.EvolvedSurvivor
                 return;
             }
 
-            if (isActive)
+            if (isActive && damageHandler != null)
             {
                 coolDownTimer -= Time.deltaTime;
                 if (coolDownTimer < 0f)

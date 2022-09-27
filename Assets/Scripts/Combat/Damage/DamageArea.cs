@@ -14,23 +14,41 @@ namespace TeamOne.EvolvedSurvivor
         
         public UnityEvent OnHitEvent;
 
-        private Damage damage;
+        protected Damage damage;
+        private bool hasLifeTime = false;
+        private float lifeTime;
         private float lastRepeatingTime;
         private HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
 
-        public void SetDamage(Damage damage)
+        public virtual void SetDamage(Damage damage)
         {
             this.damage = damage;
         }
 
-        public void SetActive(bool active)
+        public virtual void SetActive(bool active)
         {
             gameObject.SetActive(active);
+        }
+
+        public void SetSize(float size)
+        {
+            transform.localScale = Vector3.one * size;
+        }
+
+        public void SetLifeTime(float lifeTime)
+        {
+            hasLifeTime = true;
+            this.lifeTime = lifeTime;
         }
 
         public void AddAlreadyHit(GameObject obj)
         {
             alreadyHit.Add(obj);
+        }
+
+        protected virtual void OnHit()
+        {
+
         }
 
         private void Collide(Collider2D collision)
@@ -41,6 +59,7 @@ namespace TeamOne.EvolvedSurvivor
             }
 
             OnHitEvent.Invoke();
+            OnHit();
 
             if (!alreadyHit.Contains(collision.gameObject))
             {
@@ -52,6 +71,19 @@ namespace TeamOne.EvolvedSurvivor
             {
                 SetActive(false);
             }
+        }
+
+        protected virtual void Update()
+        {
+            if (hasLifeTime)
+            {
+                lifeTime -= Time.deltaTime;
+                if (lifeTime < 0f)
+                {
+                    SetActive(false);
+                }
+            }
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -69,6 +101,7 @@ namespace TeamOne.EvolvedSurvivor
             if (Time.time - lastRepeatingTime > repeatingRate)
             {
                 Collide(collision);
+                lastRepeatingTime = Time.time;
             }
         }
     }

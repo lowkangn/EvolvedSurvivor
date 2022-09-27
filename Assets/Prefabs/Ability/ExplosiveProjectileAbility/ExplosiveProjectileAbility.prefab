@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9018317169337901169}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,11 +53,11 @@ MonoBehaviour:
     value: 0
   projDamage:
     damage: 0
-    instigator: {fileID: 2943148802276990048}
+    instigator: {fileID: 0}
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 0
-  sprite: {fileID: 1088698761620328221, guid: e7968df1ef3e72a4a84c6a3abdb68586, type: 3}
+  sprite: {fileID: 1088698761620328221, guid: 4f1a9156aa71d594987d119102fe2fce, type: 3}
   maxPlasmaMagnitude: 0
   maxCryoMagnitude: 0
   maxForceMagnitude: 0
@@ -77,9 +78,11 @@ MonoBehaviour:
     value: 0
   projectileSize:
     minValue: 1
-    maxValue: 5
+    maxValue: 2
     value: 0
-  projectileSpeed: 5
+  projectileSpeed: 15
+  projectileSpawnInterval: 0.15
+  targetDetector: {fileID: 1574729991113620035}
 --- !u!114 &3404124164898862505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +98,58 @@ MonoBehaviour:
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
   NestUnderThis: 0
-  GameObjectToPool: {fileID: 1133100380862132, guid: f471958256ce34941985c5fd7a7f8eca,
+  GameObjectToPool: {fileID: 1133100380862132, guid: 24506b5f635ebbb4c9161d901527d0bf,
     type: 3}
   PoolSize: 20
   PoolCanExpand: 1
+--- !u!1 &6844707240551992630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018317169337901169}
+  - component: {fileID: 1574729991113620035}
+  m_Layer: 0
+  m_Name: TargetDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9018317169337901169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844707240551992630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3579630373086814210}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574729991113620035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844707240551992630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c306fed9dca504e4ba659ab96970eb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 30
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 8192
+  targetTags:
+  - Enemy
+  onScreen: 0

@@ -5481,6 +5481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generator: {fileID: 1315667598666802234}
   abilityManager: {fileID: 905297264760070559}
+  startLevel: 10
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0
