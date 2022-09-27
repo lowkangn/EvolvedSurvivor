@@ -12,6 +12,8 @@ namespace TeamOne.EvolvedSurvivor
         private LayerMask targetLayers;
         [SerializeField]
         private List<string> targetTags;
+        [SerializeField]
+        private bool onScreen = false;
 
         public List<Transform> ScanTargets()
         {
@@ -22,7 +24,17 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (targetTags.Contains(hit.tag))
                 {
-                    results.Add(hit.transform);
+                    if (onScreen)
+                    {
+                        if (GeneralUtility.IsOnScreen(hit.gameObject))
+                        {
+                            results.Add(hit.transform);
+                        }
+                    }
+                    else
+                    {
+                        results.Add(hit.transform);
+                    }
                 }
             }
 

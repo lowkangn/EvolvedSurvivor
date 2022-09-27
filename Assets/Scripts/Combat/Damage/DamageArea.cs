@@ -30,6 +30,11 @@ namespace TeamOne.EvolvedSurvivor
             gameObject.SetActive(active);
         }
 
+        public void SetSize(float size)
+        {
+            transform.localScale = Vector3.one * size;
+        }
+
         public void SetLifeTime(float lifeTime)
         {
             hasLifeTime = true;

@@ -8,11 +8,6 @@ namespace TeamOne.EvolvedSurvivor
     {
         private Vector3 motion;
 
-        public void SetSize(float size)
-        {
-            transform.localScale = Vector3.one * size;
-        }
-
         public void SetMotion(Vector2 motion)
         {
             this.motion = motion;
