@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2943148802276990048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3579630373086814210}
+  - component: {fileID: 7095764258113722623}
+  - component: {fileID: 3404124164898862505}
+  m_Layer: 0
+  m_Name: ExplosiveProjectileAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3579630373086814210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9018317169337901169}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7095764258113722623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa1297db32754d4a9e09302358d4dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnlyOnce: 0
+  coolDown:
+    minValue: 1
+    maxValue: 2
+    value: 0
+  projDamage:
+    damage: 0
+    instigator: {fileID: 0}
+    direction: {x: 0, y: 0, z: 0}
+    effects: []
+  hasBuilt: 0
+  sprite: {fileID: 0}
+  maxPlasmaMagnitude: 0
+  maxCryoMagnitude: 0
+  maxForceMagnitude: 0
+  maxInfectMagnitude: 0
+  maxPyroMagnitude: 0
+  objectPool: {fileID: 3404124164898862505}
+  damage:
+    minValue: 5
+    maxValue: 50
+    value: 0
+  aoeRadius:
+    minValue: 3
+    maxValue: 7
+    value: 0
+  projectileNumber:
+    minValue: 1
+    maxValue: 6
+    value: 0
+  projectileSize:
+    minValue: 1
+    maxValue: 5
+    value: 0
+  projectileSpeed: 15
+  projectileSpawnInterval: 0.15
+  targetDetector: {fileID: 1574729991113620035}
+--- !u!114 &3404124164898862505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 1133100380862132, guid: 24506b5f635ebbb4c9161d901527d0bf,
+    type: 3}
+  PoolSize: 20
+  PoolCanExpand: 1
+--- !u!1 &6844707240551992630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018317169337901169}
+  - component: {fileID: 1574729991113620035}
+  m_Layer: 0
+  m_Name: TargetDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9018317169337901169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844707240551992630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3579630373086814210}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574729991113620035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844707240551992630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c306fed9dca504e4ba659ab96970eb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 30
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 8192
+  targetTags:
+  - Enemy

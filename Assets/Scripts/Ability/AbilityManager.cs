@@ -22,6 +22,7 @@ namespace TeamOne.EvolvedSurvivor
                 return false;
             }
 
+            newAbility.SetOwner(transform);
             Abilities.Add(newAbility);
             newAbility.transform.SetParent(transform, false);
             return true;

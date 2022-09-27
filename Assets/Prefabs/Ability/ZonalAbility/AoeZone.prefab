@@ -96,8 +96,6 @@ GameObject:
   - component: {fileID: 8074171965288977241}
   - component: {fileID: -2965881188707424217}
   - component: {fileID: -2277142627490085944}
-  - component: {fileID: 4861243386291512272}
-  - component: {fileID: -8437282370083341695}
   m_Layer: 0
   m_Name: AoeZone
   m_TagString: Untagged
@@ -157,29 +155,3 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
-  damageCollider: {fileID: -2965881188707424217}
---- !u!114 &4861243386291512272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745785239986105255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invincibilityDurationAfterTakingDamage: 0
---- !u!114 &-8437282370083341695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745785239986105255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f667c06a99341988985425d78b6cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

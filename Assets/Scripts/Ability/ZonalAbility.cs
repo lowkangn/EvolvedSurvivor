@@ -23,26 +23,53 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityStat<float> aoeRadius;
         [SerializeField]
         private AbilityStat<int> targetNumber;
+        [Header("Fixed stats")]
+        [SerializeField]
+        private float projectileSpawnInterval;
 
-        private float initialColliderRadius = 0;
+        [Header("The target detector for aiming")]
+        [SerializeField]
+        private TargetDetector targetDetector;
 
         protected override void Activate()
         {
-            List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
-            List<GameObject> onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToList();
-            List<Collider2D> enemyColliders = onScreenEnemies.ConvertAll(x => x.GetComponent<Collider2D>());
-            List<Vector3> enemyPositions = enemyColliders.ConvertAll(x => x.GetComponent<Transform>().position); 
+            StartCoroutine(SpawnProjectiles(targetNumber.value));
+        }
 
-            if (onScreenEnemies.Count > 0)
+        private void SpawnExplosiveProjectile(Transform target = null)
+        {
+            DamageArea damageArea = objectPool.GetPooledGameObject().GetComponent<DamageArea>();
+            damageArea.transform.position = target.position;
+            damageArea.SetActive(true);
+
+            Damage damage = new Damage();
+            damage.damage = this.damage.value;
+            damage = damageHandler.ProcessOutgoingDamage(damage);
+
+            damageArea.SetDamage(damage);
+            damageArea.SetSize(aoeRadius.value);
+
+            damageArea.SetLifeTime(duration.value);
+        }
+
+        private IEnumerator SpawnProjectiles(int projectileCount)
+        {
+            List<Transform> targets = targetDetector.ScanTargets();
+            int targetIndex = 0;
+
+            for (int i = 0; i < projectileCount; i++)
             {
-                List<Vector3> positions = GetSpawnPositions(enemyPositions);
-
-                foreach (Vector3 position in positions)
+                if (targets.Count > 0)
                 {
-                    GameObject nextGameObject = objectPool.GetPooledGameObject();
-                    Initialise(nextGameObject, position);
-                    nextGameObject.SetActive(true);
+                    SpawnExplosiveProjectile(targets[targetIndex]);
+                    targetIndex++;
+                    if (targetIndex >= targets.Count)
+                    {
+                        targetIndex = 0;
+                    }
                 }
+
+                yield return new WaitForSeconds(projectileSpawnInterval);
             }
         }
 
@@ -63,90 +90,6 @@ namespace TeamOne.EvolvedSurvivor
 
             // Utility
 
-        }
-
-        private void Initialise(GameObject obj, Vector3 position)
-        {
-            // Set position
-            obj.transform.position = position;
-
-            // Set radius
-            CircleCollider2D collider = obj.GetComponent<CircleCollider2D>();
-
-            if (initialColliderRadius == 0) {
-                initialColliderRadius = collider.radius;
-            }
-
-            collider.radius = aoeRadius.value;
-            Transform aoeCircle = obj.transform.Find("AoeCircle");
-            aoeCircle.localScale = new Vector3(aoeRadius.value / initialColliderRadius, aoeRadius.value / initialColliderRadius, 1);
-
-            // Set DamageArea
-            DamageArea area = obj.GetComponent<DamageArea>();
-            Damage damageObj = new Damage(damage.value, obj);
-            DamageHandler damageHandler = obj.GetComponent<DamageHandler>();
-            Damage processedDamageObj = damageHandler.ProcessOutgoingDamage(damageObj);
-            area.SetDamage(processedDamageObj);
-
-            // Set Handler
-            ZonalAbilityHandler abilityHandler = obj.GetComponent<ZonalAbilityHandler>();
-            abilityHandler.SetDuration(duration.value);
-        }
-
-        private List<Vector3> GetSpawnPositions(List<Vector3> enemyPositions)
-        {
-            List<Vector3> spawnPositions = new List<Vector3>();
-
-            for (int i = 0; i < targetNumber.value; i++)
-            {
-                if (enemyPositions.Count != 0)
-                {
-                    Vector3 nearest = GetNearest(enemyPositions);
-                    spawnPositions.Add(nearest);
-                    enemyPositions = RemoveEnemiesAlreadyInAoe(enemyPositions, nearest);
-                }
-            }
-
-            return spawnPositions;
-        }
-
-        private Vector3 GetNearest(List<Vector3> enemyPositions)
-        {
-
-            float nearestDist = -1f;
-            Vector3 nearest = new Vector3(0, 0, 0);
-
-            foreach (Vector3 position in enemyPositions)
-            {
-                Vector3 currDirection = position - transform.position;
-                float dist = currDirection.magnitude;
-
-                if (nearestDist == -1f || dist < nearestDist)
-                {
-                    nearestDist = dist;
-                    nearest = position;
-                }
-            }
-
-            return nearest;
-        }
-
-        private List<Vector3> RemoveEnemiesAlreadyInAoe(List<Vector3> enemyPositions, Vector3 aoeCenter)
-        {
-            List<Vector3> enemiesOutsideAoe = new List<Vector3>();
-
-            foreach (Vector3 position in enemyPositions)
-            {
-                Vector3 distVector = position - aoeCenter;
-                float dist = distVector.magnitude;
-
-                if (dist > aoeRadius.value)
-                {
-                    enemiesOutsideAoe.Add(position);
-                }
-            }
-
-            return enemiesOutsideAoe;
         }
     }
 }
