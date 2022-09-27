@@ -13,8 +13,6 @@ public class MergeAbilityHandler : MonoBehaviour
     public PriSecSlotUI secondaryAbilitySlot;
     [SerializeField]
     public MergeOutputSlotUI outputSlot;
-    [SerializeField] 
-    private CurrentAbilityMergeUI[] CurrentAbilitiesButtons;
 
     private GameObject player;
     private AbilityManager abilityManager;

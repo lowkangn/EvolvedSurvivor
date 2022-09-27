@@ -57,7 +57,6 @@ public class PriSecSlotUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             for (int i = 0; i < 6; i++) {
                 if (currentAbilities[i].transform.childCount == 0) {
                     abilitySlot = currentAbilities[i];
-                    abilitySlot.GetComponent<CurrentAbilityMergeUI>().AddAbility(ability, abilitySprite);
                     ability = null;
                     abilitySprite = null;
                     break;

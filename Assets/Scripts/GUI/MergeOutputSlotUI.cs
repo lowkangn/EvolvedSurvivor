@@ -27,7 +27,7 @@ public class MergeOutputSlotUI : MonoBehaviour, IPointerClickHandler, IPointerEn
     public void AddAbility(Ability ability)
     {
         this.ability = ability;
-        abilitySprite = Instantiate(ability.GetSprite());
+        //abilitySprite = Instantiate(ability.GetSprite());
         Transform abilityTransform = abilitySprite.transform;
         abilityTransform.SetParent(gameObject.transform);
         RectTransform rectTransform = abilityTransform.GetComponent<RectTransform>();

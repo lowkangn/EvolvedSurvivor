@@ -1,30 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TeamOne.EvolvedSurvivor;
+using UnityEngine.EventSystems;
 
 // This class is added to the Current Abilities in Level Up screen
-public class CurrentAbilityUI : MonoBehaviour
+public class CurrentAbilityUI : AbilityButton
 {
-    [SerializeField] private GameObject abilityInButton;
-    public int smallSpriteSize = 60; // Sprite size in "Current Abilities" 
+    private bool isEnabled;
 
-    public void AddAbilityToCurrent(GameObject abilitySprite) {
+    public void DisableButton()
+    {
+        isEnabled = false;
+    }
 
-        // Destroy duplicate sprite that already exists in button
-        if (abilityInButton != null) {
-            Destroy(abilityInButton);
+    public void EnableButton()
+    {
+        isEnabled = true;
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        if (isEnabled && ability != null)
+        {
+
         }
-
-        // Clone abilitySprite sprite and set its parent to 'current abilitySprite' button
-
-        Transform abilityTransform = Instantiate(abilitySprite.transform);
-        abilityTransform.SetParent(gameObject.transform);
-        abilityInButton = abilityTransform.gameObject;
-        RectTransform rectTransform = abilityTransform.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector2.zero;
-        rectTransform.localPosition = new Vector3(rectTransform.anchoredPosition.x,
-                                    rectTransform.anchoredPosition.y, 0f); // To set z value to 0
-        rectTransform.localScale = new Vector3(smallSpriteSize, smallSpriteSize, 1);
     }
 }

@@ -1,7 +1,5 @@
 using UnityEngine;
-using MoreMountains.Tools;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -23,7 +21,8 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasBuilt = false;
         private bool hasActivated;
         private float coolDownTimer;
-        public GameObject sprite;
+        [SerializeField]
+        private Sprite abilitySprite;
         private bool isActive;
 
         [Header("Element Magnitudes")]
@@ -182,6 +181,11 @@ namespace TeamOne.EvolvedSurvivor
             return effect;
         }
 
+        public Sprite GetSprite()
+        {
+            return this.abilitySprite;
+        }
+
         protected abstract void Build();
 
         protected abstract void Activate();
@@ -189,10 +193,6 @@ namespace TeamOne.EvolvedSurvivor
         public void Stop()
         {
             isActive = false;
-        }
-
-        public GameObject GetSprite() {
-            return this.sprite;
         }
     }
 }

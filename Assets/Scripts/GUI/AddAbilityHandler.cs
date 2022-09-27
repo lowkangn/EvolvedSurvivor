@@ -23,22 +23,24 @@ public class AddAbilityHandler : MonoBehaviour
         NewAbilities = new Ability[numOfAbilityOptions];
     }
 
-    private void OnEnable() {
+    private void OnEnable() 
+    {
         GenerateNewAbilities();
     }
 
-    private void OnDisable() {
-        foreach (Ability ability in NewAbilities)
+    private void OnDisable() 
+    {
+        if (currentSelectedAbility != null)
         {
-            if (ability != null)
-            {
-                Destroy(ability.gameObject);
-            }
+            SaveSelectedAbility();
         }
+
+        ClearUnselectedAbilities();
     }
 
     // Generate new abilities in Level Up screen
-    public void GenerateNewAbilities() {
+    public void GenerateNewAbilities() 
+    {
         for (int i = 0; i < numOfAbilityOptions; i++) {
             Ability ability = abilityGenerator.GenerateAbility(1);
             NewAbilitiesButtons[i].AddAbilityToButton(ability);
@@ -46,31 +48,33 @@ public class AddAbilityHandler : MonoBehaviour
         }
     }
 
-    // Populate Current Abilities in Level Up screen
-    public void GetCurrentAbilities() {
-        // Get player's current abilities
-        List<Ability> Abilities = abilityManager.Abilities;
-        int numOfCurrentAbilities = Abilities.Count;
-
-        // Add ability to current ability buttons
-        for (int i = 0; i < numOfCurrentAbilities; i++) {
-            //CurrentAbilitiesButtons[i].AddAbilityToCurrent(Abilities[i].sprite);
-        }
-    }
-
-    public void SetCurrentSelectedAbility(Ability ability) {
+    public void SetCurrentSelectedAbility(Ability ability) 
+    {
         this.currentSelectedAbility = ability;
     }
 
-    // Save current ability chosen to player's current abilities
-    public void SaveCurrentAbilities() {
-        abilityManager.AddAbility(currentSelectedAbility);
+    public void ClearCurrentSelectedAbility()
+    {
+        this.currentSelectedAbility = null;
+    }
 
-        foreach (Ability ability in NewAbilities) {
-            if (ability != currentSelectedAbility) {
+    // Save selected ability to player's current abilities
+    public void SaveSelectedAbility() 
+    {
+        abilityManager.AddAbility(currentSelectedAbility);
+    }
+
+    private void ClearUnselectedAbilities()
+    {
+        foreach (Ability ability in NewAbilities)
+        {
+            if (currentSelectedAbility != null 
+                && ability != currentSelectedAbility)
+            {
                 Destroy(ability.gameObject);
             }
         }
-        NewAbilities = new Ability[4];
+
+        NewAbilities = new Ability[numOfAbilityOptions];
     }
 }

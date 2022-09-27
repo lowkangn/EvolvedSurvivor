@@ -2,25 +2,28 @@ using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class LevelUpHeaderButton : MMTouchButton
 {
-    [SerializeField] private bool startsHighlighted = false;
+    [SerializeField] private bool startsSelected;
 
-    [SerializeField] private Color highlightedTextColor;
-    [SerializeField] private Color normalTextColor;
+    [SerializeField] private Color selectedButtonColor;
+    [SerializeField] private Color selectedTextColor;
+    [SerializeField] private Color unselectedTextColor;
 
     [Header("Button Text")]
     [SerializeField] private Text buttonText;
 
+    [Header("Header buttons")]
+    [SerializeField] private LevelUpHeaderButton[] headerButtons;
+
     private void Start()
     {
-        if (startsHighlighted && HighlightedChangeColor)
+        ReturnToInitialSpriteAutomatically = false;
+
+        if (startsSelected)
         {
-            EventSystem.current.SetSelectedGameObject(gameObject);
-            _image.color = HighlightedColor;
-            buttonText.color = highlightedTextColor;
+            SetSelectAppearance();
         }
     }
 
@@ -28,16 +31,23 @@ public class LevelUpHeaderButton : MMTouchButton
     {
         base.OnPointerDown(data);
 
-        if (HighlightedChangeColor)
-        {    
-            buttonText.color = highlightedTextColor;
+        SetSelectAppearance();
+
+        foreach (LevelUpHeaderButton headerButton in headerButtons)
+        {
+            headerButton.ResetAppearance();
         }
     }
 
-    protected override void ResetButton()
+    public void ResetAppearance()
     {
-        base.ResetButton();
+        _image.color = _initialColor;
+        buttonText.color = unselectedTextColor;
+    }
 
-        buttonText.color = normalTextColor;
+    private void SetSelectAppearance()
+    {
+        _image.color = selectedButtonColor;
+        buttonText.color = selectedTextColor;
     }
 }
