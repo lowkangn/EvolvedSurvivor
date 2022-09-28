@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa1297db32754d4a9e09302358d4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 7095764258113722623}
+  abilityName: Proton Discharge
   activateOnlyOnce: 0
   coolDown:
     minValue: 1
@@ -58,12 +60,12 @@ MonoBehaviour:
     effects: []
   hasBuilt: 0
   abilitySprite: {fileID: 21300002, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
+  objectPool: {fileID: 3404124164898862505}
   maxPlasmaMagnitude: 0
   maxCryoMagnitude: 0
   maxForceMagnitude: 0
   maxInfectMagnitude: 0
   maxPyroMagnitude: 0
-  objectPool: {fileID: 3404124164898862505}
   damage:
     minValue: 5
     maxValue: 50

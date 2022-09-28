@@ -24,6 +24,24 @@ namespace TeamOne.EvolvedSurvivor
         public float utility;
         public float UtilityRatio => utility / maxValue;
 
+        public TraitChart()
+        {
+            this.damage = 0f;
+            this.uptime = 0f;
+            this.aoe = 0f;
+            this.quantity = 0f;
+            this.utility = 0f;
+        }
+
+        public TraitChart(TraitChart other)
+        {
+            this.damage = other.damage;           
+            this.uptime = other.uptime;
+            this.aoe = other.aoe;
+            this.quantity = other.quantity;
+            this.utility = other.utility;
+        }
+
         public void CombineWith(TraitChart other)
         {
             damage = Mathf.Clamp(damage + other.damage, 0, maxValue);
@@ -31,6 +49,11 @@ namespace TeamOne.EvolvedSurvivor
             aoe = Mathf.Clamp(aoe + other.aoe, 0, maxValue);
             quantity = Mathf.Clamp(quantity + other.quantity, 0, maxValue);
             utility = Mathf.Clamp(utility + other.utility, 0, maxValue);
+        }
+
+        public string GetStatsDescription()
+        {
+            return $"Damage: {damage:0.0}, Uptime: {uptime:0.0}, AOE: {aoe:0.0}, Quantity: {quantity:0.0}, Utility: {utility:0.0}";
         }
     }
 }

@@ -31,7 +31,14 @@ namespace TeamOne.EvolvedSurvivor
         // Detect if the Cursor starts to pass over the button
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            this.textObj.text = "Description";
+            if (!IsEmpty())
+            {
+                this.textObj.text = ability.GetDescription();
+            } 
+            else
+            {
+                this.textObj.text = "";
+            }
         }
 
         // Detect when Cursor leaves the button

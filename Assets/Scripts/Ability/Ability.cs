@@ -1,16 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public abstract class Ability : MonoBehaviour
     {
+        public string AbilityName => abilityName;
+        [SerializeField] private string abilityName;
+
         [Header("Whether this ability will be activated while it is active")]
         [SerializeField]
         private bool activateOnlyOnce = false;
+
         [Header("The ability is activated once every (coolDown) seconds")]
         [SerializeField]
         protected AbilityStat<float> coolDown;
+
         protected int tier;
         private readonly int maxTier = 10;
         protected TraitChart traitChart;
@@ -24,6 +30,10 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private Sprite abilitySprite;
         private bool isActive;
+
+        [Header("Projectile pool")]
+        [SerializeField]
+        protected MMObjectPooler objectPool;
 
         [Header("Element Magnitudes")]
         [SerializeField]
@@ -39,6 +49,7 @@ namespace TeamOne.EvolvedSurvivor
         protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
 
         protected DamageHandler damageHandler;
+        private AbilityGenerator abilityGenerator;
 
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
@@ -55,18 +66,17 @@ namespace TeamOne.EvolvedSurvivor
             isActive = true;
         }
 
-        public void SetOwner(Transform owner)
+        public void SetOwner(Transform owner, AbilityGenerator abilityGenerator)
         {
             damageHandler = owner.GetComponentInParent<DamageHandler>();
+            this.abilityGenerator = abilityGenerator;
         }
 
         private void CopyAbility(Ability other)
         {
             tier = other.tier;
-            traitChart = other.traitChart;
+            traitChart = new TraitChart(other.traitChart);
             element = other.element;
-            Build();
-            hasBuilt = true;
         }
 
         /// <summary>
@@ -76,7 +86,7 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (CanUpgrade(consumedAbility))
             {
-                Ability newAbility = Instantiate(gameObject).GetComponent<Ability>();
+                Ability newAbility = Instantiate(abilityGenerator.GetPrefab(abilityName));
                 newAbility.CopyAbility(this);
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
@@ -91,8 +101,11 @@ namespace TeamOne.EvolvedSurvivor
 
                 // Build Ability Again
                 newAbility.Build();
+                newAbility.hasBuilt = true;
+                newAbility.isActive = true;
                 return newAbility;
-            } else
+            } 
+            else
             {
                 throw new System.Exception("Trying to upgrade past max tier");
             }
@@ -142,6 +155,11 @@ namespace TeamOne.EvolvedSurvivor
                     coolDownTimer = coolDown.value;
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            objectPool.DestroyObjectPool();
         }
 
         private void BuildElement()
@@ -200,6 +218,11 @@ namespace TeamOne.EvolvedSurvivor
         public void Stop()
         {
             isActive = false;
+        }
+
+        public string GetDescription()
+        {
+            return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
         }
     }
 }

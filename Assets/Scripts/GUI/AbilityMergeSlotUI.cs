@@ -39,7 +39,7 @@ public class AbilityMergeSlotUI : AbilityButton
         if (this.isEmpty) {
             this.textObj.text = TIP_MERGE_INSTRUCTION;
         } else {
-            this.textObj.text = "Description";
+            this.textObj.text = ability.GetDescription();
         }
     }
 

@@ -10,8 +10,6 @@ namespace TeamOne.EvolvedSurvivor
     public class LockOnAbility : Ability
     {
         [SerializeField]
-        private MMObjectPooler objectPool;
-        [SerializeField]
         private AbilityStat<float> damage;
         [SerializeField]
         private AbilityStat<float> aoeRadius;
