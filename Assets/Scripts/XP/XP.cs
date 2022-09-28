@@ -74,7 +74,6 @@ namespace MoreMountains.TopDownEngine
 				CurrentLevel++;
 				MaximumXP = GetMaximumXP(CurrentLevel);
 				CurrentXP = 0;
-				Debug.Log("CurrentLevel: " + CurrentLevel + ", MaximumXP: " + MaximumXP);
 
 				// This will update XP bar 0.5s after game resumes
 				IEnumerator coroutine = SetXPBarToZero(0.5f);
@@ -93,7 +92,7 @@ namespace MoreMountains.TopDownEngine
 	    /// </summary>
 	    public int GetMaximumXP(int currentLevel)
 	    {
-		    return MaximumXP + 5; // Change this func after play testing
+		    return Mathf.FloorToInt(MaximumXP * 1.5f);
         }
 
         /// <summary>
