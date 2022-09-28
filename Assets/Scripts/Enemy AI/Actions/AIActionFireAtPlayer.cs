@@ -36,16 +36,16 @@ public class AIActionFireAtPlayer : AIAction
     
     private void FireProjectile()
     {
-        EnemyProjectile nextProjectile = objectPool
-                .GetPooledGameObject().GetComponent<EnemyProjectile>();
+        Projectile nextProjectile = objectPool
+                .GetPooledGameObject().GetComponent<Projectile>();
 
         nextProjectile.transform.position = transform.position;
         nextProjectile.SetDamage(damage);
-        nextProjectile.SetSpeed(projectileSpeed);
 
         Vector3 directionToTarget = Vector3
             .Normalize(_brain.Target.position - transform.position);
-        nextProjectile.SetDirection(directionToTarget);
+        Vector3 projectileMotion = directionToTarget * projectileSpeed;
+        nextProjectile.SetMotion(projectileMotion);
 
         nextProjectile.gameObject.SetActive(true);
     }

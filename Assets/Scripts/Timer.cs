@@ -1,4 +1,5 @@
 using MoreMountains.Tools;
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +7,25 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private Text counter;
 
+    private float timePassed = 0f;
+    private bool isTimerRunning = true;
+
+    private void Start()
+    {
+        LevelManager.Instance.Players[0].GetComponent<Health>().OnDeath += StopTimer;
+    }
+
     private void Update()
     {
-        counter.text = MMTime.FloatToTimeString(Time.time);
+        if (isTimerRunning)
+        {
+            timePassed = timePassed + Time.deltaTime;
+            counter.text = MMTime.FloatToTimeString(timePassed);
+        }
+    }
+
+    private void StopTimer()
+    {
+        isTimerRunning = false;
     }
 }
