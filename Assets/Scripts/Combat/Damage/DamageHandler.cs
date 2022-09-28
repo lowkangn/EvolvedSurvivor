@@ -17,8 +17,6 @@ namespace TeamOne.EvolvedSurvivor
 
         public void ProcessIncomingDamage(Damage damage)
         {
-            Debug.Log(damage);
-            Debug.Log(damage.effects);
             // TODO: Process damage reduction, force application, debuffs, etc
             foreach (StatusEffect effect in damage.effects)
             {

@@ -12,6 +12,19 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityBaseTraitCharts abilityBaseTraitCharts;
         
+        public Ability GetPrefab(string abilityName)
+        {
+            foreach (Ability ability in abilityPrefabs)
+            {
+                if (ability.AbilityName.Equals(abilityName))
+                {
+                    return ability;
+                }
+            }
+
+            return null;
+        }
+
         public Ability GenerateAbility(int tier)
         {
             // For random selection of all abilities

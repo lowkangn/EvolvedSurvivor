@@ -69,8 +69,7 @@ public class AddAbilityHandler : MonoBehaviour
     {
         foreach (Ability ability in NewAbilities)
         {
-            if (currentSelectedAbility != null 
-                && ability != currentSelectedAbility)
+            if (ability != currentSelectedAbility)
             {
                 Destroy(ability.gameObject);
             }
