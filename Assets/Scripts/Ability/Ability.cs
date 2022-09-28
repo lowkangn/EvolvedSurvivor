@@ -49,6 +49,7 @@ namespace TeamOne.EvolvedSurvivor
         protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
 
         protected DamageHandler damageHandler;
+        private AbilityGenerator abilityGenerator;
 
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
@@ -65,9 +66,10 @@ namespace TeamOne.EvolvedSurvivor
             isActive = true;
         }
 
-        public void SetOwner(Transform owner)
+        public void SetOwner(Transform owner, AbilityGenerator abilityGenerator)
         {
             damageHandler = owner.GetComponentInParent<DamageHandler>();
+            this.abilityGenerator = abilityGenerator;
         }
 
         private void CopyAbility(Ability other)
@@ -75,8 +77,6 @@ namespace TeamOne.EvolvedSurvivor
             tier = other.tier;
             traitChart = new TraitChart(other.traitChart);
             element = other.element;
-            Build();
-            hasBuilt = true;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (CanUpgrade(consumedAbility))
             {
-                Ability newAbility = Instantiate(gameObject).GetComponent<Ability>();
+                Ability newAbility = Instantiate(abilityGenerator.GetPrefab(abilityName));
                 newAbility.CopyAbility(this);
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
@@ -101,6 +101,8 @@ namespace TeamOne.EvolvedSurvivor
 
                 // Build Ability Again
                 newAbility.Build();
+                newAbility.hasBuilt = true;
+                newAbility.isActive = true;
                 return newAbility;
             } 
             else

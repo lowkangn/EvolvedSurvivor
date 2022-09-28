@@ -8,6 +8,8 @@ namespace TeamOne.EvolvedSurvivor
     {
         public List<Ability> Abilities { get; private set; } = new();
         [SerializeField]
+        private AbilityGenerator abilityGenerator;
+        [SerializeField]
         private int maxNumOfAbilities = 6;
 
         public bool CanAddAbility()
@@ -22,7 +24,7 @@ namespace TeamOne.EvolvedSurvivor
                 return false;
             }
 
-            newAbility.SetOwner(transform);
+            newAbility.SetOwner(transform, abilityGenerator);
             Abilities.Add(newAbility);
             newAbility.transform.SetParent(transform, false);
             return true;
