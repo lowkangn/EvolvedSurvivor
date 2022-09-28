@@ -14,7 +14,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public Damage()
         {
-
+            
         }
 
         public Damage(float damage, GameObject instigator)

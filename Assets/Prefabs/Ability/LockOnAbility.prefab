@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Thunder Strike
   activateOnlyOnce: 0
   coolDown:
     minValue: 0.5

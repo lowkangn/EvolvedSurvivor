@@ -10,10 +10,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class ZonalAbility : Ability
     {
-        [Header("Projectile pool")]
-        [SerializeField]
-        private MMObjectPooler objectPool;
-
         [Header("Generated stats - set minValue and maxValue only")]
         [SerializeField]
         private AbilityStat<float> damage;

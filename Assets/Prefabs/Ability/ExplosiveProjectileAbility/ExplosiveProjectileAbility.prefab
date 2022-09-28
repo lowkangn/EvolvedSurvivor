@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa1297db32754d4a9e09302358d4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Proton Discharge
   activateOnlyOnce: 0
   coolDown:
     minValue: 1

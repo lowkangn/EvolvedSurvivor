@@ -17,12 +17,6 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityStat<int> orbitalNumber;
 
         public float radius = 3f;
-        private MMObjectPooler objectPool;
-
-        private void Start()
-        {
-            objectPool = GetComponent<MMObjectPooler>();
-        }
 
         protected override void Activate()
         {

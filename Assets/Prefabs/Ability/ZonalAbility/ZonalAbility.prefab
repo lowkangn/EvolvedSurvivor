@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d35ba96f33c2e4ebcd2dea50b06f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Moon Shadow
   activateOnlyOnce: 0
   coolDown:
     minValue: 5
