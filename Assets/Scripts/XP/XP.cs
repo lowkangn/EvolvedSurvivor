@@ -92,7 +92,7 @@ namespace MoreMountains.TopDownEngine
 	    /// </summary>
 	    public int GetMaximumXP(int currentLevel)
 	    {
-		    return Mathf.FloorToInt(MaximumXP * 1.5f);
+		    return Mathf.FloorToInt(MaximumXP * 1.3f);
         }
 
         /// <summary>

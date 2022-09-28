@@ -30,6 +30,7 @@ namespace MoreMountains.TopDownEngine
 		{
             TopDownEngine.XP playerXP = player.GetComponent<TopDownEngine.XP>();
 			playerXP.GetXP(XPBonus);
+			Destroy(gameObject);
             // Debug.Log("Total XP is " + playerXP.CurrentXP);
 		}		
 	}

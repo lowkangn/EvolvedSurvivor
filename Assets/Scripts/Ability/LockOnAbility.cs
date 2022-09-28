@@ -1,9 +1,6 @@
 using UnityEngine;
 using System.Linq;
-using MoreMountains.TopDownEngine;
 using System.Collections.Generic;
-using MoreMountains.Tools;
-using UnityEditor.Experimental.GraphView;
 
 namespace TeamOne.EvolvedSurvivor
 {

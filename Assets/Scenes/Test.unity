@@ -8044,8 +8044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanSpawn: 1
-  MinFrequency: 0
-  MaxFrequency: 1
+  MinFrequency: 0.1
+  MaxFrequency: 0.5
   CanSpawnButton: 0
   spawnProperties:
     Shape: 0
@@ -14458,7 +14458,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7247387, y: 1}
+    m_SensorSize: {x: 1.71777, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

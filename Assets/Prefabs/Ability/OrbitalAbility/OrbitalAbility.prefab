@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4195e8f961655459778c36186e03b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: -5987010200417845135}
   abilityName: Orbital Flux
   activateOnlyOnce: 0
   coolDown:
@@ -59,7 +58,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 0
-  abilitySprite: {fileID: 21300000, guid: a7adf48d4c8aa994cbdb33b10ecd5073, type: 3}
+  abilitySprite: {fileID: 18062, guid: 0e2684e481e99f947aa30a3e1b75dede, type: 3}
   objectPool: {fileID: -33881474214889835}
   maxPlasmaMagnitude: 0
   maxCryoMagnitude: 0
@@ -67,20 +66,20 @@ MonoBehaviour:
   maxInfectMagnitude: 0
   maxPyroMagnitude: 0
   damage:
-    minValue: 6
-    maxValue: 60
+    minValue: 8
+    maxValue: 20
     value: 0
   duration:
-    minValue: 6
+    minValue: 4
     maxValue: 9
     value: 0
   projectileSize:
-    minValue: 3
-    maxValue: 10
+    minValue: 1
+    maxValue: 7
     value: 0
   orbitalNumber:
-    minValue: 3
-    maxValue: 10
+    minValue: 2
+    maxValue: 6
     value: 0
   radius: 5
 --- !u!114 &2436280037825302281

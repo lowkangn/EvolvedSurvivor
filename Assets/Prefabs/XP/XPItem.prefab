@@ -55,10 +55,14 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
   DurationMultiplier: 1
   DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
   CooldownDuration: 0
   InitialDelay: 0
+  CanPlay: 1
   CanPlayWhileAlreadyPlaying: 1
   ChanceToPlay: 100
   FeedbacksIntensity: 1
@@ -395,7 +399,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4116086766228746}
   - component: {fileID: 61369599479639190}
-  - component: {fileID: 114403775037058954}
   - component: {fileID: 114505782441818086}
   - component: {fileID: 4948651360239434114}
   m_Layer: 0
@@ -449,27 +452,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.4}
   m_EdgeRadius: 0
---- !u!114 &114403775037058954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489628332787134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1feff4042ae759c49a290443b9bfdd71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickedMMFeedbacks: {fileID: 1276146157}
-  DisableColliderOnPick: 0
-  DisableObjectOnPick: 1
-  DisableDelay: 0
-  DisableModelOnPick: 0
-  DisableTargetObjectOnPick: 0
-  TargetObjectToDisable: {fileID: 0}
-  TargetObjectDisableDelay: 1
-  Model: {fileID: 0}
 --- !u!114 &114505782441818086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916ec583678d8b44382d990eeae2636c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickedMMFeedbacks: {fileID: 0}
+  PickedMMFeedbacks: {fileID: 1276146157}
   DisableColliderOnPick: 0
   DisableObjectOnPick: 0
   DisableDelay: 0
