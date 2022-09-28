@@ -5430,7 +5430,6 @@ GameObject:
   m_Component:
   - component: {fileID: 739078748943548177}
   - component: {fileID: 5148277335872434588}
-  - component: {fileID: 3712104632938331648}
   m_Layer: 10
   m_Name: Ability Manager
   m_TagString: Untagged
@@ -5467,21 +5466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumOfAbilities: 6
---- !u!114 &3712104632938331648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905297264760070559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 689f2ab4dd90144fcbc156eb690d3021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generator: {fileID: 1315667598666802234}
-  abilityManager: {fileID: 905297264760070559}
-  startLevel: 1
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,18 +6129,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37bf9e28cbd21f54983c44e915067df5, type: 3}
---- !u!114 &1315667598666802234 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2822834965671463505}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0df3956d432ce4e8ca32a3b89eaebc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5694712903734554497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7506117698955781584, guid: 37bf9e28cbd21f54983c44e915067df5,
