@@ -5303,7 +5303,7 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 3
+  WalkSpeed: 2
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -5576,7 +5576,7 @@ MonoBehaviour:
   - Player
   disableOnHit: 0
   repeating: 1
-  repeatingRate: 1
+  repeatingRate: 0.5
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5592,7 +5592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bf4d5d04a956748b81af08750c8553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityDurationAfterTakingDamage: 1
+  invincibilityDurationAfterTakingDamage: 0
 --- !u!114 &-6019659113267063078
 MonoBehaviour:
   m_ObjectHideFlags: 0

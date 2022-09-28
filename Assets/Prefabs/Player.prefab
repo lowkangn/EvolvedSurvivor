@@ -5109,7 +5109,7 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 6
+  WalkSpeed: 5
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -6012,7 +6012,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7972998509315848447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
@@ -6064,6 +6064,13 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 1
   DebugActive: 0
+  FeedbacksList: []
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  ForceStopFeedbacksOnDisable: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &2822834965671463505
 PrefabInstance:
   m_ObjectHideFlags: 0

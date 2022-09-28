@@ -15,14 +15,20 @@ MonoBehaviour:
   firstWave:
     timeDelayInSeconds: 0
     addToEnemyPool:
-    - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
-        type: 3}
-      count: 5
-    - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
-        type: 3}
-      count: 5
     - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
         type: 3}
       count: 5
     removeFromEnemyPool: []
-  waves: []
+  waves:
+  - timeDelayInSeconds: 30
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 60
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
