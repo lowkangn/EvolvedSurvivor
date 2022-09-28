@@ -5391,7 +5391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentXP: 0
   InitialXP: 0
-  MaximumXP: 1
+  MaximumXP: 5
   CurrentLevel: 1
   ResetXPOnEnable: 1
   guiUpdater: {fileID: 11400000, guid: 0d14c9dd2ee06724094bbc5727838b9f, type: 2}
@@ -5481,7 +5481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generator: {fileID: 1315667598666802234}
   abilityManager: {fileID: 905297264760070559}
-  startLevel: 10
+  startLevel: 1
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0
