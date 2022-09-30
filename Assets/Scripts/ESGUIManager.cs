@@ -35,6 +35,11 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
         this.MMEventStopListening<TopDownEngineEvent>();
     }
 
+    private void Start()
+    {
+        ShowLevelUpScreen();
+    }
+
     /// <summary>
     /// Shows the level up screen.
     /// </summary>

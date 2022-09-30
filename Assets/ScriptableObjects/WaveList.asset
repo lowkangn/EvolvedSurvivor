@@ -20,7 +20,7 @@ MonoBehaviour:
       count: 5
     removeFromEnemyPool: []
   waves:
-  - timeDelayInSeconds: 30
+  - timeDelayInSeconds: 60
     addToEnemyPool:
     - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
         type: 3}
@@ -28,7 +28,46 @@ MonoBehaviour:
     removeFromEnemyPool: []
   - timeDelayInSeconds: 60
     addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 60
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 5
+    - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 90
+    addToEnemyPool:
     - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
         type: 3}
       count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 90
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 5
+    - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 120
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 10
+    - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
+        type: 3}
+      count: 5
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 600
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 100
     removeFromEnemyPool: []

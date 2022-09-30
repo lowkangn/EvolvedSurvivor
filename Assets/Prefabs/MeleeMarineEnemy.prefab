@@ -5617,7 +5617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 10
+  damageValue: 8
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
 --- !u!1 &7639033464450296746

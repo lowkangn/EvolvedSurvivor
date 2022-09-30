@@ -1,4 +1,5 @@
 using MoreMountains.Tools;
+using System.Drawing.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,9 +18,13 @@ public class LevelUpHeaderButton : MMTouchButton
     [Header("Header buttons")]
     [SerializeField] private LevelUpHeaderButton[] headerButtons;
 
-    private new void Awake()
+    private bool isInitialised = false;
+
+    protected override void Initialization()
     {
-        
+        base.Initialization();
+        ReturnToInitialSpriteAutomatically = false;
+        isInitialised = true;
     }
 
     private void Start()
@@ -27,6 +32,7 @@ public class LevelUpHeaderButton : MMTouchButton
         if (startsSelected)
         {
             SetSelected();
+
         }
     }
 
@@ -44,25 +50,19 @@ public class LevelUpHeaderButton : MMTouchButton
 
     public void ResetAppearance()
     {
-        if (_image == null)
+        if (isInitialised)
         {
-            Initialization();
-            ReturnToInitialSpriteAutomatically = false;
+            _image.color = _initialColor;
+            buttonText.color = unselectedTextColor;
         }
-
-        _image.color = _initialColor;
-        buttonText.color = unselectedTextColor;
     }
 
     public void SetSelected()
     {
-        if (_image == null)
+        if (isInitialised)
         {
-            Initialization();
-            ReturnToInitialSpriteAutomatically = false;
-        }
-        
-        _image.color = selectedButtonColor;
-        buttonText.color = selectedTextColor;
+            _image.color = selectedButtonColor;
+            buttonText.color = selectedTextColor;
+        }        
     }
 }

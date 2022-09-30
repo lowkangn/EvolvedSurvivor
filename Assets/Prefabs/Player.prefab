@@ -5430,7 +5430,6 @@ GameObject:
   m_Component:
   - component: {fileID: 739078748943548177}
   - component: {fileID: 5148277335872434588}
-  - component: {fileID: 3712104632938331648}
   m_Layer: 10
   m_Name: Ability Manager
   m_TagString: Untagged
@@ -5468,21 +5467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityGenerator: {fileID: 1315667598666802234}
   maxNumOfAbilities: 6
---- !u!114 &3712104632938331648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905297264760070559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 689f2ab4dd90144fcbc156eb690d3021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generator: {fileID: 1315667598666802234}
-  abilityManager: {fileID: 905297264760070559}
-  startLevel: 1
 --- !u!1 &3821486771870496674
 GameObject:
   m_ObjectHideFlags: 0

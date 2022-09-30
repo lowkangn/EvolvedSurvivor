@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2718351011253688110}
   abilityName: Thunder Strike
   activateOnlyOnce: 0
   coolDown:
@@ -58,7 +57,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     effects: []
   hasBuilt: 1
-  abilitySprite: {fileID: 21300034, guid: ec0a251a9989ca146897920b837ec83a, type: 3}
+  abilitySprite: {fileID: 2088100790, guid: 69574eadfacac5e40a326bc6f540d224, type: 3}
   objectPool: {fileID: 8988950983226355129}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 1
@@ -66,8 +65,8 @@ MonoBehaviour:
   maxInfectMagnitude: 3
   maxPyroMagnitude: 1.5
   damage:
-    minValue: 20
-    maxValue: 80
+    minValue: 15
+    maxValue: 40
     value: 20
   aoeRadius:
     minValue: 0
