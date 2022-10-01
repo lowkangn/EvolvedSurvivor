@@ -8126,7 +8126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3623e65d9b30418f18ca954902d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveList: {fileID: 11400000, guid: 6e4d81390c95b264a857d089aed22de0, type: 2}
+  waveList: {fileID: 11400000, guid: 6409eca49a4d9b246abcf5411b9500f0, type: 2}
   enemyPool: {fileID: 1427425514}
 --- !u!1 &1427467223
 GameObject:
