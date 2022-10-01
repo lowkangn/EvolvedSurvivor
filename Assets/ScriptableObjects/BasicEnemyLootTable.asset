@@ -15,6 +15,9 @@ MonoBehaviour:
   LootTable:
     ObjectsToLoot:
     - Loot: {fileID: 1489628332787134, guid: 88133050b97eed44cb51d78615958501, type: 3}
-      Weight: 1
-      ChancePercentage: 100
-    WeightsTotal: 1
+      Weight: 95
+      ChancePercentage: 90
+    - Loot: {fileID: 1489628332787134, guid: dad1436489c508044908a83359a10573, type: 3}
+      Weight: 5
+      ChancePercentage: 10
+    WeightsTotal: 10

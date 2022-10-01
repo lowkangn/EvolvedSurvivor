@@ -65,9 +65,15 @@ MonoBehaviour:
         type: 3}
       count: 5
     removeFromEnemyPool: []
-  - timeDelayInSeconds: 600
+  - timeDelayInSeconds: 60
     addToEnemyPool:
     - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+        type: 3}
+      count: 10
+    removeFromEnemyPool: []
+  - timeDelayInSeconds: 600
+    addToEnemyPool:
+    - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
         type: 3}
       count: 100
     removeFromEnemyPool: []
