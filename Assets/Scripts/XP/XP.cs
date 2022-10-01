@@ -18,6 +18,7 @@ namespace MoreMountains.TopDownEngine
         [MMReadOnly]
 		[Tooltip("the current XP of the character")]
 		public int CurrentXP ;
+		public int MaxXPCap = 50;
 
 		[Header("XP")]
 
@@ -92,7 +93,7 @@ namespace MoreMountains.TopDownEngine
 	    /// </summary>
 	    public int GetMaximumXP(int currentLevel)
 	    {
-		    return Mathf.FloorToInt(MaximumXP * 1.3f);
+		    return Mathf.Min(MaxXPCap, Mathf.FloorToInt(MaximumXP * 1.3f));
         }
 
         /// <summary>

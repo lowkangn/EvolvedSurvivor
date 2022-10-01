@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,8 +17,8 @@ namespace TeamOne.EvolvedSurvivor
         protected Damage damage;
         private bool hasLifeTime = false;
         private float lifeTime;
-        private float lastRepeatingTime;
-        private HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
+        private float lastRepeatingTime = 0f;
+        private HashSet<GameObject> targetsHit = new HashSet<GameObject>();
 
         public virtual void SetDamage(Damage damage)
         {
@@ -41,31 +41,20 @@ namespace TeamOne.EvolvedSurvivor
             this.lifeTime = lifeTime;
         }
 
-        public void AddAlreadyHit(GameObject obj)
-        {
-            alreadyHit.Add(obj);
-        }
-
         protected virtual void OnHit()
         {
 
         }
 
-        private void Collide(Collider2D collision)
+        private void Collide(GameObject collision)
         {
-            if (!targetTags.Contains(collision.tag))
-            {
-                return;
-            }
+            targetsHit.Add(collision);
 
             OnHitEvent.Invoke();
             OnHit();
 
-            if (!alreadyHit.Contains(collision.gameObject))
-            {
-                DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
-                damageReceiver?.TakeDamage(damage);
-            }
+            DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
+            damageReceiver?.TakeDamage(damage);
 
             if (disableOnHit)
             {
@@ -84,25 +73,40 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
 
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Collide(collision);
+            if (targetTags.Contains(collision.tag))
+            {
+                Collide(collision.gameObject);
+            }
         }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (!repeating)
+            if (!repeating || !targetTags.Contains(collision.tag))
             {
                 return;
             }
 
-            if (Time.time - lastRepeatingTime > repeatingRate)
+            if (Time.time - lastRepeatingTime >= repeatingRate)
             {
-                Collide(collision);
+                foreach (GameObject target in targetsHit.ToList())
+                {
+                    Collide(target);
+                }
                 lastRepeatingTime = Time.time;
             }
         }
-    }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (targetTags.Contains(collision.tag))
+            {
+                targetsHit.Remove(collision.gameObject);
+            }
+        }
+    } 
 }

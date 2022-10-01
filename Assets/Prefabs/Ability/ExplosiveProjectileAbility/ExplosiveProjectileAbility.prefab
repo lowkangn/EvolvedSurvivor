@@ -60,11 +60,11 @@ MonoBehaviour:
   hasBuilt: 0
   abilitySprite: {fileID: 2011945840, guid: 11e7177d066891f4299f20e143ae7a7b, type: 3}
   objectPool: {fileID: 3404124164898862505}
-  maxPlasmaMagnitude: 0
-  maxCryoMagnitude: 0
-  maxForceMagnitude: 0
-  maxInfectMagnitude: 0
-  maxPyroMagnitude: 0
+  maxPlasmaMagnitude: 1.5
+  maxCryoMagnitude: 1
+  maxForceMagnitude: 1500
+  maxInfectMagnitude: 4
+  maxPyroMagnitude: 1.5
   damage:
     minValue: 5
     maxValue: 20

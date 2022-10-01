@@ -151,7 +151,7 @@ MonoBehaviour:
   - Enemy
   disableOnHit: 0
   repeating: 1
-  repeatingRate: 0.2
+  repeatingRate: 0.5
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []

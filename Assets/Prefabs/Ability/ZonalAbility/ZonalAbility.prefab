@@ -60,14 +60,14 @@ MonoBehaviour:
   hasBuilt: 0
   abilitySprite: {fileID: -1103472088, guid: e8484f4f7a959f4479cf683b36344cf1, type: 3}
   objectPool: {fileID: 2083275470673497951}
-  maxPlasmaMagnitude: 0
-  maxCryoMagnitude: 0
-  maxForceMagnitude: 0
-  maxInfectMagnitude: 0
-  maxPyroMagnitude: 0
+  maxPlasmaMagnitude: 1.5
+  maxCryoMagnitude: 0.3
+  maxForceMagnitude: 700
+  maxInfectMagnitude: 2
+  maxPyroMagnitude: 2
   damage:
-    minValue: 8
-    maxValue: 16
+    minValue: 3
+    maxValue: 10
     value: 0
   duration:
     minValue: 2
@@ -100,7 +100,7 @@ MonoBehaviour:
   NestUnderThis: 0
   GameObjectToPool: {fileID: 4745785239986105255, guid: 6725acaef71d24636902934fb5a6cc25,
     type: 3}
-  PoolSize: 20
+  PoolSize: 5
   PoolCanExpand: 1
 --- !u!1 &5379207550262415037
 GameObject:
