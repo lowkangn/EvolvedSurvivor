@@ -112,5 +112,5 @@ MonoBehaviour:
   NestUnderThis: 0
   GameObjectToPool: {fileID: 5653475107230960953, guid: 9d06c804530d90441a099e5fd17a00ed,
     type: 3}
-  PoolSize: 20
+  PoolSize: 3
   PoolCanExpand: 1
