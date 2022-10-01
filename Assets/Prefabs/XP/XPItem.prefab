@@ -483,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickedMMFeedbacks: {fileID: 1276146157}
   DisableColliderOnPick: 0
-  DisableObjectOnPick: 0
+  DisableObjectOnPick: 1
   DisableDelay: 0
   DisableModelOnPick: 0
   DisableTargetObjectOnPick: 0
