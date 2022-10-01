@@ -1,7 +1,5 @@
-using MoreMountains.Tools;
 using System.Collections.Generic;
 using TeamOne.EvolvedSurvivor;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +8,11 @@ public class LevelUpScreenManager : MonoBehaviour
 {
     private const string ERROR_MAX_ABILITIES_REACHED = "Current abilities are full!";
 
+    private const string TITLE_SELECT_FIRST_ABILITY = "SELECT YOUR FIRST ABILITY";
+    private const string TITLE_LEVEL_UP = "LEVEL UP";
+
     [Header("UI elements")]
+    [SerializeField] private Text screenTitle;
     [SerializeField] private Text textObj;
     [SerializeField] private GameObject addAbilityMenu;
     [SerializeField] private GameObject mergeAbilityMenu;
@@ -26,6 +28,7 @@ public class LevelUpScreenManager : MonoBehaviour
     private AbilityManager abilityManager;
     private int nextAbilityIndex = 0;
     private int maxAbilityCount;
+    private bool wasLoadedBefore = false;
 
     private void Awake()
     {
@@ -46,6 +49,16 @@ public class LevelUpScreenManager : MonoBehaviour
         else 
         {
             SwitchToAddAbilityMenu();
+        }
+
+        if (!wasLoadedBefore)
+        {
+            wasLoadedBefore = true;
+            screenTitle.text = TITLE_SELECT_FIRST_ABILITY;
+        }
+        else
+        {
+            screenTitle.text = TITLE_LEVEL_UP;
         }
     }
 
