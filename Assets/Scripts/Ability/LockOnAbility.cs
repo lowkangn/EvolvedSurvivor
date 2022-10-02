@@ -42,7 +42,6 @@ namespace TeamOne.EvolvedSurvivor
             nextProjectile.GetComponent<CircleCollider2D>().radius = aoeRadius.value;
             nextProjectile.GetComponent<LockOnAbilityHandler>().SetParticleRadius(aoeRadius.value);
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
-            nextProjectile.GetComponent<DamageArea>().AddAlreadyHit(target);
             nextProjectile.SetActive(true);
         }
 
