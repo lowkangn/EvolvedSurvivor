@@ -5722,6 +5722,7 @@ MonoBehaviour:
   health: {fileID: 7750977142303885208}
   initialSecondaryDamage: 10
   secDamageArea: {fileID: 0}
+  secDamageScalingFactor: 0.02
 --- !u!1 &7639033464450296746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10625,7 +10626,7 @@ GameObject:
   - component: {fileID: 7562314704936058706}
   - component: {fileID: 7733979718309451076}
   - component: {fileID: 2417119055256238130}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: EnemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
