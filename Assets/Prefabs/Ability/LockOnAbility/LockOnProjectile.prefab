@@ -15124,7 +15124,7 @@ GameObject:
   - component: {fileID: 4966559146677331783}
   - component: {fileID: 3773270387610844637}
   m_Layer: 18
-  m_Name: TestLockOnProjectile
+  m_Name: LockOnProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
