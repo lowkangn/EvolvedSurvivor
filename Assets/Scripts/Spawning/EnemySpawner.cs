@@ -8,6 +8,15 @@ public class EnemySpawner : TimedSpawner
     [SerializeField] private MMSpawnAroundProperties spawnProperties;
     [SerializeField] private SpawnManagerScriptableObject spawnManager;
 
+    private float timePassed = 0f;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        timePassed += Time.deltaTime;
+    }
+
     private void OnEnable()
     {
         spawnManager.PlayerSpawnEvent.AddListener(AttachToPlayer);
@@ -30,13 +39,9 @@ public class EnemySpawner : TimedSpawner
         
         nextGameObject.SetActive(true);
         nextGameObject.MMGetComponentNoAlloc<MMPoolableObject>().TriggerOnSpawnComplete();
-        
-        Health objectHealth = nextGameObject.gameObject.MMGetComponentNoAlloc<Health>();
-        if (objectHealth != null)
-        {
-            objectHealth.Revive();
-        }
 
+        nextGameObject.GetComponent<TeamOne.EvolvedSurvivor.Enemy>().ScaleStats(timePassed);
+        
         MMSpawnAround.ApplySpawnAroundProperties(nextGameObject, spawnProperties, this.transform.position);
 
         _lastSpawnTimestamp = Time.time;
