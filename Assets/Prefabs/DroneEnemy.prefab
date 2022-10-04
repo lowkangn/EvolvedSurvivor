@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 669156561753614148}
   - component: {fileID: 661168866573023321}
-  - component: {fileID: 5052797252860907208}
   - component: {fileID: 2689226587219063426}
   - component: {fileID: 1887037885621208111}
   m_Layer: 13
@@ -49,21 +48,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333614100760703564}
   m_CullTransparentMesh: 1
---- !u!114 &5052797252860907208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333614100760703564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageValue: 15
-  damageHandler: {fileID: 2578632580249319661}
-  damageArea: {fileID: 2689226587219063426}
 --- !u!114 &2689226587219063426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,8 +385,8 @@ GameObject:
   - component: {fileID: 2578632580249319661}
   - component: {fileID: 5729126716184588717}
   - component: {fileID: 7423655912554669546}
-  - component: {fileID: 1054985055661093005}
   - component: {fileID: 4115935375543419200}
+  - component: {fileID: -1820976405645344194}
   m_Layer: 13
   m_Name: DroneEnemy
   m_TagString: Enemy
@@ -639,7 +623,7 @@ MonoBehaviour:
   DisableControllerOnDeath: 1
   DisableModelOnDeath: 1
   DisableCollisionsOnDeath: 1
-  DisableChildCollisionsOnDeath: 0
+  DisableChildCollisionsOnDeath: 1
   ChangeLayerOnDeath: 0
   ChangeLayersRecursivelyOnDeath: 0
   LayerOnDeath:
@@ -925,21 +909,6 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1054985055661093005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7639002971553439240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageValue: 5
-  damageHandler: {fileID: 2578632580249319661}
-  damageArea: {fileID: 7423655912554669546}
 --- !u!114 &4115935375543419200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,6 +991,26 @@ MonoBehaviour:
   GizmosColor: {r: 1, g: 0.9940462, b: 0.9009434, a: 1}
   GimosSize: 0.1
   SpawnLootButton: 0
+--- !u!114 &-1820976405645344194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e3276b50beb0e42bf5b46790782765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDamage: 5
+  initialHealth: 20
+  damageHandler: {fileID: 2578632580249319661}
+  damageArea: {fileID: 7423655912554669546}
+  health: {fileID: 7750977142303885208}
+  initialSecondaryDamage: 15
+  secDamageArea: {fileID: 2689226587219063426}
+  secDamageScalingFactor: 0.005
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0

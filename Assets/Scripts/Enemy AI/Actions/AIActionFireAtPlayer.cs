@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AIActionFireAtPlayer : AIAction
 {
-    [SerializeField] private MMSimpleObjectPooler objectPool;
+    [SerializeField] private MMSimpleObjectPooler projectilePool;
     [SerializeField] private float timeForEachShot = 3f;
 
-    [SerializeField] private float damageValue = 10f;
+    [SerializeField] private SecondaryAttackEnemy enemy;
     [SerializeField] private float projectileSpeed = 10f;
 
     private float timeSinceLastShot = 0f;
@@ -16,7 +16,7 @@ public class AIActionFireAtPlayer : AIAction
     private void Start()
     {
         damage = new Damage();
-        damage.damage = damageValue;
+        damage.damage = enemy.SecondaryDamage;
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class AIActionFireAtPlayer : AIAction
     
     private void FireProjectile()
     {
-        Projectile nextProjectile = objectPool
+        Projectile nextProjectile = projectilePool
                 .GetPooledGameObject().GetComponent<Projectile>();
 
         nextProjectile.transform.position = transform.position;
