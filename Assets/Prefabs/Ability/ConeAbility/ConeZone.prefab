@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2277142627490085944}
   - component: {fileID: 2759370971222709746}
   - component: {fileID: 1022369657718954981}
+  - component: {fileID: 8728656256659430332}
   m_Layer: 0
   m_Name: ConeZone
   m_TagString: Untagged
@@ -102,6 +103,18 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &8728656256659430332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745785239986105255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaf8953169228a46b9df0e12259ce42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5750361614762820863
 GameObject:
   m_ObjectHideFlags: 0

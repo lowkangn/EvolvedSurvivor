@@ -60,15 +60,15 @@ MonoBehaviour:
   maxInfectMagnitude: 2
   maxPyroMagnitude: 2
   damage:
-    minValue: 16
-    maxValue: 120
+    minValue: 10
+    maxValue: 50
     value: 0
   duration:
     minValue: 10
     maxValue: 10
     value: 0
   aoeRange:
-    minValue: 5
+    minValue: 2
     maxValue: 5
     value: 0
   coneNumber:
