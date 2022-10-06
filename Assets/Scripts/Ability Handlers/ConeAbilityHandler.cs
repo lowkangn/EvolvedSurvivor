@@ -22,7 +22,7 @@ namespace TeamOne.EvolvedSurvivor
             emission.rateOverTime = coneNumber * rateOverTime;
 
             var shape = particles.shape;
-            shape.angle = coneNumber * anglePerHalfCone;
+            shape.angle = Mathf.Clamp(coneNumber * anglePerHalfCone, 15f, 80f);
         }
 
         // Update is called once per frame
