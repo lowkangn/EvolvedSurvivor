@@ -6,7 +6,9 @@ using TeamOne.EvolvedSurvivor;
 [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveTowardsTargetWithObstacleAvoidance")]
 public class AIActionMoveTowardsTargetWithObstacleAvoidance : AIActionMoveTowardsTarget2D
 {
-    [SerializeField] private GameObject rayCastOrigin;
+    [SerializeField] private Vector3 offset;
+
+    private Vector3 frontDirection;
 
     [Tooltip("the layer to consider as obstacles (will prevent movement)")]
     public LayerMask ObstaclesLayerMask = LayerManager.ObstaclesLayerMask;
@@ -15,17 +17,17 @@ public class AIActionMoveTowardsTargetWithObstacleAvoidance : AIActionMoveToward
     {
         base.Move();
 
-        Vector3 rayCastOriginPoint = rayCastOrigin.transform.position;
-        Vector3 frontDirection = Vector3.Normalize(_brain.Target.position - this.transform.position);
-        RaycastHit2D hit = MMDebug.BoxCast(rayCastOriginPoint, new Vector2(1f, 1f), 90f, frontDirection, 1.5f, ObstaclesLayerMask, Color.yellow, true);
+        Vector3 rayCastOriginPoint = this.transform.position + offset;
+        frontDirection = Vector3.Normalize(_brain.Target.position - this.transform.position);
+        RaycastHit2D hit = MMDebug.BoxCast(rayCastOriginPoint, new Vector2(1f, 1f), 60f, frontDirection, 3f, ObstaclesLayerMask, Color.yellow, true);
         
         if (hit.collider != null)
         {
             Vector3 checkLeft = Quaternion.Euler(0, 0, -45) * frontDirection;
-            RaycastHit2D leftHit = MMDebug.RayCast(rayCastOriginPoint, frontDirection, 2f, ObstaclesLayerMask, Color.yellow, true);
+            RaycastHit2D leftHit = MMDebug.RayCast(rayCastOriginPoint, frontDirection, 3f, ObstaclesLayerMask, Color.yellow, true);
 
             Vector3 checkRight = Quaternion.Euler(0, 0, 45) * frontDirection;
-            RaycastHit2D rightHit = MMDebug.RayCast(rayCastOriginPoint, frontDirection, 2f, ObstaclesLayerMask, Color.yellow, true);
+            RaycastHit2D rightHit = MMDebug.RayCast(rayCastOriginPoint, frontDirection, 3f, ObstaclesLayerMask, Color.yellow, true);
 
             if (checkLeft == null && checkRight == null)
             {
@@ -48,7 +50,7 @@ public class AIActionMoveTowardsTargetWithObstacleAvoidance : AIActionMoveToward
 
     private void NudgeInDirection(Vector3 direction)
     {
-        _characterMovement.SetHorizontalMovement(direction.x > 0f ? 1f : -1f);
-        _characterMovement.SetVerticalMovement(direction.y > 0f ? 1f : -1f);
+         _characterMovement.SetHorizontalMovement(direction.x > 0f ? 1f : -1f);
+         _characterMovement.SetVerticalMovement(direction.y > 0f ? 1f : -1f);
     }
 }

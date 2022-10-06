@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7640585316212620760}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6671426371824130388
 SpriteRenderer:
@@ -5501,7 +5501,7 @@ MonoBehaviour:
   BrainActive: 1
   ResetBrainOnStart: 1
   ResetBrainOnEnable: 0
-  ActionsFrequency: 0.2
+  ActionsFrequency: 0
   DecisionFrequency: 0
   RandomizeFrequencies: 0
   RandomActionFrequency: {x: 0.5, y: 1}
@@ -5549,7 +5549,7 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   MinimumDistance: 0.1
-  rayCastOrigin: {fileID: 7816057482090643215}
+  offset: {x: 0, y: 0.3, z: 0}
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -10653,7 +10653,6 @@ Transform:
   m_Children:
   - {fileID: 7640796010675700724}
   - {fileID: 7644433225331812092}
-  - {fileID: 8906074473111346832}
   - {fileID: 843803173155221967}
   m_Father: {fileID: 7644420123034665450}
   m_RootOrder: 1
@@ -10674,37 +10673,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.4, y: 1.9}
   m_Direction: 0
---- !u!1 &7816057482090643215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8906074473111346832}
-  m_Layer: 6
-  m_Name: RayCastOrigin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8906074473111346832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7816057482090643215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.946, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7640585316212620760}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7932186192500545181
 GameObject:
   m_ObjectHideFlags: 0
