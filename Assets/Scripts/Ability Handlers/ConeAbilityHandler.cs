@@ -4,18 +4,33 @@ namespace TeamOne.EvolvedSurvivor
     public class ConeAbilityHandler : AbilityHandler
     {
         private Orientation2D characterOrientation;
+        [SerializeField]
+        private ParticleSystem particleSystem;
+
+        private readonly float rateOverTime = 100f;
         private void OnEnable()
         {
             characterOrientation = GetComponentInParent<Orientation2D>();
         }
+
+        public void UpdateParticles(float range, int coneNumber, float anglePerHalfCone)
+        {
+            var main = particleSystem.main;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0.9f * range, 1.1f * range);
+
+            var emission = particleSystem.emission;
+            emission.rateOverTime = coneNumber * rateOverTime;
+
+            var shape = particleSystem.shape;
+            shape.angle = coneNumber * anglePerHalfCone;
+        }
+
         // Update is called once per frame
         void Update()
         {
             if (characterOrientation)
             {
-                Debug.Log(characterOrientation.GetFacingDirection());
                 transform.rotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
-                Debug.Log(transform.rotation);
             }
         }
     }

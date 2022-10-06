@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<int> coneNumber;
 
-        float anglePerHalfCone = Mathf.Deg2Rad * 15f;
+        float anglePerHalfCone = 15f;
         Vector2[] vertices;
 
         protected override void Activate()
@@ -24,6 +23,9 @@ namespace TeamOne.EvolvedSurvivor
             projectile.transform.parent = transform;
             projectile.transform.localPosition = Vector3.zero;
             projectile.transform.localScale = Vector3.one * aoeRange.value;
+
+            ConeAbilityHandler handler = projectile.GetComponent<ConeAbilityHandler>();
+            handler.UpdateParticles(aoeRange.value, coneNumber.value, anglePerHalfCone);
 
             PolygonCollider2D collider = projectile.GetComponent<PolygonCollider2D>();
             collider.SetPath(0, vertices);
@@ -44,8 +46,8 @@ namespace TeamOne.EvolvedSurvivor
             vertices[1 + coneNumber.value] = new Vector2(0, 1);
             for (int i = 0; i < coneNumber.value; i++)
             {
-                float y = Mathf.Cos(anglePerHalfCone * (i + 1));
-                float x = Mathf.Sin(anglePerHalfCone * (i + 1));
+                float y = Mathf.Cos(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
+                float x = Mathf.Sin(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
                 vertices[i+1] = new Vector2(x * -1, y);
                 vertices[^(i+1)] = new Vector2(x, y);
             }
