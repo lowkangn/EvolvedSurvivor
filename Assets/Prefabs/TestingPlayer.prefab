@@ -4952,7 +4952,7 @@ GameObject:
   - component: {fileID: 8710403640008511705}
   - component: {fileID: 3974080717082401969}
   m_Layer: 10
-  m_Name: Player
+  m_Name: TestingPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6069,6 +6069,17 @@ PrefabInstance:
       propertyPath: abilityManager
       value: 
       objectReference: {fileID: 5148277335872434588}
+    - target: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
+        type: 3}
+      propertyPath: abilityPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850166207049166443, guid: 37bf9e28cbd21f54983c44e915067df5,
+        type: 3}
+      propertyPath: abilityPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 7623764801203598919, guid: 2f740adb53893b04a88f1a0b1a7f9516,
+        type: 3}
     - target: {fileID: 5216245990438975313, guid: 37bf9e28cbd21f54983c44e915067df5,
         type: 3}
       propertyPath: m_Name

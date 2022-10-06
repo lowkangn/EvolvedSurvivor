@@ -22,7 +22,12 @@ namespace TeamOne.EvolvedSurvivor
             this.damage = damage;
             this.instigator = instigator;
         }
-
+        public Damage(float damage, GameObject instigator, List<StatusEffect> effects)
+        {
+            this.damage = damage;
+            this.instigator = instigator;
+            this.effects = effects;
+        }
         public Damage(float damage, GameObject instigator, Vector3 direction)
         {
             this.damage = damage;
