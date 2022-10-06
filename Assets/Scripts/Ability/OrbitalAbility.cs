@@ -31,11 +31,10 @@ namespace TeamOne.EvolvedSurvivor
                 projectile.transform.SetParent(transform);
 
                 // Set damage
-                Damage damage = new Damage();
-                damage.damage = this.damage.value;
-                damage = damageHandler.ProcessOutgoingDamage(damage);
+                Damage projDamage = new Damage(damage.value, gameObject, effects);
+                projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
 
-                projectile.SetDamage(damage);
+                projectile.SetDamage(projDamage);
                 projectile.SetSize(projectileSize.value);
 
                 // Set duration
