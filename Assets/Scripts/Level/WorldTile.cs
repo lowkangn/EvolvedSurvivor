@@ -10,14 +10,14 @@ public class WorldTile : MonoBehaviour
     [SerializeField] private float tileSize = 40f;
 
     private WorldScroller worldScroller;
-    private MMMultipleObjectPooler bgObjectPool;
+    private EnvironmentObjectPooler bgObjectPool;
 
     private List<GameObject> bgObjects = new List<GameObject>();
 
     private void Awake()
     {
         worldScroller = GetComponentInParent<WorldScroller>();
-        bgObjectPool = GetComponentInParent<MMMultipleObjectPooler>();
+        bgObjectPool = GetComponentInParent<EnvironmentObjectPooler>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,7 +47,7 @@ public class WorldTile : MonoBehaviour
 
                 if (generatedNoise < density)
                 {
-                    GameObject bgObject = bgObjectPool.GetPooledGameObject();
+                    GameObject bgObject = bgObjectPool.GetPooledEnvObject(seed + i + j);
                     Vector2 offset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
                     bgObject.transform.position = tilePosition + offset;
                     bgObject.transform.parent = gameObject.transform;

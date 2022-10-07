@@ -29,11 +29,6 @@ public class WorldScroller : MonoBehaviour
         mapCenter = mapSizeInTiles / 2;
     }
 
-    private void OnDisable()
-    {
-        GetComponent<MMMultipleObjectPooler>()?.DestroyObjectPool();
-    }
-
     public void UpdatePlayerPosition(int x, int y)
     {
         playerTilePos = new Vector2(x, y);

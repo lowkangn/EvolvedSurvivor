@@ -375,6 +375,9 @@ GameObject:
   - component: {fileID: 7751210001397076598}
   - component: {fileID: 3408037924599025843}
   - component: {fileID: 3726143494263872085}
+  - component: {fileID: 1381702404595613499}
+  - component: {fileID: 2219450375520854179}
+  - component: {fileID: 4469927918188013964}
   - component: {fileID: 4072246084683858285}
   - component: {fileID: -5175038348024878791}
   - component: {fileID: 6424938918185667639}
@@ -543,7 +546,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  FacingMode: 3
+  FacingMode: 0
   FacingBase: 0
   ModelShouldFlip: 1
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
@@ -662,7 +665,8 @@ MonoBehaviour:
   - StateName: Moving
     Actions:
       array:
-      - {fileID: 4072246084683858285}
+      - {fileID: 1381702404595613499}
+      - {fileID: 2219450375520854179}
     Transitions:
       array:
       - Decision: {fileID: 3726143494263872085}
@@ -670,6 +674,9 @@ MonoBehaviour:
         FalseState: Detecting
       - Decision: {fileID: -5175038348024878791}
         TrueState: Alert
+        FalseState: 
+      - Decision: {fileID: 4469927918188013964}
+        TrueState: Avoidance
         FalseState: 
   - StateName: Alert
     Actions:
@@ -690,6 +697,15 @@ MonoBehaviour:
       - {fileID: 4977188553063413043}
     Transitions:
       array: []
+  - StateName: Avoidance
+    Actions:
+      array:
+      - {fileID: 4072246084683858285}
+    Transitions:
+      array:
+      - Decision: {fileID: 4469927918188013964}
+        TrueState: 
+        FalseState: Moving
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -729,6 +745,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+--- !u!114 &1381702404595613499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47557c9dd44293a41bc6710b083332de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  MinimumDistance: 1
+--- !u!114 &2219450375520854179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1148b739e4c74b8478868d1834fbcd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  Mode: 0
+--- !u!114 &4469927918188013964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b897d5e79599746827b4f8c82cd697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  offset: {x: 0, y: 0, z: 0}
+  ObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &4072246084683858285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: 
-  MinimumDistance: 0.1
   offset: {x: 0, y: 0, z: 0}
   ObstaclesLayerMask:
     serializedVersion: 2

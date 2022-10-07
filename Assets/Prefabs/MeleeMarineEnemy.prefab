@@ -5200,12 +5200,15 @@ GameObject:
   - component: {fileID: 7560711285732570626}
   - component: {fileID: 7751564100530181816}
   - component: {fileID: 497375873246933806}
-  - component: {fileID: 7750751518903683504}
+  - component: {fileID: -4493738448883542709}
   - component: {fileID: 7751080476582257864}
   - component: {fileID: 7750977142303885208}
   - component: {fileID: 7751210001397076598}
   - component: {fileID: 3408037924599025843}
   - component: {fileID: 3726143494263872085}
+  - component: {fileID: 7023025072046878063}
+  - component: {fileID: -230388710767273679}
+  - component: {fileID: 5348149449472826712}
   - component: {fileID: 1938981732540503187}
   - component: {fileID: 3135418408013145896}
   - component: {fileID: 8557347373184591496}
@@ -5350,7 +5353,7 @@ MonoBehaviour:
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &7750751518903683504
+--- !u!114 &-4493738448883542709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5370,12 +5373,12 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  FacingMode: 3
+  FacingMode: 0
   FacingBase: 0
-  ModelShouldFlip: 0
+  ModelShouldFlip: 1
   ModelFlipValueLeft: {x: -1, y: 1, z: 1}
   ModelFlipValueRight: {x: 1, y: 1, z: 1}
-  ModelShouldRotate: 1
+  ModelShouldRotate: 0
   ModelRotationValueLeft: {x: 0, y: 180, z: 0}
   ModelRotationValueRight: {x: 0, y: 0, z: 0}
   ModelRotationSpeed: 0
@@ -5489,12 +5492,28 @@ MonoBehaviour:
   - StateName: Moving
     Actions:
       array:
+      - {fileID: 7023025072046878063}
+      - {fileID: -230388710767273679}
+    Transitions:
+      array:
+      - Decision: {fileID: 3726143494263872085}
+        TrueState: 
+        FalseState: Detecting
+      - Decision: {fileID: 5348149449472826712}
+        TrueState: Avoidance
+        FalseState: 
+  - StateName: Avoidance
+    Actions:
+      array:
       - {fileID: 1938981732540503187}
     Transitions:
       array:
       - Decision: {fileID: 3726143494263872085}
         TrueState: 
         FalseState: Detecting
+      - Decision: {fileID: 5348149449472826712}
+        TrueState: 
+        FalseState: Moving
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -5534,6 +5553,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
+--- !u!114 &7023025072046878063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47557c9dd44293a41bc6710b083332de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  MinimumDistance: 0.1
+--- !u!114 &-230388710767273679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1148b739e4c74b8478868d1834fbcd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  Mode: 0
+--- !u!114 &5348149449472826712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b897d5e79599746827b4f8c82cd697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  offset: {x: 0, y: 0.3, z: 0}
+  ObstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1938981732540503187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5548,7 +5614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: 
-  MinimumDistance: 0.1
   offset: {x: 0, y: 0.3, z: 0}
   ObstaclesLayerMask:
     serializedVersion: 2
@@ -10794,7 +10859,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 6671426371824130388}
   Mode: 0
   PropertyName: _Tint
   FlickerDuration: 0.2
