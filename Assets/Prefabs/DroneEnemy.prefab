@@ -682,7 +682,8 @@ MonoBehaviour:
     Actions:
       array:
       - {fileID: -6336170453095142254}
-      - {fileID: 4072246084683858285}
+      - {fileID: 1381702404595613499}
+      - {fileID: 2219450375520854179}
     Transitions:
       array:
       - Decision: {fileID: -5175038348024878791}
