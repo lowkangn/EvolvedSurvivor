@@ -224,5 +224,10 @@ namespace TeamOne.EvolvedSurvivor
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
         }
+
+        public TraitChart GetTraitChart()
+        {
+            return traitChart;
+        }
     }
 }

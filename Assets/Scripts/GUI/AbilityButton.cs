@@ -9,6 +9,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected Text textObj;
         [SerializeField] protected Image abilityImage;
         [SerializeField] protected Ability ability;
+        [SerializeField] protected RadarChartUI radarChart;
 
         protected bool isEmpty = true;
 
@@ -34,6 +35,7 @@ namespace TeamOne.EvolvedSurvivor
             if (!IsEmpty())
             {
                 this.textObj.text = ability.GetDescription();
+                radarChart.UpdateVisual(ability.GetTraitChart());
             } 
             else
             {
@@ -45,6 +47,7 @@ namespace TeamOne.EvolvedSurvivor
         public virtual void OnPointerExit(PointerEventData eventData)
         {
             this.textObj.text = "";
+            radarChart.ClearVisual();
         }
 
         public virtual void RemoveAbility()

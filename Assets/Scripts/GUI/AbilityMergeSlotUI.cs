@@ -40,6 +40,7 @@ public class AbilityMergeSlotUI : AbilityButton
             this.textObj.text = TIP_MERGE_INSTRUCTION;
         } else {
             this.textObj.text = ability.GetDescription();
+            radarChart.UpdateVisual(ability.GetTraitChart());
         }
     }
 
