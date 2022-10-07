@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 61369599479639190}
   - component: {fileID: 114505782441818086}
   - component: {fileID: 5384003158148147752}
+  - component: {fileID: 469744713303068953}
   m_Layer: 0
   m_Name: HealthItem
   m_TagString: Untagged
@@ -459,7 +460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489628332787134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
   m_Name: 
@@ -492,6 +493,23 @@ MonoBehaviour:
   Model: {fileID: 0}
   HealthToGive: 10
   OnlyForPlayerCharacter: 1
+--- !u!114 &469744713303068953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489628332787134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08d1d5d923c8423284eb97551d7e8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: f5ce1ca9165c50841933f1cda0a866aa, type: 2}
+  Quantity: 1
+  RemainingQuantity: 1
+  PickableIfInventoryIsFull: 1
+  DisableObjectWhenDepleted: 0
 --- !u!1 &1543111494645246
 GameObject:
   m_ObjectHideFlags: 0

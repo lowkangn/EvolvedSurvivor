@@ -51,6 +51,8 @@ namespace TeamOne.EvolvedSurvivor
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
 
+        protected float coolDownMultiplier = 1f;
+
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
         /// E.g., Speed, Damage, CoolDown, etc.
@@ -152,7 +154,7 @@ namespace TeamOne.EvolvedSurvivor
                 if (coolDownTimer < 0f)
                 {
                     Activate();
-                    coolDownTimer = coolDown.value;
+                    coolDownTimer = coolDown.value * this.coolDownMultiplier;
                 }
             }
         }
@@ -223,6 +225,11 @@ namespace TeamOne.EvolvedSurvivor
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+        }
+
+        public void setCoolDownMultiplier(float multiplier)
+        {
+            this.coolDownMultiplier = multiplier;
         }
     }
 }

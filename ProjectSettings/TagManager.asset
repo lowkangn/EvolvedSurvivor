@@ -10,6 +10,7 @@ TagManager:
   - World
   - NoMask
   - AbilitySprite
+  - ESPickup
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ namespace TeamOne.EvolvedSurvivor
     public class DamageHandler : MonoBehaviour
     {
         public float invincibilityDurationAfterTakingDamage;
+        public float damageMultiplier = 1f;
 
         private Health health;
 
@@ -52,7 +53,8 @@ namespace TeamOne.EvolvedSurvivor
         /// <returns>The actual damage</returns>
         public Damage ProcessOutgoingDamage(Damage damage)
         {
-            // TODO: Process passive abilities such as Global Damage Up
+
+            damage.damage *= damageMultiplier;
 
             damage.instigator = gameObject;
 
