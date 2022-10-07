@@ -22,7 +22,6 @@ namespace MoreMountains.InventoryEngine
                 return;
             }
 
-            Debug.Log("player collided");
             string playerID = "Player1";
             InventoryCharacterIdentifier identifier = collider.gameObject.transform.parent.gameObject.GetComponent<InventoryCharacterIdentifier>();
             if (identifier != null)
@@ -30,7 +29,6 @@ namespace MoreMountains.InventoryEngine
                 playerID = identifier.PlayerID;
             }
 
-            Debug.Log(playerID + ", " + Item.TargetInventoryName);
             Pick(Item.TargetInventoryName, playerID);
         }
     }

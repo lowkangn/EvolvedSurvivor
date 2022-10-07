@@ -227,7 +227,7 @@ namespace TeamOne.EvolvedSurvivor
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
         }
 
-        public void setCoolDownMultiplier(float multiplier)
+        public void SetCoolDownMultiplier(float multiplier)
         {
             this.coolDownMultiplier = multiplier;
         }
