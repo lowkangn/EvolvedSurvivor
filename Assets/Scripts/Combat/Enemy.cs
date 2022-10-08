@@ -14,9 +14,17 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected DamageArea damageArea;
         [SerializeField] protected Health health;
 
+        [Header("Spawn manager")]
+        [SerializeField] private SpawnManagerScriptableObject spawnManager;
+
         protected void OnEnable()
         {
             this.health.Revive();
+        }
+
+        protected void OnDisable()
+        {
+            spawnManager.OnEnemyDespawn(this.gameObject);
         }
 
         public virtual void ScaleStats(float timePassed)

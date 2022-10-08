@@ -1071,10 +1071,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDamage: 5
-  initialHealth: 20
+  initialHealth: 10
   damageHandler: {fileID: 2578632580249319661}
   damageArea: {fileID: 7423655912554669546}
   health: {fileID: 7750977142303885208}
+  spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
   initialSecondaryDamage: 15
   secDamageArea: {fileID: 2689226587219063426}
   secDamageScalingFactor: 0.005

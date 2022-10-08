@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 716568376196000346}
   - component: {fileID: 5633355157281015665}
   - component: {fileID: 524294547356807108}
-  - component: {fileID: 1299239212916141423}
   m_Layer: 13
   m_Name: DeathFeedback
   m_TagString: Untagged
@@ -153,7 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 524294547356807108}
-  - {fileID: 1299239212916141423}
   InitializationMode: 2
   SafeMode: 3
   Direction: 0
@@ -237,43 +235,6 @@ MonoBehaviour:
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: 0}
---- !u!114 &1299239212916141423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7627577554204155481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c979275ebf7395478dc6450bee193ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 1
-  Label: EnemyDeath
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    ExcludeFromHoldingPauses: 0
-    ContributeToTotalDuration: 1
-    InitialDelay: 0
-    CooldownDuration: 0
-    InterruptsOnStop: 1
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    MMFeedbacksDirectionCondition: 0
-    PlayDirection: 0
-    ConstantIntensity: 0
-    UseIntensityInterval: 0
-    IntensityIntervalMin: 0
-    IntensityIntervalMax: 0
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  MMGameEventName: EnemyDeath
 --- !u!1 &7638376544883403920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,10 +5749,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDamage: 8
-  initialHealth: 30
+  initialHealth: 20
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
+  spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0
