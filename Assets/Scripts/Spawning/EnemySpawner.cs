@@ -39,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemySpawnData> enemies;
     [SerializeField] private NonRandomObjectPooler objectPooler;
 
+    [SerializeField] private float spendingPointsGainRate = 0.05f;
     [SerializeField] private float minSpawnFreq = 0.2f;
     [SerializeField] private float maxSpawnFreq = 1f;
     [SerializeField] private float spawnRadius = 20f;
@@ -76,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        spendingPoints += Time.deltaTime * 0.05f;
+        spendingPoints += Time.deltaTime * spendingPointsGainRate;
         timePassed += Time.deltaTime;
 
         foreach (EnemySpawnData enemy in enemies)

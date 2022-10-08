@@ -8144,6 +8144,7 @@ MonoBehaviour:
     cost: 2
     limitScalingFactor: 0.01
   objectPooler: {fileID: 1427425514}
+  spendingPointsGainRate: 0.05
   minSpawnFreq: 1
   maxSpawnFreq: 5
   spawnRadius: 20
