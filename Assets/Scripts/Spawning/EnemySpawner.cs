@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
-using System;
+using MoreMountains.Feedbacks;
+using TeamOne.EvolvedSurvivor;
 
-public class EnemySpawner : TimedSpawner
+public class EnemySpawner : TimedSpawner, MMEventListener<MMGameEvent>
 {
     [SerializeField] private MMSpawnAroundProperties spawnProperties;
     [SerializeField] private SpawnManagerScriptableObject spawnManager;
 
+    private int enemyCount;
     private float timePassed = 0f;
 
     protected override void Update()
@@ -20,12 +23,24 @@ public class EnemySpawner : TimedSpawner
     private void OnEnable()
     {
         spawnManager.PlayerSpawnEvent.AddListener(AttachToPlayer);
+        this.MMEventStartListening<MMGameEvent>();
+
     }
 
     private void OnDisable()
     {
         spawnManager.PlayerSpawnEvent.RemoveListener(AttachToPlayer);
+        this.MMEventStopListening<MMGameEvent>();
+
         ObjectPooler.DestroyObjectPool();
+    }
+
+    public void OnMMEvent(MMGameEvent eventType)
+    {
+        if (eventType.EventName == "EnemyDeath")
+        {
+            enemyCount--;
+        }
     }
 
     protected override void Spawn()
@@ -40,11 +55,13 @@ public class EnemySpawner : TimedSpawner
         nextGameObject.SetActive(true);
         nextGameObject.MMGetComponentNoAlloc<MMPoolableObject>().TriggerOnSpawnComplete();
 
-        nextGameObject.GetComponent<TeamOne.EvolvedSurvivor.Enemy>().ScaleStats(timePassed);
+        nextGameObject.GetComponent<Enemy>().ScaleStats(timePassed);
         
         MMSpawnAround.ApplySpawnAroundProperties(nextGameObject, spawnProperties, this.transform.position);
 
         _lastSpawnTimestamp = Time.time;
+        enemyCount++;
+
         DetermineNextFrequency();
     }
 
