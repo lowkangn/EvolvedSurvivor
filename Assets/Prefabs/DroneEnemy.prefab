@@ -1076,7 +1076,7 @@ MonoBehaviour:
   damageArea: {fileID: 7423655912554669546}
   health: {fileID: 7750977142303885208}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
-  initialSecondaryDamage: 15
+  initialSecondaryDamage: 10
   secDamageArea: {fileID: 2689226587219063426}
   secDamageScalingFactor: 0.005
 --- !u!1 &7639620610091389554
