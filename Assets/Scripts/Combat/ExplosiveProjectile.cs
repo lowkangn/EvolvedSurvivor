@@ -14,6 +14,11 @@ namespace TeamOne.EvolvedSurvivor
         private Damage explosionDamage;
         private float explosionRadius;
 
+        private void OnDestroy()
+        {
+            objectPool.DestroyObjectPool();
+        }
+
         public override void SetDamage(Damage damage)
         {
             this.damage = new Damage(0, null);

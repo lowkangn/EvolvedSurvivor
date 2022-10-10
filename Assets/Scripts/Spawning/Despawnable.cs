@@ -5,7 +5,7 @@ using MoreMountains.Tools;
 public class Despawnable : MonoBehaviour
 {
     [SerializeField] private MMPoolableObject poolableObject;
-    [SerializeField] private float despawnDistance = 30.0f;
+    [SerializeField] private float despawnDistance = 24.0f;
 
     private GameObject player;
 
@@ -19,8 +19,7 @@ public class Despawnable : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(gameObject.transform.position, 
-            player.transform.position) > despawnDistance)
+        if (Vector2.Distance(gameObject.transform.position, player.transform.position) > despawnDistance)
         {
             poolableObject.Destroy();
         }
