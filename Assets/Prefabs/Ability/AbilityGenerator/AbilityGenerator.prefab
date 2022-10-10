@@ -49,5 +49,6 @@ MonoBehaviour:
   - {fileID: 7095764258113722623, guid: 4fdd7f974e6be1541b794f5352e0eed1, type: 3}
   - {fileID: -5987010200417845135, guid: 67bd8155ad6f8564c953e9ee6b20c83e, type: 3}
   - {fileID: 2718351011253688110, guid: 3b5fef118d5dd754cb084d77694eef4c, type: 3}
+  - {fileID: 7623764801203598919, guid: 2f740adb53893b04a88f1a0b1a7f9516, type: 3}
   abilityBaseTraitCharts: {fileID: 11400000, guid: 09923c8c3a981484fae91546cbb04118,
     type: 2}

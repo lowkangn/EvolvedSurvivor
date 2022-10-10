@@ -21,8 +21,7 @@ namespace TeamOne.EvolvedSurvivor
         private readonly int maxTier = 10;
         protected TraitChart traitChart;
         protected Element element;
-        [SerializeField]
-        protected Damage projDamage = new Damage();
+        protected List<StatusEffect> effects = new();
         [SerializeField]
         private bool hasBuilt = false;
         private bool hasActivated;

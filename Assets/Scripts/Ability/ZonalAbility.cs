@@ -40,6 +40,7 @@ namespace TeamOne.EvolvedSurvivor
 
             Damage damage = new Damage();
             damage.damage = this.damage.value;
+            damage.effects = effects;
             damage = damageHandler.ProcessOutgoingDamage(damage);
 
             damageArea.SetDamage(damage);
@@ -85,7 +86,13 @@ namespace TeamOne.EvolvedSurvivor
             targetNumber.value = Mathf.FloorToInt((targetNumber.maxValue - targetNumber.minValue) * traitChart.QuantityRatio + targetNumber.minValue);
 
             // Utility
-
+            foreach (KeyValuePair<ElementType, int> el in element.elements)
+            {
+                if (el.Value > 0)
+                {
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                }
+            }
         }
     }
 }

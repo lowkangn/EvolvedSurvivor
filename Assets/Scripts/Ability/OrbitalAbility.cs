@@ -31,11 +31,10 @@ namespace TeamOne.EvolvedSurvivor
                 projectile.transform.SetParent(transform);
 
                 // Set damage
-                Damage damage = new Damage();
-                damage.damage = this.damage.value;
-                damage = damageHandler.ProcessOutgoingDamage(damage);
+                Damage projDamage = new Damage(damage.value, gameObject, effects);
+                projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
 
-                projectile.SetDamage(damage);
+                projectile.SetDamage(projDamage);
                 projectile.SetSize(projectileSize.value);
 
                 // Set duration
@@ -64,7 +63,13 @@ namespace TeamOne.EvolvedSurvivor
             orbitalNumber.value = Mathf.FloorToInt((orbitalNumber.maxValue - orbitalNumber.minValue) * traitChart.QuantityRatio + orbitalNumber.minValue);
 
             // Utility
-
+            foreach (KeyValuePair<ElementType, int> el in element.elements)
+            {
+                if (el.Value > 0)
+                {
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                }
+            }
         }
     }
 }
