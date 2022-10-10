@@ -4,6 +4,11 @@ namespace TeamOne.EvolvedSurvivor
 {
     public static class GeneralUtility
     {
+        public static bool GenerateRandomChance(float successRate)
+        {
+            return Random.Range(0f, 1f) < successRate;
+        }
+
         public static void ShuffleArray<T> (ref T[] array) 
         {
             for (int n = array.Length - 1; n > 0; n--)

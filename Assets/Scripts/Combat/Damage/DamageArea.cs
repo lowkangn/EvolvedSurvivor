@@ -75,6 +75,10 @@ namespace TeamOne.EvolvedSurvivor
 
 
         }
+        public void AddTargetHit(GameObject target)
+        {
+            targetsHit.Add(target);
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

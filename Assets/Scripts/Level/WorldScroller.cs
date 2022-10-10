@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,18 +7,23 @@ public class WorldScroller : MonoBehaviour
     [SerializeField] private List<WorldTile> tiles;
     [SerializeField] private float tileSize;
     [SerializeField] private int mapSizeInTiles;
+    [SerializeField] private float density = 0.3f;
 
     private WorldTile[,] tileMap;
     private Vector2 playerTilePos;
     private int mapCenter;
 
+    private float seed;
+
     private void Start()
     {
         tileMap = new WorldTile[mapSizeInTiles, mapSizeInTiles];
+        seed = Random.Range(1000f, 9000f);
 
         foreach (WorldTile tile in tiles)
         {
             tileMap[tile.x, tile.y] = tile;
+            tile.GenerateNewBackgroundObjects(seed, density);
         }
 
         mapCenter = mapSizeInTiles / 2;
@@ -79,11 +85,11 @@ public class WorldScroller : MonoBehaviour
 
         for (int i = 0; i < mapSizeInTiles; i++)
         {
-            GameObject tile = isShiftingRow 
-                ? tileMap[i, startPoint].gameObject 
-                : tileMap[startPoint, i].gameObject;
-            tile.transform.position = tile.transform.position
-                + (mult * new Vector3(xOffset, yOffset, 0f));
+            WorldTile tile = isShiftingRow 
+                ? tileMap[i, startPoint] 
+                : tileMap[startPoint, i];
+            tile.gameObject.transform.position += mult * new Vector3(xOffset, yOffset, 0f);
+            tile.GenerateNewBackgroundObjects(seed, density);
         }
 
         ShiftTileMap(isShiftingRow, isPositive);

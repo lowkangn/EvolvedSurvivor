@@ -1,11 +1,9 @@
 using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class ExplosiveProjectile : Projectile
+    public class LockOnDamageArea : DamageArea
     {
         [Header("Explosion pool")]
         [SerializeField]
@@ -13,12 +11,11 @@ namespace TeamOne.EvolvedSurvivor
 
         private Damage explosionDamage;
         private float explosionRadius;
-
-        private void OnDestroy()
+        private void OnEnable()
         {
-            objectPool.DestroyObjectPool();
+            SetLifeTime(0.3f);
+            OnHit();
         }
-
         public override void SetDamage(Damage damage)
         {
             this.damage = new Damage(0, null);
@@ -38,6 +35,7 @@ namespace TeamOne.EvolvedSurvivor
             explosion.SetDamage(explosionDamage);
             explosion.SetExplosionRadius(explosionRadius);
             explosion.SetActive(true);
+            explosion.AddTargetHit(transform.parent.gameObject);
         }
     }
 }

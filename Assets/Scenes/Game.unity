@@ -310,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71771402}
   - component: {fileID: 71771403}
+  - component: {fileID: 71771404}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -365,6 +366,46 @@ MonoBehaviour:
   - {fileID: 1130473581}
   tileSize: 40
   mapSizeInTiles: 3
+  density: 0.3
+--- !u!114 &71771404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71771401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a7ef2726c5c324c81dbed4b0abc6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  Pool:
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 4ff7a05e482059247bb562c2bf97de6a,
+      type: 3}
+    PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 2a3fde70c8fc41f44b5a5ba9e393b670,
+      type: 3}
+    PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: fbffe17ae4afffa4da72c0263536ebf7,
+      type: 3}
+    PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 9664c05237dbef24d8f2b2ffd8fb8c97,
+      type: 3}
+    PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  PoolingMethod: 3
+  CanPoolSameObjectTwice: 1
+  MutualizedPoolName: 
 --- !u!1 &133443034
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -1843,6 +1889,16 @@ PrefabInstance:
       propertyPath: y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2578,6 +2634,11 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -3825,6 +3886,16 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -6529,6 +6600,11 @@ PrefabInstance:
       propertyPath: y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -7443,6 +7519,11 @@ PrefabInstance:
       propertyPath: y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -8007,7 +8088,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1427425511}
   - component: {fileID: 1427425513}
-  - component: {fileID: 1427425515}
   - component: {fileID: 1427425514}
   m_Layer: 0
   m_Name: EnemySpawner
@@ -8043,52 +8123,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bd1d9d4869f4549bff76b2103f9998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanSpawn: 1
-  MinFrequency: 0.1
-  MaxFrequency: 0.5
-  CanSpawnButton: 0
-  spawnProperties:
-    Shape: 0
-    NormalToSpawnPlane: {x: 0, y: 0, z: 1}
-    MinimumSphereRadius: 16
-    MaximumSphereRadius: 16
-    MinimumCubeBaseSize: {x: 1, y: 1, z: 1}
-    MaximumCubeBaseSize: {x: 2, y: 2, z: 2}
-    MinimumNormalAxisOffset: 0
-    MaximumNormalAxisOffset: 0
-    UseNormalAxisOffsetCurve: 0
-    NormalOffsetCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    NormalOffsetCurveRemapZero: 0
-    NormalOffsetCurveRemapOne: 1
-    InvertNormalOffsetCurve: 0
-    MinimumRotation: {x: 0, y: 0, z: 0}
-    MaximumRotation: {x: 0, y: 0, z: 0}
-    MinimumScale: {x: 1, y: 1, z: 1}
-    MaximumScale: {x: 1, y: 1, z: 1}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
+  enemies:
+  - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
+      type: 3}
+    currentCount: 0
+    spawnLimit: 10
+    cost: 1
+    limitScalingFactor: 0.05
+  - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
+      type: 3}
+    currentCount: 0
+    spawnLimit: 0
+    cost: 2
+    limitScalingFactor: 0.025
+  - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
+      type: 3}
+    currentCount: 0
+    spawnLimit: 0
+    cost: 2
+    limitScalingFactor: 0.01
+  objectPooler: {fileID: 1427425514}
+  spendingPointsGainRate: 0.05
+  minSpawnFreq: 1
+  maxSpawnFreq: 5
+  spawnRadius: 20
 --- !u!114 &1427425514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8098,35 +8157,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1427425510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55dbbdf43598aa34e8807639446cdfe7, type: 3}
+  m_Script: {fileID: 11500000, guid: 38a7ef2726c5c324c81dbed4b0abc6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
   NestUnderThis: 0
-  Pool:
-  - GameObjectToPool: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
-      type: 3}
-    PoolSize: 0
-    PoolCanExpand: 0
-    Enabled: 1
+  Pool: []
   PoolingMethod: 3
   CanPoolSameObjectTwice: 1
   MutualizedPoolName: 
---- !u!114 &1427425515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427425510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca3623e65d9b30418f18ca954902d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveList: {fileID: 11400000, guid: 6409eca49a4d9b246abcf5411b9500f0, type: 2}
-  enemyPool: {fileID: 1427425514}
 --- !u!1 &1427467223
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,7 +8694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f359eb84f4e17794791e62eb88e8c6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacingDirection: 3
+  FacingDirection: 1
   ForceAssignation: 0
   CheckPointOrder: 0
 --- !u!61 &1475545981
@@ -9185,6 +9225,11 @@ PrefabInstance:
       propertyPath: y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -9688,6 +9733,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 71771402}
     m_Modifications:
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -11093,6 +11143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
+        type: 3}
+      propertyPath: cellSize
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -13242,7 +13297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087802525408370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.529999, y: 4.2800007, z: 11.5}
+  m_LocalPosition: {x: 18.4, y: 34.3, z: 11.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13359,7 +13414,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6.9
+  orthographic size: 8.5
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -14449,14 +14504,14 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6.9
+    OrthographicSize: 8.5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.71777, y: 1}
+    m_SensorSize: {x: 1.7170138, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
