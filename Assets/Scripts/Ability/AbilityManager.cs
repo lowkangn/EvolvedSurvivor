@@ -24,7 +24,7 @@ namespace TeamOne.EvolvedSurvivor
                 return false;
             }
 
-            newAbility.SetOwner(transform, abilityGenerator);
+            newAbility.SetOwner(GetComponentInParent<DamageHandler>(), abilityGenerator);
             Abilities.Add(newAbility);
             newAbility.transform.SetParent(transform, false);
             return true;

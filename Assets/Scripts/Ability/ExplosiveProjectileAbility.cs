@@ -36,9 +36,15 @@ namespace TeamOne.EvolvedSurvivor
 
         private void SpawnExplosiveProjectile(Transform target=null)
         {
-            ExplosiveProjectile projectile = objectPool.GetPooledGameObject().GetComponent<ExplosiveProjectile>();
+            ExplosiveProjectile projectile = projectileObjectPool.GetPooledGameObject().GetComponent<ExplosiveProjectile>();
             projectile.transform.position = transform.position;
             projectile.SetActive(true);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                projectile.AddRecursiveAbility(recursiveAbility);
+            }
 
             // Set damage
             Damage damage = new Damage();

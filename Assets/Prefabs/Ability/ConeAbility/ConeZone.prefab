@@ -4821,10 +4821,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8074171965288977241}
-  - component: {fileID: -2277142627490085944}
   - component: {fileID: 2759370971222709746}
-  - component: {fileID: 1022369657718954981}
   - component: {fileID: 8728656256659430332}
+  - component: {fileID: 7647643970594370925}
   m_Layer: 18
   m_Name: ConeZone
   m_TagString: Untagged
@@ -4849,26 +4848,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2277142627490085944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745785239986105255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04ac5059ebc77294abfbc427b5edb5ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTags:
-  - Enemy
-  disableOnHit: 0
-  repeating: 1
-  repeatingRate: 0.5
-  OnHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &2759370971222709746
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4898,24 +4877,6 @@ PolygonCollider2D:
       - {x: 0.258819, y: 0.9659258}
       - {x: 0, y: 1}
       - {x: -0.258819, y: 0.9659258}
---- !u!114 &1022369657718954981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745785239986105255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MutualizeWaitingPools: 0
-  NestWaitingPool: 1
-  NestUnderThis: 0
-  GameObjectToPool: {fileID: 0}
-  PoolSize: 3
-  PoolCanExpand: 1
 --- !u!114 &8728656256659430332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4929,6 +4890,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 5557459682978223149}
+--- !u!114 &7647643970594370925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745785239986105255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a894c59909f5d547bfa4d6f6d3833d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - Enemy
+  disableOnHit: 0
+  repeating: 1
+  repeatingRate: 0.5
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5750361614762820863
 GameObject:
   m_ObjectHideFlags: 0

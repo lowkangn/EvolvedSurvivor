@@ -34,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 return;
             }
-            Laser laser = objectPool.GetPooledGameObject().GetComponent<Laser>();
+            Laser laser = projectileObjectPool.GetPooledGameObject().GetComponent<Laser>();
             laser.SetActive(true);
 
             // Set damage

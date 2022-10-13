@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class Laser : DamageArea
+    public class Laser : RecursableDamageArea
     {
         [SerializeField]
         private float length = 15f;

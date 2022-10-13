@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: 7095764258113722623}
   - component: {fileID: 2010592884705919976}
+  - component: {fileID: 5307783665074370759}
+  - component: {fileID: 385951916290607148}
   m_Layer: 0
   m_Name: ExplosiveProjectileAbility
   m_TagString: Untagged
@@ -54,7 +56,8 @@ MonoBehaviour:
     value: 0
   hasBuilt: 0
   abilitySprite: {fileID: 2011945840, guid: 11e7177d066891f4299f20e143ae7a7b, type: 3}
-  objectPool: {fileID: 2010592884705919976}
+  recursiveAbilityObjectPool: {fileID: 385951916290607148}
+  projectileObjectPool: {fileID: 2010592884705919976}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 1
   maxForceMagnitude: 1500
@@ -93,10 +96,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
-  NestUnderThis: 0
+  NestUnderThis: 1
   GameObjectToPool: {fileID: 1133100380862132, guid: 24506b5f635ebbb4c9161d901527d0bf,
     type: 3}
   PoolSize: 10
+  PoolCanExpand: 1
+--- !u!114 &5307783665074370759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0
+--- !u!114 &385951916290607148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e7bac969ba14e45bcd0ae7f0adff41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 1
+  GameObjectToPool: {fileID: 0}
+  PoolSize: 3
   PoolCanExpand: 1
 --- !u!1 &6844707240551992630
 GameObject:

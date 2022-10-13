@@ -34,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void SpawnExplosiveProjectile(Transform target = null)
         {
-            DamageArea damageArea = objectPool.GetPooledGameObject().GetComponent<DamageArea>();
+            RecursableDamageArea damageArea = projectileObjectPool.GetPooledGameObject().GetComponent<RecursableDamageArea>();
             damageArea.transform.position = target.position;
             damageArea.SetActive(true);
 

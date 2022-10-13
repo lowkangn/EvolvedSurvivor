@@ -1,6 +1,7 @@
-using UnityEngine;
-using System.Collections.Generic;
 using MoreMountains.Tools;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -30,9 +31,14 @@ namespace TeamOne.EvolvedSurvivor
         private Sprite abilitySprite;
         private bool isActive;
 
+        [Header("Recursive ability pool")]
+        [SerializeField]
+        protected AbilityObjectPooler recursiveAbilityObjectPool;
+        protected bool hasRecursive = false;
+
         [Header("Projectile pool")]
         [SerializeField]
-        protected MMObjectPooler objectPool;
+        protected MMObjectPooler projectileObjectPool;
 
         [Header("Element Magnitudes")]
         [SerializeField]
@@ -65,9 +71,9 @@ namespace TeamOne.EvolvedSurvivor
             isActive = true;
         }
 
-        public void SetOwner(Transform owner, AbilityGenerator abilityGenerator)
+        public void SetOwner(DamageHandler damageHandler, AbilityGenerator abilityGenerator)
         {
-            damageHandler = owner.GetComponentInParent<DamageHandler>();
+            this.damageHandler = damageHandler;
             this.abilityGenerator = abilityGenerator;
         }
 
@@ -87,6 +93,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 Ability newAbility = Instantiate(abilityGenerator.GetPrefab(abilityName));
                 newAbility.CopyAbility(this);
+
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
                 int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
@@ -102,6 +109,12 @@ namespace TeamOne.EvolvedSurvivor
                 newAbility.Build();
                 newAbility.hasBuilt = true;
                 newAbility.isActive = true;
+
+                if (newAbility.tier == maxTier)
+                {
+                    newAbility.AddRecursiveAbility(consumedAbility);
+                }
+
                 return newAbility;
             } 
             else
@@ -140,7 +153,17 @@ namespace TeamOne.EvolvedSurvivor
                 if (!hasActivated)
                 {
                     Activate();
+                    coolDownTimer = coolDown.value;
                     hasActivated = true;
+                }
+                else
+                {
+                    coolDownTimer -= Time.deltaTime;
+                }
+
+                if (coolDownTimer < 0f)
+                {
+                    gameObject.SetActive(false);
                 }
                 return;
             }
@@ -158,7 +181,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void OnDestroy()
         {
-            objectPool.DestroyObjectPool();
+            projectileObjectPool.DestroyObjectPool();
         }
 
         private void BuildElement()
@@ -210,6 +233,33 @@ namespace TeamOne.EvolvedSurvivor
             return this.abilitySprite;
         }
 
+        public void SetActive(bool isActive)
+        {
+            if (isActive)
+            {
+                this.hasActivated = false;
+            }
+
+            this.gameObject.SetActive(isActive);
+            this.isActive = isActive;
+        }
+
+        public void CloneAbility(Ability other)
+        {
+            CopyAbility(other);
+            SetOwner(other.damageHandler, other.abilityGenerator);
+        }
+
+        public void ClearAnyRecursive()
+        {
+            if (hasRecursive)
+            {
+                recursiveAbilityObjectPool.DestroyObjectPool();
+                Destroy(recursiveAbilityObjectPool.GameObjectToPool);
+                hasRecursive = false;
+            }
+        }
+
         protected abstract void Build();
 
         protected abstract void Activate();
@@ -222,6 +272,18 @@ namespace TeamOne.EvolvedSurvivor
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+        }
+
+        protected void AddRecursiveAbility(Ability recursiveAbility)
+        {
+            this.hasRecursive = true;
+            recursiveAbility.activateOnlyOnce = true;
+            recursiveAbility.SetActive(false);
+
+            Ability newAbility = Instantiate(recursiveAbility);
+            newAbility.CloneAbility(recursiveAbility);
+            recursiveAbilityObjectPool.GameObjectToPool = newAbility.gameObject;
+            recursiveAbilityObjectPool.FillObjectPool();
         }
     }
 }

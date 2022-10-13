@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: 7623764801203598919}
   - component: {fileID: 3249972788575651579}
+  - component: {fileID: 146073918401665294}
+  - component: {fileID: -5615339616105582634}
   m_Layer: 0
   m_Name: ConeAbility
   m_TagString: Untagged
@@ -52,8 +54,9 @@ MonoBehaviour:
     maxValue: 10
     value: 0
   hasBuilt: 0
-  abilitySprite: {fileID: 0}
-  objectPool: {fileID: 3249972788575651579}
+  abilitySprite: {fileID: 21300014, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+  recursiveAbilityObjectPool: {fileID: -5615339616105582634}
+  projectileObjectPool: {fileID: 3249972788575651579}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 0.3
   maxForceMagnitude: 700
@@ -89,8 +92,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
-  NestUnderThis: 0
+  NestUnderThis: 1
   GameObjectToPool: {fileID: 4745785239986105255, guid: 078961c872cd3ec43b6af8b100758804,
     type: 3}
+  PoolSize: 3
+  PoolCanExpand: 1
+--- !u!114 &146073918401665294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0
+--- !u!114 &-5615339616105582634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e7bac969ba14e45bcd0ae7f0adff41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 1
+  GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1

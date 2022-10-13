@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class LockOnDamageArea : DamageArea
+    public class LockOnDamageArea : RecursableDamageArea
     {
         [Header("Explosion pool")]
         [SerializeField]

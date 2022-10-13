@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -36,7 +35,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void DamageAndSpawnProjectileOnTarget(GameObject target)
         {
-            LockOnDamageArea nextProjectile = objectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
+            LockOnDamageArea nextProjectile = projectileObjectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
             Damage projDamage = new Damage(damage.value, gameObject, effects);
             projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
             nextProjectile.SetDamage(projDamage);

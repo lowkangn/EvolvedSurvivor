@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: 2718351011253688110}
   - component: {fileID: 8988950983226355129}
+  - component: {fileID: -1513630708593478744}
+  - component: {fileID: 1516933811655595900}
   m_Layer: 0
   m_Name: LockOnAbility
   m_TagString: Untagged
@@ -51,14 +53,10 @@ MonoBehaviour:
     minValue: 0.5
     maxValue: 4
     value: 0
-  projDamage:
-    damage: 0
-    instigator: {fileID: 2943148802276990048}
-    direction: {x: 0, y: 0, z: 0}
-    effects: []
   hasBuilt: 1
   abilitySprite: {fileID: 2088100790, guid: 69574eadfacac5e40a326bc6f540d224, type: 3}
-  objectPool: {fileID: 8988950983226355129}
+  recursiveAbilityObjectPool: {fileID: 1516933811655595900}
+  projectileObjectPool: {fileID: 8988950983226355129}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 1
   maxForceMagnitude: 5
@@ -90,8 +88,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
-  NestUnderThis: 0
+  NestUnderThis: 1
   GameObjectToPool: {fileID: 8937330420288252024, guid: b19449a05dbabbc42a262c3604f22ecc,
     type: 3}
+  PoolSize: 3
+  PoolCanExpand: 1
+--- !u!114 &-1513630708593478744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0
+--- !u!114 &1516933811655595900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e7bac969ba14e45bcd0ae7f0adff41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 1
+  GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1

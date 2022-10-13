@@ -19,7 +19,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void Activate()
         {
-            GameObject projectile = objectPool.GetPooledGameObject();
+            GameObject projectile = projectileObjectPool.GetPooledGameObject();
             projectile.transform.parent = transform;
             projectile.transform.localPosition = Vector3.zero;
             projectile.transform.localScale = Vector3.one * aoeRange.value;

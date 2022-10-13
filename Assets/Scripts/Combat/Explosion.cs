@@ -1,11 +1,8 @@
-using MoreMountains.Feedbacks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class Explosion : DamageArea
+    public class Explosion : RecursableDamageArea
     {
         [SerializeField]
         private float duration;

@@ -24,7 +24,7 @@ namespace TeamOne.EvolvedSurvivor
 
             for (int i = 0; i < orbitalNumber.value; i++)
             {
-                Projectile projectile = objectPool.GetPooledGameObject().GetComponent<Projectile>();
+                Projectile projectile = projectileObjectPool.GetPooledGameObject().GetComponent<Projectile>();
                 projectile.SetActive(true);
 
                 // Attach to ability transform
