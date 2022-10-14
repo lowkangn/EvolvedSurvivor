@@ -94,5 +94,35 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
         }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            float points = other.traitChart.utility * debuffFactor;
+            other.traitChart.utility -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            TraitChart newChart = new TraitChart(traitChart);
+            float damageRatio = 1f;
+            float uptimeRatio = 1f;
+            float aoeRatio = 1f + buffFactor;
+            float quantityRatio = 1f;
+            float utilityRatio = 1f;
+            if (!isSameType)
+            {
+                pointsToAssign += newChart.utility;
+                newChart.utility = 0f;
+                utilityRatio = 0f;
+            }
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            newChart.CombineWith(new TraitChart(damageRatio / sum * pointsToAssign,
+                uptimeRatio / sum * pointsToAssign,
+                aoeRatio / sum * pointsToAssign,
+                quantityRatio / sum * pointsToAssign,
+                utilityRatio / sum * pointsToAssign));
+            return newChart;
+        }
     }
 }

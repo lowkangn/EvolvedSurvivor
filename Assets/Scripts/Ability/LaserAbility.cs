@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -91,6 +92,35 @@ namespace TeamOne.EvolvedSurvivor
 
             // Utility
 
+        }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            float points = other.traitChart.uptime * debuffFactor;
+            other.traitChart.uptime -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            TraitChart newChart = new TraitChart(traitChart);
+            float damageRatio = 1f;
+            float uptimeRatio = 1f;
+            float aoeRatio = 1f;
+            float quantityRatio = 1f + buffFactor;
+            float utilityRatio = 1f;        
+            if (!isSameType) { 
+                pointsToAssign += newChart.uptime;
+                newChart.uptime = 0f;
+                uptimeRatio = 0f;
+            }
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            newChart.CombineWith(new TraitChart(damageRatio/sum * pointsToAssign,
+                uptimeRatio/sum * pointsToAssign,
+                aoeRatio/sum * pointsToAssign,
+                quantityRatio/sum * pointsToAssign,
+                utilityRatio/sum * pointsToAssign));
+            return newChart;
         }
     }
 }

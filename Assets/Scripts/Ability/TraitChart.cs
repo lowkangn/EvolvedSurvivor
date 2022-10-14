@@ -33,6 +33,15 @@ namespace TeamOne.EvolvedSurvivor
             this.utility = 0f;
         }
 
+        public TraitChart(float damage, float uptime, float aoe, float quantity, float utility)
+        {
+            this.damage = damage;
+            this.uptime = uptime;
+            this.aoe = aoe;
+            this.quantity = quantity;
+            this.utility = utility;
+        }
+
         public TraitChart(TraitChart other)
         {
             this.damage = other.damage;           
