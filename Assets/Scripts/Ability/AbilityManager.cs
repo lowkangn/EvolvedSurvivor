@@ -62,5 +62,10 @@ namespace TeamOne.EvolvedSurvivor
                 ability.SetCoolDownMultiplier(multiplier);
             }
         }
+
+        public bool IsEmpty()
+        {
+            return Abilities.Count == 0;
+        }
     }
 }

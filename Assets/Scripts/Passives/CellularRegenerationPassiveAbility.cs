@@ -8,9 +8,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class CellularRegenerationPassiveAbility : PassiveAbility
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName = "Cellular Regeneration";
-
         [SerializeField] private float[] healthMultipliers = new float[NUM_OF_TIERS + 1];
         [SerializeField] private float[] healthRegeneratedPerSecond = new float[NUM_OF_TIERS + 1];
 
@@ -33,16 +30,21 @@ namespace TeamOne.EvolvedSurvivor
 
         void Update()
         {
-            if (currentTier > 0)
+            if (currentTier > 0 && health.CurrentHealth < health.MaximumHealth)
             {
                 timer += Time.deltaTime;
                 if (timer > timeBeforeHeal)
                 {
-                    health.CurrentHealth += 1;
+                    health.ReceiveHealth(Mathf.Min(1f, health.MaximumHealth - health.CurrentHealth), gameObject);
                     timer -= timeBeforeHeal;
                 }
 
             }
+        }
+
+        protected override string GetStatsDescription()
+        {
+            return "Max Health Multiplication: " + healthMultipliers[currentTier] + "x | Regeneration: +" + healthRegeneratedPerSecond[currentTier] + " Per Second";
         }
     }
 }

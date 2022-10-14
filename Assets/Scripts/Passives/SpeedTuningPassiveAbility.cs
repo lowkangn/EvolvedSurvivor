@@ -8,9 +8,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class SpeedTuningPassiveAbility : PassiveAbility
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName = "Speed Tuning";
-
         [SerializeField] private float[] speedMultipliers = new float[NUM_OF_TIERS + 1];
         [SerializeField] private float[] radiusMultipliers = new float[NUM_OF_TIERS + 1];
 
@@ -31,6 +28,11 @@ namespace TeamOne.EvolvedSurvivor
             currentTier++;
             movement.WalkSpeed = baseWalkSpeed * speedMultipliers[currentTier];
             pickupCollider.radius = basePickupRadius * radiusMultipliers[currentTier];
+        }
+
+        protected override string GetStatsDescription()
+        {
+            return "Movement Speed Multiplication: " + speedMultipliers[currentTier] + "x | Pickup Radius Multiplication: " + radiusMultipliers[currentTier] + "x";
         }
     }
 }

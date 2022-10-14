@@ -6,9 +6,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class QuickChargePassiveAbility : PassiveAbility
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName = "Quick Charge";
-
         [SerializeField] private float[] coolDownMultipliers = new float[NUM_OF_TIERS + 1];
 
         [SerializeField] private AbilityManager abilityManager;
@@ -17,6 +14,11 @@ namespace TeamOne.EvolvedSurvivor
         {
             currentTier++;
             abilityManager.UpdateCoolDownMultiplier(coolDownMultipliers[currentTier]);
+        }
+
+        protected override string GetStatsDescription()
+        {
+            return "Cooldown Reduction: " + coolDownMultipliers[currentTier] + "x";
         }
     }
 }

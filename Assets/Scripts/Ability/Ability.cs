@@ -4,7 +4,7 @@ using MoreMountains.Tools;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public abstract class Ability : MonoBehaviour
+    public abstract class Ability : MonoBehaviour, Upgradable
     {
         public string AbilityName => abilityName;
         [SerializeField] private string abilityName;
@@ -230,6 +230,16 @@ namespace TeamOne.EvolvedSurvivor
         public void SetCoolDownMultiplier(float multiplier)
         {
             this.coolDownMultiplier = multiplier;
+        }
+
+        public bool IsAbility()
+        {
+            return true;
+        }
+
+        public bool IsPassiveAbility()
+        {
+            return false;
         }
     }
 }

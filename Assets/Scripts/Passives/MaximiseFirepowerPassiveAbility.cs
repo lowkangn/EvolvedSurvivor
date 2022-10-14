@@ -6,9 +6,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class MaximiseFirepowerPassiveAbility : PassiveAbility
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName = "Maximise Firepower";
-
         [SerializeField] private float[] damageMultipliers = new float[NUM_OF_TIERS + 1];
 
         [SerializeField] private DamageHandler damageHandler;
@@ -17,6 +14,11 @@ namespace TeamOne.EvolvedSurvivor
         {
             currentTier++;
             damageHandler.SetOutgoingDamageMultiplier(damageMultipliers[currentTier]);
+        }
+
+        protected override string GetStatsDescription()
+        {
+            return "Outgoing Damage Multiplication :" + damageMultipliers[currentTier] + "x";
         }
     }
 }

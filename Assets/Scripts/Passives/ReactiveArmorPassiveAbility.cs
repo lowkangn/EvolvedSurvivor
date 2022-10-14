@@ -6,9 +6,6 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class ReactiveArmorPassiveAbility : PassiveAbility
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName = "Reactive Armor";
-
         [SerializeField] private float[] damageReductionMultipliers = new float[NUM_OF_TIERS + 1];
         [SerializeField] private float[] invincibilityDurationMultipliers = new float[NUM_OF_TIERS + 1];
 
@@ -25,6 +22,11 @@ namespace TeamOne.EvolvedSurvivor
             currentTier++;
             damageHandler.SetIncomingDamageMultiplier(damageReductionMultipliers[currentTier]);
             damageHandler.invincibilityDurationAfterTakingDamage = baseInvincibilityDuration * invincibilityDurationMultipliers[currentTier];
+        }
+
+        protected override string GetStatsDescription()
+        {
+            return "Incoming Damage Reduction: " + damageReductionMultipliers[currentTier] + "x | Invincibility Duration Multiplication: " + invincibilityDurationMultipliers[currentTier] + "x";
         }
     }
 }
