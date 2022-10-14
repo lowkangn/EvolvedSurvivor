@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -35,12 +36,14 @@ namespace TeamOne.EvolvedSurvivor
 
         private void DamageAndSpawnProjectileOnTarget(GameObject target)
         {
-            GameObject nextProjectile = objectPool.GetPooledGameObject();
+            LockOnDamageArea nextProjectile = objectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
+            Damage projDamage = new Damage(damage.value, gameObject, effects);
+            projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
+            nextProjectile.SetDamage(projDamage);
+            nextProjectile.SetExplosionRadius(aoeRadius.value);
             nextProjectile.transform.parent = target.transform;
             nextProjectile.transform.localPosition = Vector3.zero;
-            nextProjectile.GetComponent<DamageArea>().SetDamage(projDamage);
-            nextProjectile.GetComponent<CircleCollider2D>().radius = aoeRadius.value;
-            nextProjectile.GetComponent<LockOnAbilityHandler>().SetParticleRadius(aoeRadius.value);
+            
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
             nextProjectile.SetActive(true);
         }
@@ -64,13 +67,9 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    projDamage.effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
                 }
             }
-
-            // Set up projDamage
-            projDamage.damage = damage.value;
-            projDamage.instigator = gameObject;
         }
     }
 }

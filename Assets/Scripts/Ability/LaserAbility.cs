@@ -15,9 +15,63 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<float> projectileSize;
 
+        [Header("Fixed stats")]
+        [SerializeField]
+        private float laserSpawnInterval;
+
+        [Header("The target detector for aiming")]
+        [SerializeField]
+        private TargetDetector targetDetector;
+
         protected override void Activate()
         {
-            print("shoot");
+            StartCoroutine(SpawnLasers(laserNumber.value));
+        }
+
+        private void SpawnLaser(Transform target = null)
+        {
+            if (target == null)
+            {
+                return;
+            }
+            Laser laser = objectPool.GetPooledGameObject().GetComponent<Laser>();
+            laser.SetActive(true);
+
+            // Set damage
+            Damage damage = new Damage();
+            damage.damage = this.damage.value;
+            damage = damageHandler.ProcessOutgoingDamage(damage);
+
+            laser.SetDamage(damage);
+
+            Vector3 direction = (target.position - transform.position).normalized;
+            laser.InitializeLaser(transform, direction, projectileSize.value);
+            laser.SetLifeTime(duration.value);
+        }
+
+        private IEnumerator SpawnLasers(int laserCount)
+        {
+            List<Transform> targets = targetDetector.ScanTargets();
+            int targetIndex = 0;
+
+            for (int i = 0; i < laserCount; i++)
+            {
+                if (targets.Count == 0)
+                {
+                    SpawnLaser();
+                }
+                else
+                {
+                    SpawnLaser(targets[targetIndex]);
+                    targetIndex++;
+                    if (targetIndex >= targets.Count)
+                    {
+                        targetIndex = 0;
+                    }
+                }
+
+                yield return new WaitForSeconds(laserSpawnInterval);
+            }
         }
 
         protected override void Build()
