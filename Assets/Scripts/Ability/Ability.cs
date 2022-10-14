@@ -220,10 +220,40 @@ namespace TeamOne.EvolvedSurvivor
             isActive = false;
         }
 
+        public string GetAbilityName()
+        {
+            return $"Level {tier} {abilityName}\n";
+        }
+
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
         }
+
+        public string GetDamageDescription()
+        {
+            return traitChart.GetDamageDescription();
+        }
+
+        public string GetUptimeDescription()
+        {
+            return traitChart.GetUptimeDescription();
+        }
+
+        public string GetAoeDescription()
+        {
+            return traitChart.GetAoeDescription();
+        }
+
+        public string GetQuantityDescription()
+        {
+            return traitChart.GetQuantityDescription();
+        } 
+
+        public string GetUtilityDescription()
+        {
+            return traitChart.GetUtilityDescription();
+        } 
 
         public TraitChart GetTraitChart()
         {

@@ -7,9 +7,15 @@ namespace TeamOne.EvolvedSurvivor
     public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] protected Text textObj;
+        [SerializeField] protected Text detailedTextObj;
         [SerializeField] protected Image abilityImage;
         [SerializeField] protected Ability ability;
         [SerializeField] protected RadarChartUI radarChart;
+        [SerializeField] protected Text rcDamageText;
+        [SerializeField] protected Text rcUptimeText;
+        [SerializeField] protected Text rcAoeText;
+        [SerializeField] protected Text rcQuantityText;
+        [SerializeField] protected Text rcUtilityText;
 
         protected bool isEmpty = true;
 
@@ -34,7 +40,18 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (!IsEmpty())
             {
-                this.textObj.text = ability.GetDescription();
+                this.textObj.text = ability.GetAbilityName();
+                // Detailed view
+                this.detailedTextObj.text = ability.GetDescription();
+
+                // Radar chart labels
+                this.rcDamageText.text = ability.GetDamageDescription();
+                this.rcUptimeText.text = ability.GetUptimeDescription();
+                this.rcAoeText.text = ability.GetAoeDescription();
+                this.rcQuantityText.text = ability.GetQuantityDescription();
+                this.rcUtilityText.text = ability.GetUtilityDescription();
+
+                // Radar chart mesh
                 radarChart.UpdateVisual(ability.GetTraitChart());
             } 
             else
@@ -47,6 +64,14 @@ namespace TeamOne.EvolvedSurvivor
         public virtual void OnPointerExit(PointerEventData eventData)
         {
             this.textObj.text = "";
+            this.detailedTextObj.text = "";
+
+            this.rcDamageText.text = "Damage";
+            this.rcUptimeText.text = "Uptime";
+            this.rcAoeText.text = "AOE";
+            this.rcQuantityText.text = "Quantity";
+            this.rcUtilityText.text = "Utility";
+
             radarChart.ClearVisual();
         }
 
