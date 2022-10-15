@@ -117,7 +117,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
         }

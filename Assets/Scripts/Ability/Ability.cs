@@ -40,18 +40,9 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected MMObjectPooler projectileObjectPool;
 
-        [Header("Element Magnitudes")]
+        [Header("Element Magnitudes: Plasma, Cryo, Force, Infect, Pyro")]
         [SerializeField]
-        private float maxPlasmaMagnitude;
-        [SerializeField]
-        private float maxCryoMagnitude;
-        [SerializeField]
-        private float maxForceMagnitude;
-        [SerializeField]
-        private float maxInfectMagnitude;
-        [SerializeField]
-        private float maxPyroMagnitude;
-        protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
+        protected List<float> elementMagnitudes =  new List<float>();
 
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
@@ -114,8 +105,6 @@ namespace TeamOne.EvolvedSurvivor
                 {
                     Ability recursiveAbility = Instantiate(consumedAbility);
                     recursiveAbility.CloneAbility(consumedAbility);
-                    recursiveAbility.Build();
-                    recursiveAbility.hasBuilt = true;
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
                 }
@@ -134,16 +123,6 @@ namespace TeamOne.EvolvedSurvivor
         public bool CanUpgrade(Ability consumedAbility)
         {
             return (tier + consumedAbility.tier <= maxTier);
-        }
-
-
-        private void Awake()
-        {
-            elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
-            elementMagnitudes.Add(ElementType.Cryo, maxCryoMagnitude);
-            elementMagnitudes.Add(ElementType.Force, maxForceMagnitude);
-            elementMagnitudes.Add(ElementType.Infect, maxInfectMagnitude);
-            elementMagnitudes.Add(ElementType.Pyro, maxPyroMagnitude);
         }
 
         protected virtual void Update()
@@ -236,6 +215,8 @@ namespace TeamOne.EvolvedSurvivor
         {
             CopyAbility(other);
             SetOwner(other.damageHandler, other.abilityGenerator);
+            Build();
+            this.hasBuilt = true;
         }
 
         public void ClearAnyRecursive()

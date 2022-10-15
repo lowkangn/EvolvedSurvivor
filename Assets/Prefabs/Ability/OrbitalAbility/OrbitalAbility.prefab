@@ -57,11 +57,12 @@ MonoBehaviour:
   abilitySprite: {fileID: 18062, guid: 0e2684e481e99f947aa30a3e1b75dede, type: 3}
   recursiveAbilityObjectPool: {fileID: 5184787337487597279}
   projectileObjectPool: {fileID: -33881474214889835}
-  maxPlasmaMagnitude: 1.5
-  maxCryoMagnitude: 0.3
-  maxForceMagnitude: 700
-  maxInfectMagnitude: 2
-  maxPyroMagnitude: 2
+  elementMagnitudes:
+  - 1.5
+  - 0.3
+  - 700
+  - 2
+  - 2
   damage:
     minValue: 8
     maxValue: 20

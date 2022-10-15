@@ -18,7 +18,7 @@ namespace TeamOne.EvolvedSurvivor
         private bool hasLifeTime = false;
         private float lifeTime;
         private float lastRepeatingTime = 0f;
-        private HashSet<GameObject> targetsHit = new HashSet<GameObject>();
+        protected HashSet<GameObject> targetsHit = new HashSet<GameObject>();
 
         public virtual void SetDamage(Damage damage)
         {

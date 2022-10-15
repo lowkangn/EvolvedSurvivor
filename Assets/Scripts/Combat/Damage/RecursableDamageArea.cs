@@ -8,24 +8,28 @@ namespace TeamOne.EvolvedSurvivor
     public class RecursableDamageArea : DamageArea
     {
         protected Ability recursiveAbility;
-        private bool wasRecursiveUsed = false;
+        protected bool wasRecursiveUsed = false;
 
         protected override void OnHit()
         {
             base.OnHit();
-
-            if (recursiveAbility != null && !wasRecursiveUsed)
-            {
-                recursiveAbility.SetActive(true);
-                recursiveAbility.transform.position = transform.position;
-                wasRecursiveUsed = true;
-            }
+            SpawnRecursiveAbility();
         }
 
         public void AddRecursiveAbility(Ability ability)
         {
             this.recursiveAbility = ability;
             this.wasRecursiveUsed = false;
+        }
+
+        protected virtual void SpawnRecursiveAbility()
+        {
+            if (recursiveAbility != null && !wasRecursiveUsed)
+            {
+                recursiveAbility.SetActive(true);
+                recursiveAbility.transform.position = transform.position;
+                wasRecursiveUsed = true;
+            }
         }
     }
 }

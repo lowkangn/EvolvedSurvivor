@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -46,6 +45,19 @@ namespace TeamOne.EvolvedSurvivor
         {
             base.Update();
             RenderLaser();
+        }
+
+        protected override void SpawnRecursiveAbility()
+        {
+            if (recursiveAbility != null && !wasRecursiveUsed)
+            {
+                foreach (GameObject target in targetsHit.ToList())
+                {
+                    recursiveAbility.SetActive(true);
+                    recursiveAbility.transform.position = target.transform.position;
+                    wasRecursiveUsed = true;
+                }
+            }    
         }
     }
 }

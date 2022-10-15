@@ -47,6 +47,13 @@ namespace TeamOne.EvolvedSurvivor
             Vector3 direction = (target.position - transform.position).normalized;
             laser.InitializeLaser(transform, direction, projectileSize.value);
             laser.SetLifeTime(duration.value);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                laser.AddRecursiveAbility(recursiveAbility);
+            }
         }
 
         private IEnumerator SpawnLasers(int laserCount)
@@ -95,7 +102,12 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void HandleRecursive()
         {
-            throw new System.NotImplementedException();
+            if (!hasActivated)
+            {
+                Activate();
+                hasActivated = true;
+                Invoke("Deactivate", duration.value);
+            }
         }
     }
 }
