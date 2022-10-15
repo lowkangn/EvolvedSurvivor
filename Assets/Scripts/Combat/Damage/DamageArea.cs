@@ -67,7 +67,7 @@ namespace TeamOne.EvolvedSurvivor
             if (hasLifeTime)
             {
                 lifeTime -= Time.deltaTime;
-                if (lifeTime < 0f)
+                if (lifeTime <= 0f)
                 {
                     SetActive(false);
                 }

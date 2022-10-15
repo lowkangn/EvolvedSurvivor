@@ -16,7 +16,7 @@ namespace TeamOne.EvolvedSurvivor
             if (recursiveAbility != null)
             {
                 recursiveAbility.SetActive(true);
-                recursiveAbility.gameObject.transform.position = transform.position;
+                recursiveAbility.transform.position = transform.position;
             }
         }
 

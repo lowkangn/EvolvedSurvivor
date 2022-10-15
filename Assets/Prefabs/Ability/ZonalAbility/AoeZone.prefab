@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8074171965288977241}
   - component: {fileID: -2965881188707424217}
   - component: {fileID: -2945115323978093120}
+  - component: {fileID: 7726511056697592996}
   m_Layer: 0
   m_Name: AoeZone
   m_TagString: Untagged
@@ -155,3 +156,23 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7726511056697592996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745785239986105255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 1
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0

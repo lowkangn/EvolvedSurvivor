@@ -55,7 +55,7 @@ MonoBehaviour:
   ExecuteOnDisable:
     m_PersistentCalls:
       m_Calls: []
-  LifeTime: 5
+  LifeTime: 0
 --- !u!58 &3773270387610844637
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MutualizeWaitingPools: 1
+  MutualizeWaitingPools: 0
   NestWaitingPool: 1
   NestUnderThis: 0
   GameObjectToPool: {fileID: 1133100380862132, guid: 261f789b097c8e84ea9ebb15ddb0aa8f,

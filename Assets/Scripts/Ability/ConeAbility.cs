@@ -80,5 +80,10 @@ namespace TeamOne.EvolvedSurvivor
 
             vertices = CalculateVertices();
         }
+
+        protected override void HandleRecursive()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

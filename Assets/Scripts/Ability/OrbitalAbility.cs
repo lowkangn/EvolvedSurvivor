@@ -71,5 +71,20 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
         }
+
+        protected override void HandleRecursive()
+        {
+            if (!hasActivated)
+            {
+                Activate();
+                hasActivated = true;
+                Invoke("Deactivate", duration.value);
+            }
+        }
+
+        private void Deactivate()
+        {
+            SetActive(false);
+        }
     }
 }

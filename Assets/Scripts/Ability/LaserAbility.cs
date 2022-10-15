@@ -92,5 +92,10 @@ namespace TeamOne.EvolvedSurvivor
             // Utility
 
         }
+
+        protected override void HandleRecursive()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

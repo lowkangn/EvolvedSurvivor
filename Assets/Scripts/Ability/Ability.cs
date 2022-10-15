@@ -25,8 +25,8 @@ namespace TeamOne.EvolvedSurvivor
         protected List<StatusEffect> effects = new();
         [SerializeField]
         private bool hasBuilt = false;
-        private bool hasActivated;
-        private float coolDownTimer;
+        protected bool hasActivated;
+        protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
         private bool isActive;
@@ -112,7 +112,12 @@ namespace TeamOne.EvolvedSurvivor
 
                 if (newAbility.tier == maxTier)
                 {
-                    newAbility.AddRecursiveAbility(consumedAbility);
+                    Ability recursiveAbility = Instantiate(abilityGenerator.GetPrefab(consumedAbility.AbilityName));
+                    recursiveAbility.CloneAbility(consumedAbility);
+                    recursiveAbility.Build();
+                    recursiveAbility.hasBuilt = true;
+
+                    newAbility.AddRecursiveAbility(recursiveAbility);
                 }
 
                 return newAbility;
@@ -150,28 +155,14 @@ namespace TeamOne.EvolvedSurvivor
 
             if (activateOnlyOnce && isActive)
             {
-                if (!hasActivated)
-                {
-                    Activate();
-                    coolDownTimer = coolDown.value;
-                    hasActivated = true;
-                }
-                else
-                {
-                    coolDownTimer -= Time.deltaTime;
-                }
-
-                if (coolDownTimer < 0f)
-                {
-                    gameObject.SetActive(false);
-                }
+                HandleRecursive();
                 return;
             }
 
             if (isActive && damageHandler != null)
             {
                 coolDownTimer -= Time.deltaTime;
-                if (coolDownTimer < 0f)
+                if (coolDownTimer <= 0f)
                 {
                     Activate();
                     coolDownTimer = coolDown.value;
@@ -233,13 +224,10 @@ namespace TeamOne.EvolvedSurvivor
             return this.abilitySprite;
         }
 
+        // This method is used for recursive abilities.
         public void SetActive(bool isActive)
         {
-            if (isActive)
-            {
-                this.hasActivated = false;
-            }
-
+            this.hasActivated = !isActive;
             this.gameObject.SetActive(isActive);
             this.isActive = isActive;
         }
@@ -264,6 +252,8 @@ namespace TeamOne.EvolvedSurvivor
 
         protected abstract void Activate();
 
+        protected abstract void HandleRecursive();
+
         public void Stop()
         {
             isActive = false;
@@ -280,9 +270,7 @@ namespace TeamOne.EvolvedSurvivor
             recursiveAbility.activateOnlyOnce = true;
             recursiveAbility.SetActive(false);
 
-            Ability newAbility = Instantiate(recursiveAbility);
-            newAbility.CloneAbility(recursiveAbility);
-            recursiveAbilityObjectPool.GameObjectToPool = newAbility.gameObject;
+            recursiveAbilityObjectPool.GameObjectToPool = recursiveAbility.gameObject;
             recursiveAbilityObjectPool.FillObjectPool();
         }
     }

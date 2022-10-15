@@ -43,6 +43,7 @@ namespace TeamOne.EvolvedSurvivor
             if (hasRecursive)
             {
                 Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
                 projectile.AddRecursiveAbility(recursiveAbility);
             }
 
@@ -118,6 +119,11 @@ namespace TeamOne.EvolvedSurvivor
                     effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
                 }
             }
+        }
+
+        protected override void HandleRecursive()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
