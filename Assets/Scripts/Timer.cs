@@ -28,4 +28,9 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = false;
     }
+
+    public string GetFinalTime()
+    {
+        return counter.text;
+    }
 }
