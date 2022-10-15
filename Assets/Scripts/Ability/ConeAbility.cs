@@ -93,8 +93,7 @@ namespace TeamOne.EvolvedSurvivor
         }
 
         protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
-        {
-            
+        {            
             float damageRatio = traitChart.damage;
             float uptimeRatio = traitChart.uptime;
             float aoeRatio = traitChart.aoe;

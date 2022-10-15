@@ -227,7 +227,8 @@ namespace TeamOne.EvolvedSurvivor
         protected abstract float DebuffTraitsForMerging(Ability other);
 
         /// <summary>
-        /// Returns a new TraitChart for merging based on this ability, buffing a specific stat and reassigning points from debuffed stats
+        /// Returns a new TraitChart for merging based on this ability, reassigning all points and the debuffed points to all abilities such that
+        /// the buffed trait is boosted more
         /// </summary>
         protected abstract TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType);
 
