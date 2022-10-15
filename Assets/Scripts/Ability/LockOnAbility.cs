@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -44,6 +45,14 @@ namespace TeamOne.EvolvedSurvivor
             nextProjectile.transform.localPosition = Vector3.zero;
             
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                nextProjectile.AddRecursiveAbility(recursiveAbility);
+            }
+
             nextProjectile.SetActive(true);
         }
 
@@ -73,7 +82,8 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void HandleRecursive()
         {
-            throw new System.NotImplementedException();
+            Activate();
+            Deactivate();
         }
     }
 }

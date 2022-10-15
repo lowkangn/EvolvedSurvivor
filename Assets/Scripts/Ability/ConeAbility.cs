@@ -83,7 +83,12 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void HandleRecursive()
         {
-            throw new System.NotImplementedException();
+            if (!hasActivated)
+            {
+                Activate();
+                hasActivated = true;
+                Invoke("Deactivate", duration.value);
+            }
         }
     }
 }

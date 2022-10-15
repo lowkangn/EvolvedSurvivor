@@ -112,7 +112,7 @@ namespace TeamOne.EvolvedSurvivor
 
                 if (newAbility.tier == maxTier)
                 {
-                    Ability recursiveAbility = Instantiate(abilityGenerator.GetPrefab(consumedAbility.AbilityName));
+                    Ability recursiveAbility = Instantiate(consumedAbility);
                     recursiveAbility.CloneAbility(consumedAbility);
                     recursiveAbility.Build();
                     recursiveAbility.hasBuilt = true;
@@ -146,7 +146,7 @@ namespace TeamOne.EvolvedSurvivor
             elementMagnitudes.Add(ElementType.Pyro, maxPyroMagnitude);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (!hasBuilt)
             {
@@ -272,6 +272,11 @@ namespace TeamOne.EvolvedSurvivor
 
             recursiveAbilityObjectPool.GameObjectToPool = recursiveAbility.gameObject;
             recursiveAbilityObjectPool.FillObjectPool();
+        }
+
+        protected void Deactivate()
+        {
+            SetActive(false);
         }
     }
 }

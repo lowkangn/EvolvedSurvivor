@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1743876418391234833}
   - component: {fileID: 6264307120596473716}
-  - component: {fileID: 9101374328550457405}
   - component: {fileID: 6239637991298491407}
+  - component: {fileID: 2024041168936102128}
   m_Layer: 0
   m_Name: OrbitalProjectile
   m_TagString: Untagged
@@ -135,26 +135,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &9101374328550457405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5653475107230960953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b85244331dd11a429494f90875af695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTags:
-  - Enemy
-  disableOnHit: 0
-  repeating: 0
-  repeatingRate: 0.5
-  OnHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6239637991298491407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +155,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LifeTime: 0
+--- !u!114 &2024041168936102128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653475107230960953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a894c59909f5d547bfa4d6f6d3833d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTags:
+  - Enemy
+  disableOnHit: 0
+  repeating: 0
+  repeatingRate: 0.5
+  OnHitEvent:
+    m_PersistentCalls:
+      m_Calls: []

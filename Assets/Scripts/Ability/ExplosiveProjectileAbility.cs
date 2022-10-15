@@ -40,13 +40,6 @@ namespace TeamOne.EvolvedSurvivor
             projectile.transform.position = transform.position;
             projectile.SetActive(true);
 
-            if (hasRecursive)
-            {
-                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
-                recursiveAbility.gameObject.SetActive(true);
-                projectile.AddRecursiveAbility(recursiveAbility);
-            }
-
             // Set damage
             Damage damage = new Damage();
             damage.damage = this.damage.value;
@@ -56,6 +49,14 @@ namespace TeamOne.EvolvedSurvivor
             projectile.SetDamage(damage);
             projectile.SetExplosionRadius(aoeRadius.value);
             projectile.SetSize(projectileSize.value);
+
+            // Add recursive ability if it is recursive
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                projectile.AddRecursiveAbility(recursiveAbility);
+            }
 
             // Set motion
             Vector2 direction;
@@ -123,7 +124,8 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override void HandleRecursive()
         {
-            throw new System.NotImplementedException();
+            Activate();
+            Deactivate();
         }
     }
 }

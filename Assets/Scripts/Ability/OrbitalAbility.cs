@@ -1,5 +1,4 @@
 using MoreMountains.Tools;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,18 +16,39 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityStat<int> orbitalNumber;
 
         public float radius = 3f;
+        public float rotationSpeed = 120f;
+
+        private List<RecursableDamageArea> projectiles = new List<RecursableDamageArea>();
+        private float angularDisplacement = 0f;
+
+        protected override void Update()
+        {
+            base.Update();
+
+            angularDisplacement = (angularDisplacement + rotationSpeed * Time.deltaTime) % 360f;
+
+            float angleBetween = 360f / orbitalNumber.value;
+
+            for (int i = 0; i < projectiles.Count; i++)
+            {
+                float x = Mathf.Cos(Mathf.Deg2Rad * (angleBetween * i + angularDisplacement)) * radius;
+                float y = Mathf.Sin(Mathf.Deg2Rad * (angleBetween * i + angularDisplacement)) * radius;
+                projectiles[i].transform.localPosition = this.transform.position + new Vector3(x, y, 0);
+            }
+        }
 
         protected override void Activate()
         {
+            projectiles = new List<RecursableDamageArea>();
+            angularDisplacement = 0f;
+
             float angleBetween = 360f / orbitalNumber.value;
 
             for (int i = 0; i < orbitalNumber.value; i++)
             {
-                Projectile projectile = projectileObjectPool.GetPooledGameObject().GetComponent<Projectile>();
+                RecursableDamageArea projectile = projectileObjectPool.GetPooledGameObject().GetComponent<RecursableDamageArea>();
+                projectiles.Add(projectile);
                 projectile.SetActive(true);
-
-                // Attach to ability transform
-                projectile.transform.SetParent(transform);
 
                 // Set damage
                 Damage projDamage = new Damage(damage.value, gameObject, effects);
@@ -40,10 +60,13 @@ namespace TeamOne.EvolvedSurvivor
                 // Set duration
                 projectile.SetLifeTime(duration.value);
 
-                // Set local position
-                float x = Mathf.Cos(Mathf.Deg2Rad * angleBetween * i) * radius;
-                float y = Mathf.Sin(Mathf.Deg2Rad * angleBetween * i) * radius;
-                projectile.transform.localPosition = new Vector2(x, y);
+                // Add recursive ability if it is recursive
+                if (hasRecursive)
+                {
+                    Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                    recursiveAbility.gameObject.SetActive(true);
+                    projectile.AddRecursiveAbility(recursiveAbility);
+                }    
             }
         }
 
@@ -80,11 +103,6 @@ namespace TeamOne.EvolvedSurvivor
                 hasActivated = true;
                 Invoke("Deactivate", duration.value);
             }
-        }
-
-        private void Deactivate()
-        {
-            SetActive(false);
         }
     }
 }
