@@ -99,11 +99,7 @@ namespace TeamOne.EvolvedSurvivor
                     newAbility.element.CombineWith(consumedAbility.element);
                 }
 
-                // Trait Chart Upgrade
-                // 1. Determine buff/debuff percentages based on ability type
-                // 2. Apply debuff to primary and determine points
-                // 3. Redistribute points of debuffed stat from primary + secondary to other stats (weight buffed stat higher)
-                // 4. Combine new trait charts
+                // Trait Chart Merging
                 float pointsToRedistribute = consumedAbility.DebuffTraitsForMerging(newAbility);
                 TraitChart chartToCombine = consumedAbility.CreateTraitChartForMerging(pointsToRedistribute, consumedAbility.GetType() == newAbility.GetType());
 
