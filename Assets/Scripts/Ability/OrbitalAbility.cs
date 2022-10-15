@@ -37,6 +37,11 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        private void OnDisable()
+        {
+            projectiles = new List<RecursableDamageArea>();
+        }
+
         protected override void Activate()
         {
             projectiles = new List<RecursableDamageArea>();

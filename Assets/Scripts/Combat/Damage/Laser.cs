@@ -47,6 +47,14 @@ namespace TeamOne.EvolvedSurvivor
             RenderLaser();
         }
 
+        private void OnDisable()
+        {
+            if (!wasRecursiveUsed && recursiveAbility != null)
+            {
+                recursiveAbility.SetActive(false);
+            }
+        }
+
         protected override void SpawnRecursiveAbility()
         {
             if (recursiveAbility != null && !wasRecursiveUsed)

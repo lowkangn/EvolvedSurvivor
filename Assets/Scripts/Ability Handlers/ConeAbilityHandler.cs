@@ -1,3 +1,4 @@
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 namespace TeamOne.EvolvedSurvivor
 {
@@ -10,7 +11,7 @@ namespace TeamOne.EvolvedSurvivor
         private readonly float rateOverTime = 100f;
         private void OnEnable()
         {
-            characterOrientation = GetComponentInParent<Orientation2D>();
+            characterOrientation = LevelManager.Instance.Players[0].GetComponent<Orientation2D>();
         }
 
         public void UpdateParticles(float range, int coneNumber, float anglePerHalfCone)

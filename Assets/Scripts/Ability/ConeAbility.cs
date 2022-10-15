@@ -15,13 +15,46 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityStat<int> coneNumber;
 
         float anglePerHalfCone = 15f;
+        private GameObject projectile;
         Vector2[] vertices;
+
+        private float recursiveTimer = 0f;
+        private readonly float recursiveTick = 0.5f;
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (projectile != null)
+            {
+                projectile.transform.position = this.transform.position;
+
+                if (hasRecursive)
+                {
+                    if (recursiveTimer <= 0f)
+                    {
+                        RecursableDamageArea damageArea = projectile.GetComponent<RecursableDamageArea>();
+                        Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                        recursiveAbility.gameObject.SetActive(true);
+                        damageArea.AddRecursiveAbility(recursiveAbility);
+                    }
+                    else
+                    {
+                        recursiveTimer -= Time.deltaTime;
+                    }
+                }
+            }
+        }
+
+        private void OnDisable()
+        {
+            projectile = null;
+        }
 
         protected override void Activate()
         {
-            GameObject projectile = projectileObjectPool.GetPooledGameObject();
-            projectile.transform.parent = transform;
-            projectile.transform.localPosition = Vector3.zero;
+            projectile = projectileObjectPool.GetPooledGameObject();
+            projectile.transform.position = this.transform.position;
             projectile.transform.localScale = Vector3.one * aoeRange.value;
 
             ConeAbilityHandler handler = projectile.GetComponent<ConeAbilityHandler>();
@@ -33,9 +66,18 @@ namespace TeamOne.EvolvedSurvivor
             Damage damageObj = new Damage(damage.value, gameObject, effects);
             damageObj = damageHandler.ProcessOutgoingDamage(damageObj);
 
-            DamageArea damageArea = projectile.GetComponent<DamageArea>();
+            RecursableDamageArea damageArea = projectile.GetComponent<RecursableDamageArea>();
             damageArea.SetDamage(damageObj);
             damageArea.SetLifeTime(duration.value);
+
+            // Add recursive ability if it is recursive
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                damageArea.AddRecursiveAbility(recursiveAbility);
+            }
+
             damageArea.SetActive(true);
         }
 
@@ -48,8 +90,8 @@ namespace TeamOne.EvolvedSurvivor
             {
                 float y = Mathf.Cos(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
                 float x = Mathf.Sin(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
-                vertices[i+1] = new Vector2(x * -1, y);
-                vertices[^(i+1)] = new Vector2(x, y);
+                vertices[coneNumber.value - i] = new Vector2(-x, y);
+                vertices[(coneNumber.value + 2 + i)] = new Vector2(x, y);
             }
             return vertices;
         }
