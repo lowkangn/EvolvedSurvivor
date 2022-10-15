@@ -97,6 +97,10 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override float DebuffTraitsForMerging(Ability other)
         {
+            if (GetType() == other.GetType())
+            {
+                return 0f;
+            }
             float points = other.traitChart.utility * debuffFactor;
             other.traitChart.utility -= points;
             return points;
