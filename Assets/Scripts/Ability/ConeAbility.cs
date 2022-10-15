@@ -83,32 +83,32 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override float DebuffTraitsForMerging(Ability other)
         {
-            float points = other.traitChart.uptime * debuffFactor;
-            other.traitChart.uptime -= points;
+            float points = other.traitChart.damage * debuffFactor;
+            other.traitChart.damage -= points;
             return points;
         }
 
         protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
         {
-            TraitChart newChart = new TraitChart(traitChart);
-            float damageRatio = 1f;
-            float uptimeRatio = 1f + buffFactor;
-            float aoeRatio = 1f;
-            float quantityRatio = 1f;
-            float utilityRatio = 1f;
+            
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
             if (!isSameType)
             {
-                pointsToAssign += newChart.damage;
-                newChart.damage = 0f;
                 damageRatio = 0f;
             }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float uptimeBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= uptimeBuff;
             float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
-            newChart.CombineWith(new TraitChart(damageRatio / sum * pointsToAssign,
-                uptimeRatio / sum * pointsToAssign,
+            return new TraitChart(damageRatio / sum * pointsToAssign,
+                uptimeRatio / sum * pointsToAssign + uptimeBuff,
                 aoeRatio / sum * pointsToAssign,
                 quantityRatio / sum * pointsToAssign,
-                utilityRatio / sum * pointsToAssign));
-            return newChart;
+                utilityRatio / sum * pointsToAssign);
         }
     }
 }

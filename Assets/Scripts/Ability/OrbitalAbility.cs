@@ -81,25 +81,24 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
         {
-            TraitChart newChart = new TraitChart(traitChart);
-            float damageRatio = 1f;
-            float uptimeRatio = 1f;
-            float aoeRatio = 1f;
-            float quantityRatio = 1f;
-            float utilityRatio = 1f + buffFactor;
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
             if (!isSameType)
             {
-                pointsToAssign += newChart.quantity;
-                newChart.quantity = 0f;
                 quantityRatio = 0f;
             }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float utilityBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= utilityBuff;
             float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
-            newChart.CombineWith(new TraitChart(damageRatio / sum * pointsToAssign,
+            return new TraitChart(damageRatio / sum * pointsToAssign,
                 uptimeRatio / sum * pointsToAssign,
                 aoeRatio / sum * pointsToAssign,
                 quantityRatio / sum * pointsToAssign,
-                utilityRatio / sum * pointsToAssign));
-            return newChart;
+                utilityRatio / sum * pointsToAssign + utilityBuff);
         }
     }
 }

@@ -60,6 +60,11 @@ namespace TeamOne.EvolvedSurvivor
             utility = Mathf.Clamp(utility + other.utility, 0, maxValue);
         }
 
+        public float GetTotalPoints()
+        {
+            return damage + uptime + aoe + quantity + utility;
+        }
+        
         public string GetStatsDescription()
         {
             return $"Damage: {damage:0.0}, Uptime: {uptime:0.0}, AOE: {aoe:0.0}, Quantity: {quantity:0.0}, Utility: {utility:0.0}";
