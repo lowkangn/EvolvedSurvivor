@@ -10,6 +10,14 @@ namespace TeamOne.EvolvedSurvivor
         protected Ability recursiveAbility;
         protected bool wasRecursiveUsed = false;
 
+        private void OnDisable()
+        {
+            if (!wasRecursiveUsed && recursiveAbility != null)
+            {
+                recursiveAbility.SetActive(false);
+            }
+        }
+
         protected override void OnHit()
         {
             base.OnHit();

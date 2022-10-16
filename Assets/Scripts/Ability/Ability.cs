@@ -255,7 +255,7 @@ namespace TeamOne.EvolvedSurvivor
             recursiveAbilityObjectPool.FillObjectPool();
         }
 
-        protected void Deactivate()
+        protected virtual void Deactivate()
         {
             SetActive(false);
         }

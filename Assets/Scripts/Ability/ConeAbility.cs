@@ -14,29 +14,32 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<int> coneNumber;
 
-        float anglePerHalfCone = 15f;
-        private GameObject projectile;
+        private float anglePerHalfCone = 15f;
+        private ConeAbilityHandler cone;
         Vector2[] vertices;
 
         private float recursiveTimer = 0f;
-        private readonly float recursiveTick = 0.5f;
+        private readonly float recursiveTick = 3f;
+        
 
         protected override void Update()
         {
             base.Update();
 
-            if (projectile != null)
+            if (cone != null)
             {
-                projectile.transform.position = this.transform.position;
+                cone.transform.position = this.transform.position;
 
                 if (hasRecursive)
                 {
                     if (recursiveTimer <= 0f)
                     {
-                        RecursableDamageArea damageArea = projectile.GetComponent<RecursableDamageArea>();
+                        RecursableDamageArea damageArea = cone.gameObject.GetComponent<RecursableDamageArea>();
                         Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
                         recursiveAbility.gameObject.SetActive(true);
                         damageArea.AddRecursiveAbility(recursiveAbility);
+
+                        recursiveTimer = recursiveTick;
                     }
                     else
                     {
@@ -48,17 +51,17 @@ namespace TeamOne.EvolvedSurvivor
 
         private void OnDisable()
         {
-            projectile = null;
+            cone = null;
         }
 
         protected override void Activate()
         {
-            projectile = projectileObjectPool.GetPooledGameObject();
+            GameObject projectile = projectileObjectPool.GetPooledGameObject();
             projectile.transform.position = this.transform.position;
             projectile.transform.localScale = Vector3.one * aoeRange.value;
 
-            ConeAbilityHandler handler = projectile.GetComponent<ConeAbilityHandler>();
-            handler.UpdateParticles(aoeRange.value, coneNumber.value, anglePerHalfCone);
+            cone = projectile.GetComponent<ConeAbilityHandler>();
+            cone.UpdateParticles(aoeRange.value, coneNumber.value, anglePerHalfCone);
 
             PolygonCollider2D collider = projectile.GetComponent<PolygonCollider2D>();
             collider.SetPath(0, vertices);
@@ -129,8 +132,15 @@ namespace TeamOne.EvolvedSurvivor
             {
                 Activate();
                 hasActivated = true;
+                cone.SetRotating(true);
                 Invoke("Deactivate", duration.value);
             }
+        }
+
+        protected override void Deactivate()
+        {
+            cone.SetRotating(false);
+            base.Deactivate();
         }
     }
 }
