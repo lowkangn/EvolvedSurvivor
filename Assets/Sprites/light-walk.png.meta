@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e8134c06d5a50d42b33909ee81b2738
+guid: d7f8d63a581e76d4e80c65f0b4481d32
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 788aea163fe319842a96574507459dfd
-      internalID: -1255257262
+      spriteID: 49f606947aa68d340ba79c0476f5c741
+      internalID: -907534740
       vertices: []
       indices: 
       edges: []
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b08ed1387ed20024492ee302c55fbe9a
-      internalID: -1609902352
+      spriteID: 97bc8fd7aed579c4b9a4f7456432ee25
+      internalID: 22784894
       vertices: []
       indices: 
       edges: []
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30106f6b192bb914d8acf7bcbae7771a
-      internalID: -1336270404
+      spriteID: a9ce56680ed23314e964ec03c2d45b67
+      internalID: -17385432
       vertices: []
       indices: 
       edges: []
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9195b3c6db44be947805047ecc9a3431
-      internalID: 759838303
+      spriteID: 2f7cdf2f72dfa3346b78909c65fd91ea
+      internalID: -1608701851
       vertices: []
       indices: 
       edges: []
@@ -214,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 188e5d5f30b3a1e4f806c450f511b1c3
-      internalID: -264291014
+      spriteID: a59c99481a4781c45ab1aafd636de687
+      internalID: -269940164
       vertices: []
       indices: 
       edges: []
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e956441e958fef4bb3a0a40998eb4f1
-      internalID: -2040966031
+      spriteID: fb03ae67ffefeac4fa965ac60e4c0ae4
+      internalID: -1758602441
       vertices: []
       indices: 
       edges: []
@@ -256,8 +256,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 058e5e925aab5eb43b62ab2239c4d4b6
-      internalID: 1788327817
+      spriteID: 52b38556403540348840ae4676f138cf
+      internalID: -316498446
       vertices: []
       indices: 
       edges: []
@@ -277,8 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e96edb31ebf3ef4dbb3f290cd1590f8
-      internalID: 98358010
+      spriteID: b303c1309a8ec304b8d6c07f3ead25b2
+      internalID: 904801330
       vertices: []
       indices: 
       edges: []
@@ -298,8 +298,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbde5740926767d4cae88a0751718729
-      internalID: 1299170015
+      spriteID: 4c45dc1746d5b11409dc5426f5eccdd9
+      internalID: -1883041889
       vertices: []
       indices: 
       edges: []
@@ -319,8 +319,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcec488a43963384386909670fe4f4e9
-      internalID: -1881992744
+      spriteID: e41519565e26b59498443ddbb5b42643
+      internalID: 1161612989
       vertices: []
       indices: 
       edges: []
@@ -336,16 +336,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      light-walk_2: -1336270404
-      light-walk_8: 1299170015
-      light-walk_6: 1788327817
-      light-walk_9: -1881992744
-      light-walk_0: -1255257262
-      light-walk_1: -1609902352
-      light-walk_4: -264291014
-      light-walk_3: 759838303
-      light-walk_5: -2040966031
-      light-walk_7: 98358010
+      light-walk_2: -17385432
+      light-walk_8: -1883041889
+      light-walk_6: -316498446
+      light-walk_9: 1161612989
+      light-walk_0: -907534740
+      light-walk_1: 22784894
+      light-walk_4: -269940164
+      light-walk_3: -1608701851
+      light-walk_5: -1758602441
+      light-walk_7: 904801330
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
