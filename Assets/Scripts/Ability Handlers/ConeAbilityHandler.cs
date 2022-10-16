@@ -7,7 +7,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private ParticleSystem particles;
 
-        private readonly float rateOverTime = 100f;
+        private readonly float rateOverTime = 5f;
         private void OnEnable()
         {
             characterOrientation = GetComponentInParent<Orientation2D>();
@@ -30,7 +30,8 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (characterOrientation)
             {
-                transform.rotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
+                Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.1f);
             }
         }
     }
