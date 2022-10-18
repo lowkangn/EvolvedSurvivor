@@ -19,6 +19,8 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] private Text rcQuantityText;
         [SerializeField] private Text rcUtilityText;
 
+        [SerializeField] private GameObject notAvailableBox;
+
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
             if (upgradable.IsAbility())
@@ -64,6 +66,11 @@ namespace TeamOne.EvolvedSurvivor
 
                 radarChart.UpdateVisual(ability.GetTraitChart());
             }
+
+            if (upgradable.IsPassiveAbility() && this.radarChart.gameObject.activeSelf)
+            {
+                this.notAvailableBox.SetActive(true);
+            }
         }
 
         // Detect when Cursor leaves the button
@@ -79,6 +86,8 @@ namespace TeamOne.EvolvedSurvivor
             this.rcUtilityText.text = "Utility";
 
             radarChart.ClearVisual();
+
+            this.notAvailableBox.SetActive(false);
         }
     }
 }

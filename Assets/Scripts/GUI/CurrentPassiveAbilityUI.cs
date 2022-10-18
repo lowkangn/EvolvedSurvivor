@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class CurrentPassiveAbilityUI : UpgradableButton
 {
     [SerializeField] protected PassiveAbility passiveAbility;
+    [SerializeField] private RadarChartUI radarChart;
+    [SerializeField] private GameObject notAvailableBox;
 
     public virtual void AddPassiveAbilityToButton(PassiveAbility passiveAbility)
     {
@@ -33,6 +35,11 @@ public class CurrentPassiveAbilityUI : UpgradableButton
         {
             this.textObj.text = upgradable.GetName();
             this.detailedTextObj.text = upgradable.GetDescription();
+
+            if (this.radarChart.gameObject.activeSelf)
+            {
+                this.notAvailableBox.SetActive(true);
+            }
         }
     }
 
@@ -41,5 +48,7 @@ public class CurrentPassiveAbilityUI : UpgradableButton
     {
         this.textObj.text = "";
         this.detailedTextObj.text = "";
+
+        this.notAvailableBox.SetActive(false);
     }
 }
