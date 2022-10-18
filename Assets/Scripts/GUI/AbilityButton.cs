@@ -22,7 +22,7 @@ namespace TeamOne.EvolvedSurvivor
         }
 
         // Detect if the Cursor starts to pass over the button
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData eventData)
         {
             if (!IsEmpty())
             {
@@ -47,7 +47,7 @@ namespace TeamOne.EvolvedSurvivor
         }
 
         // Detect when Cursor leaves the button
-        public virtual void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData eventData)
         {
             this.textObj.text = "";
             this.detailedTextObj.text = "";
