@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579630373086814210}
   - component: {fileID: 7095764258113722623}
-  - component: {fileID: 3404124164898862505}
+  - component: {fileID: 2010592884705919976}
   m_Layer: 0
   m_Name: ExplosiveProjectileAbility
   m_TagString: Untagged
@@ -52,14 +52,9 @@ MonoBehaviour:
     minValue: 1
     maxValue: 2
     value: 0
-  projDamage:
-    damage: 0
-    instigator: {fileID: 0}
-    direction: {x: 0, y: 0, z: 0}
-    effects: []
   hasBuilt: 0
   abilitySprite: {fileID: 2011945840, guid: 11e7177d066891f4299f20e143ae7a7b, type: 3}
-  objectPool: {fileID: 3404124164898862505}
+  objectPool: {fileID: 2010592884705919976}
   maxPlasmaMagnitude: 1.5
   maxCryoMagnitude: 1
   maxForceMagnitude: 1500
@@ -84,7 +79,7 @@ MonoBehaviour:
   projectileSpeed: 15
   projectileSpawnInterval: 0.15
   targetDetector: {fileID: 1574729991113620035}
---- !u!114 &3404124164898862505
+--- !u!114 &2010592884705919976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +96,7 @@ MonoBehaviour:
   NestUnderThis: 0
   GameObjectToPool: {fileID: 1133100380862132, guid: 24506b5f635ebbb4c9161d901527d0bf,
     type: 3}
-  PoolSize: 3
+  PoolSize: 10
   PoolCanExpand: 1
 --- !u!1 &6844707240551992630
 GameObject:

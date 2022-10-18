@@ -21,8 +21,7 @@ namespace TeamOne.EvolvedSurvivor
         private readonly int maxTier = 10;
         protected TraitChart traitChart;
         protected Element element;
-        [SerializeField]
-        protected Damage projDamage = new Damage();
+        protected List<StatusEffect> effects = new();
         [SerializeField]
         private bool hasBuilt = false;
         private bool hasActivated;
@@ -222,6 +221,11 @@ namespace TeamOne.EvolvedSurvivor
             isActive = false;
         }
 
+        public string GetAbilityName()
+        {
+            return $"Level {tier} {abilityName}\n";
+        }
+
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
@@ -240,6 +244,36 @@ namespace TeamOne.EvolvedSurvivor
         public bool IsPassiveAbility()
         {
             return false;
+        }
+
+        public string GetDamageDescription()
+        {
+            return traitChart.GetDamageDescription();
+        }
+
+        public string GetUptimeDescription()
+        {
+            return traitChart.GetUptimeDescription();
+        }
+
+        public string GetAoeDescription()
+        {
+            return traitChart.GetAoeDescription();
+        }
+
+        public string GetQuantityDescription()
+        {
+            return traitChart.GetQuantityDescription();
+        } 
+
+        public string GetUtilityDescription()
+        {
+            return traitChart.GetUtilityDescription();
+        } 
+
+        public TraitChart GetTraitChart()
+        {
+            return traitChart;
         }
     }
 }

@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2943148802276990048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3579630373086814210}
+  - component: {fileID: 7623764801203598919}
+  - component: {fileID: 3249972788575651579}
+  m_Layer: 0
+  m_Name: ConeAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3579630373086814210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7623764801203598919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568ae137aaa1e1040bfb7654aa00636e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Biobreath
+  activateOnlyOnce: 0
+  coolDown:
+    minValue: 10
+    maxValue: 10
+    value: 0
+  hasBuilt: 0
+  abilitySprite: {fileID: 0}
+  objectPool: {fileID: 3249972788575651579}
+  maxPlasmaMagnitude: 1.5
+  maxCryoMagnitude: 0.3
+  maxForceMagnitude: 700
+  maxInfectMagnitude: 2
+  maxPyroMagnitude: 2
+  damage:
+    minValue: 10
+    maxValue: 50
+    value: 0
+  duration:
+    minValue: 10
+    maxValue: 10
+    value: 0
+  aoeRange:
+    minValue: 4
+    maxValue: 7
+    value: 0
+  coneNumber:
+    minValue: 1
+    maxValue: 6
+    value: 0
+--- !u!114 &3249972788575651579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MutualizeWaitingPools: 0
+  NestWaitingPool: 1
+  NestUnderThis: 0
+  GameObjectToPool: {fileID: 4745785239986105255, guid: 078961c872cd3ec43b6af8b100758804,
+    type: 3}
+  PoolSize: 3
+  PoolCanExpand: 1

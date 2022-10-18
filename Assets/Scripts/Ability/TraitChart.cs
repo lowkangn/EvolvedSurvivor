@@ -55,5 +55,30 @@ namespace TeamOne.EvolvedSurvivor
         {
             return $"Damage: {damage:0.0}, Uptime: {uptime:0.0}, AOE: {aoe:0.0}, Quantity: {quantity:0.0}, Utility: {utility:0.0}";
         }
+
+        public string GetDamageDescription()
+        {
+            return $"Damage: {damage:0.0}";
+        }
+
+        public string GetUptimeDescription()
+        {
+            return $"Uptime:\n{uptime:0.0}";
+        }
+
+        public string GetAoeDescription()
+        {
+            return $"AOE:\n{aoe:0.0}";
+        }
+
+        public string GetQuantityDescription()
+        {
+            return $"Quantity:\n{quantity:0.0}";
+        } 
+
+        public string GetUtilityDescription()
+        {
+            return $"Utility:\n{utility:0.0}";
+        } 
     }
 }
