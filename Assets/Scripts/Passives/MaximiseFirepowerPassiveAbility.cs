@@ -18,7 +18,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override string GetStatsDescription()
         {
-            return "Outgoing Damage Multiplier: " + damageMultipliers[currentTier] + "x\n";
+            return "Outgoing Damage Up: " + damageMultipliers[currentTier] + "x\n";
         }
     }
 }
