@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemySpawnData> enemies;
     [SerializeField] private NonRandomObjectPooler objectPooler;
 
-    [SerializeField] private float spendingPointsGainRate = 0.05f;
+    [SerializeField] private float spendingPointsGainRate = 0.1f;
     [SerializeField] private float minSpawnFreq = 0.2f;
     [SerializeField] private float maxSpawnFreq = 1f;
     [SerializeField] private float spawnRadius = 20f;
