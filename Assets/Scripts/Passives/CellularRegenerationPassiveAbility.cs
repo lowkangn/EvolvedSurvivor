@@ -44,7 +44,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override string GetStatsDescription()
         {
-            return "Max Health Multiplication: " + healthMultipliers[currentTier] + "x | Regeneration: +" + healthRegeneratedPerSecond[currentTier] + " Per Second";
+            return "Max Health Multiplier: " + healthMultipliers[currentTier] + "x\nRegeneration: +" + healthRegeneratedPerSecond[currentTier] + " Per Second\n";
         }
     }
 }

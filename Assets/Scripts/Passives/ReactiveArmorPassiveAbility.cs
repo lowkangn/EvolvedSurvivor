@@ -26,7 +26,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override string GetStatsDescription()
         {
-            return "Incoming Damage Reduction: " + damageReductionMultipliers[currentTier] + "x | Invincibility Duration Multiplication: " + invincibilityDurationMultipliers[currentTier] + "x";
+            return "Incoming Damage Reduction: " + damageReductionMultipliers[currentTier] + "x\nInvincibility Duration Multiplier: " + invincibilityDurationMultipliers[currentTier] + "x\n";
         }
     }
 }

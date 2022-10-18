@@ -18,7 +18,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override string GetStatsDescription()
         {
-            return "Cooldown Reduction: " + coolDownMultipliers[currentTier] + "x";
+            return "Cooldown Reduction Multiplier: " + coolDownMultipliers[currentTier] + "x\n";
         }
     }
 }

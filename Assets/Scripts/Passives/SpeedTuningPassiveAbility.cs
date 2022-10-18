@@ -32,7 +32,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected override string GetStatsDescription()
         {
-            return "Movement Speed Multiplication: " + speedMultipliers[currentTier] + "x | Pickup Radius Multiplication: " + radiusMultipliers[currentTier] + "x";
+            return "Movement Speed Multiplier: " + speedMultipliers[currentTier] + "x\nPickup Radius Multiplier: " + radiusMultipliers[currentTier] + "x\n";
         }
     }
 }
