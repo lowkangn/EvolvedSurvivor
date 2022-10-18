@@ -94,5 +94,38 @@ namespace TeamOne.EvolvedSurvivor
                 }
             }
         }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            if (GetType() == other.GetType())
+            {
+                return 0f;
+            }
+            float points = other.traitChart.utility * debuffFactor;
+            other.traitChart.utility -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
+            if (!isSameType)
+            {
+                utilityRatio = 0f;
+            }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float aoeBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= aoeBuff;
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            return new TraitChart(damageRatio / sum * pointsToAssign,
+                uptimeRatio / sum * pointsToAssign,
+                aoeRatio / sum * pointsToAssign + aoeBuff,
+                quantityRatio / sum * pointsToAssign,
+                utilityRatio / sum * pointsToAssign);
+        }
     }
 }

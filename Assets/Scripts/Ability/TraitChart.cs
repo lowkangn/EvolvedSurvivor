@@ -33,6 +33,15 @@ namespace TeamOne.EvolvedSurvivor
             this.utility = 0f;
         }
 
+        public TraitChart(float damage, float uptime, float aoe, float quantity, float utility)
+        {
+            this.damage = damage;
+            this.uptime = uptime;
+            this.aoe = aoe;
+            this.quantity = quantity;
+            this.utility = utility;
+        }
+
         public TraitChart(TraitChart other)
         {
             this.damage = other.damage;           
@@ -51,6 +60,11 @@ namespace TeamOne.EvolvedSurvivor
             utility = Mathf.Clamp(utility + other.utility, 0, maxValue);
         }
 
+        public float GetTotalPoints()
+        {
+            return damage + uptime + aoe + quantity + utility;
+        }
+        
         public string GetStatsDescription()
         {
             return $"Damage: {damage:0.0}, Uptime: {uptime:0.0}, AOE: {aoe:0.0}, Quantity: {quantity:0.0}, Utility: {utility:0.0}";
