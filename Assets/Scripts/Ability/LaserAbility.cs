@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -34,7 +35,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 return;
             }
-            Laser laser = objectPool.GetPooledGameObject().GetComponent<Laser>();
+            Laser laser = projectileObjectPool.GetPooledGameObject().GetComponent<Laser>();
             laser.SetActive(true);
 
             // Set damage
@@ -47,6 +48,13 @@ namespace TeamOne.EvolvedSurvivor
             Vector3 direction = (target.position - transform.position).normalized;
             laser.InitializeLaser(transform, direction, projectileSize.value);
             laser.SetLifeTime(duration.value);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                laser.AddRecursiveAbility(recursiveAbility);
+            }
         }
 
         private IEnumerator SpawnLasers(int laserCount)
@@ -91,6 +99,49 @@ namespace TeamOne.EvolvedSurvivor
 
             // Utility
 
+        }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            if (GetType() == other.GetType())
+            {
+                return 0f;
+            }
+            float points = other.traitChart.uptime * debuffFactor;
+            other.traitChart.uptime -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
+            if (!isSameType)
+            {
+                uptimeRatio = 0f;
+            }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float quantityBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= quantityBuff;
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            return new TraitChart(damageRatio / sum * pointsToAssign,
+                uptimeRatio / sum * pointsToAssign,
+                aoeRatio / sum * pointsToAssign,
+                quantityRatio / sum * pointsToAssign + quantityBuff,
+                utilityRatio / sum * pointsToAssign);
+        }
+
+        protected override void HandleRecursive()
+        {
+            if (!hasActivated)
+            {
+                Activate();
+                hasActivated = true;
+                Invoke("Deactivate", duration.value);
+            }
         }
     }
 }

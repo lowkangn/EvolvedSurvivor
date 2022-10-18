@@ -14,18 +14,54 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<int> coneNumber;
 
-        float anglePerHalfCone = 15f;
+        private float anglePerHalfCone = 15f;
+        private ConeAbilityHandler cone;
         Vector2[] vertices;
+
+        private float recursiveTimer = 0f;
+        private readonly float recursiveTick = 3f;
+        
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (cone != null)
+            {
+                cone.transform.position = this.transform.position;
+
+                if (hasRecursive)
+                {
+                    if (recursiveTimer <= 0f)
+                    {
+                        RecursableDamageArea damageArea = cone.gameObject.GetComponent<RecursableDamageArea>();
+                        Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                        recursiveAbility.gameObject.SetActive(true);
+                        damageArea.AddRecursiveAbility(recursiveAbility);
+
+                        recursiveTimer = recursiveTick;
+                    }
+                    else
+                    {
+                        recursiveTimer -= Time.deltaTime;
+                    }
+                }
+            }
+        }
+
+        private void OnDisable()
+        {
+            cone = null;
+        }
 
         protected override void Activate()
         {
-            GameObject projectile = objectPool.GetPooledGameObject();
-            projectile.transform.parent = transform;
-            projectile.transform.localPosition = Vector3.zero;
+            GameObject projectile = projectileObjectPool.GetPooledGameObject();
+            projectile.transform.position = this.transform.position;
             projectile.transform.localScale = Vector3.one * aoeRange.value;
 
-            ConeAbilityHandler handler = projectile.GetComponent<ConeAbilityHandler>();
-            handler.UpdateParticles(aoeRange.value, coneNumber.value, anglePerHalfCone);
+            cone = projectile.GetComponent<ConeAbilityHandler>();
+            cone.UpdateParticles(aoeRange.value, coneNumber.value, anglePerHalfCone);
 
             PolygonCollider2D collider = projectile.GetComponent<PolygonCollider2D>();
             collider.SetPath(0, vertices);
@@ -33,9 +69,18 @@ namespace TeamOne.EvolvedSurvivor
             Damage damageObj = new Damage(damage.value, gameObject, effects);
             damageObj = damageHandler.ProcessOutgoingDamage(damageObj);
 
-            DamageArea damageArea = projectile.GetComponent<DamageArea>();
+            RecursableDamageArea damageArea = projectile.GetComponent<RecursableDamageArea>();
             damageArea.SetDamage(damageObj);
             damageArea.SetLifeTime(duration.value);
+
+            // Add recursive ability if it is recursive
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                damageArea.AddRecursiveAbility(recursiveAbility);
+            }
+
             damageArea.SetActive(true);
         }
 
@@ -48,8 +93,8 @@ namespace TeamOne.EvolvedSurvivor
             {
                 float y = Mathf.Cos(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
                 float x = Mathf.Sin(Mathf.Deg2Rad * anglePerHalfCone * (i + 1));
-                vertices[i+1] = new Vector2(x * -1, y);
-                vertices[^(i+1)] = new Vector2(x, y);
+                vertices[coneNumber.value - i] = new Vector2(-x, y);
+                vertices[(coneNumber.value + 2 + i)] = new Vector2(x, y);
             }
             return vertices;
         }
@@ -74,11 +119,61 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
 
             vertices = CalculateVertices();
+        }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            if (GetType() == other.GetType())
+            {
+                return 0f;
+            }
+            float points = other.traitChart.damage * debuffFactor;
+            other.traitChart.damage -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {            
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
+            if (!isSameType)
+            {
+                damageRatio = 0f;
+            }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float uptimeBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= uptimeBuff;
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            return new TraitChart(damageRatio / sum * pointsToAssign,
+                uptimeRatio / sum * pointsToAssign + uptimeBuff,
+                aoeRatio / sum * pointsToAssign,
+                quantityRatio / sum * pointsToAssign,
+                utilityRatio / sum * pointsToAssign);
+        }
+
+        protected override void HandleRecursive()
+        {
+            if (!hasActivated)
+            {
+                Activate();
+                hasActivated = true;
+                cone.SetRotating(true);
+                Invoke("Deactivate", duration.value);
+            }
+        }
+
+        protected override void Deactivate()
+        {
+            cone.SetRotating(false);
+            base.Deactivate();
         }
     }
 }
