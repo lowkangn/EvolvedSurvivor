@@ -1135,6 +1135,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HelpPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3381349968353220829, guid: b62213d5581e01f47b0c559fe8f39ec1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381349969686538746, guid: b62213d5581e01f47b0c559fe8f39ec1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381349970241582248, guid: b62213d5581e01f47b0c559fe8f39ec1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62213d5581e01f47b0c559fe8f39ec1, type: 3}
 --- !u!224 &1189592287 stripped

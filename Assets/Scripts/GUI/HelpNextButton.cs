@@ -14,7 +14,7 @@ public class HelpNextButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick (PointerEventData eventData)
     {
-        if (helpPage1.activeSelf) {
+        if (helpPage1.activeSelf) { // Go from Page 1 to 2
             helpPage1.SetActive(false);
             helpPage2.SetActive(true);
             backButton.SetActive(true); // Set back to true if not on first page

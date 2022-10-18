@@ -14,14 +14,14 @@ public class HelpBackButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick (PointerEventData eventData)
     {
-        if (helpPage2.activeSelf) {
+        if (helpPage2.activeSelf) { // Go from page 2 to 1
             helpPage2.SetActive(false);
             helpPage1.SetActive(true);
-            backButton.SetActive(false); // Set self to false if this is the first page
+            backButton.SetActive(false); // Set self to false if going to the first page
         } else if (helpPage3.activeSelf) {
             helpPage3.SetActive(false);
             helpPage2.SetActive(true);
-            nextButton.SetActive(true);
+            nextButton.SetActive(true); // Set nextButton to true if leaving the last page 
         }
     }
 }
