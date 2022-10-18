@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public class Projectile : DamageArea
+    public class Projectile : RecursableDamageArea
     {
         private Vector3 motion;
 

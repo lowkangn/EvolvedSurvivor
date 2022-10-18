@@ -36,7 +36,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void DamageAndSpawnProjectileOnTarget(GameObject target)
         {
-            LockOnDamageArea nextProjectile = objectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
+            LockOnDamageArea nextProjectile = projectileObjectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
             Damage projDamage = new Damage(damage.value, gameObject, effects);
             projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
             nextProjectile.SetDamage(projDamage);
@@ -45,6 +45,14 @@ namespace TeamOne.EvolvedSurvivor
             nextProjectile.transform.localPosition = Vector3.zero;
             
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                nextProjectile.AddRecursiveAbility(recursiveAbility);
+            }
+
             nextProjectile.SetActive(true);
         }
 
@@ -67,9 +75,15 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
+        }
+
+        protected override void HandleRecursive()
+        {
+            Activate();
+            Deactivate();
         }
 
         protected override float DebuffTraitsForMerging(Ability other)

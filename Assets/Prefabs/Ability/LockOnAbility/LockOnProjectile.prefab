@@ -55,7 +55,7 @@ MonoBehaviour:
   ExecuteOnDisable:
     m_PersistentCalls:
       m_Calls: []
-  LifeTime: 5
+  LifeTime: 0
 --- !u!58 &3773270387610844637
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   NestUnderThis: 0
   GameObjectToPool: {fileID: 1133100380862132, guid: 261f789b097c8e84ea9ebb15ddb0aa8f,
     type: 3}
-  PoolSize: 3
+  PoolSize: 1
   PoolCanExpand: 1
 --- !u!114 &1517255266868702445
 MonoBehaviour:
