@@ -7,10 +7,14 @@ namespace TeamOne.EvolvedSurvivor
 {
     public abstract class Ability : MonoBehaviour
     {
+        private readonly int maxTier = 10;
+        protected readonly float buffFactor = 0.2f;
+        protected readonly float debuffFactor = 0.2f;
+        
         public string AbilityName => abilityName;
         [SerializeField] private string abilityName;
 
-        [Header("Whether this ability will be activated while it is active")]
+        [Header("Whether this ability will be always activated while it is active")]
         [SerializeField]
         private bool activateOnlyOnce = false;
 
@@ -19,8 +23,8 @@ namespace TeamOne.EvolvedSurvivor
         protected AbilityStat<float> coolDown;
 
         protected int tier;
-        private readonly int maxTier = 10;
-        protected TraitChart traitChart;
+        public TraitChart traitChart;
+
         protected Element element;
         protected List<StatusEffect> effects = new();
         [SerializeField]
@@ -93,8 +97,11 @@ namespace TeamOne.EvolvedSurvivor
                     newAbility.element.CombineWith(consumedAbility.element);
                 }
 
-                // Trait Chart Upgrade
-                newAbility.traitChart.CombineWith(consumedAbility.traitChart);
+                // Trait Chart Merging
+                float pointsToRedistribute = consumedAbility.DebuffTraitsForMerging(newAbility);
+                TraitChart chartToCombine = consumedAbility.CreateTraitChartForMerging(pointsToRedistribute, consumedAbility.GetType() == newAbility.GetType());
+
+                newAbility.traitChart.CombineWith(chartToCombine);
 
                 // Build Ability Again
                 newAbility.Build();
@@ -234,6 +241,17 @@ namespace TeamOne.EvolvedSurvivor
         protected abstract void Activate();
 
         protected abstract void HandleRecursive();
+
+        /// <summary>
+        /// Debuff the trait chart of the other ability and returns the points debuffed for redistribution
+        /// </summary>
+        protected abstract float DebuffTraitsForMerging(Ability other);
+
+        /// <summary>
+        /// Returns a new TraitChart for merging based on this ability, reassigning all points and the debuffed points to all abilities such that
+        /// the buffed trait is boosted more
+        /// </summary>
+        protected abstract TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType);
 
         public void Stop()
         {

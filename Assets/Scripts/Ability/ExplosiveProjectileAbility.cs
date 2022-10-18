@@ -122,6 +122,19 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            return 0f;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            TraitChart newChart = new TraitChart(traitChart);
+            float pointsPerTrait = pointsToAssign / 5f;
+            newChart.CombineWith(new TraitChart(pointsPerTrait, pointsPerTrait, pointsPerTrait, pointsPerTrait, pointsPerTrait));
+            return newChart;
+        }
+
         protected override void HandleRecursive()
         {
             Activate();
