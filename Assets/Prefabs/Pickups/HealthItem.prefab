@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa772ccfa935467c9a669a1c09967c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickedMMFeedbacks: {fileID: 0}
+  PickedMMFeedbacks: {fileID: 1276146157}
   DisableColliderOnPick: 0
   DisableObjectOnPick: 1
   DisableDelay: 0
