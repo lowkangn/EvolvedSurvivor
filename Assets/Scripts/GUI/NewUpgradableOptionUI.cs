@@ -12,6 +12,13 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] private LevelUpScreenManager levelUpManager;
         [SerializeField] private AddUpgradableHandler addUpgradableHandler;
 
+        [SerializeField] private RadarChartUI radarChart;
+        [SerializeField] private Text rcDamageText;
+        [SerializeField] private Text rcUptimeText;
+        [SerializeField] private Text rcAoeText;
+        [SerializeField] private Text rcQuantityText;
+        [SerializeField] private Text rcUtilityText;
+
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
             if (upgradable.IsAbility())
@@ -34,6 +41,44 @@ namespace TeamOne.EvolvedSurvivor
             }
             
             this.addUpgradableHandler.SetCurrentSelectedUpgradable(upgradable);
+        }
+
+        // Detect if the Cursor starts to pass over the button
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!IsEmpty())
+            {
+                this.textObj.text = upgradable.GetName();
+                this.detailedTextObj.text = upgradable.GetDescription();
+            }
+
+            if (upgradable.IsAbility())
+            {
+                Ability ability = (Ability)upgradable;
+
+                this.rcDamageText.text = ability.GetDamageDescription();
+                this.rcUptimeText.text = ability.GetUptimeDescription();
+                this.rcAoeText.text = ability.GetAoeDescription();
+                this.rcQuantityText.text = ability.GetQuantityDescription();
+                this.rcUtilityText.text = ability.GetUtilityDescription();
+
+                radarChart.UpdateVisual(ability.GetTraitChart());
+            }
+        }
+
+        // Detect when Cursor leaves the button
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            this.textObj.text = "";
+            this.detailedTextObj.text = "";
+
+            this.rcDamageText.text = "Damage";
+            this.rcUptimeText.text = "Uptime";
+            this.rcAoeText.text = "AOE";
+            this.rcQuantityText.text = "Quantity";
+            this.rcUtilityText.text = "Utility";
+
+            radarChart.ClearVisual();
         }
     }
 }

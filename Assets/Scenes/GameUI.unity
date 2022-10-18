@@ -2426,8 +2426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 160821665}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 160821665}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -2849,8 +2849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 834981826}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 834981826}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -3842,9 +3842,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1861653865}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  radarChart: {fileID: 2097723811}
+  rcDamageText: {fileID: 2097723817}
+  rcUptimeText: {fileID: 2097723816}
+  rcAoeText: {fileID: 2097723815}
+  rcQuantityText: {fileID: 2097723814}
+  rcUtilityText: {fileID: 2097723813}
 --- !u!1 &719450116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,8 +5138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 1581629303}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 1581629303}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -5476,6 +5483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1976536989}
   passiveAbility: {fileID: 0}
 --- !u!1 &878279747
@@ -7557,8 +7565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 1505158951}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 1505158951}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -7843,8 +7851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 948614579}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 948614579}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -8373,9 +8381,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 466703919}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  radarChart: {fileID: 2097723811}
+  rcDamageText: {fileID: 2097723817}
+  rcUptimeText: {fileID: 2097723816}
+  rcAoeText: {fileID: 2097723815}
+  rcQuantityText: {fileID: 2097723814}
+  rcUtilityText: {fileID: 2097723813}
 --- !u!1 &1342388432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8505,8 +8520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 1586675571}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 1586675571}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -8965,8 +8980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 576888323}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 576888323}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -9712,6 +9727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 931278488}
   passiveAbility: {fileID: 0}
 --- !u!1 &1457072259
@@ -11203,6 +11219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1367513301}
   passiveAbility: {fileID: 0}
 --- !u!1 &1666445599
@@ -11405,6 +11422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1954754644}
   passiveAbility: {fileID: 0}
 --- !u!1 &1687524763
@@ -11909,9 +11927,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 719450117}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  radarChart: {fileID: 2097723811}
+  rcDamageText: {fileID: 2097723817}
+  rcUptimeText: {fileID: 2097723816}
+  rcAoeText: {fileID: 2097723815}
+  rcQuantityText: {fileID: 2097723814}
+  rcUtilityText: {fileID: 2097723813}
 --- !u!1 &1828941779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12234,8 +12259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 1257313962}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 1257313962}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -13525,6 +13550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 316992478}
   passiveAbility: {fileID: 0}
 --- !u!1 &2131217536
@@ -13663,9 +13689,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
+  detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 930524857}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  radarChart: {fileID: 2097723811}
+  rcDamageText: {fileID: 2097723817}
+  rcUptimeText: {fileID: 2097723816}
+  rcAoeText: {fileID: 2097723815}
+  rcQuantityText: {fileID: 2097723814}
+  rcUtilityText: {fileID: 2097723813}
 --- !u!1 &2136864057
 GameObject:
   m_ObjectHideFlags: 0
@@ -13740,8 +13773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textObj: {fileID: 495526541}
-  upgradableImage: {fileID: 964518613}
   detailedTextObj: {fileID: 1386435135}
+  upgradableImage: {fileID: 964518613}
   ability: {fileID: 0}
   radarChart: {fileID: 2097723811}
   rcDamageText: {fileID: 2097723817}
@@ -16287,7 +16320,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9680638, y: 1}
+    m_SensorSize: {x: 1.5728543, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

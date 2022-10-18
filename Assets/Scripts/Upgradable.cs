@@ -6,6 +6,7 @@ namespace TeamOne.EvolvedSurvivor
 {
     public interface Upgradable
     {
+        public string GetName();
         public string GetDescription();
         public Sprite GetSprite();
         public bool IsAbility();

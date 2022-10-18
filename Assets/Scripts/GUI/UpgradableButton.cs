@@ -7,6 +7,7 @@ namespace TeamOne.EvolvedSurvivor
     public abstract class UpgradableButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] protected Text textObj;
+        [SerializeField] protected Text detailedTextObj;
         [SerializeField] protected Image upgradableImage;
         [SerializeField] protected Upgradable upgradable;
 
@@ -28,23 +29,10 @@ namespace TeamOne.EvolvedSurvivor
         public abstract void OnPointerClick(PointerEventData eventData);
 
         // Detect if the Cursor starts to pass over the button
-        public virtual void OnPointerEnter(PointerEventData eventData)
-        {
-            if (!IsEmpty())
-            {
-                this.textObj.text = upgradable.GetDescription();
-            }
-            else
-            {
-                this.textObj.text = "";
-            }
-        }
+        public abstract void OnPointerEnter(PointerEventData eventData);
 
         // Detect when Cursor leaves the button
-        public virtual void OnPointerExit(PointerEventData eventData)
-        {
-            this.textObj.text = "";
-        }
+        public abstract void OnPointerExit(PointerEventData eventData);
 
         public virtual void RemoveUpgradable()
         {

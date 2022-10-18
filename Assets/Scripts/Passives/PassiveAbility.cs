@@ -43,6 +43,11 @@ namespace TeamOne.EvolvedSurvivor
             return this.abilitySprite;
         }
 
+        public string GetName()
+        {
+            return $"Level {currentTier} {abilityName}\n";
+        }
+
         public string GetDescription()
         {
             return $"Level {currentTier} {abilityName}\n" + GetStatsDescription();

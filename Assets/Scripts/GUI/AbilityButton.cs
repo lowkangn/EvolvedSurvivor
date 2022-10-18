@@ -6,7 +6,7 @@ namespace TeamOne.EvolvedSurvivor
 {
     public abstract class AbilityButton : UpgradableButton
     {
-        [SerializeField] protected Text detailedTextObj;
+        
         [SerializeField] protected Ability ability;
         [SerializeField] protected RadarChartUI radarChart;
         [SerializeField] protected Text rcDamageText;
@@ -24,9 +24,9 @@ namespace TeamOne.EvolvedSurvivor
         // Detect if the Cursor starts to pass over the button
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            if (!IsEmpty())
+            if (!isEmpty)
             {
-                this.textObj.text = ability.GetAbilityName();
+                this.textObj.text = ability.GetName();
                 // Detailed view
                 this.detailedTextObj.text = ability.GetDescription();
 

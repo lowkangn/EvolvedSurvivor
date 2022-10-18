@@ -221,7 +221,7 @@ namespace TeamOne.EvolvedSurvivor
             isActive = false;
         }
 
-        public string GetAbilityName()
+        public string GetName()
         {
             return $"Level {tier} {abilityName}\n";
         }
