@@ -32,9 +32,9 @@ namespace TeamOne.EvolvedSurvivor
             StartCoroutine(SpawnProjectiles(targetNumber.value));
         }
 
-        private void SpawnExplosiveProjectile(Transform target = null)
+        private void SpawnZone(Transform target = null)
         {
-            DamageArea damageArea = objectPool.GetPooledGameObject().GetComponent<DamageArea>();
+            RecursableDamageArea damageArea = projectileObjectPool.GetPooledGameObject().GetComponent<RecursableDamageArea>();
             damageArea.transform.position = target.position;
             damageArea.SetActive(true);
 
@@ -47,6 +47,13 @@ namespace TeamOne.EvolvedSurvivor
             damageArea.SetSize(aoeRadius.value);
 
             damageArea.SetLifeTime(duration.value);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                damageArea.AddRecursiveAbility(recursiveAbility);
+            }
         }
 
         private IEnumerator SpawnProjectiles(int projectileCount)
@@ -58,7 +65,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (targets.Count > 0)
                 {
-                    SpawnExplosiveProjectile(targets[targetIndex]);
+                    SpawnZone(targets[targetIndex]);
                     targetIndex++;
                     if (targetIndex >= targets.Count)
                     {
@@ -90,7 +97,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
         }
@@ -126,6 +133,12 @@ namespace TeamOne.EvolvedSurvivor
                 aoeRatio / sum * pointsToAssign + aoeBuff,
                 quantityRatio / sum * pointsToAssign,
                 utilityRatio / sum * pointsToAssign);
+        }
+
+        protected override void HandleRecursive()
+        {
+            Activate();
+            Deactivate();
         }
     }
 }

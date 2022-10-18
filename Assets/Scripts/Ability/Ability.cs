@@ -1,6 +1,7 @@
-using UnityEngine;
-using System.Collections.Generic;
 using MoreMountains.Tools;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -28,28 +29,24 @@ namespace TeamOne.EvolvedSurvivor
         protected List<StatusEffect> effects = new();
         [SerializeField]
         private bool hasBuilt = false;
-        private bool hasActivated;
-        private float coolDownTimer;
+        protected bool hasActivated;
+        protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
         private bool isActive;
 
+        [Header("Recursive ability pool")]
+        [SerializeField]
+        protected AbilityObjectPooler recursiveAbilityObjectPool;
+        protected bool hasRecursive = false;
+
         [Header("Projectile pool")]
         [SerializeField]
-        protected MMObjectPooler objectPool;
+        protected MMObjectPooler projectileObjectPool;
 
-        [Header("Element Magnitudes")]
+        [Header("Element Magnitudes: Plasma, Cryo, Force, Infect, Pyro")]
         [SerializeField]
-        private float maxPlasmaMagnitude;
-        [SerializeField]
-        private float maxCryoMagnitude;
-        [SerializeField]
-        private float maxForceMagnitude;
-        [SerializeField]
-        private float maxInfectMagnitude;
-        [SerializeField]
-        private float maxPyroMagnitude;
-        protected Dictionary<ElementType, float> elementMagnitudes =  new Dictionary<ElementType, float>();
+        protected List<float> elementMagnitudes =  new List<float>();
 
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
@@ -69,9 +66,9 @@ namespace TeamOne.EvolvedSurvivor
             isActive = true;
         }
 
-        public void SetOwner(Transform owner, AbilityGenerator abilityGenerator)
+        public void SetOwner(DamageHandler damageHandler, AbilityGenerator abilityGenerator)
         {
-            damageHandler = owner.GetComponentInParent<DamageHandler>();
+            this.damageHandler = damageHandler;
             this.abilityGenerator = abilityGenerator;
         }
 
@@ -91,6 +88,7 @@ namespace TeamOne.EvolvedSurvivor
             {
                 Ability newAbility = Instantiate(abilityGenerator.GetPrefab(abilityName));
                 newAbility.CopyAbility(this);
+
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
                 int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
@@ -109,6 +107,15 @@ namespace TeamOne.EvolvedSurvivor
                 newAbility.Build();
                 newAbility.hasBuilt = true;
                 newAbility.isActive = true;
+
+                if (newAbility.tier == maxTier)
+                {
+                    Ability recursiveAbility = Instantiate(consumedAbility);
+                    recursiveAbility.CloneAbility(consumedAbility);
+
+                    newAbility.AddRecursiveAbility(recursiveAbility);
+                }
+
                 return newAbility;
             } 
             else
@@ -125,17 +132,7 @@ namespace TeamOne.EvolvedSurvivor
             return (tier + consumedAbility.tier <= maxTier);
         }
 
-
-        private void Awake()
-        {
-            elementMagnitudes.Add(ElementType.Plasma, maxPlasmaMagnitude);
-            elementMagnitudes.Add(ElementType.Cryo, maxCryoMagnitude);
-            elementMagnitudes.Add(ElementType.Force, maxForceMagnitude);
-            elementMagnitudes.Add(ElementType.Infect, maxInfectMagnitude);
-            elementMagnitudes.Add(ElementType.Pyro, maxPyroMagnitude);
-        }
-
-        private void Update()
+        protected virtual void Update()
         {
             if (!hasBuilt)
             {
@@ -144,18 +141,14 @@ namespace TeamOne.EvolvedSurvivor
 
             if (activateOnlyOnce && isActive)
             {
-                if (!hasActivated)
-                {
-                    Activate();
-                    hasActivated = true;
-                }
+                HandleRecursive();
                 return;
             }
 
             if (isActive && damageHandler != null)
             {
                 coolDownTimer -= Time.deltaTime;
-                if (coolDownTimer < 0f)
+                if (coolDownTimer <= 0f)
                 {
                     Activate();
                     coolDownTimer = coolDown.value;
@@ -165,7 +158,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void OnDestroy()
         {
-            objectPool.DestroyObjectPool();
+            projectileObjectPool.DestroyObjectPool();
         }
 
         private void BuildElement()
@@ -217,9 +210,37 @@ namespace TeamOne.EvolvedSurvivor
             return this.abilitySprite;
         }
 
+        // This method is used for recursive abilities.
+        public void SetActive(bool isActive)
+        {
+            this.hasActivated = !isActive;
+            this.gameObject.SetActive(isActive);
+            this.isActive = isActive;
+        }
+
+        public void CloneAbility(Ability other)
+        {
+            CopyAbility(other);
+            SetOwner(other.damageHandler, other.abilityGenerator);
+            Build();
+            this.hasBuilt = true;
+        }
+
+        public void ClearAnyRecursive()
+        {
+            if (hasRecursive)
+            {
+                recursiveAbilityObjectPool.DestroyObjectPool();
+                Destroy(recursiveAbilityObjectPool.GameObjectToPool);
+                hasRecursive = false;
+            }
+        }
+
         protected abstract void Build();
 
         protected abstract void Activate();
+
+        protected abstract void HandleRecursive();
 
         /// <summary>
         /// Debuff the trait chart of the other ability and returns the points debuffed for redistribution
@@ -245,6 +266,21 @@ namespace TeamOne.EvolvedSurvivor
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+        }
+
+        protected void AddRecursiveAbility(Ability recursiveAbility)
+        {
+            this.hasRecursive = true;
+            recursiveAbility.activateOnlyOnce = true;
+            recursiveAbility.SetActive(false);
+
+            recursiveAbilityObjectPool.GameObjectToPool = recursiveAbility.gameObject;
+            recursiveAbilityObjectPool.FillObjectPool();
+        }
+
+        protected virtual void Deactivate()
+        {
+            SetActive(false);
         }
 
         public string GetDamageDescription()
