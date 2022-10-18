@@ -39,10 +39,9 @@ public class AddUpgradableHandler : MonoBehaviour
     // Generate new upgradables in Level Up screen
     public void GenerateNewUpgradables()
     {
-        // TODO: Add passive
         for (int i = 0; i < numOfUpgradableOptions; i++)
         {
-            if (i == 0 && !passiveAbilityManager.IsAllPassivesMaxedOut() && !abilityManager.IsEmpty())
+            if (i == 0 && Random.value < 0.4f && !passiveAbilityManager.IsAllPassivesMaxedOut() && !abilityManager.IsEmpty())
             {
                 PassiveAbility passiveAbility = passiveAbilityManager.GetRandomUpgradableAbility();
                 NewUpgradablesButtons[i].AddUpgradableToButton(passiveAbility);
@@ -86,10 +85,6 @@ public class AddUpgradableHandler : MonoBehaviour
         {
             PassiveAbility passiveAbility = (PassiveAbility)currentSelectedUpgradable;
             passiveAbilityManager.UpgradeAbility(passiveAbility);
-        }
-        else
-        {
-            // TODO: throw error
         }
 
     }
