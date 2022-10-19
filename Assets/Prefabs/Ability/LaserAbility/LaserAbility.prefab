@@ -77,8 +77,8 @@ MonoBehaviour:
     maxValue: 6
     value: 0
   projectileSize:
-    minValue: 0.3
-    maxValue: 1
+    minValue: 0.5
+    maxValue: 1.5
     value: 0
   laserSpawnInterval: 0.5
   targetDetector: {fileID: 5966531427914174062}

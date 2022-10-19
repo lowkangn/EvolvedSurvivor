@@ -11,6 +11,7 @@ namespace TeamOne.EvolvedSurvivor
         private AbilityGenerator abilityGenerator;
         [SerializeField]
         private int maxNumOfAbilities = 6;
+        private float coolDownMultiplier = 1;
 
         public bool CanAddAbility()
         {
@@ -27,6 +28,7 @@ namespace TeamOne.EvolvedSurvivor
             newAbility.SetOwner(GetComponentInParent<DamageHandler>(), abilityGenerator);
             Abilities.Add(newAbility);
             newAbility.transform.SetParent(transform, false);
+            newAbility.SetCoolDownMultiplier(coolDownMultiplier);
             return true;
         }
 
@@ -45,6 +47,25 @@ namespace TeamOne.EvolvedSurvivor
             {
                 ability.Stop();
             }
+        }
+
+        public void UpdateCoolDownMultiplier(float newMultiplier)
+        {
+            coolDownMultiplier = newMultiplier;
+            UpdateExistingAbilitiesCoolDownMultipliers(coolDownMultiplier);
+        }
+
+        public void UpdateExistingAbilitiesCoolDownMultipliers(float multiplier)
+        {
+            foreach (Ability ability in Abilities)
+            {
+                ability.SetCoolDownMultiplier(multiplier);
+            }
+        }
+
+        public bool IsEmpty()
+        {
+            return Abilities.Count == 0;
         }
     }
 }

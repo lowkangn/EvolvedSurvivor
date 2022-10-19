@@ -9,9 +9,9 @@ namespace TeamOne.EvolvedSurvivor
         private ParticleSystem particles;
         private bool isRotating = false;
 
-        private readonly float rateOverTime = 100f;
+        private readonly float rateOverTime = 20f;
         private float rotationSpeed = 120f;
-
+        
         private void OnEnable()
         {
             characterOrientation = LevelManager.Instance.Players[0].GetComponent<Orientation2D>();
@@ -44,7 +44,8 @@ namespace TeamOne.EvolvedSurvivor
             }
             else if (characterOrientation)
             {
-                transform.rotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
+                Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.1f);
             }
         }
     }

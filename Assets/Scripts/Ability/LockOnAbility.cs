@@ -14,27 +14,26 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         private AbilityStat<int> targetNumber;
 
+        [Header("The target detector for aiming")]
+        [SerializeField]
+        private TargetDetector targetDetector;
+
         protected override void Activate()
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject[] onScreenEnemies = enemies.Where(x => GeneralUtility.IsOnScreen(x)).ToArray();
-            HashSet<GameObject> enemiesHit = new HashSet<GameObject>();
-            if (onScreenEnemies.Length > 0)
+            List<Transform> onScreenEnemies = targetDetector.ScanTargets();
+            if (onScreenEnemies.Count > 0)
             {
-                // Shuffle the onScreenEnemies array
-                GeneralUtility.ShuffleArray(ref onScreenEnemies);
-
                 // pick random enemies from shuffled array up to targetNumber 
-                for (int i = 0; i < targetNumber.value && i < onScreenEnemies.Length; i++)
+                for (int i = 0; i < targetNumber.value && i < onScreenEnemies.Count; i++)
                 {
                     // Choose an enemy and spawn projectile on top of it
-                    GameObject chosenEnemy = onScreenEnemies[i];
+                    Transform chosenEnemy = onScreenEnemies[i];
                     DamageAndSpawnProjectileOnTarget(chosenEnemy);
                 }
             }
         }
 
-        private void DamageAndSpawnProjectileOnTarget(GameObject target)
+        private void DamageAndSpawnProjectileOnTarget(Transform target)
         {
             LockOnDamageArea nextProjectile = projectileObjectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
             Damage projDamage = new Damage(damage.value, gameObject, effects);
