@@ -11,6 +11,7 @@ namespace TeamOne.EvolvedSurvivor
         public void SetMotion(Vector2 motion)
         {
             this.motion = motion;
+            transform.up = motion.normalized;
         }
 
         protected override void Update()

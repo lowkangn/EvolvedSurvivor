@@ -38,7 +38,7 @@ public class AddAbilityHandler : MonoBehaviour
     public void GenerateNewAbilities() 
     {
         for (int i = 0; i < numOfAbilityOptions; i++) {
-            Ability ability = abilityGenerator.GenerateAbility(5);
+            Ability ability = abilityGenerator.GenerateAbility(1);
             NewAbilitiesButtons[i].AddAbilityToButton(ability);
             NewAbilities[i] = ability;
         }
