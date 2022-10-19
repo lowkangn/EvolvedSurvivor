@@ -80,7 +80,7 @@ MonoBehaviour:
     value: 0
   laserNumber:
     minValue: 2
-    maxValue: 6
+    maxValue: 5
     value: 0
   projectileSize:
     minValue: 0.3
