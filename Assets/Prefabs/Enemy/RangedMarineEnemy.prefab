@@ -780,7 +780,7 @@ MonoBehaviour:
   projectilePool: {fileID: 8359986885604814273}
   timeForEachShot: 2
   enemy: {fileID: 7676436023281395966}
-  projectileSpeed: 7
+  projectileSpeed: 8
 --- !u!114 &7592192615028657320
 MonoBehaviour:
   m_ObjectHideFlags: 0

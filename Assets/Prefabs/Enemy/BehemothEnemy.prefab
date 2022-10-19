@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 3408037924599025843}
   - component: {fileID: 3726143494263872085}
   - component: {fileID: -5462299731838461371}
-  - component: {fileID: -6325841705534562056}
+  - component: {fileID: -4765751856061375636}
   - component: {fileID: 7592192615028657320}
   - component: {fileID: -6232343430091109303}
   - component: {fileID: 3872490877500242191}
@@ -732,7 +732,7 @@ MonoBehaviour:
     Actions:
       array:
       - {fileID: -6232343430091109303}
-      - {fileID: -6325841705534562056}
+      - {fileID: -4765751856061375636}
     Transitions:
       array:
       - Decision: {fileID: 3726143494263872085}
@@ -807,7 +807,7 @@ MonoBehaviour:
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &-6325841705534562056
+--- !u!114 &-4765751856061375636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -816,15 +816,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7639002971553439240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd571705d968cb4f871af393946f91a, type: 3}
+  m_Script: {fileID: 11500000, guid: cfa2856aa172a4a4fbb357577491078e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: 
   projectilePool: {fileID: 8359986885604814273}
-  timeForEachShot: 2
+  timeForEachShot: 8
   enemy: {fileID: 7676436023281395966}
-  projectileSpeed: 7
+  projectileSpeed: 6
 --- !u!114 &7592192615028657320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  Radius: 8
+  Radius: 15
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
@@ -846,7 +846,7 @@ MonoBehaviour:
   ObstacleDetection: 1
   ObstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   ObstaclesDetectionMode: 1
   CanTargetSelf: 0
   TargetCheckFrequency: 1
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   MutualizeWaitingPools: 0
   NestWaitingPool: 1
   NestUnderThis: 0
-  GameObjectToPool: {fileID: 1133100380862132, guid: 6cb1bd0733d28304086b59aea85d0a84,
+  GameObjectToPool: {fileID: 1133100380862132, guid: 4b0d4f10a5bd7544ba47083905870046,
     type: 3}
   PoolSize: 5
   PoolCanExpand: 1
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
-  initialSecondaryDamage: 20
+  initialSecondaryDamage: 25
   secDamageArea: {fileID: 0}
   secDamageScalingFactor: 0.02
 --- !u!1 &7639620610091389554
