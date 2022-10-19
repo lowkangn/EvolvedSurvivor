@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4080670190377240153}
   - component: {fileID: 3596747816730142123}
   - component: {fileID: 705936155210267817}
+  - component: {fileID: -7820092073932750809}
   m_Layer: 18
   m_Name: ExplosiveProjectile
   m_TagString: Untagged
@@ -91,6 +92,26 @@ MonoBehaviour:
     type: 3}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &-7820092073932750809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133100380862132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0
 --- !u!1 &4787624311283280817
 GameObject:
   m_ObjectHideFlags: 0
