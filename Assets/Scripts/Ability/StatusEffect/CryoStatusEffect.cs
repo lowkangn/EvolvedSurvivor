@@ -19,14 +19,7 @@ namespace TeamOne.EvolvedSurvivor
             target.GetComponent<Character>().Freeze();
             // TODO: Replace with new damageontouch script when avail
             // target.GetComponent<DamageOnTouch>().enabled = false;
-            StartCoroutine(FreezeFor(duration, target));
-        }
-
-        IEnumerator FreezeFor(float seconds, GameObject target)
-        {
-            yield return new WaitForSeconds(seconds);
-            target.GetComponent<Character>().UnFreeze();
-            //enemy.GetComponent<DamageOnTouch>().enabled = true;
+            target.GetComponent<CharacterMovement>().ApplyMovementMultiplier(0, duration);
         }
     }
 }
