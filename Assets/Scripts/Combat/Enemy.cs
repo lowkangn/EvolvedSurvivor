@@ -25,6 +25,7 @@ namespace TeamOne.EvolvedSurvivor
         {
             this.health.Revive();
             damageHandler.ResetEffects();
+            movement.ContextSpeedStack.Clear();
         }
 
         protected void OnDisable()
