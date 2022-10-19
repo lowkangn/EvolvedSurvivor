@@ -36,7 +36,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void DamageAndSpawnProjectileOnTarget(GameObject target)
         {
-            LockOnDamageArea nextProjectile = objectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
+            LockOnDamageArea nextProjectile = projectileObjectPool.GetPooledGameObject().GetComponent<LockOnDamageArea>();
             Damage projDamage = new Damage(damage.value, gameObject, effects);
             projDamage = damageHandler.ProcessOutgoingDamage(projDamage);
             nextProjectile.SetDamage(projDamage);
@@ -45,6 +45,14 @@ namespace TeamOne.EvolvedSurvivor
             nextProjectile.transform.localPosition = Vector3.zero;
             
             target.GetComponent<DamageReceiver>().TakeDamage(projDamage);
+
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                nextProjectile.AddRecursiveAbility(recursiveAbility);
+            }
+
             nextProjectile.SetActive(true);
         }
 
@@ -67,9 +75,48 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
+        }
+
+        protected override void HandleRecursive()
+        {
+            Activate();
+            Deactivate();
+        }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            if (GetType() == other.GetType())
+            {
+                return 0f;
+            }
+            float points = other.traitChart.aoe * debuffFactor;
+            other.traitChart.aoe -= points;
+            return points;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            float damageRatio = traitChart.damage;
+            float uptimeRatio = traitChart.uptime;
+            float aoeRatio = traitChart.aoe;
+            float quantityRatio = traitChart.quantity;
+            float utilityRatio = traitChart.utility;
+            if (!isSameType)
+            {
+                aoeRatio = 0f;
+            }
+            pointsToAssign += traitChart.GetTotalPoints();
+            float damageBuff = pointsToAssign * buffFactor;
+            pointsToAssign -= damageBuff;
+            float sum = damageRatio + uptimeRatio + aoeRatio + quantityRatio + utilityRatio;
+            return new TraitChart(damageRatio / sum * pointsToAssign + damageBuff,
+                uptimeRatio / sum * pointsToAssign,
+                aoeRatio / sum * pointsToAssign,
+                quantityRatio / sum * pointsToAssign,
+                utilityRatio / sum * pointsToAssign);
         }
     }
 }

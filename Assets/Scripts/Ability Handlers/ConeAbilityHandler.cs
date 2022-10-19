@@ -1,3 +1,4 @@
+using MoreMountains.TopDownEngine;
 using UnityEngine;
 namespace TeamOne.EvolvedSurvivor
 {
@@ -6,11 +7,15 @@ namespace TeamOne.EvolvedSurvivor
         private Orientation2D characterOrientation;
         [SerializeField]
         private ParticleSystem particles;
+        private bool isRotating = false;
 
-        private readonly float rateOverTime = 5f;
+        private readonly float rateOverTime = 100f;
+        private float rotationSpeed = 120f;
+        
         private void OnEnable()
         {
-            characterOrientation = GetComponentInParent<Orientation2D>();
+            characterOrientation = LevelManager.Instance.Players[0].GetComponent<Orientation2D>();
+            isRotating = false;
         }
 
         public void UpdateParticles(float range, int coneNumber, float anglePerHalfCone)
@@ -25,10 +30,19 @@ namespace TeamOne.EvolvedSurvivor
             shape.angle = Mathf.Clamp(coneNumber * anglePerHalfCone, 15f, 80f);
         }
 
+        public void SetRotating(bool isRotating)
+        {
+            this.isRotating = isRotating;
+        }
+
         // Update is called once per frame
         void Update()
         {
-            if (characterOrientation)
+            if (isRotating)
+            {
+                transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+            }
+            else if (characterOrientation)
             {
                 Quaternion targetRotation = Quaternion.FromToRotation(Vector3.up, characterOrientation.GetFacingDirection());
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.1f);

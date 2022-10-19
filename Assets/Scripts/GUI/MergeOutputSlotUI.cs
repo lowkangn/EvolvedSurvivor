@@ -9,6 +9,7 @@ public class MergeOutputSlotUI : AbilityMergeSlotUI
     {
         if (this.ability != null)
         {
+            ability.ClearAnyRecursive();
             Destroy(ability.gameObject);
         }
 

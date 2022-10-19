@@ -36,7 +36,7 @@ namespace TeamOne.EvolvedSurvivor
 
         private void SpawnExplosiveProjectile(Transform target=null)
         {
-            ExplosiveProjectile projectile = objectPool.GetPooledGameObject().GetComponent<ExplosiveProjectile>();
+            ExplosiveProjectile projectile = projectileObjectPool.GetPooledGameObject().GetComponent<ExplosiveProjectile>();
             projectile.transform.position = transform.position;
             projectile.SetActive(true);
 
@@ -49,6 +49,14 @@ namespace TeamOne.EvolvedSurvivor
             projectile.SetDamage(damage);
             projectile.SetExplosionRadius(aoeRadius.value);
             projectile.SetSize(projectileSize.value);
+
+            // Add recursive ability if it is recursive
+            if (hasRecursive)
+            {
+                Ability recursiveAbility = recursiveAbilityObjectPool.GetPooledGameObject().GetComponent<Ability>();
+                recursiveAbility.gameObject.SetActive(true);
+                projectile.AddRecursiveAbility(recursiveAbility);
+            }
 
             // Set motion
             Vector2 direction;
@@ -109,9 +117,28 @@ namespace TeamOne.EvolvedSurvivor
             {
                 if (el.Value > 0)
                 {
-                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[el.Key]));
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
                 }
             }
+        }
+
+        protected override float DebuffTraitsForMerging(Ability other)
+        {
+            return 0f;
+        }
+
+        protected override TraitChart CreateTraitChartForMerging(float pointsToAssign, bool isSameType)
+        {
+            TraitChart newChart = new TraitChart(traitChart);
+            float pointsPerTrait = pointsToAssign / 5f;
+            newChart.CombineWith(new TraitChart(pointsPerTrait, pointsPerTrait, pointsPerTrait, pointsPerTrait, pointsPerTrait));
+            return newChart;
+        }
+
+        protected override void HandleRecursive()
+        {
+            Activate();
+            Deactivate();
         }
     }
 }
