@@ -77,6 +77,13 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        public void ResetEffects()
+        {
+            isDamageDisabled = false;
+            damageDisabledDurationRemaining = 0;
+            StopAllCoroutines();
+        }
+
         /// <summary>
         /// Processes the out going damage
         /// </summary>

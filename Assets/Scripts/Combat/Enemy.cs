@@ -1,4 +1,6 @@
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using System.Collections;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -13,6 +15,8 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected DamageHandler damageHandler;
         [SerializeField] protected DamageArea damageArea;
         [SerializeField] protected Health health;
+        [SerializeField] protected CharacterMovement movement;
+        [SerializeField] protected AIBrain aiBrain;
 
         [Header("Spawn manager")]
         [SerializeField] private SpawnManagerScriptableObject spawnManager;
@@ -20,11 +24,31 @@ namespace TeamOne.EvolvedSurvivor
         protected void OnEnable()
         {
             this.health.Revive();
+            damageHandler.ResetEffects();
         }
 
         protected void OnDisable()
         {
             spawnManager.OnEnemyDespawn(this.gameObject);
+        }
+
+        public void FreezeForDuration(float duration)
+        {
+            damageHandler.DisableOutgoingDamageForDuration(duration);
+            movement.ApplyMovementMultiplier(0, duration);
+            aiBrain.BrainActive = false;
+            StartCoroutine(EnableBrainAfterDuration(duration));
+        }
+
+        public void SlowForDuration(float magnitude,float duration)
+        {
+            movement.ApplyMovementMultiplier(magnitude, duration);
+        }
+
+        IEnumerator EnableBrainAfterDuration(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            aiBrain.BrainActive = true;
         }
 
         public virtual void ScaleStats(float timePassed)

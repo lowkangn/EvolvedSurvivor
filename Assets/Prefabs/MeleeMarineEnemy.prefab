@@ -5476,7 +5476,7 @@ MonoBehaviour:
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   BrainActive: 1
   ResetBrainOnStart: 1
-  ResetBrainOnEnable: 0
+  ResetBrainOnEnable: 1
   ActionsFrequency: 0
   DecisionFrequency: 0
   RandomizeFrequencies: 0
@@ -5724,7 +5724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDurationAfterTakingDamage: 0
-  damageMultiplier: 1
 --- !u!114 &-6019659113267063078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5754,6 +5753,8 @@ MonoBehaviour:
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
+  movement: {fileID: 7751080476582257864}
+  aiBrain: {fileID: 7751210001397076598}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
 --- !u!1 &7639620610091389554
 GameObject:

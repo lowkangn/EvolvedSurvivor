@@ -16,7 +16,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public override void Apply(GameObject target, Damage damage)
         {
-            target.GetComponent<CharacterMovement>().ApplyMovementMultiplier(magnitude, duration);
+            target.GetComponent<Enemy>().SlowForDuration(magnitude, duration);
         }
     }
 }
