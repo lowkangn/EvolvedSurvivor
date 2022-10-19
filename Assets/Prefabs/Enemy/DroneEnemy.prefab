@@ -790,6 +790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Label: 
   offset: {x: 0, y: 0, z: 0}
+  boxcastWidth: 1
+  boxcastHeight: 1
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -944,7 +946,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDurationAfterTakingDamage: 0
-  damageMultiplier: 1
 --- !u!114 &5729126716184588717
 MonoBehaviour:
   m_ObjectHideFlags: 0

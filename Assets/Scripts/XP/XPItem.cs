@@ -40,7 +40,7 @@ namespace MoreMountains.TopDownEngine
         /// <param name="collider">Other.</param>
         public override void OnTriggerEnter2D(Collider2D collider)
         {
-			GameObject playerObj = collider.gameObject.transform.parent.gameObject;
+			GameObject playerObj = collider.gameObject;
 			_collidingObject = playerObj;
             PickItem(playerObj);
         }

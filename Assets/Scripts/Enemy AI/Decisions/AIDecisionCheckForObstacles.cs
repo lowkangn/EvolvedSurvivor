@@ -6,6 +6,8 @@ using UnityEngine;
 public class AIDecisionCheckForObstacles : AIDecision
 {
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float boxcastWidth = 1f;
+    [SerializeField] private float boxcastHeight = 1f;
 
     [Tooltip("the layer to consider as obstacles (will prevent movement)")]
     public LayerMask ObstaclesLayerMask = LayerManager.ObstaclesLayerMask;
@@ -29,7 +31,7 @@ public class AIDecisionCheckForObstacles : AIDecision
 
         Vector3 rayCastOriginPoint = this.transform.position + offset;
         Vector3 frontDirection = Vector3.Normalize(_brain.Target.position - this.transform.position);
-        RaycastHit2D hit = MMDebug.BoxCast(rayCastOriginPoint, new Vector2(1f, 1f), 0f, frontDirection, 3f, ObstaclesLayerMask, Color.yellow, true);
+        RaycastHit2D hit = MMDebug.BoxCast(rayCastOriginPoint, new Vector2(boxcastWidth, boxcastHeight), 0f, frontDirection, 3f, ObstaclesLayerMask, Color.yellow, true);
 
         if (hit.collider != null)
         {

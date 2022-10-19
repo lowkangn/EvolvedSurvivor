@@ -71,8 +71,8 @@ MonoBehaviour:
   - 2
   - 2
   damage:
-    minValue: 4
-    maxValue: 15
+    minValue: 3
+    maxValue: 12
     value: 0
   duration:
     minValue: 1.5

@@ -430,11 +430,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.625}
-  m_Size: {x: 0.89, y: 1.6}
+  m_Offset: {x: -0.05, y: 0.675}
+  m_Size: {x: 0.9, y: 2.1}
   m_Direction: 0
 --- !u!50 &3529223580954060387
 Rigidbody2D:
@@ -487,7 +487,7 @@ MonoBehaviour:
   UseDefaultMecanim: 1
   RunAnimatorSanityChecks: 0
   DisableAnimatorLogs: 1
-  CharacterModel: {fileID: 7639620610091389554}
+  CharacterModel: {fileID: 7639002971553439240}
   CharacterHealth: {fileID: 7750977142303885208}
   SendStateChangeEvents: 1
   AdditionalAbilityNodes: []
@@ -588,7 +588,7 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 3.5
+  WalkSpeed: 4
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -788,7 +788,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: 
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.3, z: 0}
+  boxcastWidth: 1
+  boxcastHeight: 1.5
   ObstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1036,8 +1038,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.5}
+  m_Offset: {x: -0.05, y: 0.05}
+  m_Size: {x: 0.8, y: 2}
   m_Direction: 0
 --- !u!1 &7932186192500545181
 GameObject:
@@ -1160,7 +1162,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1628993071645316344}
   Mode: 0
   PropertyName: _Tint
   FlickerDuration: 0.2
