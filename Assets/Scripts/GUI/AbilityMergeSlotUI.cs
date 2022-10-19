@@ -39,7 +39,7 @@ public class AbilityMergeSlotUI : AbilityButton
         if (this.isEmpty) {
             this.textObj.text = TIP_MERGE_INSTRUCTION;
         } else {
-            this.textObj.text = ability.GetAbilityName();
+            this.textObj.text = ability.GetName();
             this.detailedTextObj.text = ability.GetDescription(); // Detailed View
 
             // Radar chart labels

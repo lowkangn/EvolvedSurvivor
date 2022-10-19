@@ -8,6 +8,9 @@ namespace TeamOne.EvolvedSurvivor
     {
         public float invincibilityDurationAfterTakingDamage;
 
+        private float incomingDamageMultiplier = 1f;
+        private float outgoingDamageMultiplier = 1f;
+
         private Health health;
 
         private void Start()
@@ -17,7 +20,11 @@ namespace TeamOne.EvolvedSurvivor
 
         public void ProcessIncomingDamage(Damage damage)
         {
-            // TODO: Process damage reduction, force application, debuffs, etc
+            // TODO: Process force application, debuffs, etc
+
+            // Apply damage reduction
+            damage.damage *= incomingDamageMultiplier;
+
             foreach (StatusEffect effect in damage.effects)
             {
                 effect.Apply(gameObject, damage);
@@ -52,11 +59,27 @@ namespace TeamOne.EvolvedSurvivor
         /// <returns>The actual damage</returns>
         public Damage ProcessOutgoingDamage(Damage damage)
         {
-            // TODO: Process passive abilities such as Global Damage Up
+            // Apply damage multiplier (global damage up)
+            damage.damage *= outgoingDamageMultiplier;
 
             damage.instigator = gameObject;
 
             return damage;
+        }
+
+        public void SetInvicibilityDuration(float newDuration)
+        {
+            invincibilityDurationAfterTakingDamage = newDuration;
+        }
+
+        public void SetIncomingDamageMultiplier(float newMultiplier)
+        {
+            incomingDamageMultiplier = newMultiplier;
+        }
+
+        public void SetOutgoingDamageMultiplier(float newMultiplier)
+        {
+            outgoingDamageMultiplier = newMultiplier;
         }
     }
 }
