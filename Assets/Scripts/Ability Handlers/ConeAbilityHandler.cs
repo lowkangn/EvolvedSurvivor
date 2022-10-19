@@ -9,7 +9,7 @@ namespace TeamOne.EvolvedSurvivor
         private ParticleSystem particles;
         private bool isRotating = false;
 
-        private readonly float rateOverTime = 5f;
+        private readonly float rateOverTime = 20f;
         private float rotationSpeed = 120f;
         
         private void OnEnable()
