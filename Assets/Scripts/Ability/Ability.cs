@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public abstract class Ability : MonoBehaviour
+    public abstract class Ability : MonoBehaviour, Upgradable
     {
         private readonly int maxTier = 10;
         protected readonly float buffFactor = 0.2f;
@@ -50,6 +50,8 @@ namespace TeamOne.EvolvedSurvivor
 
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
+
+        protected float coolDownMultiplier = 1f;
 
         /// <summary>
         /// Uses the trait chart to define the behaviours of the ability. 
@@ -151,7 +153,7 @@ namespace TeamOne.EvolvedSurvivor
                 if (coolDownTimer <= 0f)
                 {
                     Activate();
-                    coolDownTimer = coolDown.value;
+                    coolDownTimer = coolDown.value * this.coolDownMultiplier;
                 }
             }
         }
@@ -258,7 +260,7 @@ namespace TeamOne.EvolvedSurvivor
             isActive = false;
         }
 
-        public string GetAbilityName()
+        public string GetName()
         {
             return $"Level {tier} {abilityName}\n";
         }
@@ -266,6 +268,21 @@ namespace TeamOne.EvolvedSurvivor
         public string GetDescription()
         {
             return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+        }
+
+        public void SetCoolDownMultiplier(float multiplier)
+        {
+            this.coolDownMultiplier = multiplier;
+        }
+
+        public bool IsAbility()
+        {
+            return true;
+        }
+
+        public bool IsPassiveAbility()
+        {
+            return false;
         }
 
         protected void AddRecursiveAbility(Ability recursiveAbility)
