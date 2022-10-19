@@ -8570,7 +8570,7 @@ MonoBehaviour:
   - enemyObject: {fileID: 7639002971553439240, guid: 8c96b7bd1519d864eb272c351ae82d24,
       type: 3}
     currentCount: 0
-    spawnLimit: 0
+    spawnLimit: 1
     cost: 10
     limitScalingFactor: 0.025
   - enemyObject: {fileID: 7639002971553439240, guid: fe0f7a2b8e0bfb448ba934e7e31c6627,
@@ -8582,7 +8582,7 @@ MonoBehaviour:
   - enemyObject: {fileID: 7639002971553439240, guid: a6bab9f27b6ef864596d7b3e7da3f2a2,
       type: 3}
     currentCount: 0
-    spawnLimit: 10
+    spawnLimit: 0
     cost: 1
     limitScalingFactor: 0.05
   - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,

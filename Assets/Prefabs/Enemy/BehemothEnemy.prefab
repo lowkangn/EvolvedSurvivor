@@ -437,8 +437,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.425}
-  m_Size: {x: 3.95, y: 1.3}
+  m_Offset: {x: 0.1, y: 0.175}
+  m_Size: {x: 5.1, y: 1.6}
   m_Direction: 1
 --- !u!70 &8907685614294986085
 CapsuleCollider2D:
@@ -450,11 +450,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.8, y: 1.575}
-  m_Size: {x: 1.6, y: 1.1}
+  m_Offset: {x: 1.1, y: 1.675}
+  m_Size: {x: 2, y: 1.5}
   m_Direction: 1
 --- !u!61 &3599503970345044952
 BoxCollider2D:
@@ -469,7 +469,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6, y: 1.75}
+  m_Offset: {x: -0.75, y: 1.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -480,7 +480,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.35}
+  m_Size: {x: 2.1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &3529223580954060387
 Rigidbody2D:
@@ -533,7 +533,7 @@ MonoBehaviour:
   UseDefaultMecanim: 1
   RunAnimatorSanityChecks: 0
   DisableAnimatorLogs: 1
-  CharacterModel: {fileID: 7639620610091389554}
+  CharacterModel: {fileID: 7639002971553439240}
   CharacterHealth: {fileID: 7750977142303885208}
   SendStateChangeEvents: 1
   AdditionalAbilityNodes: []
@@ -1146,8 +1146,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
-  m_Size: {x: 3.85, y: 1.2}
+  m_Offset: {x: 0.1, y: -0.45}
+  m_Size: {x: 5, y: 1.5}
   m_Direction: 1
 --- !u!70 &112028189011523156
 CapsuleCollider2D:
@@ -1162,8 +1162,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.8, y: 0.95}
-  m_Size: {x: 1.5, y: 1}
+  m_Offset: {x: 1.1, y: 1.05}
+  m_Size: {x: 1.9, y: 1.4}
   m_Direction: 1
 --- !u!1 &7932186192500545181
 GameObject:
