@@ -11,11 +11,27 @@ namespace TeamOne.EvolvedSurvivor
         private float incomingDamageMultiplier = 1f;
         private float outgoingDamageMultiplier = 1f;
 
+        private bool isDamageDisabled = false;
+
+        private float damageDisabledDurationRemaining = 0f;
+
         private Health health;
 
         private void Start()
         {
             health = GetComponent<Health>();
+        }
+
+        private void Update()
+        {
+            if (isDamageDisabled)
+            {
+                damageDisabledDurationRemaining -= Time.deltaTime;
+                if (damageDisabledDurationRemaining <= 0)
+                {
+                    isDamageDisabled = false;
+                }
+            }
         }
 
         public void ProcessIncomingDamage(Damage damage)
@@ -40,7 +56,7 @@ namespace TeamOne.EvolvedSurvivor
             StartCoroutine(DamageOverTimeCoroutine(damage, ticks, tickRate));
         }
 
-        IEnumerator DamageOverTimeCoroutine(Damage damage, int ticks, float tickRate)
+        private IEnumerator DamageOverTimeCoroutine(Damage damage, int ticks, float tickRate)
         {
             int ticksRemaining = ticks;
 
@@ -52,6 +68,15 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        public void DisableOutgoingDamageForDuration(float duration)
+        {
+            isDamageDisabled = true;
+            if (damageDisabledDurationRemaining < duration)
+            {
+                damageDisabledDurationRemaining = duration;
+            }
+        }
+
         /// <summary>
         /// Processes the out going damage
         /// </summary>
@@ -59,8 +84,15 @@ namespace TeamOne.EvolvedSurvivor
         /// <returns>The actual damage</returns>
         public Damage ProcessOutgoingDamage(Damage damage)
         {
-            // Apply damage multiplier (global damage up)
-            damage.damage *= outgoingDamageMultiplier;
+            if (isDamageDisabled)
+            {
+                damage.damage = 0;
+            }
+            else
+            {
+                // Apply damage multiplier (global damage up)
+                damage.damage *= outgoingDamageMultiplier;
+            }
 
             damage.instigator = gameObject;
 

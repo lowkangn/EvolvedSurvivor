@@ -16,9 +16,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public override void Apply(GameObject target, Damage damage)
         {
-            target.GetComponent<Character>().Freeze();
-            // TODO: Replace with new damageontouch script when avail
-            // target.GetComponent<DamageOnTouch>().enabled = false;
+            target.GetComponent<DamageHandler>().DisableOutgoingDamageForDuration(duration);
             target.GetComponent<CharacterMovement>().ApplyMovementMultiplier(0, duration);
         }
     }
