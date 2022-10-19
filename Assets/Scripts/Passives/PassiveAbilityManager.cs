@@ -51,7 +51,7 @@ namespace TeamOne.EvolvedSurvivor
                     if (!maxedOutAbilities[currentIndex])
                     {
                         PassiveAbility passiveAbilityCopy = Instantiate(abilities[currentIndex]);
-                        passiveAbilityCopy.Upgrade();
+                        passiveAbilityCopy.UpgradeForPreview();
                         return passiveAbilityCopy;
                     }
                 }

@@ -96,6 +96,8 @@ public class LevelUpScreenManager : MonoBehaviour
             this.currentAbilities[nextAbilityIndex].RemoveAbility();
         }
 
+        this.currentPassiveAbilities[nextPassiveAbilityIndex].RemoveAbility();
+
         this.addAbilityMenu.SetActive(false);
         this.mergeAbilityMenu.SetActive(true);
 
