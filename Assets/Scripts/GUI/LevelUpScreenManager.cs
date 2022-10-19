@@ -20,13 +20,16 @@ public class LevelUpScreenManager : MonoBehaviour
     [SerializeField] private LevelUpHeaderButton mergeAbilityHeaderButton;
 
     [SerializeField] private CurrentAbilityUI[] currentAbilities;
+    [SerializeField] private CurrentPassiveAbilityUI[] currentPassiveAbilities;
 
     [Header("Action handlers")]
-    [SerializeField] private AddAbilityHandler addAbilityHandler;
+    [SerializeField] private AddUpgradableHandler addUpgradableHandler;
     [SerializeField] private MergeAbilityHandler mergeAbilityHandler;
 
     private AbilityManager abilityManager;
+    private PassiveAbilityManager passiveAbilityManager;
     private int nextAbilityIndex = 0;
+    private int nextPassiveAbilityIndex = 0;
     private int maxAbilityCount;
     private bool wasLoadedBefore = false;
 
@@ -36,12 +39,14 @@ public class LevelUpScreenManager : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         this.abilityManager = player.GetComponentInChildren<AbilityManager>();
+        this.passiveAbilityManager = player.GetComponentInChildren<PassiveAbilityManager>();
     }
 
     private void OnEnable()
     {
-        RefreshCurrentAbilities();
+        RefreshCurrentUpgradables();
 
+        // TODO: should stay on add ability if passives not maximised?
         if (this.nextAbilityIndex >= this.maxAbilityCount)
         {
             SwitchToMergeMenu();
@@ -84,7 +89,7 @@ public class LevelUpScreenManager : MonoBehaviour
             currentAbility.EnableButton();
         }
 
-        this.addAbilityHandler.ClearCurrentSelectedAbility();
+        this.addUpgradableHandler.ClearCurrentSelectedUpgradable();
 
         if (nextAbilityIndex < maxAbilityCount)
         {
@@ -110,7 +115,12 @@ public class LevelUpScreenManager : MonoBehaviour
         }  
     }
 
-    private void RefreshCurrentAbilities()
+    public void AddNewPassiveAbility(PassiveAbility passiveAbility)
+    {
+        this.currentPassiveAbilities[nextPassiveAbilityIndex].AddPassiveAbilityToButton(passiveAbility);
+    }
+
+    public void RefreshCurrentUpgradables()
     {
         foreach (CurrentAbilityUI currentAbility in currentAbilities)
         {
@@ -124,5 +134,18 @@ public class LevelUpScreenManager : MonoBehaviour
             currentAbilities[i].AddAbilityToButton(abilities[i]);   
         }
         nextAbilityIndex = abilities.Count;
+
+        foreach (CurrentPassiveAbilityUI currentPassiveAbility in currentPassiveAbilities)
+        {
+            currentPassiveAbility.RemoveUpgradable();
+        }
+
+        List<PassiveAbility> passiveAbilities = passiveAbilityManager.GetActiveAbilities();
+
+        for (int i = 0; i < passiveAbilities.Count; i++)
+        {
+            currentPassiveAbilities[i].AddPassiveAbilityToButton(passiveAbilities[i]);
+        }
+        nextPassiveAbilityIndex = passiveAbilities.Count;
     }
 }

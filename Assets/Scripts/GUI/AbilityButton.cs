@@ -4,11 +4,9 @@ using UnityEngine.EventSystems;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public abstract class AbilityButton : UpgradableButton
     {
-        [SerializeField] protected Text textObj;
-        [SerializeField] protected Text detailedTextObj;
-        [SerializeField] protected Image abilityImage;
+        
         [SerializeField] protected Ability ability;
         [SerializeField] protected RadarChartUI radarChart;
         [SerializeField] protected Text rcDamageText;
@@ -17,30 +15,18 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected Text rcQuantityText;
         [SerializeField] protected Text rcUtilityText;
 
-        protected bool isEmpty = true;
-
-        public bool IsEmpty()
-        {
-            return this.isEmpty;
-        }
-
         public virtual void AddAbilityToButton(Ability ability)
         {
-
+            base.AddUpgradableToButton(ability);
             this.ability = ability;
-            this.abilityImage.gameObject.SetActive(true);
-            this.abilityImage.sprite = ability.GetSprite();
-            this.isEmpty = false;
         }
 
-        public abstract void OnPointerClick(PointerEventData eventData);
-
         // Detect if the Cursor starts to pass over the button
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData eventData)
         {
-            if (!IsEmpty())
+            if (!isEmpty)
             {
-                this.textObj.text = ability.GetAbilityName();
+                this.textObj.text = ability.GetName();
                 // Detailed view
                 this.detailedTextObj.text = ability.GetDescription();
 
@@ -61,7 +47,7 @@ namespace TeamOne.EvolvedSurvivor
         }
 
         // Detect when Cursor leaves the button
-        public virtual void OnPointerExit(PointerEventData eventData)
+        public override void OnPointerExit(PointerEventData eventData)
         {
             this.textObj.text = "";
             this.detailedTextObj.text = "";
@@ -79,10 +65,8 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (!this.isEmpty)
             {
-                this.isEmpty = true;
+                base.RemoveUpgradable();
                 this.ability = null;
-                this.abilityImage.sprite = null;
-                this.abilityImage.gameObject.SetActive(false);
             }
         }
     }
