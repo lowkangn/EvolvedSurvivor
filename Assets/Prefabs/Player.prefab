@@ -6273,32 +6273,32 @@ PrefabInstance:
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthMultipliers.Array.data[1]
-      value: 1.25
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthMultipliers.Array.data[2]
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthMultipliers.Array.data[3]
-      value: 2
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthRegeneratedPerSecond.Array.data[1]
-      value: 2.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthRegeneratedPerSecond.Array.data[2]
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
       propertyPath: healthRegeneratedPerSecond.Array.data[3]
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4465278661312720098, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
@@ -6406,17 +6406,17 @@ PrefabInstance:
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: damageReductionMultipliers.Array.data[1]
-      value: 0.8
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: damageReductionMultipliers.Array.data[2]
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: damageReductionMultipliers.Array.data[3]
-      value: 0.4
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
@@ -6426,17 +6426,17 @@ PrefabInstance:
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: invincibilityDurationMultipliers.Array.data[1]
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: invincibilityDurationMultipliers.Array.data[2]
-      value: 2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: invincibilityDurationMultipliers.Array.data[3]
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4694282257235143126, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
@@ -6646,17 +6646,17 @@ PrefabInstance:
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: speedMultipliers.Array.data[1]
-      value: 1.5
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: speedMultipliers.Array.data[2]
-      value: 2
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: speedMultipliers.Array.data[3]
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
@@ -6666,17 +6666,17 @@ PrefabInstance:
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: radiusMultipliers.Array.data[1]
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: radiusMultipliers.Array.data[2]
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
       propertyPath: radiusMultipliers.Array.data[3]
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5561057509657813192, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
@@ -6784,17 +6784,17 @@ PrefabInstance:
     - target: {fileID: -631450276961324712, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
         type: 3}
       propertyPath: coolDownMultipliers.Array.data[1]
-      value: 0.8
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: -631450276961324712, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
         type: 3}
       propertyPath: coolDownMultipliers.Array.data[2]
-      value: 0.6
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -631450276961324712, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
         type: 3}
       propertyPath: coolDownMultipliers.Array.data[3]
-      value: 0.4
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 6758470308554355874, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
         type: 3}
@@ -6902,17 +6902,17 @@ PrefabInstance:
     - target: {fileID: -2131156940258604149, guid: 196e53cbe98464e09957ae187c72596d,
         type: 3}
       propertyPath: damageMultipliers.Array.data[1]
-      value: 1.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -2131156940258604149, guid: 196e53cbe98464e09957ae187c72596d,
         type: 3}
       propertyPath: damageMultipliers.Array.data[2]
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -2131156940258604149, guid: 196e53cbe98464e09957ae187c72596d,
         type: 3}
       propertyPath: damageMultipliers.Array.data[3]
-      value: 2.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3501040088986026848, guid: 196e53cbe98464e09957ae187c72596d,
         type: 3}
