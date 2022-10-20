@@ -48,14 +48,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f731654c4eebe94bb594bc6451f2b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Laser
+  abilityName: Atomisation Beam
   activateOnlyOnce: 0
   coolDown:
     minValue: 3
     maxValue: 5
     value: 0
+  traitChart:
+    damage: 0
+    uptime: 0
+    aoe: 0
+    quantity: 0
+    utility: 0
   hasBuilt: 0
-  abilitySprite: {fileID: 21300008, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
+  abilitySprite: {fileID: 21300000, guid: 43af5ff830f096c4fb9c33be45087a61, type: 3}
   recursiveAbilityObjectPool: {fileID: -573954469558076811}
   projectileObjectPool: {fileID: 4806899296850615395}
   elementMagnitudes:
@@ -65,20 +71,20 @@ MonoBehaviour:
   - 2
   - 2
   damage:
-    minValue: 6
-    maxValue: 60
+    minValue: 3
+    maxValue: 12
     value: 0
   duration:
-    minValue: 3
+    minValue: 1.5
     maxValue: 3
     value: 0
   laserNumber:
-    minValue: 3
-    maxValue: 6
+    minValue: 1
+    maxValue: 4
     value: 0
   projectileSize:
-    minValue: 0.5
-    maxValue: 1.5
+    minValue: 0.3
+    maxValue: 0.8
     value: 0
   laserSpawnInterval: 0.5
   targetDetector: {fileID: 5966531427914174062}

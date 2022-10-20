@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public class Projectile : RecursableDamageArea
     {
-        private Vector3 motion;
+        protected Vector3 motion;
+        protected float speed;
 
         public void SetMotion(Vector2 motion)
         {
-            this.motion = motion;
-            transform.up = motion.normalized;
+            this.speed = motion.magnitude;
+            this.motion = motion.normalized;
+            transform.up = this.motion;
         }
 
         protected override void Update()
         {
             base.Update();
-            transform.position += motion * Time.deltaTime;
+            transform.position += motion * speed * Time.deltaTime;
         }
     }
 }

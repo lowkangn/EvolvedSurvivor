@@ -65,5 +65,10 @@ namespace TeamOne.EvolvedSurvivor
             return true;
         }
 
+        public virtual void UpgradeForPreview()
+        {
+            currentTier++;
+        }
+
     }
 }

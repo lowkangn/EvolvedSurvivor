@@ -10,15 +10,19 @@ public class EnemySpawnData
 {
     public GameObject enemyObject;
 
-    public int currentCount;
+    private int currentCount;
     public float spawnLimit;
     public int cost;
+    public float spawnAfterSeconds;
 
     public float limitScalingFactor;
 
-    public void UpdateLimit(float deltaTime)
+    public void UpdateLimit(float currentTime, float deltaTime)
     {
-        spawnLimit += limitScalingFactor * deltaTime;
+        if (currentTime >= spawnAfterSeconds)
+        {
+            spawnLimit += deltaTime * limitScalingFactor;
+        }
     }
 
     public bool CanSpawn(float pointsLeft)
@@ -31,6 +35,11 @@ public class EnemySpawnData
         currentCount++;
         return enemyObject.name;
     }
+
+    public void OnDeath()
+    {
+        currentCount--;
+    }
 }
 
 public class EnemySpawner : MonoBehaviour
@@ -39,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemySpawnData> enemies;
     [SerializeField] private NonRandomObjectPooler objectPooler;
 
-    [SerializeField] private float spendingPointsGainRate = 0.05f;
+    [SerializeField] private float spendingPointsGainRate = 0.1f;
     [SerializeField] private float minSpawnFreq = 0.2f;
     [SerializeField] private float maxSpawnFreq = 1f;
     [SerializeField] private float spawnRadius = 20f;
@@ -82,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (EnemySpawnData enemy in enemies)
         {
-            enemy.UpdateLimit(Time.deltaTime);
+            enemy.UpdateLimit(timePassed, Time.deltaTime);
         }
     }
 
@@ -146,6 +155,6 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemySpawnData enemy = enemies.Find(e => e.enemyObject.name == enemyObject.name);
         spendingPoints += enemy.cost;
-        enemy.currentCount--;
+        enemy.OnDeath();
     }
 }

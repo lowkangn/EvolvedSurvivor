@@ -16,6 +16,8 @@ namespace TeamOne.EvolvedSurvivor
         private float timeBeforeHeal;
         private float timer = 0;
 
+        private bool isPreview;
+
         void Start()
         {
             baseHealth = health.MaximumHealth;
@@ -30,7 +32,7 @@ namespace TeamOne.EvolvedSurvivor
 
         void Update()
         {
-            if (currentTier > 0 && health.CurrentHealth < health.MaximumHealth)
+            if (currentTier > 0 && health.CurrentHealth < health.MaximumHealth && !isPreview)
             {
                 timer += Time.deltaTime;
                 if (timer > timeBeforeHeal)
@@ -40,6 +42,12 @@ namespace TeamOne.EvolvedSurvivor
                 }
 
             }
+        }
+
+        public override void UpgradeForPreview()
+        {
+            currentTier++;
+            isPreview = true;
         }
 
         protected override string GetStatsDescription()
