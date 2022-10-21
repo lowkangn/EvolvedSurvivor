@@ -64,10 +64,5 @@ namespace TeamOne.EvolvedSurvivor
         {
             return damage + uptime + aoe + quantity + utility;
         }
-        
-        public string GetStatsDescription()
-        {
-            return $"Damage: {damage:0.0}\nUptime: {uptime:0.0}\nAOE: {aoe:0.0}\nQuantity: {quantity:0.0}\nUtility: {utility:0.0}\n";
-        }
     }
 }

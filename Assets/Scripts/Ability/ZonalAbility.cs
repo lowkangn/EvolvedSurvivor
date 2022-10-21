@@ -140,5 +140,10 @@ namespace TeamOne.EvolvedSurvivor
             Activate();
             Deactivate();
         }
+
+        public override string GetDetails()
+        {
+            return "area of miasma!";
+        }
     }
 }

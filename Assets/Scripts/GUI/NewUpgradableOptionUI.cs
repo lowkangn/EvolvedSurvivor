@@ -4,12 +4,10 @@ using UnityEngine.EventSystems;
 namespace TeamOne.EvolvedSurvivor
 {
     // This class is added to the New Upgradables on the Level Up screen
-    public class NewUpgradableOptionUI : UpgradableButton
+    public class NewUpgradableOptionUI : UpgradableButton<Upgradable>
     {
         [SerializeField] private LevelUpScreenManager levelUpManager;
         [SerializeField] private AddUpgradableHandler addUpgradableHandler;
-
-        [SerializeField] private RadarChartUI radarChart;
 
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
@@ -33,18 +31,6 @@ namespace TeamOne.EvolvedSurvivor
             }
             
             this.addUpgradableHandler.SetCurrentSelectedUpgradable(upgradable);
-        }
-
-        // Detect if the Cursor starts to pass over the button
-        public override void OnPointerEnter(PointerEventData eventData)
-        {
-            if (!IsEmpty())
-            {
-                this.textObj.text = upgradable.GetName();
-                this.detailedTextObj.text = upgradable.GetDescription();
-            }
-
-            radarChart.UpdateVisual(upgradable);
         }
 
         // Detect when Cursor leaves the button

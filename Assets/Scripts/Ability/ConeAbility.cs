@@ -175,5 +175,10 @@ namespace TeamOne.EvolvedSurvivor
             cone.SetRotating(false);
             base.Deactivate();
         }
+
+        public override string GetDetails()
+        {
+            return "cone of gas!";
+        }
     }
 }

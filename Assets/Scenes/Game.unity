@@ -2526,7 +2526,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 160821665}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}
@@ -2944,7 +2944,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 834981826}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &500041697
@@ -3970,9 +3970,9 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1861653865}
+  radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
-  radarChart: {fileID: 2097723811}
 --- !u!1 &719450116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,7 +5261,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1581629303}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &869837728
@@ -5601,9 +5601,8 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1976536989}
-  passiveAbility: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
-  notAvailableBox: {fileID: 643753684}
 --- !u!1 &878279747
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,7 +7660,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1505158951}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}
@@ -7942,7 +7941,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 948614579}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &1239997263
@@ -8467,9 +8466,9 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 466703919}
+  radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
-  radarChart: {fileID: 2097723811}
 --- !u!1 &1342388432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,7 +8600,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1586675571}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &1362044256
@@ -9056,7 +9055,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 576888323}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &1418745229
@@ -9811,9 +9810,8 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 931278488}
-  passiveAbility: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
-  notAvailableBox: {fileID: 643753684}
 --- !u!1 &1457072259
 GameObject:
   m_ObjectHideFlags: 0
@@ -11306,9 +11304,8 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1367513301}
-  passiveAbility: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
-  notAvailableBox: {fileID: 643753684}
 --- !u!1 &1666445599
 GameObject:
   m_ObjectHideFlags: 0
@@ -11511,9 +11508,8 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1954754644}
-  passiveAbility: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
-  notAvailableBox: {fileID: 643753684}
 --- !u!1 &1687524763
 GameObject:
   m_ObjectHideFlags: 0
@@ -12018,9 +12014,9 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 719450117}
+  radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
-  radarChart: {fileID: 2097723811}
 --- !u!1 &1828941779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12345,7 +12341,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 1257313962}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
 --- !u!114 &1903983889
@@ -13628,9 +13624,8 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 316992478}
-  passiveAbility: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
-  notAvailableBox: {fileID: 643753684}
 --- !u!1 &2131217536
 GameObject:
   m_ObjectHideFlags: 0
@@ -13769,9 +13764,9 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 930524857}
+  radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
-  radarChart: {fileID: 2097723811}
 --- !u!1 &2136864057
 GameObject:
   m_ObjectHideFlags: 0
@@ -13848,7 +13843,7 @@ MonoBehaviour:
   textObj: {fileID: 495526541}
   detailedTextObj: {fileID: 1386435135}
   upgradableImage: {fileID: 964518613}
-  ability: {fileID: 0}
+  upgradable: {fileID: 0}
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}

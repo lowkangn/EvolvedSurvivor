@@ -24,9 +24,10 @@ namespace TeamOne.EvolvedSurvivor
             damageHandler.invincibilityDurationAfterTakingDamage = baseInvincibilityDuration * invincibilityDurationMultipliers[currentTier];
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
-            return "Incoming Damage Reduction: " + damageReductionMultipliers[currentTier] + "x\nInvincibility Duration Up: " + invincibilityDurationMultipliers[currentTier] + "x\n";
+            return "Incoming Damage Reduction: " + damageReductionMultipliers[currentTier] + "x\nInvincibility Duration Up: " 
+                + invincibilityDurationMultipliers[currentTier] + "x\n";
         }
     }
 }

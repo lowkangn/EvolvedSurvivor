@@ -142,5 +142,10 @@ namespace TeamOne.EvolvedSurvivor
                 quantityRatio / sum * pointsToAssign,
                 utilityRatio / sum * pointsToAssign + utilityBuff);
         }
+
+        public override string GetDetails()
+        {
+            return "spinning balls!";
+        }
     }
 }

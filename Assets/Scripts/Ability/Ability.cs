@@ -10,9 +10,11 @@ namespace TeamOne.EvolvedSurvivor
         private readonly int maxTier = 10;
         protected readonly float buffFactor = 0.2f;
         protected readonly float debuffFactor = 0.2f;
-        
+     
         public string AbilityName => abilityName;
+
         [SerializeField] private string abilityName;
+        [SerializeField] private string abilityDescription;
 
         [Header("Whether this ability will be always activated while it is active")]
         [SerializeField]
@@ -267,8 +269,10 @@ namespace TeamOne.EvolvedSurvivor
 
         public string GetDescription()
         {
-            return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+            return abilityDescription;
         }
+
+        public abstract string GetDetails();
 
         public void SetCoolDownMultiplier(float multiplier)
         {

@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using MoreMountains.Tools;
-using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -139,6 +136,11 @@ namespace TeamOne.EvolvedSurvivor
         {
             Activate();
             Deactivate();
+        }
+
+        public override string GetDetails()
+        {
+            return "explosion!";
         }
     }
 }

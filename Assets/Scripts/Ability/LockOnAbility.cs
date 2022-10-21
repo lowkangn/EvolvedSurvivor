@@ -117,5 +117,10 @@ namespace TeamOne.EvolvedSurvivor
                 quantityRatio / sum * pointsToAssign,
                 utilityRatio / sum * pointsToAssign);
         }
+
+        public override string GetDetails()
+        {
+            return "lightning!";
+        }
     }
 }

@@ -22,7 +22,7 @@ public class AbilityMergeSlotUI : AbilityButton
     {
         if (!this.isEmpty)
         {
-            this.sourceSlot.AddAbilityToButton(this.ability);
+            this.sourceSlot.AddAbilityToButton(this.upgradable);
             this.RemoveAbility();
             this.mergeAbilityHandler.UpdateOutput();
         }
@@ -41,15 +41,12 @@ public class AbilityMergeSlotUI : AbilityButton
         } 
         else 
         {
-            this.textObj.text = ability.GetName();
-            this.detailedTextObj.text = ability.GetDescription(); // Detailed View
-
-            radarChart.UpdateVisual(ability);
+            base.OnPointerEnter(pointerEventData);
         }
     }
 
     public Ability GetAbility()
     {
-        return this.ability;
+        return this.upgradable;
     }
 }

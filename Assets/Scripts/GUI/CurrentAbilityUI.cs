@@ -21,9 +21,9 @@ public class CurrentAbilityUI : AbilityButton
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (this.isEnabled && this.ability != null)
+        if (this.isEnabled && this.upgradable != null)
         {
-            bool wasAdded = this.mergeAbilityHandler.AddAbility(ability, this);
+            bool wasAdded = this.mergeAbilityHandler.AddAbility(upgradable, this);
             
             if (wasAdded)
             {

@@ -16,7 +16,7 @@ namespace TeamOne.EvolvedSurvivor
             damageHandler.SetOutgoingDamageMultiplier(damageMultipliers[currentTier]);
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
             return "Outgoing Damage Up: " + damageMultipliers[currentTier] + "x\n";
         }

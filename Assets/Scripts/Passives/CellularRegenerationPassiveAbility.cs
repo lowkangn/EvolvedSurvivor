@@ -50,7 +50,7 @@ namespace TeamOne.EvolvedSurvivor
             isPreview = true;
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
             return "Max Health Up: " + healthMultipliers[currentTier] + "x\nRegeneration: +" + healthRegeneratedPerSecond[currentTier] + " Per Second\n";
         }

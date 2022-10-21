@@ -149,5 +149,10 @@ namespace TeamOne.EvolvedSurvivor
                 Invoke("Deactivate", duration.value);
             }
         }
+
+        public override string GetDetails()
+        {
+            return "laser!";
+        }
     }
 }
