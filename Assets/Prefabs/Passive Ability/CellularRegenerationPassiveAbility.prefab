@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67824a52bbad40debb9d008eca720f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTier: 0
   abilityName: Cellular Regeneration
+  currentTier: 0
+  abilitySprite: {fileID: 21300000, guid: 44809eafd459f0f42937725f65320fd0, type: 3}
   healthMultipliers:
   - 0
   - 0

@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7a9dd82eddf461cb33cdf6877b1059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTier: 0
   abilityName: Speed Tuning
+  currentTier: 0
+  abilitySprite: {fileID: 21300000, guid: 8786908c83f8e5f41acbec04a3d3685f, type: 3}
   speedMultipliers:
   - 0
   - 0
@@ -58,3 +59,4 @@ MonoBehaviour:
   - 0
   movement: {fileID: 0}
   pickupCollider: {fileID: 0}
+  pickupRingTransform: {fileID: 0}

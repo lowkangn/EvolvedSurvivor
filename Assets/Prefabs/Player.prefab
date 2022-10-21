@@ -6261,12 +6261,6 @@ PrefabInstance:
       objectReference: {fileID: 114171358364461030}
     - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
         type: 3}
-      propertyPath: abilitySprite
-      value: 
-      objectReference: {fileID: 21300014, guid: 082c310ac59e31e4886d543523aa015e,
-        type: 3}
-    - target: {fileID: 1980336356608417503, guid: c4bf776369ced44b0a9f7537a0f4e27e,
-        type: 3}
       propertyPath: healthMultipliers.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -6387,12 +6381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1751698317780099423}
     m_Modifications:
-    - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
-        type: 3}
-      propertyPath: abilitySprite
-      value: 
-      objectReference: {fileID: 21300016, guid: 082c310ac59e31e4886d543523aa015e,
-        type: 3}
     - target: {fileID: -6660982648234478586, guid: b69fe7ad4ba0a4e0fae6fb4c93556702,
         type: 3}
       propertyPath: damageHandler
@@ -6624,12 +6612,6 @@ PrefabInstance:
       objectReference: {fileID: 114184457958384624}
     - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
         type: 3}
-      propertyPath: abilitySprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 082c310ac59e31e4886d543523aa015e,
-        type: 3}
-    - target: {fileID: -291156157572761229, guid: b7df788ba128a4a62989a42a2c08ac67,
-        type: 3}
       propertyPath: pickupCollider
       value: 
       objectReference: {fileID: 3312981904210011062}
@@ -6767,12 +6749,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -631450276961324712, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
         type: 3}
-      propertyPath: abilitySprite
-      value: 
-      objectReference: {fileID: 21300002, guid: 082c310ac59e31e4886d543523aa015e,
-        type: 3}
-    - target: {fileID: -631450276961324712, guid: 76f6e17d3ac104779a77dfa32cc2e6b6,
-        type: 3}
       propertyPath: abilityManager
       value: 
       objectReference: {fileID: 5148277335872434588}
@@ -6883,12 +6859,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1751698317780099423}
     m_Modifications:
-    - target: {fileID: -2131156940258604149, guid: 196e53cbe98464e09957ae187c72596d,
-        type: 3}
-      propertyPath: abilitySprite
-      value: 
-      objectReference: {fileID: 21300004, guid: 082c310ac59e31e4886d543523aa015e,
-        type: 3}
     - target: {fileID: -2131156940258604149, guid: 196e53cbe98464e09957ae187c72596d,
         type: 3}
       propertyPath: damageHandler

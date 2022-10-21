@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1288d0e27cb4401e8c9ffde96e9d579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTier: 0
   abilityName: Maximise Firepower
+  currentTier: 0
+  abilitySprite: {fileID: 21300000, guid: c7e3ed5b6f026eb409b5bfee940826f1, type: 3}
   damageMultipliers:
   - 0
   - 0
