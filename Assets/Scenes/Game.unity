@@ -533,7 +533,7 @@ MonoBehaviour:
   - {fileID: 1130473581}
   tileSize: 40
   mapSizeInTiles: 3
-  density: 0.3
+  density: 0.4
 --- !u!114 &71771404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -1725,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -2410,7 +2410,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -4069,7 +4069,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -6746,7 +6746,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -7555,7 +7555,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -10423,7 +10423,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -10967,7 +10967,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -12750,7 +12750,7 @@ PrefabInstance:
     - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: cellSize
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
