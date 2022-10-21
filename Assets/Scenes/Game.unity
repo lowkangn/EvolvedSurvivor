@@ -9231,7 +9231,7 @@ MonoBehaviour:
     spawnLimit: 1
     cost: 10
     spawnAfterSeconds: 180
-    limitScalingFactor: 0.015
+    limitScalingFactor: 0.005
   - enemyObject: {fileID: 7639002971553439240, guid: fe0f7a2b8e0bfb448ba934e7e31c6627,
       type: 3}
     spawnLimit: 3

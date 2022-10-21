@@ -1093,14 +1093,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDamage: 15
-  initialHealth: 150
+  initialHealth: 100
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
   movement: {fileID: 7751080476582257864}
   aiBrain: {fileID: 7751210001397076598}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
-  initialSecondaryDamage: 15
+  initialSecondaryDamage: 12
   secDamageArea: {fileID: 0}
   secDamageScalingFactor: 0.01
 --- !u!1 &7639620610091389554

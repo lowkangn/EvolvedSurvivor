@@ -41,7 +41,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public static string FloatToPercentString(float ratio)
         {
-            return (Mathf.Abs((ratio - 1f) * 100)).ToString() + "%";
+            return $"{Mathf.Abs((ratio - 1f) * 100):0}%";
         }
     }
 }

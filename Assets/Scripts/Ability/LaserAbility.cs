@@ -152,7 +152,11 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetDetails()
         {
-            return "laser!";
+            return $"{damage.value:0.0} damage every 0.5 seconds\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Targets up to {laserNumber.value} enemies\n"
+                + $"Lasts {duration.value:0.0} seconds\n"
+                + $"Laser thickness: {projectileSize.value:0.0} units\n";
         }
     }
 }

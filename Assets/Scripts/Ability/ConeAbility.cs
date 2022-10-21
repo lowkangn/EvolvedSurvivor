@@ -178,7 +178,11 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetDetails()
         {
-            return "cone of gas!";
+            return $"{damage.value:0.0} damage every 0.5 seconds\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Lasts {duration.value:0.0} seconds\n"
+                + $"Range: {aoeRange.value:0.0} units\n"
+                + $"Cone Angle: {(coneNumber.value * anglePerHalfCone * 2):0.0} degrees\n";
         }
     }
 }

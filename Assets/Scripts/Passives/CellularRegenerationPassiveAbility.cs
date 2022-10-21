@@ -53,7 +53,7 @@ namespace TeamOne.EvolvedSurvivor
         public override string GetDetails()
         {
             string healthIncrease = GeneralUtility.FloatToPercentString(healthMultipliers[currentTier]);
-            return $"+{healthIncrease} Max Health\n+{healthRegeneratedPerSecond[currentTier] : 0.0} Health Per Second\n";
+            return $"+{healthIncrease} Max Health\n+{healthRegeneratedPerSecond[currentTier]:0.0} Health Per Second\n";
         }
     }
 }
