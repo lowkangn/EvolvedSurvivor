@@ -38,5 +38,10 @@ namespace TeamOne.EvolvedSurvivor
             Vector3 screenPoint = mainCamera.WorldToViewportPoint(obj.transform.position);
             return screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
         }
+
+        public static string FloatToPercentString(float ratio)
+        {
+            return (Mathf.Abs((ratio - 1f) * 100)).ToString() + "%";
+        }
     }
 }

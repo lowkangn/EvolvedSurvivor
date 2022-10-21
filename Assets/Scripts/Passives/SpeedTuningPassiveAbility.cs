@@ -36,7 +36,9 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetDetails()
         {
-            return "Movement Speed Up: " + speedMultipliers[currentTier] + "x\nPickup Radius Up: " + radiusMultipliers[currentTier] + "x\n";
+            string speedIncrease = GeneralUtility.FloatToPercentString(speedMultipliers[currentTier]);
+            string radiusIncrease = GeneralUtility.FloatToPercentString(radiusMultipliers[currentTier]);
+            return $"+{speedIncrease} Movement Speed\n+{radiusIncrease} Pickup Radius";
         }
     }
 }

@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDamage: 15
-  initialHealth: 300
+  initialHealth: 150
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
