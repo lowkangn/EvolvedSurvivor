@@ -78,8 +78,8 @@ MonoBehaviour:
     maxValue: 10
     value: 0
   aoeRange:
-    minValue: 4
-    maxValue: 8
+    minValue: 6
+    maxValue: 12
     value: 0
   coneNumber:
     minValue: 1

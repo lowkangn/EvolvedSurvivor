@@ -61,7 +61,7 @@ namespace TeamOne.EvolvedSurvivor
             this.damageArea.SetDamage(damage);
             this.damageArea.SetActive(true);
 
-            this.health.MaximumHealth = this.initialHealth + (this.initialHealth * (Mathf.Log10(1f + (0.015f * timePassed))));
+            this.health.MaximumHealth = this.initialHealth + (this.initialHealth * (Mathf.Log10(1f + (0.02f * timePassed))));
             this.health.ResetHealthToMaxHealth();
         }
     }

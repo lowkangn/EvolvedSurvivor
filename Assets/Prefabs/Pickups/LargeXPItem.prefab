@@ -253,8 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: 1603220759
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6494885299318969371, guid: 5763e1d72abde804eb99b6d9b76834df,
-    type: 3}
+  m_Sprite: {fileID: -1819121880, guid: b0a5d91796159c7408b4d874f7659b94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -275,7 +274,7 @@ Animator:
   m_GameObject: {fileID: 1335174606783614}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f6aa3543bd3401e4fbda91ce9cebf4c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 89daeabad3400bf49834ce1da871eedc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -402,6 +401,7 @@ GameObject:
   - component: {fileID: 61369599479639190}
   - component: {fileID: 4948651360239434114}
   - component: {fileID: 3165026487278651392}
+  - component: {fileID: -5086284348085792106}
   m_Layer: 0
   m_Name: LargeXPItem
   m_TagString: Untagged
@@ -474,7 +474,7 @@ MonoBehaviour:
   TargetObjectToDisable: {fileID: 0}
   TargetObjectDisableDelay: 0
   Model: {fileID: 0}
-  XPBonus: 3
+  XPBonus: 4
 --- !u!114 &3165026487278651392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +492,26 @@ MonoBehaviour:
   RemainingQuantity: 1
   PickableIfInventoryIsFull: 1
   DisableObjectWhenDepleted: 0
+--- !u!114 &-5086284348085792106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489628332787134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 1
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 30
 --- !u!1 &1543111494645246
 GameObject:
   m_ObjectHideFlags: 0

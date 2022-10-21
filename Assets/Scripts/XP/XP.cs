@@ -18,7 +18,7 @@ namespace MoreMountains.TopDownEngine
         [MMReadOnly]
 		[Tooltip("the current XP of the character")]
 		public int CurrentXP ;
-		public int MaxXPCap = 35;
+		public int MaxXPCap = 50;
 
 		[Header("XP")]
 

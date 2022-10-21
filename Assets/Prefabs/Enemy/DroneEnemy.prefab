@@ -1000,7 +1000,7 @@ MonoBehaviour:
   SpawnLootOnDamage: 0
   PoolLoot: 1
   PoolSize: 20
-  MutualizedPoolName: EnemyDrops
+  MutualizedPoolName: BasicEnemyDrops
   CanSpawn: 1
   Delay: 0
   Quantity: {x: 1, y: 1}
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDamage: 5
-  initialHealth: 10
+  initialHealth: 8
   damageHandler: {fileID: 2578632580249319661}
   damageArea: {fileID: 7423655912554669546}
   health: {fileID: 7750977142303885208}
