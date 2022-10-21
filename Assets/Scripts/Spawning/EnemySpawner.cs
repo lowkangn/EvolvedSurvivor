@@ -125,6 +125,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        GeneralUtility.ShuffleList(enemiesToSpawn);
         SpawnEnemiesInCircle();
         enemiesToSpawn.Clear();
 

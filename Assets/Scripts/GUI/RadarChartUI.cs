@@ -1,16 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TeamOne.EvolvedSurvivor
 {
     public class RadarChartUI : MonoBehaviour
     {
+        private const string TITLE_TRAIT_DAMAGE = "Damage: ";
+        private const string TITLE_TRAIT_UPTIME = "Uptime:\n";
+        private const string TITLE_TRAIT_AOE = "AOE:\n";
+        private const string TITLE_TRAIT_QUANTITY = "Quantity:\n";
+        private const string TITLE_TRAIT_UTILITY = "Utility:\n";
+
         [SerializeField] private CanvasRenderer radarMeshCanvasRenderer;
         [SerializeField] private Texture2D radarTexture2D;
         [SerializeField] private Material radarMaterial;
+        [SerializeField] private GameObject notAvailableBox;
 
-        public void UpdateVisual(TraitChart traitChart)
+        [SerializeField] protected Text rcDamageText;
+        [SerializeField] protected Text rcUptimeText;
+        [SerializeField] protected Text rcAoeText;
+        [SerializeField] protected Text rcQuantityText;
+        [SerializeField] protected Text rcUtilityText;
+
+        public void UpdateVisual(Upgradable upgradable)
+        {
+            if (upgradable.IsAbility())
+            {
+                TraitChart traitChart = upgradable.ConvertTo<Ability>().GetTraitChart();
+                DrawChart(traitChart);
+            } 
+            else
+            {
+                notAvailableBox.SetActive(true);
+            }
+        }
+
+        public void ClearVisual() 
+        {
+            // This method should remove the mesh from the radarChart 
+            radarMeshCanvasRenderer.SetMesh(null);
+
+            notAvailableBox.SetActive(false);
+            ClearLabels();
+        }
+
+        private void DrawChart(TraitChart traitChart)
         {
             Mesh mesh = new Mesh();
             Vector3[] vertices = new Vector3[6];
@@ -47,24 +82,24 @@ namespace TeamOne.EvolvedSurvivor
             triangles[2] = uptimeVertexIndex;
 
             // Triangle between Uptime and Aoe
-            triangles[3] = 0; 
-            triangles[4] = uptimeVertexIndex; 
-            triangles[5] = aoeVertexIndex; 
+            triangles[3] = 0;
+            triangles[4] = uptimeVertexIndex;
+            triangles[5] = aoeVertexIndex;
 
             // Triangle between Aoe and Quantity
-            triangles[6] = 0; 
-            triangles[7] = aoeVertexIndex; 
-            triangles[8] = quantityVertexIndex; 
+            triangles[6] = 0;
+            triangles[7] = aoeVertexIndex;
+            triangles[8] = quantityVertexIndex;
 
             // Triangle between Quantity and Utility
-            triangles[9] = 0; 
-            triangles[10] = quantityVertexIndex; 
-            triangles[11] = utilityVertexIndex; 
+            triangles[9] = 0;
+            triangles[10] = quantityVertexIndex;
+            triangles[11] = utilityVertexIndex;
 
             // Triangle between Utility and Damage
-            triangles[12] = 0; 
-            triangles[13] = utilityVertexIndex; 
-            triangles[14] = damageVertexIndex; 
+            triangles[12] = 0;
+            triangles[13] = utilityVertexIndex;
+            triangles[14] = damageVertexIndex;
 
             // For mesh texture 
             uv[0] = Vector2.zero;
@@ -72,7 +107,7 @@ namespace TeamOne.EvolvedSurvivor
             uv[uptimeVertexIndex] = Vector2.one;
             uv[aoeVertexIndex] = Vector2.one;
             uv[quantityVertexIndex] = Vector2.one;
-            uv[utilityVertexIndex] = Vector2.one;         
+            uv[utilityVertexIndex] = Vector2.one;
 
             // Set mesh
             mesh.vertices = vertices;
@@ -81,12 +116,25 @@ namespace TeamOne.EvolvedSurvivor
 
             radarMeshCanvasRenderer.SetMesh(mesh);
             radarMeshCanvasRenderer.SetMaterial(radarMaterial, radarTexture2D);
+            UpdateLabels(traitChart);
         }
 
-        public void ClearVisual() 
+        private void UpdateLabels(TraitChart traitChart)
         {
-            // This method should remove the mesh from the radarChart 
-            radarMeshCanvasRenderer.SetMesh(null);
+            rcDamageText.text = TITLE_TRAIT_DAMAGE + $"{traitChart.damage:0.0}";
+            rcUptimeText.text = TITLE_TRAIT_UPTIME + $"{traitChart.uptime:0.0}";
+            rcAoeText.text = TITLE_TRAIT_AOE + $"{traitChart.aoe:0.0}";
+            rcQuantityText.text = TITLE_TRAIT_QUANTITY + $"{traitChart.quantity:0.0}";
+            rcUtilityText.text = TITLE_TRAIT_UTILITY + $"{traitChart.utility:0.0}";
+        }
+
+        private void ClearLabels()
+        {
+            rcDamageText.text = TITLE_TRAIT_DAMAGE;
+            rcUptimeText.text = TITLE_TRAIT_UPTIME;
+            rcAoeText.text = TITLE_TRAIT_AOE;
+            rcQuantityText.text = TITLE_TRAIT_QUANTITY;
+            rcUtilityText.text = TITLE_TRAIT_UTILITY;
         }
     }
 }

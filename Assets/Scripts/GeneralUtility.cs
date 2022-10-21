@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -17,6 +18,17 @@ namespace TeamOne.EvolvedSurvivor
                 T temp = array[n];
                 array[n] = array[k];
                 array[k] = temp;
+            }
+        }
+
+        public static void ShuffleList<T> (List<T> list)
+        {
+            for (int n = list.Count - 1; n > 0; n--)
+            {
+                int k = Random.Range(0, n);
+                T temp = list[n];
+                list[n] = list[k];
+                list[k] = temp;
             }
         }
 

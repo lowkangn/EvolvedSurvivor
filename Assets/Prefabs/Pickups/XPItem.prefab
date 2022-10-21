@@ -512,7 +512,7 @@ MonoBehaviour:
   ExecuteOnDisable:
     m_PersistentCalls:
       m_Calls: []
-  LifeTime: 30
+  LifeTime: 60
 --- !u!1 &1543111494645246
 GameObject:
   m_ObjectHideFlags: 0

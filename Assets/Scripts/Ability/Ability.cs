@@ -300,31 +300,6 @@ namespace TeamOne.EvolvedSurvivor
             SetActive(false);
         }
 
-        public string GetDamageDescription()
-        {
-            return traitChart.GetDamageDescription();
-        }
-
-        public string GetUptimeDescription()
-        {
-            return traitChart.GetUptimeDescription();
-        }
-
-        public string GetAoeDescription()
-        {
-            return traitChart.GetAoeDescription();
-        }
-
-        public string GetQuantityDescription()
-        {
-            return traitChart.GetQuantityDescription();
-        } 
-
-        public string GetUtilityDescription()
-        {
-            return traitChart.GetUtilityDescription();
-        } 
-
         public TraitChart GetTraitChart()
         {
             return traitChart;

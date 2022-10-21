@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace TeamOne.EvolvedSurvivor
@@ -13,13 +10,6 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] private AddUpgradableHandler addUpgradableHandler;
 
         [SerializeField] private RadarChartUI radarChart;
-        [SerializeField] private Text rcDamageText;
-        [SerializeField] private Text rcUptimeText;
-        [SerializeField] private Text rcAoeText;
-        [SerializeField] private Text rcQuantityText;
-        [SerializeField] private Text rcUtilityText;
-
-        [SerializeField] private GameObject notAvailableBox;
 
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
@@ -54,23 +44,7 @@ namespace TeamOne.EvolvedSurvivor
                 this.detailedTextObj.text = upgradable.GetDescription();
             }
 
-            if (upgradable.IsAbility())
-            {
-                Ability ability = (Ability)upgradable;
-
-                this.rcDamageText.text = ability.GetDamageDescription();
-                this.rcUptimeText.text = ability.GetUptimeDescription();
-                this.rcAoeText.text = ability.GetAoeDescription();
-                this.rcQuantityText.text = ability.GetQuantityDescription();
-                this.rcUtilityText.text = ability.GetUtilityDescription();
-
-                radarChart.UpdateVisual(ability.GetTraitChart());
-            }
-
-            if (upgradable.IsPassiveAbility() && this.radarChart.gameObject.activeSelf)
-            {
-                this.notAvailableBox.SetActive(true);
-            }
+            radarChart.UpdateVisual(upgradable);
         }
 
         // Detect when Cursor leaves the button
@@ -79,15 +53,7 @@ namespace TeamOne.EvolvedSurvivor
             this.textObj.text = "";
             this.detailedTextObj.text = "";
 
-            this.rcDamageText.text = "Damage";
-            this.rcUptimeText.text = "Uptime";
-            this.rcAoeText.text = "AOE";
-            this.rcQuantityText.text = "Quantity";
-            this.rcUtilityText.text = "Utility";
-
             radarChart.ClearVisual();
-
-            this.notAvailableBox.SetActive(false);
         }
     }
 }
