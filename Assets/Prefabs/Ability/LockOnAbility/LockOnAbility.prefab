@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Voltaic Strike
+  abilityDescription: Strike lightning at random enemies
   activateOnlyOnce: 0
   coolDown:
     minValue: 0.5

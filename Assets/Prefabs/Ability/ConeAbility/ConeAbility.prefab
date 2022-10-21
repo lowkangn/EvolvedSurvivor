@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Biobreath
+  abilityDescription: Spew out noxious gas in a cone in front of you
   activateOnlyOnce: 0
   coolDown:
     minValue: 10
