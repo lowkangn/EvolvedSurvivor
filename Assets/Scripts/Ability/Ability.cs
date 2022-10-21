@@ -274,6 +274,25 @@ namespace TeamOne.EvolvedSurvivor
 
         public abstract string GetDetails();
 
+        protected string GetStatusEffects()
+        {
+            string result = "Status Effects: ";
+
+            for (int i = 0; i < effects.Count; i++)
+            {
+                string effectName = effects[i].GetName();
+
+                if (i > 0)
+                {
+                    result += ", ";
+                }
+
+                result += effectName;
+            }
+
+            return result;
+        }
+
         public void SetCoolDownMultiplier(float multiplier)
         {
             this.coolDownMultiplier = multiplier;

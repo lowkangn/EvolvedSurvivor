@@ -1,7 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using MoreMountains.TopDownEngine;
-using MoreMountains.Tools;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -18,6 +15,11 @@ namespace TeamOne.EvolvedSurvivor
         public override void Apply(GameObject target, Damage damage)
         {
             target.GetComponent<Enemy>().FreezeForDuration(duration);
+        }
+
+        public override string GetName()
+        {
+            return "Cryo";
         }
     }
 }

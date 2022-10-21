@@ -22,5 +22,9 @@ namespace TeamOne.EvolvedSurvivor
             target.GetComponent<DamageHandler>().ApplyDamageOverTime(dot, duration, tickRate);
         }
 
+        public override string GetName()
+        {
+            return "Pyro";
+        }
     }
 }

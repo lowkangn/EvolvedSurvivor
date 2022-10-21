@@ -156,7 +156,9 @@ namespace TeamOne.EvolvedSurvivor
                 + $"Fires every {coolDown.value:0.0} seconds\n"
                 + $"Targets up to {laserNumber.value} enemies\n"
                 + $"Lasts {duration.value:0.0} seconds\n"
-                + $"Laser thickness: {projectileSize.value:0.0} units\n";
+                + $"Laser thickness: {projectileSize.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
         }
     }
 }

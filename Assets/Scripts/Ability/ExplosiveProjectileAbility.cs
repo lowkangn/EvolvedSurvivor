@@ -144,7 +144,9 @@ namespace TeamOne.EvolvedSurvivor
                 + $"Fires every {coolDown.value:0.0} seconds\n"
                 + $"Targets up to {projectileNumber.value} enemies\n"
                 + $"Projectile radius: {projectileSize.value:0.0} units\n"
-                + $"Explosion radius: {aoeRadius.value:0.0} units\n";
+                + $"Explosion radius: {aoeRadius.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
         }
     }
 }
