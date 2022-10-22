@@ -6,8 +6,8 @@ namespace MoreMountains.TopDownEngine
 {
     public class ESCharacterPause : CharacterPause
     {
-        // Modified method from TDE's CharacterPause: At the beginning, this method is called before initialisation occurs.
-        // Therefore, if _condition is not yet set, this method should do nothing.
+        // Modified from TDE's CharacterPause: Due to how the level up works, the Player's CharacterPause is only initialised once the Player is first free to move.
+        // Therefore, if _condition is not yet set, this method can just do nothing (will not cause unintended behaviour since, well, it's not initialised yet).
         public override void PauseCharacter()
         {
             if (!this.enabled)
@@ -21,8 +21,7 @@ namespace MoreMountains.TopDownEngine
             }
         }
 
-        // Modified method from TDE's CharacterPause: At the beginning, this method is called before initialisation occurs.
-        // Therefore, if _condition is not yet set, this method should do nothing.
+        // Same as above.
         public override void UnPauseCharacter()
         {
             if (!this.enabled)
