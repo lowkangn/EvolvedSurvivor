@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
-// using System;
 
 namespace MoreMountains.TopDownEngine
 {	
@@ -30,25 +29,6 @@ namespace MoreMountains.TopDownEngine
 		{
             TopDownEngine.XP playerXP = player.GetComponent<TopDownEngine.XP>();
 			playerXP.GetXP(XPBonus);
-			// Destroy(gameObject);
-            // Debug.Log("Total XP is " + playerXP.CurrentXP);
 		}
-
-        /// <summary>
-        /// Triggered when something collides with the coin
-        /// </summary>
-        /// <param name="collider">Other.</param>
-        public override void OnTriggerEnter2D(Collider2D collider)
-        {
-			GameObject colliderObj = collider.gameObject;
-			Transform colliderTransform = colliderObj.transform;
-			Transform playerTransform = colliderTransform.parent;
-			if (playerTransform != null)
-			{
-				GameObject playerObj = playerTransform.gameObject;
-				_collidingObject = playerObj;
-				PickItem(playerObj);
-			}
-        }
     }
 }

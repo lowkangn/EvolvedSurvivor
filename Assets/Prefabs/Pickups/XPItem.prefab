@@ -401,7 +401,8 @@ GameObject:
   - component: {fileID: 4116086766228746}
   - component: {fileID: 61369599479639190}
   - component: {fileID: 4948651360239434114}
-  - component: {fileID: 3165026487278651392}
+  - component: {fileID: 5673771165727549475}
+  - component: {fileID: 5692565396530188551}
   m_Layer: 0
   m_Name: XPItem
   m_TagString: Untagged
@@ -475,7 +476,7 @@ MonoBehaviour:
   TargetObjectDisableDelay: 0
   Model: {fileID: 0}
   XPBonus: 1
---- !u!114 &3165026487278651392
+--- !u!114 &5673771165727549475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489628332787134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08d1d5d923c8423284eb97551d7e8de, type: 3}
+  m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: f5ce1ca9165c50841933f1cda0a866aa, type: 2}
@@ -492,6 +493,19 @@ MonoBehaviour:
   RemainingQuantity: 1
   PickableIfInventoryIsFull: 1
   DisableObjectWhenDepleted: 0
+--- !u!114 &5692565396530188551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489628332787134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b926e6eeb7d42a8b5e957c9f6c7686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSpeed: 0.25
 --- !u!1 &1543111494645246
 GameObject:
   m_ObjectHideFlags: 0
