@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Atomisation Beam
+  abilityDescription: Fire piercing laser beams at nearby enemies
   activateOnlyOnce: 0
   coolDown:
     minValue: 3

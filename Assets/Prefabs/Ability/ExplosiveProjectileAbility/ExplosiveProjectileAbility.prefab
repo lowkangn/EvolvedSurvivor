@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Proton Discharge
+  abilityDescription: Fire explosive orbs at nearby enemies
   activateOnlyOnce: 0
   coolDown:
     minValue: 1
@@ -61,7 +62,7 @@ MonoBehaviour:
     quantity: 0
     utility: 0
   hasBuilt: 0
-  abilitySprite: {fileID: -167114448, guid: 11e7177d066891f4299f20e143ae7a7b, type: 3}
+  abilitySprite: {fileID: 21300000, guid: 11e7177d066891f4299f20e143ae7a7b, type: 3}
   recursiveAbilityObjectPool: {fileID: 385951916290607148}
   projectileObjectPool: {fileID: 2010592884705919976}
   elementMagnitudes:

@@ -117,5 +117,15 @@ namespace TeamOne.EvolvedSurvivor
                 quantityRatio / sum * pointsToAssign,
                 utilityRatio / sum * pointsToAssign);
         }
+
+        public override string GetDetails()
+        {
+            return $"{damage.value:0.0} damage on hit\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Targets up to {targetNumber.value} enemies\n"
+                + $"Explosion radius on strike: {aoeRadius.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
+        }
     }
 }

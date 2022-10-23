@@ -17,10 +17,10 @@ namespace MoreMountains.TopDownEngine
         /// the current XP of the character
         [MMReadOnly]
 		[Tooltip("the current XP of the character")]
-		public int CurrentXP ;
-		public int MaxXPCap = 40;
+		public int CurrentXP;
+        public int MaxXPCap = 80;
 
-		[Header("XP")]
+        [Header("XP")]
 
 		[MMInformation("Add this component to an object and it'll have XP",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the initial amount of XP of the object

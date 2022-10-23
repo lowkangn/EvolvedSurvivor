@@ -6,5 +6,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         public abstract void Build(float levelRatio, float utilityRatio, float maxMagnitude);
         public abstract void Apply(GameObject enemy, Damage damage);
+
+        public abstract string GetName();
     }
 }

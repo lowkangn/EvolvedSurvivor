@@ -19,5 +19,10 @@ namespace TeamOne.EvolvedSurvivor
             Vector3 direction = target.transform.position - damage.instigator.transform.position;
             target.GetComponent<TopDownController2D>().Impact(direction, force);
         }
+
+        public override string GetName()
+        {
+            return "Force";
+        }
     }
 }

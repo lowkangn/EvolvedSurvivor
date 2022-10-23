@@ -8,6 +8,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         public string GetName();
         public string GetDescription();
+        public string GetDetails();
         public Sprite GetSprite();
         public bool IsAbility();
         public bool IsPassiveAbility();

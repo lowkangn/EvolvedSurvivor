@@ -10,9 +10,11 @@ namespace TeamOne.EvolvedSurvivor
         private readonly int maxTier = 10;
         protected readonly float buffFactor = 0.2f;
         protected readonly float debuffFactor = 0.2f;
-        
+     
         public string AbilityName => abilityName;
+
         [SerializeField] private string abilityName;
+        [SerializeField] private string abilityDescription;
 
         [Header("Whether this ability will be always activated while it is active")]
         [SerializeField]
@@ -267,7 +269,28 @@ namespace TeamOne.EvolvedSurvivor
 
         public string GetDescription()
         {
-            return $"Level {tier} {abilityName}\n" + traitChart.GetStatsDescription();
+            return abilityDescription;
+        }
+
+        public abstract string GetDetails();
+
+        protected string GetStatusEffects()
+        {
+            string result = "Status Effects: ";
+
+            for (int i = 0; i < effects.Count; i++)
+            {
+                string effectName = effects[i].GetName();
+
+                if (i > 0)
+                {
+                    result += ", ";
+                }
+
+                result += effectName;
+            }
+
+            return result;
         }
 
         public void SetCoolDownMultiplier(float multiplier)
@@ -299,31 +322,6 @@ namespace TeamOne.EvolvedSurvivor
         {
             SetActive(false);
         }
-
-        public string GetDamageDescription()
-        {
-            return traitChart.GetDamageDescription();
-        }
-
-        public string GetUptimeDescription()
-        {
-            return traitChart.GetUptimeDescription();
-        }
-
-        public string GetAoeDescription()
-        {
-            return traitChart.GetAoeDescription();
-        }
-
-        public string GetQuantityDescription()
-        {
-            return traitChart.GetQuantityDescription();
-        } 
-
-        public string GetUtilityDescription()
-        {
-            return traitChart.GetUtilityDescription();
-        } 
 
         public TraitChart GetTraitChart()
         {

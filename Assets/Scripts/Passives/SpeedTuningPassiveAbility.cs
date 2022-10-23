@@ -34,9 +34,11 @@ namespace TeamOne.EvolvedSurvivor
             pickupRingTransform.localScale = new Vector3(basePickupRingScale * radiusMultipliers[currentTier], basePickupRingScale * radiusMultipliers[currentTier], basePickupRingScale * radiusMultipliers[currentTier]);
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
-            return "Movement Speed Up: " + speedMultipliers[currentTier] + "x\nPickup Radius Up: " + radiusMultipliers[currentTier] + "x\n";
+            string speedIncrease = GeneralUtility.FloatToPercentString(speedMultipliers[currentTier]);
+            string radiusIncrease = GeneralUtility.FloatToPercentString(radiusMultipliers[currentTier]);
+            return $"+{speedIncrease} Movement Speed\n+{radiusIncrease} Pickup Radius";
         }
     }
 }
