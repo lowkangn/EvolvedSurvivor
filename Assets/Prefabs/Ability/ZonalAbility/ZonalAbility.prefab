@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Blight Zone
+  abilityDescription: Summon pools of miasma under random enemies
   activateOnlyOnce: 0
   coolDown:
     minValue: 5

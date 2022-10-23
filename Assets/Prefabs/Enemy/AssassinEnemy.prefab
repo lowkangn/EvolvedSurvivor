@@ -843,12 +843,12 @@ MonoBehaviour:
   LootTable:
     ObjectsToLoot: []
     WeightsTotal: 0
-  LootTableSO: {fileID: 11400000, guid: c9a31e4b64f864748b8a7f01eb2bf2f8, type: 2}
+  LootTableSO: {fileID: 11400000, guid: 944a0aaa08c4cbb4aabed4f4c44ec9bb, type: 2}
   SpawnLootOnDeath: 1
   SpawnLootOnDamage: 0
   PoolLoot: 1
   PoolSize: 20
-  MutualizedPoolName: EnemyDrops
+  MutualizedPoolName: ToughEnemyDrops
   CanSpawn: 1
   Delay: 0
   Quantity: {x: 1, y: 1}
@@ -984,8 +984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDamage: 15
-  initialHealth: 15
+  initialDamage: 10
+  initialHealth: 10
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}

@@ -48,11 +48,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityName: Orbital Flux
+  abilityDescription: Summon damaging orbs that orbit around you
   activateOnlyOnce: 0
   coolDown:
     minValue: 10
     maxValue: 12
     value: 0
+  traitChart:
+    damage: 0
+    uptime: 0
+    aoe: 0
+    quantity: 0
+    utility: 0
   hasBuilt: 0
   abilitySprite: {fileID: 18062, guid: 0e2684e481e99f947aa30a3e1b75dede, type: 3}
   recursiveAbilityObjectPool: {fileID: 5184787337487597279}

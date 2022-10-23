@@ -19,7 +19,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public void UpgradeAbility(PassiveAbility passiveAbility)
         {
-            int index = abilities.FindIndex(a => a.AbilityName == passiveAbility.AbilityName);
+            int index = abilities.FindIndex(a => a.PassiveName == passiveAbility.PassiveName);
             if (index != -1)
             {
                 if (!abilities[index].HasBeenUpgraded())

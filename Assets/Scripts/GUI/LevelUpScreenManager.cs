@@ -32,12 +32,14 @@ public class LevelUpScreenManager : MonoBehaviour
     private int nextAbilityIndex = 0;
     private int nextPassiveAbilityIndex = 0;
     private int maxAbilityCount;
+    private int maxPassiveAbilityCount;
     private bool wasLoadedBefore = false;
     private CharacterPause pause;
 
     private void Awake()
     {
         this.maxAbilityCount = this.currentAbilities.Length;
+        this.maxPassiveAbilityCount = this.currentPassiveAbilities.Length;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         this.pause = player.GetComponent<ESCharacterPause>();
@@ -112,7 +114,10 @@ public class LevelUpScreenManager : MonoBehaviour
             this.currentAbilities[nextAbilityIndex].RemoveAbility();
         }
 
-        this.currentPassiveAbilities[nextPassiveAbilityIndex].RemoveAbility();
+        if (nextPassiveAbilityIndex < maxPassiveAbilityCount)
+        {
+            this.currentPassiveAbilities[nextPassiveAbilityIndex].RemoveAbility();
+        }
 
         this.addAbilityMenu.SetActive(false);
         this.mergeAbilityMenu.SetActive(true);

@@ -37,5 +37,10 @@ namespace TeamOne.EvolvedSurvivor
                 nearest?.GetComponent<DamageReceiver>().TakeDamage(new Damage(damage.damage * damageMultiplier, gameObject));
             }
         }
+
+        public override string GetName()
+        {
+            return "Plasma";
+        }
     }
 }

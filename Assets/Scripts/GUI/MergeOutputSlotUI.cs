@@ -7,10 +7,10 @@ public class MergeOutputSlotUI : AbilityMergeSlotUI
 {
     public void ClearSlot()
     {
-        if (this.ability != null)
+        if (this.upgradable != null)
         {
-            ability.ClearAnyRecursive();
-            Destroy(ability.gameObject);
+            upgradable.ClearAnyRecursive();
+            Destroy(upgradable.gameObject);
         }
 
         this.RemoveAbility();

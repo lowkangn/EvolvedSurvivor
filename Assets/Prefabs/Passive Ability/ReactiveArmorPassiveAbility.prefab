@@ -44,16 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad339be0c1c4b6dbd07eb1fb1d55bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passiveName: Reactive Armour
+  passiveDescription: Reduces damage taken and increases invincibility duration
   currentTier: 0
-  abilityName: Reactive Armor
+  abilitySprite: {fileID: 21300000, guid: a7c6f4d34e3339344b209d8021d87169, type: 3}
   damageReductionMultipliers:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 0.95
+  - 0.9
+  - 0.8
   invincibilityDurationMultipliers:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1.1
+  - 1.25
+  - 1.5
   damageHandler: {fileID: 0}

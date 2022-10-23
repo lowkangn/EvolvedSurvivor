@@ -18,5 +18,10 @@ namespace TeamOne.EvolvedSurvivor
         {
             target.GetComponent<Enemy>().SlowForDuration(magnitude, duration);
         }
+
+        public override string GetName()
+        {
+            return "Infect";
+        }
     }
 }
