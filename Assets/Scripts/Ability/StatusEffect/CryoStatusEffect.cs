@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -16,17 +14,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override void Apply(GameObject target, Damage damage)
         {
-            target.GetComponent<Character>().Freeze();
-            // TODO: Replace with new damageontouch script when avail
-            // target.GetComponent<DamageOnTouch>().enabled = false;
-            StartCoroutine(FreezeFor(duration, target));
+            target.GetComponent<Enemy>().FreezeForDuration(duration);
         }
 
-        IEnumerator FreezeFor(float seconds, GameObject target)
+        public override string GetName()
         {
-            yield return new WaitForSeconds(seconds);
-            target.GetComponent<Character>().UnFreeze();
-            //enemy.GetComponent<DamageOnTouch>().enabled = true;
+            return "Cryo";
         }
     }
 }

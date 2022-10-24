@@ -16,9 +16,10 @@ namespace TeamOne.EvolvedSurvivor
             abilityManager.UpdateCoolDownMultiplier(coolDownMultipliers[currentTier]);
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
-            return "Cooldown Reduction: " + coolDownMultipliers[currentTier] + "x\n";
+            string cooldownReduction = GeneralUtility.FloatToPercentString(coolDownMultipliers[currentTier]);
+            return $"-{cooldownReduction} Cooldown Duration\n";
         }
     }
 }

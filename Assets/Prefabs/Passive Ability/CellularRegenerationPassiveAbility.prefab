@@ -44,16 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67824a52bbad40debb9d008eca720f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  passiveName: Cellular Regeneration
+  passiveDescription: Increases health and gives health regeneration
   currentTier: 0
-  abilityName: Cellular Regeneration
+  abilitySprite: {fileID: 21300000, guid: 44809eafd459f0f42937725f65320fd0, type: 3}
   healthMultipliers:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1.1
+  - 1.2
+  - 1.3
   healthRegeneratedPerSecond:
   - 0
-  - 0
-  - 0
-  - 0
+  - 0.5
+  - 1
+  - 1.5
   health: {fileID: 0}

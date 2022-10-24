@@ -142,5 +142,16 @@ namespace TeamOne.EvolvedSurvivor
                 quantityRatio / sum * pointsToAssign,
                 utilityRatio / sum * pointsToAssign + utilityBuff);
         }
+
+        public override string GetDetails()
+        {
+            return $"{damage.value:0.0} damage per orb\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Spawns {orbitalNumber.value} orbs\n"
+                + $"Lasts {duration.value:0.0} seconds\n"
+                + $"Orb radius: {projectileSize.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
+        }
     }
 }

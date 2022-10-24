@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TeamOne.EvolvedSurvivor;
 using UnityEngine;
 using UnityEngine.UI;
+using MoreMountains.TopDownEngine;
 
 // This class handles the player actions in the level up screen.
 public class LevelUpScreenManager : MonoBehaviour
@@ -31,19 +32,28 @@ public class LevelUpScreenManager : MonoBehaviour
     private int nextAbilityIndex = 0;
     private int nextPassiveAbilityIndex = 0;
     private int maxAbilityCount;
+    private int maxPassiveAbilityCount;
     private bool wasLoadedBefore = false;
+    private CharacterPause pause;
 
     private void Awake()
     {
         this.maxAbilityCount = this.currentAbilities.Length;
+        this.maxPassiveAbilityCount = this.currentPassiveAbilities.Length;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        this.pause = player.GetComponent<ESCharacterPause>();
         this.abilityManager = player.GetComponentInChildren<AbilityManager>();
         this.passiveAbilityManager = player.GetComponentInChildren<PassiveAbilityManager>();
     }
 
     private void OnEnable()
     {
+        if (this.pause != null)
+        {
+            this.pause.AbilityPermitted = false;
+        }
+
         RefreshCurrentUpgradables();
 
         // TODO: should stay on add ability if passives not maximised?
@@ -64,6 +74,14 @@ public class LevelUpScreenManager : MonoBehaviour
         else
         {
             screenTitle.text = TITLE_LEVEL_UP;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (this.pause != null)
+        {
+            this.pause.AbilityPermitted = true;
         }
     }
 
@@ -94,6 +112,11 @@ public class LevelUpScreenManager : MonoBehaviour
         if (nextAbilityIndex < maxAbilityCount)
         {
             this.currentAbilities[nextAbilityIndex].RemoveAbility();
+        }
+
+        if (nextPassiveAbilityIndex < maxPassiveAbilityCount)
+        {
+            this.currentPassiveAbilities[nextPassiveAbilityIndex].RemoveAbility();
         }
 
         this.addAbilityMenu.SetActive(false);

@@ -6,8 +6,9 @@ namespace TeamOne.EvolvedSurvivor
 {
     public abstract class PassiveAbility : MonoBehaviour, Upgradable
     {
-        public string AbilityName => abilityName;
-        [SerializeField] private string abilityName;
+        public string PassiveName => passiveName;
+        [SerializeField] private string passiveName;
+        [SerializeField] private string passiveDescription;
 
         protected const int NUM_OF_TIERS = 3;
 
@@ -45,15 +46,15 @@ namespace TeamOne.EvolvedSurvivor
 
         public string GetName()
         {
-            return $"Level {currentTier} {abilityName}\n";
+            return $"Level {currentTier} {passiveName}\n";
         }
 
         public string GetDescription()
         {
-            return $"Level {currentTier} {abilityName}\n" + GetStatsDescription();
+            return passiveDescription;
         }
 
-        protected abstract string GetStatsDescription();
+        public abstract string GetDetails();
 
         public bool IsAbility()
         {
@@ -63,6 +64,11 @@ namespace TeamOne.EvolvedSurvivor
         public bool IsPassiveAbility()
         {
             return true;
+        }
+
+        public virtual void UpgradeForPreview()
+        {
+            currentTier++;
         }
 
     }

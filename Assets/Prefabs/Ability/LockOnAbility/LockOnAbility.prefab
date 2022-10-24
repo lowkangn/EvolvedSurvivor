@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f80707246887ae42bfafcb13de194cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Thunder Strike
+  abilityName: Voltaic Strike
+  abilityDescription: Strike lightning at random enemies
   activateOnlyOnce: 0
   coolDown:
     minValue: 0.5
@@ -61,7 +62,7 @@ MonoBehaviour:
     quantity: 0
     utility: 0
   hasBuilt: 1
-  abilitySprite: {fileID: 2088100790, guid: 69574eadfacac5e40a326bc6f540d224, type: 3}
+  abilitySprite: {fileID: 21300000, guid: d5a59e8d9fe45dc459ddae0ffb6336ab, type: 3}
   recursiveAbilityObjectPool: {fileID: 1516933811655595900}
   projectileObjectPool: {fileID: 8988950983226355129}
   elementMagnitudes:

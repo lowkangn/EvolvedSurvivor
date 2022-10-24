@@ -98,7 +98,13 @@ namespace TeamOne.EvolvedSurvivor
             laserNumber.value = Mathf.FloorToInt((laserNumber.maxValue - laserNumber.minValue) * traitChart.QuantityRatio + laserNumber.minValue);
 
             // Utility
-
+            foreach (KeyValuePair<ElementType, int> el in element.elements)
+            {
+                if (el.Value > 0)
+                {
+                    effects.Add(GenerateEffect(el.Key, traitChart.UtilityRatio, elementMagnitudes[(int)el.Key]));
+                }
+            }
         }
 
         protected override float DebuffTraitsForMerging(Ability other)
@@ -142,6 +148,17 @@ namespace TeamOne.EvolvedSurvivor
                 hasActivated = true;
                 Invoke("Deactivate", duration.value);
             }
+        }
+
+        public override string GetDetails()
+        {
+            return $"{damage.value:0.0} damage every 0.5 seconds\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Targets up to {laserNumber.value} enemies\n"
+                + $"Lasts {duration.value:0.0} seconds\n"
+                + $"Laser thickness: {projectileSize.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
         }
     }
 }

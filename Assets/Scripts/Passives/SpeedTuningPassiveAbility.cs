@@ -15,15 +15,12 @@ namespace TeamOne.EvolvedSurvivor
         private float baseWalkSpeed;
 
         [SerializeField] private CircleCollider2D pickupCollider;
-        [SerializeField] private Transform pickupRingTransform;
         private float basePickupRadius;
-        private float basePickupRingScale;
 
         void Start()
         {
             baseWalkSpeed = movement.WalkSpeed;
             basePickupRadius = pickupCollider.radius;
-            basePickupRingScale = pickupRingTransform.localScale.x;
         }
 
         public override void Upgrade()
@@ -31,12 +28,13 @@ namespace TeamOne.EvolvedSurvivor
             currentTier++;
             movement.WalkSpeed = baseWalkSpeed * speedMultipliers[currentTier];
             pickupCollider.radius = basePickupRadius * radiusMultipliers[currentTier];
-            pickupRingTransform.localScale = new Vector3(basePickupRingScale * radiusMultipliers[currentTier], basePickupRingScale * radiusMultipliers[currentTier], basePickupRingScale * radiusMultipliers[currentTier]);
         }
 
-        protected override string GetStatsDescription()
+        public override string GetDetails()
         {
-            return "Movement Speed Up: " + speedMultipliers[currentTier] + "x\nPickup Radius Up: " + radiusMultipliers[currentTier] + "x\n";
+            string speedIncrease = GeneralUtility.FloatToPercentString(speedMultipliers[currentTier]);
+            string radiusIncrease = GeneralUtility.FloatToPercentString(radiusMultipliers[currentTier]);
+            return $"+{speedIncrease} Movement Speed\n+{radiusIncrease} Pickup Radius";
         }
     }
 }

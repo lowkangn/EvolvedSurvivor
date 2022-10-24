@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
-using MoreMountains.Tools;
-using MoreMountains.TopDownEngine;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -139,6 +136,17 @@ namespace TeamOne.EvolvedSurvivor
         {
             Activate();
             Deactivate();
+        }
+
+        public override string GetDetails()
+        {
+            return $"{damage.value:0.0} damage every 0.5 seconds\n"
+                + $"Fires every {coolDown.value:0.0} seconds\n"
+                + $"Targets up to {targetNumber.value} enemies\n" 
+                + $"Lasts {duration.value:0.0} seconds\n"
+                + $"Pool radius: {aoeRadius.value:0.0} units\n"
+                + "\n"
+                + GetStatusEffects();
         }
     }
 }

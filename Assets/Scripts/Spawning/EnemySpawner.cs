@@ -10,26 +10,37 @@ public class EnemySpawnData
 {
     public GameObject enemyObject;
 
-    public int currentCount;
+    private int currentCount;
     public float spawnLimit;
     public int cost;
+    public float spawnAfterSeconds;
 
     public float limitScalingFactor;
 
-    public void UpdateLimit(float deltaTime)
+    public void UpdateLimit(float currentTime, float deltaTime)
     {
-        spawnLimit += limitScalingFactor * deltaTime;
+        if (currentTime >= spawnAfterSeconds)
+        {
+            spawnLimit += deltaTime * limitScalingFactor;
+        }
     }
 
-    public bool CanSpawn(float pointsLeft)
+    public bool CanSpawn(float pointsLeft, float currentTime)
     {
-        return Mathf.FloorToInt(pointsLeft) >= cost && currentCount < Mathf.FloorToInt(spawnLimit);
+        return currentTime >= spawnAfterSeconds 
+                && Mathf.FloorToInt(pointsLeft) >= cost 
+                && currentCount < Mathf.FloorToInt(spawnLimit);
     }
 
     public string GetEnemyName()
     {
         currentCount++;
         return enemyObject.name;
+    }
+
+    public void OnDeath()
+    {
+        currentCount--;
     }
 }
 
@@ -39,20 +50,23 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemySpawnData> enemies;
     [SerializeField] private NonRandomObjectPooler objectPooler;
 
-    [SerializeField] private float spendingPointsGainRate = 0.05f;
+    [SerializeField] private float spendingPointsMultiplier = 1.05f;
     [SerializeField] private float minSpawnFreq = 0.2f;
     [SerializeField] private float maxSpawnFreq = 1f;
     [SerializeField] private float spawnRadius = 20f;
 
+    [SerializeField] private float startingPoints = 10f;
+
     private List<string> enemiesToSpawn = new List<string>();
 
     // The spawner uses a point based system to pick enemies to spawn.
-    private float spendingPoints = 10f;
+    private float spendingPoints;
     private float timePassed = 0f;
     private float nextSpawnTimestamp = 0f;
 
     private void Start()
     {
+        spendingPoints = startingPoints;
         enemies = enemies.OrderBy(e => e.cost).ToList();
         enemies.Reverse();
 
@@ -77,12 +91,12 @@ public class EnemySpawner : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        spendingPoints += Time.deltaTime * spendingPointsGainRate;
         timePassed += Time.deltaTime;
+        spendingPoints += 1.1f * spendingPointsMultiplier * Mathf.Pow(Time.deltaTime, 0.1f);
 
         foreach (EnemySpawnData enemy in enemies)
         {
-            enemy.UpdateLimit(Time.deltaTime);
+            enemy.UpdateLimit(timePassed, Time.deltaTime);
         }
     }
 
@@ -104,13 +118,14 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (EnemySpawnData enemy in enemies)
         {
-            while (enemy.CanSpawn(spendingPoints))
+            while (enemy.CanSpawn(spendingPoints, timePassed))
             {
                 enemiesToSpawn.Add(enemy.GetEnemyName());
                 spendingPoints -= enemy.cost;
             }
         }
 
+        GeneralUtility.ShuffleList(enemiesToSpawn);
         SpawnEnemiesInCircle();
         enemiesToSpawn.Clear();
 
@@ -146,6 +161,6 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemySpawnData enemy = enemies.Find(e => e.enemyObject.name == enemyObject.name);
         spendingPoints += enemy.cost;
-        enemy.currentCount--;
+        enemy.OnDeath();
     }
 }
