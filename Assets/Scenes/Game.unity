@@ -18342,11 +18342,11 @@ MonoBehaviour:
   ResetButtonStatesOnFocusLoss: 1
   PlayerID: Player1
   AutoMobileDetection: 1
-  InputForcedMode: 0
+  InputForcedMode: 2
   ForceWeaponMode: 0
   WeaponForcedMode: 0
   HideMobileControlsInEditor: 0
-  MovementControl: 0
+  MovementControl: 1
   SmoothMovement: 1
   Threshold: {x: 0.1, y: 0.4}
   RotateInputBasedOnCameraDirection: 0
