@@ -38,6 +38,7 @@ public class WorldTile : MonoBehaviour
 
         int tileSizeInCells = Mathf.FloorToInt(tileSize / cellSize);
         Vector2 tilePosition = gameObject.transform.position;
+        Random.InitState(Mathf.FloorToInt(seed));
 
         for (int i = 0; i < tileSizeInCells; i++)
         {
@@ -48,8 +49,9 @@ public class WorldTile : MonoBehaviour
                 if (generatedNoise < density)
                 {
                     GameObject bgObject = bgObjectPool.GetPooledObjectBySeed(seed + i + j);
-                    Vector2 offset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
-                    bgObject.transform.position = tilePosition + offset;
+                    Vector2 tileOffset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
+                    Vector2 randomOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+                    bgObject.transform.position = tilePosition + tileOffset + randomOffset;
                     bgObject.transform.parent = gameObject.transform;
                     bgObject.SetActive(true);
 
