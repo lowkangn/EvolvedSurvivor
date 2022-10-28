@@ -552,7 +552,7 @@ MonoBehaviour:
   Pool:
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 4ff7a05e482059247bb562c2bf97de6a,
       type: 3}
-    PoolSize: 20
+    PoolSize: 10
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 2a3fde70c8fc41f44b5a5ba9e393b670,
@@ -567,7 +567,17 @@ MonoBehaviour:
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 9664c05237dbef24d8f2b2ffd8fb8c97,
       type: 3}
+    PoolSize: 10
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 5d5e2aa99b1123b46ab41045efbf68e4,
+      type: 3}
     PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: d6bcb27aa948ac44292fd325f3417850,
+      type: 3}
+    PoolSize: 15
     PoolCanExpand: 1
     Enabled: 1
   PoolingMethod: 3
