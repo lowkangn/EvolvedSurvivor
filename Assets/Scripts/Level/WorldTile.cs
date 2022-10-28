@@ -53,6 +53,9 @@ public class WorldTile : MonoBehaviour
                     Vector2 randomOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
                     bgObject.transform.position = tilePosition + tileOffset + randomOffset;
                     bgObject.transform.parent = gameObject.transform;
+                    bgObject.transform.rotation = (Random.Range(0f, 1f) <= 0.5f)
+                        ? Quaternion.Euler(0f, 0f, 0f)
+                        : Quaternion.Euler(0f, 180f, 0f);
                     bgObject.SetActive(true);
 
                     bgObjects.Add(bgObject);
