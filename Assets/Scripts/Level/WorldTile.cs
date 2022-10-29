@@ -47,13 +47,13 @@ public class WorldTile : MonoBehaviour
                 Vector2 tileOffset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
                 Vector2 objectRoughPosition = tilePosition + tileOffset;
 
-                if (objectRoughPosition.x > -5f && objectRoughPosition.x < 5f && objectRoughPosition.y > -5f && objectRoughPosition.y < 5f)
+                if (objectRoughPosition.x > -5f && objectRoughPosition.x < 8f && objectRoughPosition.y > -8f && objectRoughPosition.y < 8f)
                 {
                     continue;
                 }
 
                 float generatedNoise = Mathf.PerlinNoise((tilePosition.x + i) * 0.5f + seed, (tilePosition.y + j) * 0.5f + seed);
-
+                
                 if (generatedNoise < density)
                 {
                     GameObject bgObject = bgObjectPool.GetPooledObjectBySeed(seed + i + j);
