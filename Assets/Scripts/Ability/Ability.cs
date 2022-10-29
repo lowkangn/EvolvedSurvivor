@@ -80,7 +80,7 @@ namespace TeamOne.EvolvedSurvivor
         {
             tier = other.tier;
             traitChart = new TraitChart(other.traitChart);
-            element = other.element;
+            element = new Element(other.element);
         }
 
         /// <summary>
