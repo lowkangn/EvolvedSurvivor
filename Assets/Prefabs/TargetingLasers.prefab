@@ -458,7 +458,7 @@ MonoBehaviour:
   - {fileID: 5347742164415771126}
   - {fileID: 6028329432280387890}
   - {fileID: 7444229420205248599}
-  fireAfterSeconds: 5
+  fireAfterSeconds: 600
   fireDuration: 4
   missileSpawnHeight: 10
   explosionParticles: {fileID: 2391867290755120447}
