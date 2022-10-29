@@ -1,20 +1,42 @@
+using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TeamOne.EvolvedSurvivor;
 using UnityEngine;
 
 public class TargetLaserGroup : MonoBehaviour
 {
     [SerializeField] private List<TargetingLaser> lasers;
     [SerializeField] private float fireAfterSeconds;
+    [SerializeField] private float fireDuration = 4f;
+
+    [SerializeField] private SpawnManagerScriptableObject spawnManager;
+    [SerializeField] private float damageValue = 1000f;
+
+    private Health playerHealth;
 
     private void Start()
     {
         InvokeRepeating("WarmUpLasers", 0f, 8f);
     }
 
+    private void OnEnable()
+    {
+        spawnManager.PlayerSpawnEvent.AddListener(AttachToPlayer);
+    }
+
     private void OnDisable()
     {
+        spawnManager.PlayerSpawnEvent.RemoveListener(AttachToPlayer);
         StopAllCoroutines();
+    }
+
+    private void AttachToPlayer(PlayerController player)
+    {
+        gameObject.transform.position = player.transform.position;
+        gameObject.transform.parent = player.transform;
+
+        playerHealth = player.GetComponent<Health>();
     }
 
     private void WarmUpLasers()
@@ -39,6 +61,9 @@ public class TargetLaserGroup : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         ArmLasers();
+
+        yield return new WaitForSeconds(fireDuration);
+        Fire();
     }
 
     private void SetLasers(bool isActive)
@@ -54,7 +79,12 @@ public class TargetLaserGroup : MonoBehaviour
         foreach (TargetingLaser laser in lasers)
         {
             // Give at least 0.5f for the lasers to converge and stay on target
-            laser.ArmLaser(4f);
+            laser.ArmLaser(fireDuration);
         }
+    }
+
+    private void Fire()
+    {
+        playerHealth.Damage(damageValue, gameObject, 0f, 0f, Vector3.zero);
     }
 }

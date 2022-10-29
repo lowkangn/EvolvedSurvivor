@@ -36,8 +36,6 @@ namespace TeamOne.EvolvedSurvivor
 
         public void ProcessIncomingDamage(Damage damage)
         {
-            // TODO: Process force application, debuffs, etc
-
             // Apply damage reduction
             damage.damage *= incomingDamageMultiplier;
 
