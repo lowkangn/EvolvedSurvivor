@@ -69,6 +69,7 @@ public class TargetingLaser : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToCharge);
 
+        this.isArmed = false;
         gameObject.SetActive(false);
     }
 }

@@ -9,7 +9,7 @@ public class TargetLaserGroup : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("WarmUpLasers", 0f, 10f);
+        InvokeRepeating("WarmUpLasers", 0f, 8f);
     }
 
     private void OnDisable()
@@ -27,8 +27,16 @@ public class TargetLaserGroup : MonoBehaviour
         yield return new WaitForSeconds(fireAfterSeconds);
 
         SetLasers(true);
+        yield return new WaitForSeconds(0.1f);
+        SetLasers(false);
+        yield return new WaitForSeconds(0.1f);
+        SetLasers(true);
+        yield return new WaitForSeconds(0.2f);
+        SetLasers(false);
+        yield return new WaitForSeconds(0.2f);
+        SetLasers(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
 
         ArmLasers();
     }
