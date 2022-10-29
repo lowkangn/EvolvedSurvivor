@@ -16,10 +16,10 @@ namespace TeamOne.EvolvedSurvivor
             damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target, Damage damage)
+        public override void Apply(StatusEffectHandler handler, Damage damage)
         {
             Damage dot = new Damage(damage.damage * damageMultiplier, damage.instigator);
-            target.GetComponent<DamageHandler>().ApplyDamageOverTime(dot, duration, tickRate);
+            handler.DamageOverTimeForDuration(dot, tickRate, duration);
         }
 
         public override string GetName()

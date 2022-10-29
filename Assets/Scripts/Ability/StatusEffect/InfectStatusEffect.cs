@@ -14,9 +14,9 @@ namespace TeamOne.EvolvedSurvivor
             duration = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target, Damage damage)
+        public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            target.GetComponent<Enemy>().SlowForDuration(magnitude, duration);
+            handler.SlowForDuration(magnitude, duration);
         }
 
         public override string GetName()

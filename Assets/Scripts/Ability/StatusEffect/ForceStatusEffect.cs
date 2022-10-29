@@ -14,10 +14,10 @@ namespace TeamOne.EvolvedSurvivor
             force = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target, Damage damage)
+        public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            Vector3 direction = target.transform.position - damage.instigator.transform.position;
-            target.GetComponent<TopDownController2D>().Impact(direction, force);
+            Vector3 direction = handler.transform.position - damage.instigator.transform.position;
+            handler.ApplyForce(direction, force);
         }
 
         public override string GetName()

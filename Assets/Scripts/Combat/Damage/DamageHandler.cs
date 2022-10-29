@@ -16,6 +16,7 @@ namespace TeamOne.EvolvedSurvivor
         private float damageDisabledDurationRemaining = 0f;
 
         private Health health;
+        [SerializeField] private StatusEffectHandler statusEffectHandler;
 
         private void Start()
         {
@@ -36,20 +37,23 @@ namespace TeamOne.EvolvedSurvivor
 
         public void ProcessIncomingDamage(Damage damage)
         {
-            // TODO: Process force application, debuffs, etc
-
             // Apply damage reduction
             damage.damage *= incomingDamageMultiplier;
 
-            foreach (StatusEffect effect in damage.effects)
+            // Apply status effects if this object has a handler attached
+            if (statusEffectHandler)
             {
-                effect.Apply(gameObject, damage);
+                foreach (StatusEffect effect in damage.effects)
+                {
+                    effect.Apply(statusEffectHandler, damage);
+                }
             }
+
             // Reduce health
             health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
         }
 
-        public void ApplyDamageOverTime(Damage damage, float duration, float tickRate)
+        public void ApplyDamageOverTime(Damage damage, float tickRate, float duration)
         {
             int ticks = Mathf.FloorToInt(duration / tickRate);
             damage.damage = damage.damage / ticks;

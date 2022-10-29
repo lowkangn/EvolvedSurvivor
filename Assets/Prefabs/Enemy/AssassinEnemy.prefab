@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: -6019659113267063078}
   - component: {fileID: 8359986885604814273}
   - component: {fileID: 7934149974114162418}
+  - component: {fileID: 4865310587204656476}
   m_Layer: 13
   m_Name: AssassinEnemy
   m_TagString: Enemy
@@ -941,6 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDurationAfterTakingDamage: 0
+  statusEffectHandler: {fileID: 4865310587204656476}
 --- !u!114 &-6019659113267063078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,6 +994,22 @@ MonoBehaviour:
   movement: {fileID: 7751080476582257864}
   aiBrain: {fileID: 7751210001397076598}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
+--- !u!114 &4865310587204656476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6320434d18de9459afa9121ef1c2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageHandler: {fileID: -5534447137170697443}
+  movement: {fileID: 7751080476582257864}
+  controller: {fileID: 497375873246933806}
+  aiBrain: {fileID: 7751210001397076598}
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0
