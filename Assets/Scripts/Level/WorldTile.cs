@@ -38,19 +38,31 @@ public class WorldTile : MonoBehaviour
 
         int tileSizeInCells = Mathf.FloorToInt(tileSize / cellSize);
         Vector2 tilePosition = gameObject.transform.position;
+        Random.InitState(Mathf.FloorToInt(seed));
 
         for (int i = 0; i < tileSizeInCells; i++)
         {
             for (int j = 0; j < tileSizeInCells; j++)
             {
-                float generatedNoise = Mathf.PerlinNoise((tilePosition.x + i) * 0.5f + seed, (tilePosition.y + j) * 0.5f + seed);
+                Vector2 tileOffset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
+                Vector2 objectRoughPosition = tilePosition + tileOffset;
 
+                if (objectRoughPosition.x > -5f && objectRoughPosition.x < 8f && objectRoughPosition.y > -8f && objectRoughPosition.y < 8f)
+                {
+                    continue;
+                }
+
+                float generatedNoise = Mathf.PerlinNoise((tilePosition.x + i) * 0.5f + seed, (tilePosition.y + j) * 0.5f + seed);
+                
                 if (generatedNoise < density)
                 {
                     GameObject bgObject = bgObjectPool.GetPooledObjectBySeed(seed + i + j);
-                    Vector2 offset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
-                    bgObject.transform.position = tilePosition + offset;
+                    Vector2 randomOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+                    bgObject.transform.position = tilePosition + tileOffset + randomOffset;
                     bgObject.transform.parent = gameObject.transform;
+                    bgObject.transform.rotation = (Random.Range(0f, 1f) <= 0.5f)
+                        ? Quaternion.Euler(0f, 0f, 0f)
+                        : Quaternion.Euler(0f, 180f, 0f);
                     bgObject.SetActive(true);
 
                     bgObjects.Add(bgObject);
