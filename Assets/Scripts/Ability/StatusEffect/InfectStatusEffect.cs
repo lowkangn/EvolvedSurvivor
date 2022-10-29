@@ -7,7 +7,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         [SerializeField]
         private float duration;
-        private readonly float magnitude = 0.5f;
+        private readonly float magnitude = 0.3f;
 
         public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
         {

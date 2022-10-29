@@ -95,7 +95,7 @@ namespace TeamOne.EvolvedSurvivor
 
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
-                int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
+                int additionalLevel = newAbility.tier % 2 + newAbility.tier / 2 - element.GetTotalLevel();
                 if (additionalLevel > 0)
                 {
                     newAbility.element.CombineWith(consumedAbility.element);
