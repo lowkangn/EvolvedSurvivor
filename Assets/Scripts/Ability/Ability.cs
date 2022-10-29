@@ -80,7 +80,7 @@ namespace TeamOne.EvolvedSurvivor
         {
             tier = other.tier;
             traitChart = new TraitChart(other.traitChart);
-            element = other.element;
+            element = new Element(other.element);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace TeamOne.EvolvedSurvivor
 
                 // Element Upgrade
                 newAbility.tier = tier + consumedAbility.tier;
-                int additionalLevel = tier % 2 + tier / 2 - element.GetTotalLevel();
+                int additionalLevel = newAbility.tier % 2 + newAbility.tier / 2 - element.GetTotalLevel();
                 if (additionalLevel > 0)
                 {
                     newAbility.element.CombineWith(consumedAbility.element);
@@ -179,29 +179,30 @@ namespace TeamOne.EvolvedSurvivor
         }
         protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float magnitude)
         {
-            float levelRatio = (float)element.elements[type] / Element.maxLevel;
+            int level = element.elements[type];
+            float levelRatio = (float)level / Element.maxLevel;
             StatusEffect effect;
             switch (type)
             {
                 case ElementType.Plasma:
                     effect = gameObject.AddComponent<PlasmaStatusEffect>();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, levelRatio, utilityRatio, magnitude);
                     break;
                 case ElementType.Cryo:
                     effect = gameObject.AddComponent<CryoStatusEffect>();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, levelRatio, utilityRatio, magnitude);
                     break;
                 case ElementType.Force:
                     effect = gameObject.AddComponent<ForceStatusEffect>();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, levelRatio, utilityRatio, magnitude);
                     break;
                 case ElementType.Infect:
                     effect = gameObject.AddComponent<InfectStatusEffect>();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, levelRatio, utilityRatio, magnitude);
                     break;
                 case ElementType.Pyro:
                     effect = gameObject.AddComponent<PyroStatusEffect>();
-                    effect.Build(levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, levelRatio, utilityRatio, magnitude);
                     break;
                 default:
                     throw new System.Exception("Element Type invalid");

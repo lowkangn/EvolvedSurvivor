@@ -29,6 +29,11 @@ namespace TeamOne.EvolvedSurvivor
             };
         }
 
+        public Element(Element other)
+        {
+            elements = new Dictionary<ElementType, int>(other.elements);
+        }
+
         public int GetTotalLevel()
         {
             return elements.Sum(x => x.Value);
