@@ -6,11 +6,12 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class ForceStatusEffect : StatusEffect
     {
-        [SerializeField]
         private float force;
+        private int level;
 
-        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
         {
+            this.level = level;
             force = levelRatio * utilityRatio * maxMagnitude;
         }
 
@@ -22,7 +23,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Force";
+            return "Force " + level;
         }
     }
 }

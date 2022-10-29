@@ -8,11 +8,12 @@ namespace TeamOne.EvolvedSurvivor
     {
         private readonly float tickRate = 0.5f;
         private readonly float duration = 3f;
-        [SerializeField]
         private float damageMultiplier;
+        private int level;
 
-        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
         {
+            this.level = level;
             damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
         }
 
@@ -24,7 +25,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Pyro";
+            return "Pyro " + level;
         }
     }
 }

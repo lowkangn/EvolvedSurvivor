@@ -5,11 +5,11 @@ namespace TeamOne.EvolvedSurvivor
     public class PlasmaStatusEffect : StatusEffect
     {
         private readonly float radius = 0.8f;
-        [SerializeField]
         private float damageMultiplier;
-
-        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
+        private int level;
+        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
         {
+            this.level = level;
             damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
         }
 
@@ -43,7 +43,7 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Plasma";
+            return "Plasma " + level;
         }
     }
 }
