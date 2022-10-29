@@ -10,6 +10,7 @@ public class TargetLaserGroup : MonoBehaviour
     [SerializeField] private List<TargetingLaser> lasers;
     [SerializeField] private float fireAfterSeconds;
     [SerializeField] private float fireDuration = 4f;
+    [SerializeField] private ParticleSystem explosionParticles;
 
     [SerializeField] private SpawnManagerScriptableObject spawnManager;
     [SerializeField] private float damageValue = 1000f;
@@ -87,6 +88,7 @@ public class TargetLaserGroup : MonoBehaviour
     private void Fire()
     {
         MMFlashEvent.Trigger(Color.red, 0.5f, 1f, 0, 0, TimescaleModes.Unscaled);
+        explosionParticles.Play();
         playerHealth.Damage(damageValue, gameObject, 0f, 0f, Vector3.zero);
     }
 }
