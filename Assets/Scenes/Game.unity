@@ -16767,7 +16767,7 @@ MonoBehaviour:
   DebugSettings:
     Channel: 0
     FlashColor: {r: 1, g: 1, b: 1, a: 1}
-    FlashDuration: 0.2
+    FlashDuration: 0.5
     FlashAlpha: 1
     FlashID: 0
   DebugTestButton: 0

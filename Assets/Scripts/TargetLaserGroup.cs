@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -85,6 +86,7 @@ public class TargetLaserGroup : MonoBehaviour
 
     private void Fire()
     {
+        MMFlashEvent.Trigger(Color.red, 0.5f, 1f, 0, 0, TimescaleModes.Unscaled);
         playerHealth.Damage(damageValue, gameObject, 0f, 0f, Vector3.zero);
     }
 }
