@@ -88,6 +88,7 @@ public class TargetLaserGroup : MonoBehaviour
     private void Fire()
     {
         MMFlashEvent.Trigger(Color.red, 0.5f, 1f, 0, 0, TimescaleModes.Unscaled);
+        explosionParticles.gameObject.SetActive(true);
         explosionParticles.Play();
         playerHealth.Damage(damageValue, gameObject, 0f, 0f, Vector3.zero);
     }
