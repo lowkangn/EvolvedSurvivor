@@ -31,7 +31,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy5Anim
+  m_Name: RangedMarineAnim
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Walking
@@ -104,7 +104,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2e39852531771424f80872ef34ffea08, type: 2}
+  m_Motion: {fileID: 7400000, guid: edb99451120ccfa4dbd6b0b11d5bb367, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -186,7 +186,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0dc54dd8d55a83e4ea9f359194f5f8da, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7d3bb5c112f3ed64b944e780e126f63d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -213,7 +213,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 62a0abbde127f5e4a887b4f6519d26f0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1f9d1d3ec45b6d544aa7acb7755860b4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

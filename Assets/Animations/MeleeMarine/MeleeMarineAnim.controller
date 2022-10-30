@@ -31,7 +31,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy4Anim
+  m_Name: MeleeMarineAnim
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Walking
@@ -104,7 +104,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e26c9e0ebc644054e91e206cff98d09f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 43d993159ca444c47aefdf74b0d55837, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -186,7 +186,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5aefca5ae1084964f86fa45bafe88cfc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9e945c0b3cf87554f92366f86f043568, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -213,7 +213,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16a86161c11fa3a4bbd9778e7bdbfd9c, type: 2}
+  m_Motion: {fileID: 7400000, guid: a1cc46861295634439261384e997a5cf, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

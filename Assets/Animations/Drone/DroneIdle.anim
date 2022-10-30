@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy3Idle
+  m_Name: DroneIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1332510846, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
+      value: {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
     - time: 0.41666666
-      value: {fileID: -994642644, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
+      value: {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
     - time: 0.8333333
-      value: {fileID: 1332510846, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
+      value: {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1332510846, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
-    - {fileID: -994642644, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
-    - {fileID: 1332510846, guid: 9023cc772dee1d442b7533289f8eea69, type: 3}
+    - {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
+    - {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
+    - {fileID: 268455661, guid: 510ddcaf359eaaf4d8a1558dddf0bb6f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
