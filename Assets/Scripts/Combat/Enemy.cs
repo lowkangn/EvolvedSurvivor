@@ -33,25 +33,6 @@ namespace TeamOne.EvolvedSurvivor
             spawnManager.OnEnemyDespawn(this.gameObject);
         }
 
-        public void FreezeForDuration(float duration)
-        {
-            damageHandler.DisableOutgoingDamageForDuration(duration);
-            movement.ApplyMovementMultiplier(0, duration);
-            aiBrain.BrainActive = false;
-            StartCoroutine(EnableBrainAfterDuration(duration));
-        }
-
-        public void SlowForDuration(float magnitude,float duration)
-        {
-            movement.ApplyMovementMultiplier(magnitude, duration);
-        }
-
-        IEnumerator EnableBrainAfterDuration(float duration)
-        {
-            yield return new WaitForSeconds(duration);
-            aiBrain.BrainActive = true;
-        }
-
         public virtual void ScaleStats(float timePassed)
         {
             Damage damage = new Damage();

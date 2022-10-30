@@ -5,23 +5,24 @@ namespace TeamOne.EvolvedSurvivor
 {
     public class InfectStatusEffect : StatusEffect
     {
-        [SerializeField]
         private float duration;
-        private readonly float magnitude = 0.5f;
+        private readonly float magnitude = 0.3f;
+        private int level;
 
-        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
         {
+            this.level = level;
             duration = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target, Damage damage)
+        public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            target.GetComponent<Enemy>().SlowForDuration(magnitude, duration);
+            handler.SlowForDuration(magnitude, duration);
         }
 
         public override string GetName()
         {
-            return "Infect";
+            return "Infect " + level;
         }
     }
 }

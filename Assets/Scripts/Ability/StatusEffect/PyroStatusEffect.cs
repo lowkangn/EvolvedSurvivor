@@ -8,23 +8,24 @@ namespace TeamOne.EvolvedSurvivor
     {
         private readonly float tickRate = 0.5f;
         private readonly float duration = 3f;
-        [SerializeField]
         private float damageMultiplier;
+        private int level;
 
-        public override void Build(float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
         {
+            this.level = level;
             damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
         }
 
-        public override void Apply(GameObject target, Damage damage)
+        public override void Apply(StatusEffectHandler handler, Damage damage)
         {
             Damage dot = new Damage(damage.damage * damageMultiplier, damage.instigator);
-            target.GetComponent<DamageHandler>().ApplyDamageOverTime(dot, duration, tickRate);
+            handler.DamageOverTimeForDuration(dot, tickRate, duration);
         }
 
         public override string GetName()
         {
-            return "Pyro";
+            return "Pyro " + level;
         }
     }
 }
