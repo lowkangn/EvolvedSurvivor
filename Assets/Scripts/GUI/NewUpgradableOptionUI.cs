@@ -10,6 +10,14 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] private AddUpgradableHandler addUpgradableHandler;
         [SerializeField] private Animator animator;
 
+        private void OnEnable()
+        {
+            if (!this.isEmpty)
+            {
+                this.animator.SetFloat("upgradableIndex", upgradable.GetAnimatorIndex());
+            }
+        }
+
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
             if (upgradable.IsAbility())

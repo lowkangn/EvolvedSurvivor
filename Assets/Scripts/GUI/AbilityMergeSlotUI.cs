@@ -50,7 +50,11 @@ public class AbilityMergeSlotUI : AbilityButton
     public override void OnPointerExit(PointerEventData eventData)
     {
         base.OnPointerEnter(eventData);
-        this.animator.SetBool("isHovering", false);
+
+        if (!this.isEmpty)
+        {
+            this.animator.SetBool("isHovering", false);
+        }
     }
 
     public Ability GetAbility()
