@@ -1,7 +1,6 @@
 using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -35,6 +34,7 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
+        private UpgradableAnimatorIndex animatorIndex;
         private bool isActive;
 
         [Header("Recursive ability pool")]
@@ -213,6 +213,11 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetSprite()
         {
             return this.abilitySprite;
+        }
+
+        public int GetAnimatorIndex()
+        {
+            return (int)this.animatorIndex;
         }
 
         // This method is used for recursive abilities.

@@ -16,6 +16,7 @@ namespace TeamOne.EvolvedSurvivor
         protected int currentTier = 0;
         [SerializeField]
         private Sprite abilitySprite;
+        private UpgradableAnimatorIndex animatorIndex;
 
         public abstract void Upgrade();
 
@@ -42,6 +43,11 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetSprite()
         {
             return this.abilitySprite;
+        }
+
+        public int GetAnimatorIndex()
+        {
+            return (int)this.animatorIndex;
         }
 
         public string GetName()
