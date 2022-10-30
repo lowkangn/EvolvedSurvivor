@@ -963,6 +963,7 @@ GameObject:
   - component: {fileID: 3381349968353220828}
   - component: {fileID: 3381349968353220830}
   - component: {fileID: 3381349968353220831}
+  - component: {fileID: 7425059277236268598}
   m_Layer: 5
   m_Name: HelpPanel
   m_TagString: Untagged
@@ -1034,6 +1035,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7425059277236268598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381349968353220829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86207904b5144d14d975b93d51809cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helpPages:
+  - {fileID: 3381349970241582248}
+  - {fileID: 3381349969686538746}
+  - {fileID: 3381349968219852368}
+  nextButton: {fileID: 3381349969054367985}
+  backButton: {fileID: 3381349969359669394}
 --- !u!1 &3381349968711189437
 GameObject:
   m_ObjectHideFlags: 0
