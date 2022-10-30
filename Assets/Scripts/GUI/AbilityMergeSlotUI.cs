@@ -10,6 +10,7 @@ public class AbilityMergeSlotUI : AbilityButton
 
     [SerializeField] protected MergeAbilityHandler mergeAbilityHandler;
     [SerializeField] protected LevelUpScreenManager levelUpManager;
+    [SerializeField] private Animator animator;
 
     private CurrentAbilityUI sourceSlot;
 
@@ -42,7 +43,14 @@ public class AbilityMergeSlotUI : AbilityButton
         else 
         {
             base.OnPointerEnter(pointerEventData);
+            this.animator.SetBool("isHovering", true);
         }
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerEnter(eventData);
+        this.animator.SetBool("isHovering", false);
     }
 
     public Ability GetAbility()

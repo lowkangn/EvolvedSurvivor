@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 160821667}
   - component: {fileID: 160821666}
   - component: {fileID: 160821668}
+  - component: {fileID: 160821669}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -869,6 +870,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &160821669
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160821664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &168818711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2674,7 @@ GameObject:
   - component: {fileID: 435235223}
   - component: {fileID: 435235226}
   - component: {fileID: 435235225}
+  - component: {fileID: 435235227}
   m_Layer: 5
   m_Name: OutputSlot
   m_TagString: Untagged
@@ -2679,6 +2701,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}
+  animator: {fileID: 160821669}
 --- !u!224 &435235224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2738,6 +2761,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435235222}
   m_CullTransparentMesh: 1
+--- !u!95 &435235227
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435235222}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &450635674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +2940,7 @@ GameObject:
   - component: {fileID: 466703921}
   - component: {fileID: 466703920}
   - component: {fileID: 466703922}
+  - component: {fileID: 466703923}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -2984,6 +3028,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &466703923
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466703918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &495526538
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,6 +4230,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  animator: {fileID: 1861653869}
 --- !u!1 &719450116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4177,6 +4242,7 @@ GameObject:
   - component: {fileID: 719450119}
   - component: {fileID: 719450118}
   - component: {fileID: 719450121}
+  - component: {fileID: 719450122}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -4264,6 +4330,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &719450122
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719450116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &754604115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6016,6 +6102,7 @@ GameObject:
   - component: {fileID: 930524859}
   - component: {fileID: 930524858}
   - component: {fileID: 930524860}
+  - component: {fileID: 930524861}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -6103,6 +6190,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &930524861
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930524856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &931278486
 GameObject:
   m_ObjectHideFlags: 0
@@ -6386,6 +6493,7 @@ GameObject:
   - component: {fileID: 964518615}
   - component: {fileID: 964518614}
   - component: {fileID: 964518616}
+  - component: {fileID: 964518617}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -6473,6 +6581,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &964518617
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964518612}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &970998301
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8191,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}
+  animator: {fileID: 1505158955}
 --- !u!224 &1234950177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8890,6 +9019,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  animator: {fileID: 466703923}
 --- !u!1 &1342388432
 GameObject:
   m_ObjectHideFlags: 0
@@ -10781,6 +10911,7 @@ GameObject:
   - component: {fileID: 1505158953}
   - component: {fileID: 1505158952}
   - component: {fileID: 1505158954}
+  - component: {fileID: 1505158955}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -10868,6 +10999,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1505158955
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505158950}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1515706162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12526,6 +12677,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  animator: {fileID: 719450122}
 --- !u!1 &1828941779
 GameObject:
   m_ObjectHideFlags: 0
@@ -12729,6 +12881,7 @@ GameObject:
   - component: {fileID: 1861653867}
   - component: {fileID: 1861653866}
   - component: {fileID: 1861653868}
+  - component: {fileID: 1861653869}
   m_Layer: 5
   m_Name: AbilitySprite
   m_TagString: Untagged
@@ -12816,6 +12969,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1861653869
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861653864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6ce8b46d972b8c418ba7fe2d7697f3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1903983886
 GameObject:
   m_ObjectHideFlags: 0
@@ -14342,6 +14515,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   levelUpManager: {fileID: 834233124}
   addUpgradableHandler: {fileID: 834233128}
+  animator: {fileID: 930524861}
 --- !u!1 &2136864057
 GameObject:
   m_ObjectHideFlags: 0
@@ -14422,6 +14596,7 @@ MonoBehaviour:
   radarChart: {fileID: 2097723811}
   mergeAbilityHandler: {fileID: 834233123}
   levelUpManager: {fileID: 834233124}
+  animator: {fileID: 964518617}
 --- !u!224 &2139623816
 RectTransform:
   m_ObjectHideFlags: 0

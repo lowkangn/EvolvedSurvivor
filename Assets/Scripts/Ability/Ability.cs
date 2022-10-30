@@ -34,6 +34,7 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
+        [SerializeField]
         private UpgradableAnimatorIndex animatorIndex;
         private bool isActive;
 

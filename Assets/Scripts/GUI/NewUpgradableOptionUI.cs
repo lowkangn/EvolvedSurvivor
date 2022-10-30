@@ -8,6 +8,7 @@ namespace TeamOne.EvolvedSurvivor
     {
         [SerializeField] private LevelUpScreenManager levelUpManager;
         [SerializeField] private AddUpgradableHandler addUpgradableHandler;
+        [SerializeField] private Animator animator;
 
         public override void OnPointerClick(PointerEventData pointerEventData)
         {
@@ -33,13 +34,26 @@ namespace TeamOne.EvolvedSurvivor
             this.addUpgradableHandler.SetCurrentSelectedUpgradable(upgradable);
         }
 
-        // Detect when Cursor leaves the button
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+            this.animator.SetBool("isHovering", true);
+        }
+
+
         public override void OnPointerExit(PointerEventData eventData)
         {
             this.textObj.text = "";
             this.detailedTextObj.text = "";
 
             radarChart.ClearVisual();
+            this.animator.SetBool("isHovering", false);
+        }
+
+        public override void AddUpgradableToButton(Upgradable upgradable)
+        {
+            base.AddUpgradableToButton(upgradable);
+            this.animator.SetFloat("upgradableIndex", upgradable.GetAnimatorIndex());
         }
     }
 }

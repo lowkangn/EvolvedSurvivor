@@ -62,6 +62,7 @@ MonoBehaviour:
     utility: 0
   hasBuilt: 0
   abilitySprite: {fileID: 21300000, guid: 639ab1d6dc2363842afb5b15a9904b32, type: 3}
+  animatorIndex: 5
   recursiveAbilityObjectPool: {fileID: -5615339616105582634}
   projectileObjectPool: {fileID: 3249972788575651579}
   elementMagnitudes:
