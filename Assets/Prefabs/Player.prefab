@@ -5218,9 +5218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abe6344b7148db4687d3c84e7712904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarType: 1
+  HealthBarType: 0
   TimeScale: 0
-  HealthBarPrefab: {fileID: 0}
+  HealthBarPrefab: {fileID: 5489941862842059020, guid: d082d85e83589ce44ad1acb1787a438a,
+    type: 3}
   Size: {x: 2, y: 0.2}
   BackgroundPadding: {x: 0.01, y: 0.01}
   InitialRotationAngles: {x: 0, y: 0, z: 0}
@@ -5413,6 +5414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDurationAfterTakingDamage: 1
+  statusEffectHandler: {fileID: 0}
 --- !u!114 &3974080717082401969
 MonoBehaviour:
   m_ObjectHideFlags: 0
