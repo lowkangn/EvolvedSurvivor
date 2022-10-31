@@ -1,6 +1,5 @@
 using UnityEngine;
 using TeamOne.EvolvedSurvivor;
-using System.Collections.Generic;
 
 public class AddUpgradableHandler : MonoBehaviour
 {
@@ -15,8 +14,6 @@ public class AddUpgradableHandler : MonoBehaviour
     private AbilityGenerator abilityGenerator;
     private PassiveAbilityManager passiveAbilityManager;
     private int numOfUpgradableOptions;
-    [SerializeField]
-    private int minNumOfUniqueActives;
 
     private void Awake()
     {
@@ -42,7 +39,6 @@ public class AddUpgradableHandler : MonoBehaviour
     // Generate new upgradables in Level Up screen
     public void GenerateNewUpgradables()
     {
-        HashSet<string> activesGenerated = new HashSet<string>();
         for (int i = 0; i < numOfUpgradableOptions; i++)
         {
             if (i == 0 && Random.value < 0.4f && !passiveAbilityManager.IsAllPassivesMaxedOut() && !abilityManager.IsEmpty())
@@ -53,8 +49,7 @@ public class AddUpgradableHandler : MonoBehaviour
             }
             else
             {
-                Ability ability = abilityGenerator.GenerateAbility(1, activesGenerated.Count < minNumOfUniqueActives ? activesGenerated : null);
-                activesGenerated.Add(ability.AbilityName);
+                Ability ability = abilityGenerator.GenerateAbility(1);
                 NewUpgradablesButtons[i].AddUpgradableToButton(ability);
                 NewUpgradables[i] = ability;
             }
