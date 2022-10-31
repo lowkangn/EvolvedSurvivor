@@ -35,6 +35,7 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
+        private Sprite recursiveSprite;
         private bool isActive;
 
         [Header("Recursive ability pool")]
@@ -118,6 +119,7 @@ namespace TeamOne.EvolvedSurvivor
                     recursiveAbility.CloneAbility(consumedAbility);
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
+                    newAbility.recursiveSprite = recursiveAbility.abilitySprite;
                 }
 
                 return newAbility;
@@ -213,6 +215,11 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetSprite()
         {
             return this.abilitySprite;
+        }
+
+        public Sprite GetRecursiveSprite()
+        {
+            return this.recursiveSprite;
         }
 
         // This method is used for recursive abilities.

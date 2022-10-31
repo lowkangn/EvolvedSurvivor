@@ -9,6 +9,7 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected Text textObj;
         [SerializeField] protected Text detailedTextObj;
         [SerializeField] protected Image upgradableImage;
+        [SerializeField] protected Image recursiveImage;
         [SerializeField] protected T upgradable;
         [SerializeField] protected RadarChartUI radarChart;
 
@@ -24,6 +25,10 @@ namespace TeamOne.EvolvedSurvivor
             this.upgradable = upgradable;
             this.upgradableImage.gameObject.SetActive(true);
             this.upgradableImage.sprite = upgradable.GetSprite();
+            if (upgradable.GetRecursiveSprite() != null) {
+                this.recursiveImage.gameObject.SetActive(true);
+                this.recursiveImage.sprite = upgradable.GetRecursiveSprite();
+            }
             this.isEmpty = false;
         }
 
@@ -54,7 +59,9 @@ namespace TeamOne.EvolvedSurvivor
                 this.isEmpty = true;
                 this.upgradable = default;
                 this.upgradableImage.sprite = null;
+                this.recursiveImage.sprite = null;
                 this.upgradableImage.gameObject.SetActive(false);
+                this.recursiveImage.gameObject.SetActive(false);
             }
         }
     }
