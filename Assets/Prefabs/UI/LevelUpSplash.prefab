@@ -7443,6 +7443,7 @@ MonoBehaviour:
   - {fileID: 1333174595596676955}
   - {fileID: 1333174594819568627}
   confirmButton: {fileID: 1333174596790378398}
+  minNumOfUniqueActives: 3
 --- !u!1 &1333174596850838556
 GameObject:
   m_ObjectHideFlags: 0
