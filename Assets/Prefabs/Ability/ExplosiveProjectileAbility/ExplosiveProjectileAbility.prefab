@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2010592884705919976}
   - component: {fileID: 5307783665074370759}
   - component: {fileID: 385951916290607148}
+  - component: {fileID: 7235295813051171956}
   m_Layer: 0
   m_Name: ExplosiveProjectileAbility
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   - 1500
   - 4
   - 1.5
+  sfxHandler: {fileID: 7235295813051171956}
   damage:
     minValue: 5
     maxValue: 20
@@ -147,6 +149,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &7235295813051171956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: aad739602f8df46fdbfa5f6784093c18, type: 3}
+  volume: 1
+  loop: 0
 --- !u!1 &6844707240551992630
 GameObject:
   m_ObjectHideFlags: 0

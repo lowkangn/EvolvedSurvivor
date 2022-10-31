@@ -389,7 +389,7 @@ MonoBehaviour:
           TargetBPM: 120
         Owner: {fileID: 5633355157281015665}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 51f2769dc716d1148844990d0d22ecd9, type: 3}
+        Sfx: {fileID: 8300000, guid: f3cf1885a713b44589e8f366e363abfc, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -397,11 +397,12 @@ MonoBehaviour:
           ButtonText: Debug Stop Sound
         PlayMethod: 0
         PoolSize: 10
-        MinVolume: 1
-        MaxVolume: 1
+        MinVolume: 0.4
+        MaxVolume: 0.4
         MinPitch: 1
         MaxPitch: 1
-        SfxAudioMixerGroup: {fileID: 0}
+        SfxAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
+          type: 2}
     - rid: 1295320814633615375
       type: {class: MMF_Particles, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -1470,7 +1471,7 @@ MonoBehaviour:
           TargetBPM: 120
         Owner: {fileID: 6573627114560633500}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: a4ce1e0e50d887641b42f7507d3951bb, type: 3}
+        Sfx: {fileID: 8300000, guid: a70ec16c8bde74d7a80ccd362d26c993, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -1478,8 +1479,9 @@ MonoBehaviour:
           ButtonText: Debug Stop Sound
         PlayMethod: 0
         PoolSize: 10
-        MinVolume: 1
-        MaxVolume: 1
+        MinVolume: 0.5
+        MaxVolume: 0.5
         MinPitch: 1
         MaxPitch: 1
-        SfxAudioMixerGroup: {fileID: 0}
+        SfxAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
+          type: 2}

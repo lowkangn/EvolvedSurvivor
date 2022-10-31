@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8988950983226355129}
   - component: {fileID: -1513630708593478744}
   - component: {fileID: 1516933811655595900}
+  - component: {fileID: 3319382061451597004}
   m_Layer: 0
   m_Name: LockOnAbility
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   - 1500
   - 4
   - 1.5
+  sfxHandler: {fileID: 3319382061451597004}
   damage:
     minValue: 15
     maxValue: 40
@@ -141,6 +143,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &3319382061451597004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 33f85a73f2d0d4ff9b9e5417624f8509, type: 3}
+  volume: 0.9
+  loop: 0
 --- !u!1 &8464439605043518667
 GameObject:
   m_ObjectHideFlags: 0

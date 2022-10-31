@@ -51,6 +51,10 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected List<float> elementMagnitudes =  new List<float>();
 
+        [Header("Sfx")]
+        [SerializeField]
+        protected SfxHandler sfxHandler;
+
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4806899296850615395}
   - component: {fileID: -418630340990580898}
   - component: {fileID: -573954469558076811}
+  - component: {fileID: 8517226524611391979}
   m_Layer: 0
   m_Name: LaserAbility
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   - 700
   - 2
   - 2
+  sfxHandler: {fileID: 8517226524611391979}
   damage:
     minValue: 3
     maxValue: 12
@@ -146,6 +148,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &8517226524611391979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 4db9df7f1f87c46369db8318971379c0, type: 3}
+  volume: 0.6
+  loop: 0
 --- !u!1 &7655304159716342301
 GameObject:
   m_ObjectHideFlags: 0

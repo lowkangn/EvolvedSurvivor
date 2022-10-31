@@ -27,6 +27,7 @@ namespace TeamOne.EvolvedSurvivor
         protected override void Activate()
         {
             StartCoroutine(SpawnLasers(laserNumber.value));
+            sfxHandler.PlaySfx();
         }
 
         private void SpawnLaser(Transform target = null)

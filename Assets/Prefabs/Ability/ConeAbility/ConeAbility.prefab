@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3249972788575651579}
   - component: {fileID: 146073918401665294}
   - component: {fileID: -5615339616105582634}
+  - component: {fileID: -4538171666262435482}
   m_Layer: 0
   m_Name: ConeAbility
   m_TagString: Untagged
@@ -70,6 +71,7 @@ MonoBehaviour:
   - 700
   - 2
   - 2
+  sfxHandler: {fileID: -4538171666262435482}
   damage:
     minValue: 4
     maxValue: 12
@@ -143,3 +145,18 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &-4538171666262435482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 6590306cfb2a24c1fb3d1a2e1d3c1252, type: 3}
+  volume: 0.7
+  loop: 0

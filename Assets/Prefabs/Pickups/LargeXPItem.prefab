@@ -121,7 +121,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  Sfx: {fileID: 8300000, guid: d399c32442598874995aa5443a689b4e, type: 3}
+  Sfx: {fileID: 8300000, guid: f6159c89ecd334b5a8f61d528b3e50fc, type: 3}
   RandomSfx: []
   TestButton: 0
   TestStopButton: 0
@@ -400,9 +400,9 @@ GameObject:
   - component: {fileID: 4116086766228746}
   - component: {fileID: 61369599479639190}
   - component: {fileID: 4948651360239434114}
-  - component: {fileID: 3165026487278651392}
   - component: {fileID: -5086284348085792106}
   - component: {fileID: 8917874383364436486}
+  - component: {fileID: 8062935905422182667}
   m_Layer: 0
   m_Name: LargeXPItem
   m_TagString: Untagged
@@ -476,23 +476,6 @@ MonoBehaviour:
   TargetObjectDisableDelay: 0
   Model: {fileID: 0}
   XPBonus: 5
---- !u!114 &3165026487278651392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489628332787134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08d1d5d923c8423284eb97551d7e8de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: f5ce1ca9165c50841933f1cda0a866aa, type: 2}
-  Quantity: 1
-  RemainingQuantity: 1
-  PickableIfInventoryIsFull: 1
-  DisableObjectWhenDepleted: 0
 --- !u!114 &-5086284348085792106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +509,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSpeed: 0.2
+--- !u!114 &8062935905422182667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489628332787134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: f5ce1ca9165c50841933f1cda0a866aa, type: 2}
+  Quantity: 1
+  RemainingQuantity: 1
+  PickableIfInventoryIsFull: 1
+  DisableObjectWhenDepleted: 0
 --- !u!1 &1543111494645246
 GameObject:
   m_ObjectHideFlags: 0
