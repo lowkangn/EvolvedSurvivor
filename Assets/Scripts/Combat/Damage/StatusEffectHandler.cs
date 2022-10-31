@@ -33,9 +33,8 @@ public class StatusEffectHandler : MonoBehaviour
     public void FreezeForDuration(float duration)
     {
         damageHandler.DisableOutgoingDamageForDuration(duration);
-        movement.SetContextSpeedMultiplier(0);
+        movement.ApplyMovementMultiplier(0, duration);
         aiBrain.BrainActive = false;
-        StartCoroutine(ResetMovementSpeedAfterDuration(duration));
         StartCoroutine(EnableBrainAfterDuration(duration));
     }
     // Force
@@ -47,20 +46,13 @@ public class StatusEffectHandler : MonoBehaviour
     // Infect
     public void SlowForDuration(float magnitude, float duration)
     {
-        movement.SetContextSpeedMultiplier(magnitude);
-        StartCoroutine(ResetMovementSpeedAfterDuration(duration));
+        movement.ApplyMovementMultiplier(magnitude, duration);
     }
 
     // Pyro
     public void DamageOverTimeForDuration(Damage damage, float tickRate, float duration)
     {
         damageHandler.ApplyDamageOverTime(damage, tickRate, duration);
-    }
-
-    IEnumerator ResetMovementSpeedAfterDuration(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        movement.ResetContextSpeedMultiplier();
     }
 
     IEnumerator EnableBrainAfterDuration(float duration)
