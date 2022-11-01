@@ -59,6 +59,7 @@ public class StatusEffectHandler : MonoBehaviour
         // DamageOverTime
         if (damageOverTimeTimer > 0f)
         {
+            damageOverTimeTimer -= Time.deltaTime;
             if (Time.time - lastTickTime > tickRate)
             {
                 damageHandler.ProcessIncomingDamage(damage);
