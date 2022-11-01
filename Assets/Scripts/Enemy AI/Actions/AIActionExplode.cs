@@ -15,6 +15,8 @@ public class AIActionExplode : AIAction
 
     [SerializeField] private GameObject explosion;
 
+    [SerializeField] private SfxHandler sfxHandler;
+
     public bool OnlyRunOnce = true;
 
     protected bool _alreadyRan = false;
@@ -29,6 +31,7 @@ public class AIActionExplode : AIAction
             _brain.BrainActive = false;
 
             StartCoroutine("DamagePlayerIfClose");
+            sfxHandler.PlaySfx();
             Invoke("DestroyObject", explosionDuration);
         }
     }

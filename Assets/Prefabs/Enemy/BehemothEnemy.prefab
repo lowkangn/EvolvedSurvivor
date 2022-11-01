@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 8359986885604814273}
   - component: {fileID: 7676436023281395966}
   - component: {fileID: 7561086138777402764}
+  - component: {fileID: 6536300511356255466}
   m_Layer: 13
   m_Name: BehemothEnemy
   m_TagString: Enemy
@@ -827,6 +828,7 @@ MonoBehaviour:
   timeForEachShot: 8
   enemy: {fileID: 7676436023281395966}
   projectileSpeed: 6
+  sfxHandler: {fileID: 6536300511356255466}
 --- !u!114 &7592192615028657320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1124,21 @@ MonoBehaviour:
   movement: {fileID: 7751080476582257864}
   controller: {fileID: 497375873246933806}
   aiBrain: {fileID: 7751210001397076598}
+--- !u!114 &6536300511356255466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 4d04b6c17cc314e8ba1c5c751bb6dd58, type: 3}
+  volume: 1
+  loop: 0
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0

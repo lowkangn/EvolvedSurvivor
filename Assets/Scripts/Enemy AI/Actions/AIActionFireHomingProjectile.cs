@@ -10,6 +10,8 @@ public class AIActionFireHomingProjectile : AIAction
     [SerializeField] private SecondaryAttackEnemy enemy;
     [SerializeField] private float projectileSpeed = 8f;
 
+    [SerializeField] private SfxHandler sfxHandler;
+
     private float timeSinceLastShot = 0f;
     private Damage damage;
 
@@ -50,5 +52,7 @@ public class AIActionFireHomingProjectile : AIAction
         nextProjectile.SetTarget(ESLevelManager.Instance.Players[0].gameObject);
 
         nextProjectile.gameObject.SetActive(true);
+
+        sfxHandler.PlaySfx();
     }
 }
