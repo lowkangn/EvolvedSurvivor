@@ -13,26 +13,12 @@ namespace TeamOne.EvolvedSurvivor
 
         private bool isDamageDisabled = false;
 
-        private float damageDisabledDurationRemaining = 0f;
-
         private Health health;
         [SerializeField] private StatusEffectHandler statusEffectHandler;
 
         private void Start()
         {
             health = GetComponent<Health>();
-        }
-
-        private void Update()
-        {
-            if (isDamageDisabled)
-            {
-                damageDisabledDurationRemaining -= Time.deltaTime;
-                if (damageDisabledDurationRemaining <= 0)
-                {
-                    isDamageDisabled = false;
-                }
-            }
         }
 
         public void ProcessIncomingDamage(Damage damage)
@@ -53,39 +39,14 @@ namespace TeamOne.EvolvedSurvivor
             health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
         }
 
-        public void ApplyDamageOverTime(Damage damage, float tickRate, float duration)
-        {
-            int ticks = Mathf.FloorToInt(duration / tickRate);
-            damage.damage = damage.damage / ticks;
-            StartCoroutine(DamageOverTimeCoroutine(damage, ticks, tickRate));
-        }
-
-        private IEnumerator DamageOverTimeCoroutine(Damage damage, int ticks, float tickRate)
-        {
-            int ticksRemaining = ticks;
-
-            while (ticksRemaining > 0)
-            {
-                health.Damage(damage.damage, damage.instigator, 0, invincibilityDurationAfterTakingDamage, damage.direction);
-                yield return new WaitForSeconds(tickRate);
-                ticksRemaining--;
-            }
-        }
-
-        public void DisableOutgoingDamageForDuration(float duration)
+        public void DisableOutgoingDamage()
         {
             isDamageDisabled = true;
-            if (damageDisabledDurationRemaining < duration)
-            {
-                damageDisabledDurationRemaining = duration;
-            }
         }
 
-        public void ResetEffects()
+        public void EnableOutgoingDamage()
         {
             isDamageDisabled = false;
-            damageDisabledDurationRemaining = 0;
-            StopAllCoroutines();
         }
 
         /// <summary>

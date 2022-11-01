@@ -23,8 +23,7 @@ namespace TeamOne.EvolvedSurvivor
 
         protected void OnEnable()
         {
-            this.health.Revive();
-            damageHandler.ResetEffects();
+            health.Revive();
             movement.ContextSpeedStack.Clear();
         }
 
