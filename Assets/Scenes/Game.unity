@@ -4614,7 +4614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 8300000, guid: 904f380025c724682827bdccf044b30d, type: 3}
-  volume: 1
+  volume: 0.8
   loop: 0
 --- !u!1 &1781139618
 GameObject:
