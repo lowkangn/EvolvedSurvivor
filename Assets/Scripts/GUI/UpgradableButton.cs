@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace TeamOne.EvolvedSurvivor
 {
-    public abstract class UpgradableButton<T> : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler where T : Upgradable
+    public abstract class UpgradableButton<T> : UIButton, IPointerExitHandler where T : Upgradable
     {
         [SerializeField] protected Text textObj;
         [SerializeField] protected Text detailedTextObj;
@@ -32,10 +32,8 @@ namespace TeamOne.EvolvedSurvivor
             this.isEmpty = false;
         }
 
-        public abstract void OnPointerClick(PointerEventData eventData);
-
         // Detect if the Cursor starts to pass over the button
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        public override void OnPointerEnter(PointerEventData eventData)
         {
             if (!IsEmpty())
             {
@@ -46,6 +44,8 @@ namespace TeamOne.EvolvedSurvivor
                 {
                     radarChart.UpdateVisual(upgradable);
                 }
+
+                enterSfxHandler.PlaySfx();
             }
         }
 
