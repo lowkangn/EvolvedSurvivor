@@ -6,15 +6,18 @@ namespace TeamOne.EvolvedSurvivor
     {
         private float duration;
         private int level;
-        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float magnitude)
         {
             this.level = level;
-            duration = levelRatio * utilityRatio * maxMagnitude;
+            duration = magnitude;
         }
 
         public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            handler.FreezeForDuration(duration);
+            if (duration > 0)
+            {
+                handler.FreezeForDuration(duration);
+            }
         }
 
         public override string GetName()

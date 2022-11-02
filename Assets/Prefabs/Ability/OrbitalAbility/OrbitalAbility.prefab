@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -33881474214889835}
   - component: {fileID: -1336099257125039956}
   - component: {fileID: 5184787337487597279}
-  - component: {fileID: 4125378160789396569}
   m_Layer: 0
   m_Name: OrbitalAbility
   m_TagString: Untagged
@@ -52,7 +51,7 @@ MonoBehaviour:
   abilityDescription: Summon damaging orbs that orbit around you
   activateOnlyOnce: 0
   coolDown:
-    minValue: 10
+    minValue: 8
     maxValue: 12
     value: 0
   traitChart:
@@ -67,14 +66,14 @@ MonoBehaviour:
   projectileObjectPool: {fileID: -33881474214889835}
   elementMagnitudes:
   - 1.5
-  - 0.3
-  - 700
+  - 0.5
+  - 1200
+  - 3
   - 2
-  - 2
-  sfxHandler: {fileID: 4125378160789396569}
+  statusEffectThresholdRatio: 0.1
   damage:
-    minValue: 8
-    maxValue: 20
+    minValue: 6
+    maxValue: 16
     value: 0
   duration:
     minValue: 4
@@ -147,18 +146,3 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
---- !u!114 &4125378160789396569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2943148802276990048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfx: {fileID: 8300000, guid: 53a6ee0b438c54072a5aae90a8b24f4a, type: 3}
-  volume: 0.8
-  loop: 0
