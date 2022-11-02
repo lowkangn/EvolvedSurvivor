@@ -40,6 +40,8 @@ namespace TeamOne.EvolvedSurvivor
             }
             
             this.addUpgradableHandler.SetCurrentSelectedUpgradable(upgradable);
+
+            clickSfxHandler.PlaySfx();
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
