@@ -73,6 +73,8 @@ namespace TeamOne.EvolvedSurvivor
                     projectile.AddRecursiveAbility(recursiveAbility);
                 }    
             }
+
+            sfxHandler.PlaySfx();
         }
 
         protected override void Build()

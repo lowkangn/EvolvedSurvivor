@@ -30,6 +30,8 @@ public class CurrentAbilityUI : AbilityButton
                 this.mergeAbilityHandler.UpdateOutput();
                 this.RemoveAbility();
             }
+
+            clickSfxHandler.PlaySfx();
         }
     }
 }

@@ -16,8 +16,8 @@ public class MergeOutputSlotUI : AbilityMergeSlotUI
         this.RemoveAbility();
     }
 
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        // Do nothing.
+        // do nothing
     }
 }

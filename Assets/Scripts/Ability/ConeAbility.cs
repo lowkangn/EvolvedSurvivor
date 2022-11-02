@@ -82,6 +82,7 @@ namespace TeamOne.EvolvedSurvivor
             }
 
             damageArea.SetActive(true);
+            sfxHandler.PlaySfx();
         }
 
         private Vector2[] CalculateVertices()

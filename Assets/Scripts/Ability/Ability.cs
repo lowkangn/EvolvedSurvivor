@@ -53,6 +53,10 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected float statusEffectThresholdRatio = 0.1f;
 
+        [Header("Sfx")]
+        [SerializeField]
+        protected SfxHandler sfxHandler;
+
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
 

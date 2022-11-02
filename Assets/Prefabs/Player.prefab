@@ -5413,6 +5413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDurationAfterTakingDamage: 1
+  statusEffectHandler: {fileID: 0}
 --- !u!114 &3974080717082401969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5621,17 +5622,18 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  Sfx: {fileID: 8300000, guid: 6f10d771e7aa4234c90db4da16c32b0d, type: 3}
+  Sfx: {fileID: 8300000, guid: 41f407402a8cc4a1582299b1d0518d3e, type: 3}
   RandomSfx: []
   TestButton: 0
   TestStopButton: 0
   PlayMethod: 0
   PoolSize: 10
-  MinVolume: 1
-  MaxVolume: 1
+  MinVolume: 0.9
+  MaxVolume: 0.9
   MinPitch: 1
   MaxPitch: 1
-  SfxAudioMixerGroup: {fileID: 0}
+  SfxAudioMixerGroup: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3,
+    type: 2}
 --- !u!114 &8279206412651377572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6261,13 +6263,58 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 1
   DebugActive: 0
-  FeedbacksList: []
+  FeedbacksList:
+  - rid: 6073657870881390594
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 6073657870881390594
+      type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
+      data:
+        Active: 1
+        UniqueID: 1805459139
+        Label: Sound
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 4206741978730624185}
+        DebugActive: 0
+        Sfx: {fileID: 8300000, guid: f1684d3cbaa94406e9ebf364580da045, type: 3}
+        RandomSfx: []
+        TestPlayButton:
+          ButtonText: Debug Play Sound
+        TestStopButton:
+          ButtonText: Debug Stop Sound
+        PlayMethod: 0
+        PoolSize: 10
+        MinVolume: 1
+        MaxVolume: 1
+        MinPitch: 1
+        MaxPitch: 1
+        SfxAudioMixerGroup: {fileID: 0}
 --- !u!1001 &759228232056574686
 PrefabInstance:
   m_ObjectHideFlags: 0
