@@ -52,7 +52,7 @@ MonoBehaviour:
   abilityDescription: Strike lightning at random enemies
   activateOnlyOnce: 0
   coolDown:
-    minValue: 0.5
+    minValue: 1
     maxValue: 4
     value: 0
   traitChart:
@@ -69,16 +69,17 @@ MonoBehaviour:
   elementMagnitudes:
   - 1.5
   - 1
-  - 1500
-  - 4
+  - 2000
+  - 5
   - 1.5
+  statusEffectThresholdRatio: 0.1
   damage:
     minValue: 15
     maxValue: 40
     value: 20
   aoeRadius:
     minValue: 0
-    maxValue: 2.5
+    maxValue: 4
     value: 1
   targetNumber:
     minValue: 1

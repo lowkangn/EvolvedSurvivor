@@ -68,25 +68,26 @@ MonoBehaviour:
   projectileObjectPool: {fileID: 4806899296850615395}
   elementMagnitudes:
   - 1.5
-  - 0.3
-  - 700
+  - 0.5
+  - 1200
+  - 3
   - 2
-  - 2
+  statusEffectThresholdRatio: 0.1
   damage:
     minValue: 3
     maxValue: 12
     value: 0
   duration:
     minValue: 1.5
-    maxValue: 3
+    maxValue: 4
     value: 0
   laserNumber:
     minValue: 1
-    maxValue: 4
+    maxValue: 5
     value: 0
   projectileSize:
     minValue: 0.3
-    maxValue: 0.8
+    maxValue: 2
     value: 0
   laserSpawnInterval: 0.5
   targetDetector: {fileID: 5966531427914174062}

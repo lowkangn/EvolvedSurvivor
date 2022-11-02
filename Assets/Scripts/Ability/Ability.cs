@@ -55,6 +55,8 @@ namespace TeamOne.EvolvedSurvivor
         [Header("Element Magnitudes: Plasma, Cryo, Force, Infect, Pyro")]
         [SerializeField]
         protected List<float> elementMagnitudes =  new List<float>();
+        [SerializeField]
+        protected float statusEffectThresholdRatio = 0.1f;
 
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
@@ -183,32 +185,38 @@ namespace TeamOne.EvolvedSurvivor
                 element.elements[chosenType] += 1;
             }
         }
-        protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float magnitude)
+        protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float maxMagnitude)
         {
             int level = element.elements[type];
             float levelRatio = (float)level / Element.maxLevel;
+            float ratio = levelRatio * utilityRatio; 
+            if (ratio < 0.1f)
+            {
+                ratio = 0f;
+            }
+            float magnitude = ratio * maxMagnitude;
             StatusEffect effect;
             switch (type)
             {
                 case ElementType.Plasma:
                     effect = gameObject.AddComponent<PlasmaStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Cryo:
                     effect = gameObject.AddComponent<CryoStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Force:
                     effect = gameObject.AddComponent<ForceStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Infect:
                     effect = gameObject.AddComponent<InfectStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Pyro:
                     effect = gameObject.AddComponent<PyroStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 default:
                     throw new System.Exception("Element Type invalid");
