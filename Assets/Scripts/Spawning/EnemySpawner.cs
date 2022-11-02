@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minSpawnFreq = 0.2f;
     [SerializeField] private float maxSpawnFreq = 1f;
     [SerializeField] private float spawnRadius = 20f;
+    [SerializeField] private AnimationCurve scalingCurve;
 
     [SerializeField] private float startingPoints = 10f;
 
@@ -63,6 +64,8 @@ public class EnemySpawner : MonoBehaviour
     private float spendingPoints;
     private float timePassed = 0f;
     private float nextSpawnTimestamp = 0f;
+
+    public float enemyLevel;
 
     private void Start()
     {
@@ -153,7 +156,8 @@ public class EnemySpawner : MonoBehaviour
             enemyToSpawn.SetActive(true);
 
             enemyToSpawn.MMGetComponentNoAlloc<MMPoolableObject>().TriggerOnSpawnComplete();
-            enemyToSpawn.GetComponent<Enemy>().ScaleStats(timePassed);
+            enemyToSpawn.GetComponent<Enemy>().ScaleStats(scalingCurve.Evaluate(timePassed / 600f));
+            enemyLevel = scalingCurve.Evaluate(timePassed / 600f);
         }
     }
 
