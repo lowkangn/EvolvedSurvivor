@@ -53,7 +53,7 @@ public class AddUpgradableHandler : MonoBehaviour
             }
             else
             {
-                Ability ability = abilityGenerator.GenerateAbility(1, activesGenerated.Count < minNumOfUniqueActives ? activesGenerated : null);
+                Ability ability = abilityGenerator.GenerateAbility(5, activesGenerated.Count < minNumOfUniqueActives ? activesGenerated : null);
                 activesGenerated.Add(ability.AbilityName);
                 NewUpgradablesButtons[i].AddUpgradableToButton(ability);
                 NewUpgradables[i] = ability;

@@ -34,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
-        private Sprite recursiveSprite;
+        
         [SerializeField]
         private UpgradableAnimatorIndex animatorIndex;
         private bool isActive;
@@ -43,6 +43,10 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField]
         protected AbilityObjectPooler recursiveAbilityObjectPool;
         protected bool hasRecursive = false;
+        private Sprite recursiveSprite;
+        private UpgradableAnimatorIndex recursiveAnimatorIndex;
+
+        public bool HasRecursive => hasRecursive;
 
         [Header("Projectile pool")]
         [SerializeField]
@@ -120,7 +124,6 @@ namespace TeamOne.EvolvedSurvivor
                     recursiveAbility.CloneAbility(consumedAbility);
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
-                    newAbility.recursiveSprite = recursiveAbility.abilitySprite;
                 }
 
                 return newAbility;
@@ -228,6 +231,11 @@ namespace TeamOne.EvolvedSurvivor
             return (int)this.animatorIndex;
         }
 
+        public int GetRecursiveAnimatorIndex()
+        {
+            return (int)this.recursiveAnimatorIndex;
+        }
+
         // This method is used for recursive abilities.
         public void SetActive(bool isActive)
         {
@@ -325,6 +333,9 @@ namespace TeamOne.EvolvedSurvivor
         protected void AddRecursiveAbility(Ability recursiveAbility)
         {
             this.hasRecursive = true;
+            this.recursiveSprite = recursiveAbility.abilitySprite;
+            this.recursiveAnimatorIndex = recursiveAbility.animatorIndex;
+
             recursiveAbility.activateOnlyOnce = true;
             recursiveAbility.SetActive(false);
 
