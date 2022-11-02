@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HelpNextButton : MonoBehaviour, IPointerClickHandler
+public class HelpNextButton : UIButton
 {
     [SerializeField] private GameObject[] helpPages;
 
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject backButton;
 
-    public void OnPointerClick (PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         for (int i = 0; i < helpPages.Length - 1; i++) {
             if (helpPages[i].activeSelf) { // Go from page i to page i+1
@@ -28,5 +28,7 @@ public class HelpNextButton : MonoBehaviour, IPointerClickHandler
                 break;
             }
         }
+
+        clickSfxHandler.PlaySfx();
     }
 }

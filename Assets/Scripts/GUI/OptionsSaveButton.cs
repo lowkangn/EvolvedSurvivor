@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OptionsSaveButton : MonoBehaviour, IPointerClickHandler
+public class OptionsSaveButton : UIButton
 {
     [SerializeField] private GameObject optionsPanel;
 
-    public void OnPointerClick (PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         optionsPanel.SetActive(false);
+        clickSfxHandler.PlaySfx();
     }
 }

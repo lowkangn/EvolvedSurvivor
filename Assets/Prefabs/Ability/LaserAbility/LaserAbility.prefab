@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4806899296850615395}
   - component: {fileID: -418630340990580898}
   - component: {fileID: -573954469558076811}
+  - component: {fileID: 1961087688190015597}
   m_Layer: 0
   m_Name: LaserAbility
   m_TagString: Untagged
@@ -67,25 +68,27 @@ MonoBehaviour:
   projectileObjectPool: {fileID: 4806899296850615395}
   elementMagnitudes:
   - 1.5
-  - 0.3
-  - 700
+  - 0.5
+  - 1200
+  - 3
   - 2
-  - 2
+  statusEffectThresholdRatio: 0.1
+  sfxHandler: {fileID: 1961087688190015597}
   damage:
     minValue: 3
     maxValue: 12
     value: 0
   duration:
     minValue: 1.5
-    maxValue: 3
+    maxValue: 4
     value: 0
   laserNumber:
     minValue: 1
-    maxValue: 4
+    maxValue: 5
     value: 0
   projectileSize:
     minValue: 0.3
-    maxValue: 0.8
+    maxValue: 2
     value: 0
   laserSpawnInterval: 0.5
   targetDetector: {fileID: 5966531427914174062}
@@ -146,6 +149,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &1961087688190015597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 4db9df7f1f87c46369db8318971379c0, type: 3}
+  volume: 0.6
+  loop: 0
 --- !u!1 &7655304159716342301
 GameObject:
   m_ObjectHideFlags: 0

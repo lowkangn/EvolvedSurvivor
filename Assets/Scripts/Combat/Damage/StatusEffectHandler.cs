@@ -1,6 +1,7 @@
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TeamOne.EvolvedSurvivor;
 using UnityEngine;
 
@@ -11,55 +12,170 @@ public class StatusEffectHandler : MonoBehaviour
     [SerializeField] protected TopDownController2D controller;
     [SerializeField] protected AIBrain aiBrain;
 
-    // Freeze
-    private float freezeTimer;
-    // Slow
-    private float slowTimer;
-    // DamageOverTime
-    private float damageOverTimeTimer;
-    private float tickRate;
-    private Damage damage;
-    private float lastTickTime;
+    private List<SpeedMultiplier> speedMultipliers = new();
+    private List<Freeze> freezes = new();
+    private List<Slow> slows = new();
+    private List<DamageOverTime> damageOverTimes = new();
+
+    [SerializeField] private ParticleSystem plasmaEffect;
+    [SerializeField] private ParticleSystem cryoEffect;
+    [SerializeField] private ParticleSystem forceEffect;
+    [SerializeField] private ParticleSystem infectEffect;
+    [SerializeField] private ParticleSystem pyroEffect;
+
+    private Character owner;
+
+    private void Awake()
+    {
+        owner = GetComponent<Character>();
+    }
 
     private void OnEnable()
     {
-        damageHandler.EnableOutgoingDamage();
-        aiBrain.BrainActive = true;
-        movement.ContextSpeedStack.Clear();
+        plasmaEffect.gameObject.SetActive(true);
+        cryoEffect.gameObject.SetActive(true);
+        forceEffect.gameObject.SetActive(true);
+        infectEffect.gameObject.SetActive(true);
+        pyroEffect.gameObject.SetActive(true);
+    }
 
-        freezeTimer = 0f;
-        slowTimer = 0f;
-        damageOverTimeTimer = 0f;
+    // Plasma
+    public void ApplyChaining(Damage damage, GameObject target)
+    {
+        target.GetComponent<DamageReceiver>().TakeDamage(damage);
+        plasmaEffect.Play();
+    }
+
+    // Cryo
+    public void FreezeForDuration(float duration)
+    {
+        Freeze freeze = new Freeze(duration);
+        speedMultipliers.Add(freeze);
+        freezes.Add(freeze);
+        UpdateSpeed();
+
+        damageHandler.DisableOutgoingDamage();
+        aiBrain.BrainActive = false;
+    }
+
+    // Force
+    public void ApplyForce(Vector3 direction, float magnitude)
+    {
+        controller.Impact(direction, magnitude);
+        forceEffect.Play();
+    }
+
+    // Infect
+    public void SlowForDuration(float magnitude, float duration)
+    {
+        Slow slow = new Slow(magnitude, duration);
+        speedMultipliers.Add(slow);
+        slows.Add(slow);
+        UpdateSpeed();
+    }
+
+    // Pyro
+    public void DamageOverTimeForDuration(Damage damage, float tickRate, float duration)
+    {
+        DamageOverTime damageOverTime = new DamageOverTime(damage, tickRate, duration, damageHandler);
+        damageOverTimes.Add(damageOverTime);
+    }
+
+    private void UpdateSpeed()
+    {
+        // Calculate combined speed multipliers
+        float combinedSpeedMultiplier = 1f;
+        speedMultipliers.ForEach(x => combinedSpeedMultiplier *= x.Value);
+
+        // Override the old speed multiplier
+        movement.ContextSpeedStack.Clear();
+        movement.SetContextSpeedMultiplier(combinedSpeedMultiplier);
     }
 
     private void Update()
     {
-        // Freeze
-        if (freezeTimer > 0f)
+        // Speed
+        int numOfExpired = speedMultipliers.RemoveAll(x => x.Expired);
+        if (numOfExpired > 0)
         {
-            freezeTimer -= Time.deltaTime;
-            if (freezeTimer <= 0f)
-            {
-                damageHandler.EnableOutgoingDamage();
-                movement.ResetContextSpeedMultiplier();
-                aiBrain.BrainActive = true;
-            }
+            UpdateSpeed();
+        }
+
+        // Freeze
+        freezes.RemoveAll(x => x.Expired);
+        if (freezes.Count > 0)
+        {
+            cryoEffect.Play();
+        }
+        else
+        {
+            damageHandler.EnableOutgoingDamage();
+            aiBrain.BrainActive = true;
+            cryoEffect.Stop();
         }
 
         // Slow
-        if (slowTimer > 0f)
+        slows.RemoveAll(x => x.Expired);
+        if (slows.Count > 0)
         {
-            slowTimer -= Time.deltaTime;
-            if (slowTimer <= 0f)
-            {
-                movement.ResetContextSpeedMultiplier();
-            }
+            infectEffect.Play();
+        }
+        else
+        {
+            infectEffect.Stop();
         }
 
         // DamageOverTime
-        if (damageOverTimeTimer > 0f)
+        damageOverTimes.RemoveAll(x => x.Expired);
+        damageOverTimes.ForEach(x => x.Update());
+        if (damageOverTimes.Count > 0)
         {
-            damageOverTimeTimer -= Time.deltaTime;
+            pyroEffect.Play();
+        }
+        else
+        {
+            pyroEffect.Stop();
+        }
+
+        if (owner.ConditionState.CurrentState == CharacterStates.CharacterConditions.Dead)
+        {
+            plasmaEffect.gameObject.SetActive(false);
+            cryoEffect.gameObject.SetActive(false);
+            forceEffect.gameObject.SetActive(false);
+            infectEffect.gameObject.SetActive(false);
+            pyroEffect.gameObject.SetActive(false);
+        }
+    }
+
+    private abstract class EffectOverTime
+    {
+        public bool Expired => Time.time - startTime > duration;
+        protected float duration;
+        protected float startTime;
+
+        protected EffectOverTime(float duration)
+        {
+            this.duration = duration;
+            startTime = Time.time;
+        }
+    }
+
+    private class DamageOverTime : EffectOverTime
+    {
+        private Damage damage;
+        private float tickRate;
+        private float lastTickTime = 0f;
+        private DamageHandler damageHandler;
+
+        public DamageOverTime(Damage damage, float tickRate, float duration, DamageHandler damageHandler) : base(duration)
+        {
+            this.damage = damage;
+            this.tickRate = tickRate;
+            this.damageHandler = damageHandler;
+        }
+
+        public void Update()
+        {
             if (Time.time - lastTickTime > tickRate)
             {
                 damageHandler.ProcessIncomingDamage(damage);
@@ -68,39 +184,31 @@ public class StatusEffectHandler : MonoBehaviour
         }
     }
 
-    // Plasma
-    public void ApplyChaining(Damage damage, GameObject target)
+    private class SpeedMultiplier : EffectOverTime
     {
-        target.GetComponent<DamageReceiver>().TakeDamage(damage);
+        public float Value => value;
+
+        protected float value;
+        
+        public SpeedMultiplier(float value, float duration) : base(duration)
+        {
+            this.value = value;
+        }
     }
 
-    // Cryo
-    public void FreezeForDuration(float duration)
+    private class Freeze : SpeedMultiplier
     {
-        damageHandler.DisableOutgoingDamage();
-        movement.SetContextSpeedMultiplier(0);
-        aiBrain.BrainActive = false;
-        freezeTimer = duration;
+        public Freeze(float duration) : base(0, duration)
+        {
+            
+        }
     }
 
-    // Force
-    public void ApplyForce(Vector3 direction, float magnitude)
+    private class Slow : SpeedMultiplier 
     {
-        controller.Impact(direction, magnitude);
-    }
+        public Slow(float value, float duration) : base(value, duration)
+        {
 
-    // Infect
-    public void SlowForDuration(float magnitude, float duration)
-    {
-        movement.SetContextSpeedMultiplier(magnitude);
-        slowTimer = duration;
-    }
-
-    // Pyro
-    public void DamageOverTimeForDuration(Damage damage, float tickRate, float duration)
-    {
-        damageOverTimeTimer = duration;
-        this.tickRate = tickRate;
-        this.damage = damage;
+        }
     }
 }

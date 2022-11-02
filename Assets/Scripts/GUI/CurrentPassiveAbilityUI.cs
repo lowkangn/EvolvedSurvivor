@@ -16,15 +16,14 @@ public class CurrentPassiveAbilityUI : UpgradableButton<PassiveAbility>
         }
     }
 
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        // do nothing
-    }
-
-    // Detect when Cursor leaves the button
     public override void OnPointerExit(PointerEventData eventData)
     {
         this.textObj.text = "";
         this.detailedTextObj.text = "";
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        // do nothing
     }
 }

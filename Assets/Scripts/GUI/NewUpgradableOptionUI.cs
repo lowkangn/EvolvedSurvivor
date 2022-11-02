@@ -31,6 +31,8 @@ namespace TeamOne.EvolvedSurvivor
             }
             
             this.addUpgradableHandler.SetCurrentSelectedUpgradable(upgradable);
+
+            clickSfxHandler.PlaySfx();
         }
 
         // Detect when Cursor leaves the button

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // This button is to switch between Radar Chart and Detailed View 
-public class AbilityDetailsViewButton : MonoBehaviour, IPointerClickHandler
+public class AbilityDetailsViewButton : UIButton
 {
     [SerializeField] GameObject radarChart;
     [SerializeField] GameObject detailedView;
@@ -15,7 +15,7 @@ public class AbilityDetailsViewButton : MonoBehaviour, IPointerClickHandler
 
     bool onRadarChart = true;
 
-    public void OnPointerClick (PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         if (onRadarChart) {
             radarChart.SetActive(false);
@@ -28,5 +28,7 @@ public class AbilityDetailsViewButton : MonoBehaviour, IPointerClickHandler
             changeViewButton.sprite = toDetailsIcon;
             onRadarChart = true;           
         }
+
+        clickSfxHandler.PlaySfx();
     }
 }

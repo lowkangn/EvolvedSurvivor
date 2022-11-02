@@ -25,6 +25,7 @@ public class AbilityMergeSlotUI : AbilityButton
             this.sourceSlot.AddAbilityToButton(this.upgradable);
             this.RemoveAbility();
             this.mergeAbilityHandler.UpdateOutput();
+            clickSfxHandler.PlaySfx();
         }
     }
 
@@ -38,6 +39,7 @@ public class AbilityMergeSlotUI : AbilityButton
     {
         if (this.isEmpty) {
             this.textObj.text = TIP_MERGE_INSTRUCTION;
+            enterSfxHandler.PlaySfx();
         } 
         else 
         {
