@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using MoreMountains.TopDownEngine;
+using UnityEngine.InputSystem.Utilities;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -9,16 +10,19 @@ namespace TeamOne.EvolvedSurvivor
         private float force;
         private int level;
 
-        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float magnitude)
         {
             this.level = level;
-            force = levelRatio * utilityRatio * maxMagnitude;
+            force = magnitude;
         }
 
         public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            Vector3 direction = handler.transform.position - damage.instigator.transform.position;
-            handler.ApplyForce(direction, force);
+            if (force > 0)
+            {
+                Vector3 direction = handler.transform.position - damage.instigator.transform.position;
+                handler.ApplyForce(direction, force);
+            }
         }
 
         public override string GetName()
