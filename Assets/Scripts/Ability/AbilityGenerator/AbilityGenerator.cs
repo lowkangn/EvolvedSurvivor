@@ -1,6 +1,7 @@
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -25,10 +26,15 @@ namespace TeamOne.EvolvedSurvivor
             return null;
         }
 
-        public Ability GenerateAbility(int tier)
+        public Ability GenerateAbility(int tier, HashSet<string> excludedAbilities = null)
         {
+            List<Ability> prefabsToUse = new List<Ability>(abilityPrefabs);
+            if (excludedAbilities != null && excludedAbilities.Count != 0)
+            {
+                prefabsToUse = prefabsToUse.Where(ele => !excludedAbilities.Contains(ele.AbilityName)).ToList();
+            }
             // For random selection of all abilities
-            Ability chosenAbility = abilityPrefabs[Random.Range(0, abilityPrefabs.Count)];
+            Ability chosenAbility = prefabsToUse[Random.Range(0, prefabsToUse.Count)];
 
             TraitChart baseTraitChart = abilityBaseTraitCharts.GetAbilityBaseTraitChart(chosenAbility);
 

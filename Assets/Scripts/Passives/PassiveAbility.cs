@@ -49,6 +49,11 @@ namespace TeamOne.EvolvedSurvivor
             return (int)this.animatorIndex;
         }
 
+        public Sprite GetRecursiveSprite()
+        {
+            return null;
+        }
+
         public string GetName()
         {
             return $"Level {currentTier} {passiveName}\n";

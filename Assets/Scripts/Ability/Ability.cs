@@ -34,6 +34,7 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
+        private Sprite recursiveSprite;
         [SerializeField]
         private UpgradableAnimatorIndex animatorIndex;
         private bool isActive;
@@ -119,6 +120,7 @@ namespace TeamOne.EvolvedSurvivor
                     recursiveAbility.CloneAbility(consumedAbility);
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
+                    newAbility.recursiveSprite = recursiveAbility.abilitySprite;
                 }
 
                 return newAbility;
@@ -214,6 +216,11 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetSprite()
         {
             return this.abilitySprite;
+        }
+
+        public Sprite GetRecursiveSprite()
+        {
+            return this.recursiveSprite;
         }
 
         public int GetAnimatorIndex()

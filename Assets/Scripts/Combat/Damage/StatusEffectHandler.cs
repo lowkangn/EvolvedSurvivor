@@ -11,16 +11,61 @@ public class StatusEffectHandler : MonoBehaviour
     [SerializeField] protected TopDownController2D controller;
     [SerializeField] protected AIBrain aiBrain;
 
-    void OnEnable()
+    // Freeze
+    private float freezeTimer;
+    // Slow
+    private float slowTimer;
+    // DamageOverTime
+    private float damageOverTimeTimer;
+    private float tickRate;
+    private Damage damage;
+    private float lastTickTime;
+
+    private void OnEnable()
     {
-        damageHandler.ResetEffects();
+        damageHandler.EnableOutgoingDamage();
+        aiBrain.BrainActive = true;
         movement.ContextSpeedStack.Clear();
+
+        freezeTimer = 0f;
+        slowTimer = 0f;
+        damageOverTimeTimer = 0f;
     }
 
-    void OnDisable()
+    private void Update()
     {
-        damageHandler.ResetEffects();
-        movement.ContextSpeedStack.Clear();
+        // Freeze
+        if (freezeTimer > 0f)
+        {
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0f)
+            {
+                damageHandler.EnableOutgoingDamage();
+                movement.ResetContextSpeedMultiplier();
+                aiBrain.BrainActive = true;
+            }
+        }
+
+        // Slow
+        if (slowTimer > 0f)
+        {
+            slowTimer -= Time.deltaTime;
+            if (slowTimer <= 0f)
+            {
+                movement.ResetContextSpeedMultiplier();
+            }
+        }
+
+        // DamageOverTime
+        if (damageOverTimeTimer > 0f)
+        {
+            damageOverTimeTimer -= Time.deltaTime;
+            if (Time.time - lastTickTime > tickRate)
+            {
+                damageHandler.ProcessIncomingDamage(damage);
+                lastTickTime = Time.time;
+            }
+        }
     }
 
     // Plasma
@@ -32,11 +77,12 @@ public class StatusEffectHandler : MonoBehaviour
     // Cryo
     public void FreezeForDuration(float duration)
     {
-        damageHandler.DisableOutgoingDamageForDuration(duration);
-        movement.ApplyMovementMultiplier(0, duration);
+        damageHandler.DisableOutgoingDamage();
+        movement.SetContextSpeedMultiplier(0);
         aiBrain.BrainActive = false;
-        StartCoroutine(EnableBrainAfterDuration(duration));
+        freezeTimer = duration;
     }
+
     // Force
     public void ApplyForce(Vector3 direction, float magnitude)
     {
@@ -46,18 +92,15 @@ public class StatusEffectHandler : MonoBehaviour
     // Infect
     public void SlowForDuration(float magnitude, float duration)
     {
-        movement.ApplyMovementMultiplier(magnitude, duration);
+        movement.SetContextSpeedMultiplier(magnitude);
+        slowTimer = duration;
     }
 
     // Pyro
     public void DamageOverTimeForDuration(Damage damage, float tickRate, float duration)
     {
-        damageHandler.ApplyDamageOverTime(damage, tickRate, duration);
-    }
-
-    IEnumerator EnableBrainAfterDuration(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        aiBrain.BrainActive = true;
+        damageOverTimeTimer = duration;
+        this.tickRate = tickRate;
+        this.damage = damage;
     }
 }
