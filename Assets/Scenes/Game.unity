@@ -271,7 +271,7 @@ MonoBehaviour:
   - {fileID: 1130473581}
   tileSize: 40
   mapSizeInTiles: 3
-  density: 0.5
+  density: 0.4
 --- !u!114 &71771404
 MonoBehaviour:
   m_ObjectHideFlags: 0
