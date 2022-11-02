@@ -11,16 +11,19 @@ namespace TeamOne.EvolvedSurvivor
         private float damageMultiplier;
         private int level;
 
-        public override void Build(int level, float levelRatio, float utilityRatio, float maxMagnitude)
+        public override void Build(int level, float magnitude)
         {
             this.level = level;
-            damageMultiplier = levelRatio * utilityRatio * maxMagnitude;
+            damageMultiplier = magnitude;
         }
 
         public override void Apply(StatusEffectHandler handler, Damage damage)
         {
-            Damage dot = new Damage(damage.damage * damageMultiplier, damage.instigator);
-            handler.DamageOverTimeForDuration(dot, tickRate, duration);
+            if (damageMultiplier > 0)
+            {
+                Damage dot = new Damage(damage.damage * damageMultiplier, damage.instigator);
+                handler.DamageOverTimeForDuration(dot, tickRate, duration);
+            }
         }
 
         public override string GetName()

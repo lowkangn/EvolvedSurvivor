@@ -52,7 +52,7 @@ MonoBehaviour:
   abilityDescription: Fire explosive orbs at nearby enemies
   activateOnlyOnce: 0
   coolDown:
-    minValue: 1
+    minValue: 0.5
     maxValue: 2
     value: 0
   traitChart:
@@ -68,12 +68,13 @@ MonoBehaviour:
   elementMagnitudes:
   - 1.5
   - 1
-  - 1500
-  - 4
+  - 2000
+  - 5
   - 1.5
+  statusEffectThresholdRatio: 0.1
   damage:
-    minValue: 5
-    maxValue: 20
+    minValue: 8
+    maxValue: 30
     value: 0
   aoeRadius:
     minValue: 3

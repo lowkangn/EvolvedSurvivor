@@ -39,8 +39,7 @@ namespace TeamOne.EvolvedSurvivor
             laser.SetActive(true);
 
             // Set damage
-            Damage damage = new Damage();
-            damage.damage = this.damage.value;
+            Damage damage = new Damage(this.damage.value, gameObject, effects);
             damage = damageHandler.ProcessOutgoingDamage(damage);
 
             laser.SetDamage(damage);
