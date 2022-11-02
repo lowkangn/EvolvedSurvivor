@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2083275470673497951}
   - component: {fileID: -6623635733258509539}
   - component: {fileID: -3520456157932945535}
+  - component: {fileID: -1669978997506414729}
   m_Layer: 0
   m_Name: ZonalAbility
   m_TagString: Untagged
@@ -72,6 +73,7 @@ MonoBehaviour:
   - 3
   - 2
   statusEffectThresholdRatio: 0.1
+  sfxHandler: {fileID: -1669978997506414729}
   damage:
     minValue: 4
     maxValue: 10
@@ -147,6 +149,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &-1669978997506414729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: c0bd7b37e125a4a4a8bfa2efb156564d, type: 3}
+  volume: 1
+  loop: 0
 --- !u!1 &5379207550262415037
 GameObject:
   m_ObjectHideFlags: 0

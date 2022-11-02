@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -33881474214889835}
   - component: {fileID: -1336099257125039956}
   - component: {fileID: 5184787337487597279}
+  - component: {fileID: -3785949459606122359}
   m_Layer: 0
   m_Name: OrbitalAbility
   m_TagString: Untagged
@@ -71,6 +72,7 @@ MonoBehaviour:
   - 3
   - 2
   statusEffectThresholdRatio: 0.1
+  sfxHandler: {fileID: -3785949459606122359}
   damage:
     minValue: 6
     maxValue: 16
@@ -146,3 +148,18 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &-3785949459606122359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 53a6ee0b438c54072a5aae90a8b24f4a, type: 3}
+  volume: 0.8
+  loop: 0
