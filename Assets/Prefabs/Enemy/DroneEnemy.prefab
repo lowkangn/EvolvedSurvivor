@@ -389,7 +389,7 @@ MonoBehaviour:
           TargetBPM: 120
         Owner: {fileID: 5633355157281015665}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 51f2769dc716d1148844990d0d22ecd9, type: 3}
+        Sfx: {fileID: 8300000, guid: f3cf1885a713b44589e8f366e363abfc, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -397,8 +397,8 @@ MonoBehaviour:
           ButtonText: Debug Stop Sound
         PlayMethod: 0
         PoolSize: 10
-        MinVolume: 1
-        MaxVolume: 1
+        MinVolume: 0.3
+        MaxVolume: 0.3
         MinPitch: 1
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 4115935375543419200}
   - component: {fileID: -1820976405645344194}
   - component: {fileID: 2098063179780070140}
+  - component: {fileID: 7904637183618893138}
   m_Layer: 13
   m_Name: DroneEnemy
   m_TagString: Enemy
@@ -985,6 +986,7 @@ MonoBehaviour:
   animator: {fileID: 7733979718309451076}
   explosionDuration: 1
   explosion: {fileID: 333614100760703564}
+  sfxHandler: {fileID: 7904637183618893138}
   OnlyRunOnce: 1
 --- !u!114 &3135418408013145896
 MonoBehaviour:
@@ -1170,7 +1172,6 @@ MonoBehaviour:
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
   initialSecondaryDamage: 10
   secDamageArea: {fileID: 2689226587219063426}
-  secDamageScalingFactor: 0.005
 --- !u!114 &2098063179780070140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1193,21 @@ MonoBehaviour:
   forceEffect: {fileID: 4107104743200280980}
   infectEffect: {fileID: 8466639186050330085}
   pyroEffect: {fileID: 9004762822251896911}
+--- !u!114 &7904637183618893138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639002971553439240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 359fab1e8941547fe878d8ab46cffa82, type: 3}
+  volume: 1
+  loop: 0
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,7 +1492,7 @@ MonoBehaviour:
           TargetBPM: 120
         Owner: {fileID: 6573627114560633500}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: a4ce1e0e50d887641b42f7507d3951bb, type: 3}
+        Sfx: {fileID: 8300000, guid: a70ec16c8bde74d7a80ccd362d26c993, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -1484,8 +1500,8 @@ MonoBehaviour:
           ButtonText: Debug Stop Sound
         PlayMethod: 0
         PoolSize: 10
-        MinVolume: 1
-        MaxVolume: 1
+        MinVolume: 0.4
+        MaxVolume: 0.4
         MinPitch: 1
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}

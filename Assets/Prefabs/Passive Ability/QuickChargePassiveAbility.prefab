@@ -48,6 +48,7 @@ MonoBehaviour:
   passiveDescription: Decreases cooldowns of abilities
   currentTier: 0
   abilitySprite: {fileID: 21300000, guid: a9af325cf2e8706429987aa59142e451, type: 3}
+  animatorIndex: 9
   coolDownMultipliers:
   - 1
   - 0.95

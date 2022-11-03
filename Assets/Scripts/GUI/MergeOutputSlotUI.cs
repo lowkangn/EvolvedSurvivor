@@ -1,7 +1,5 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TeamOne.EvolvedSurvivor;
+using UnityEngine.EventSystems;
 
 public class MergeOutputSlotUI : AbilityMergeSlotUI
 {
@@ -16,8 +14,8 @@ public class MergeOutputSlotUI : AbilityMergeSlotUI
         this.RemoveAbility();
     }
 
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        // Do nothing.
+        // do nothing
     }
 }

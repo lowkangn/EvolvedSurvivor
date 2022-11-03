@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8988950983226355129}
   - component: {fileID: -1513630708593478744}
   - component: {fileID: 1516933811655595900}
+  - component: {fileID: -763738522344848007}
   m_Layer: 0
   m_Name: LockOnAbility
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   abilityDescription: Strike lightning at random enemies
   activateOnlyOnce: 0
   coolDown:
-    minValue: 0.5
+    minValue: 1
     maxValue: 4
     value: 0
   traitChart:
@@ -63,21 +64,24 @@ MonoBehaviour:
     utility: 0
   hasBuilt: 1
   abilitySprite: {fileID: 21300000, guid: d5a59e8d9fe45dc459ddae0ffb6336ab, type: 3}
+  animatorIndex: 3
   recursiveAbilityObjectPool: {fileID: 1516933811655595900}
   projectileObjectPool: {fileID: 8988950983226355129}
   elementMagnitudes:
   - 1.5
   - 1
-  - 1500
-  - 4
+  - 2000
+  - 5
   - 1.5
+  statusEffectThresholdRatio: 0.1
+  sfxHandler: {fileID: -763738522344848007}
   damage:
     minValue: 15
     maxValue: 40
     value: 20
   aoeRadius:
     minValue: 0
-    maxValue: 2.5
+    maxValue: 4
     value: 1
   targetNumber:
     minValue: 1
@@ -141,6 +145,21 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 0}
   PoolSize: 3
   PoolCanExpand: 1
+--- !u!114 &-763738522344848007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943148802276990048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 33f85a73f2d0d4ff9b9e5417624f8509, type: 3}
+  volume: 0.9
+  loop: 0
 --- !u!1 &8464439605043518667
 GameObject:
   m_ObjectHideFlags: 0

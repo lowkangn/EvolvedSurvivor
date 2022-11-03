@@ -10,6 +10,8 @@ public class AIActionFireAtPlayer : AIAction
     [SerializeField] private SecondaryAttackEnemy enemy;
     [SerializeField] private float projectileSpeed = 10f;
 
+    [SerializeField] private SfxHandler sfxHandler;
+
     private float timeSinceLastShot = 0f;
     private Damage damage;
 
@@ -48,5 +50,7 @@ public class AIActionFireAtPlayer : AIAction
         nextProjectile.SetMotion(projectileMotion);
 
         nextProjectile.gameObject.SetActive(true);
+
+        sfxHandler.PlaySfx();
     }
 }

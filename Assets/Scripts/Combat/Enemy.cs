@@ -32,16 +32,16 @@ namespace TeamOne.EvolvedSurvivor
             spawnManager.OnEnemyDespawn(this.gameObject);
         }
 
-        public virtual void ScaleStats(float timePassed)
+        public virtual void ScaleStats(float enemyLevel)
         {
             Damage damage = new Damage();
-            damage.damage = this.initialDamage + (this.initialDamage * (Mathf.Log10(1f + (0.01f * timePassed))));
+            damage.damage = this.initialDamage * 0.5f * (1f + enemyLevel);
 
             damage = this.damageHandler.ProcessOutgoingDamage(damage);
             this.damageArea.SetDamage(damage);
             this.damageArea.SetActive(true);
 
-            this.health.MaximumHealth = this.initialHealth + (this.initialHealth * (Mathf.Log10(1f + (0.015f * timePassed))));
+            this.health.MaximumHealth = this.initialHealth * (1f + enemyLevel);
             this.health.ResetHealthToMaxHealth();
         }
     }

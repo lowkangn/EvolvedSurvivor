@@ -48,6 +48,7 @@ MonoBehaviour:
   passiveDescription: Increases ability damage output
   currentTier: 0
   abilitySprite: {fileID: 21300000, guid: c7e3ed5b6f026eb409b5bfee940826f1, type: 3}
+  animatorIndex: 7
   damageMultipliers:
   - 1
   - 1.1

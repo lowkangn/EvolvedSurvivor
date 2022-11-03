@@ -1,7 +1,6 @@
 using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace TeamOne.EvolvedSurvivor
 {
@@ -35,13 +34,19 @@ namespace TeamOne.EvolvedSurvivor
         protected float coolDownTimer;
         [SerializeField]
         private Sprite abilitySprite;
-        private Sprite recursiveSprite;
+        
+        [SerializeField]
+        private UpgradableAnimatorIndex animatorIndex;
         private bool isActive;
 
         [Header("Recursive ability pool")]
         [SerializeField]
         protected AbilityObjectPooler recursiveAbilityObjectPool;
         protected bool hasRecursive = false;
+        private Sprite recursiveSprite;
+        private UpgradableAnimatorIndex recursiveAnimatorIndex;
+
+        public bool HasRecursive => hasRecursive;
 
         [Header("Projectile pool")]
         [SerializeField]
@@ -50,6 +55,12 @@ namespace TeamOne.EvolvedSurvivor
         [Header("Element Magnitudes: Plasma, Cryo, Force, Infect, Pyro")]
         [SerializeField]
         protected List<float> elementMagnitudes =  new List<float>();
+        [SerializeField]
+        protected float statusEffectThresholdRatio = 0.1f;
+
+        [Header("Sfx")]
+        [SerializeField]
+        protected SfxHandler sfxHandler;
 
         protected DamageHandler damageHandler;
         private AbilityGenerator abilityGenerator;
@@ -119,7 +130,6 @@ namespace TeamOne.EvolvedSurvivor
                     recursiveAbility.CloneAbility(consumedAbility);
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
-                    newAbility.recursiveSprite = recursiveAbility.abilitySprite;
                 }
 
                 return newAbility;
@@ -179,32 +189,38 @@ namespace TeamOne.EvolvedSurvivor
                 element.elements[chosenType] += 1;
             }
         }
-        protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float magnitude)
+        protected StatusEffect GenerateEffect(ElementType type, float utilityRatio, float maxMagnitude)
         {
             int level = element.elements[type];
             float levelRatio = (float)level / Element.maxLevel;
+            float ratio = levelRatio * utilityRatio; 
+            if (ratio < 0.1f)
+            {
+                ratio = 0f;
+            }
+            float magnitude = ratio * maxMagnitude;
             StatusEffect effect;
             switch (type)
             {
                 case ElementType.Plasma:
                     effect = gameObject.AddComponent<PlasmaStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Cryo:
                     effect = gameObject.AddComponent<CryoStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Force:
                     effect = gameObject.AddComponent<ForceStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Infect:
                     effect = gameObject.AddComponent<InfectStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 case ElementType.Pyro:
                     effect = gameObject.AddComponent<PyroStatusEffect>();
-                    effect.Build(level, levelRatio, utilityRatio, magnitude);
+                    effect.Build(level, magnitude);
                     break;
                 default:
                     throw new System.Exception("Element Type invalid");
@@ -220,6 +236,16 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetRecursiveSprite()
         {
             return this.recursiveSprite;
+        }
+
+        public int GetAnimatorIndex()
+        {
+            return (int)this.animatorIndex;
+        }
+
+        public int GetRecursiveAnimatorIndex()
+        {
+            return (int)this.recursiveAnimatorIndex;
         }
 
         // This method is used for recursive abilities.
@@ -319,6 +345,9 @@ namespace TeamOne.EvolvedSurvivor
         protected void AddRecursiveAbility(Ability recursiveAbility)
         {
             this.hasRecursive = true;
+            this.recursiveSprite = recursiveAbility.abilitySprite;
+            this.recursiveAnimatorIndex = recursiveAbility.animatorIndex;
+
             recursiveAbility.activateOnlyOnce = true;
             recursiveAbility.SetActive(false);
 

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MainMenuOptionsButton : MonoBehaviour, IPointerClickHandler
+public class MainMenuOptionsButton : UIButton
 {
     [SerializeField] private GameObject optionsPanel;
 
-    public void OnPointerClick (PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         optionsPanel.SetActive(true);
+        clickSfxHandler.PlaySfx();
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MainMenuQuitButton : MonoBehaviour, IPointerClickHandler
+public class MainMenuQuitButton : UIButton 
 {
-    public void OnPointerClick (PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
+        clickSfxHandler.PlaySfx();
         Application.Quit();
     }
 }

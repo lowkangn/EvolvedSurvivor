@@ -29,6 +29,7 @@ namespace TeamOne.EvolvedSurvivor
         protected override void Activate()
         {
             StartCoroutine(SpawnProjectiles(projectileNumber.value));
+            sfxHandler.PlaySfx();
         }
 
         private void SpawnExplosiveProjectile(Transform target=null)

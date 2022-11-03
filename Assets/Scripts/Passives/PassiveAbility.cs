@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TeamOne.EvolvedSurvivor
@@ -16,6 +14,8 @@ namespace TeamOne.EvolvedSurvivor
         protected int currentTier = 0;
         [SerializeField]
         private Sprite abilitySprite;
+        [SerializeField]
+        private UpgradableAnimatorIndex animatorIndex;
 
         public abstract void Upgrade();
 
@@ -42,6 +42,11 @@ namespace TeamOne.EvolvedSurvivor
         public Sprite GetSprite()
         {
             return this.abilitySprite;
+        }
+
+        public int GetAnimatorIndex()
+        {
+            return (int)this.animatorIndex;
         }
 
         public Sprite GetRecursiveSprite()

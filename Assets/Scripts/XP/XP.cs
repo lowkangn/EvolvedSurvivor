@@ -19,6 +19,7 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("the current XP of the character")]
 		public int CurrentXP;
         public int MaxXPCap = 80;
+		public int MaxLevel = 80;
 
         [Header("XP")]
 
@@ -36,6 +37,8 @@ namespace MoreMountains.TopDownEngine
 		public bool ResetXPOnEnable = true;
 
 		[SerializeField] private GUIUpdaterScriptableObject guiUpdater;
+
+		private int currentLevel = 0;
         
         /// <summary>
         /// On Start, we initialize our XP
@@ -67,6 +70,10 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="XP">The XP the character gets.</param>
 		public void GetXP(int XP)
 		{
+			if (currentLevel >= MaxLevel)
+			{
+				return;
+			}
 			// Set XP to new XP
 			SetXP(Mathf.Min (CurrentXP + XP, MaximumXP));
 
@@ -116,6 +123,7 @@ namespace MoreMountains.TopDownEngine
 			if (CurrentXP == MaximumXP)
 			{
 				guiUpdater.OnLevelUp();
+				currentLevel++;
 			}
 		}
     }

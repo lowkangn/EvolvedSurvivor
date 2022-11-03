@@ -7,6 +7,14 @@ public class PickupAttract : MonoBehaviour
     [SerializeField] float pickupSpeed;
     private Transform playerTransform;
 
+    private void OnDisable()
+    {
+        if (this.playerTransform != null)
+        {
+            this.playerTransform = null;
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D collider)
     {
         if (!collider.CompareTag("ESPickup"))

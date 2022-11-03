@@ -30,6 +30,7 @@ namespace TeamOne.EvolvedSurvivor
                     Transform chosenEnemy = onScreenEnemies[i];
                     DamageAndSpawnProjectileOnTarget(chosenEnemy);
                 }
+                sfxHandler.PlaySfx();
             }
         }
 
