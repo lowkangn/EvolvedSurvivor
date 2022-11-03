@@ -1,7 +1,5 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TeamOne.EvolvedSurvivor;
+using UnityEngine.EventSystems;
 
 public class MergeOutputSlotUI : AbilityMergeSlotUI
 {

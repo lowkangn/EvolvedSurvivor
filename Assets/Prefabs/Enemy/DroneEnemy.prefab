@@ -1172,7 +1172,6 @@ MonoBehaviour:
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
   initialSecondaryDamage: 10
   secDamageArea: {fileID: 2689226587219063426}
-  secDamageScalingFactor: 0.005
 --- !u!114 &2098063179780070140
 MonoBehaviour:
   m_ObjectHideFlags: 0

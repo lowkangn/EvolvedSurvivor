@@ -7,18 +7,16 @@ namespace TeamOne.EvolvedSurvivor
     {
         [SerializeField] private float initialSecondaryDamage = 20f;
         [SerializeField] private DamageArea secDamageArea;
-        [SerializeField] private float secDamageScalingFactor = 0.02f;
 
         private float currentSecondaryDamage;
 
         public float SecondaryDamage => currentSecondaryDamage;
 
-        public override void ScaleStats(float timePassed)
+        public override void ScaleStats(float enemyLevel)
         {
-            base.ScaleStats(timePassed);
+            base.ScaleStats(enemyLevel);
 
-            this.currentSecondaryDamage = this.initialSecondaryDamage 
-                + (this.initialSecondaryDamage * (Mathf.Log10(1f + (secDamageScalingFactor * timePassed))));
+            this.currentSecondaryDamage = initialSecondaryDamage * 0.5f * (1f + enemyLevel);
 
             if (this.secDamageArea != null)
             {

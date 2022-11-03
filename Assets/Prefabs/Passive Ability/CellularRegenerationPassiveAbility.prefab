@@ -48,6 +48,7 @@ MonoBehaviour:
   passiveDescription: Increases health and gives health regeneration
   currentTier: 0
   abilitySprite: {fileID: 21300000, guid: 44809eafd459f0f42937725f65320fd0, type: 3}
+  animatorIndex: 10
   healthMultipliers:
   - 1
   - 1.1

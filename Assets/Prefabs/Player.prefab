@@ -4994,8 +4994,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.8}
+  m_Offset: {x: 0, y: -0.25}
+  m_Size: {x: 0.7, y: 1.2}
   m_Direction: 0
 --- !u!50 &50050392041868628
 Rigidbody2D:
@@ -5395,6 +5395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentXP: 0
   MaxXPCap: 80
+  MaxLevel: 80
   InitialXP: 0
   MaximumXP: 5
   CurrentLevel: 1

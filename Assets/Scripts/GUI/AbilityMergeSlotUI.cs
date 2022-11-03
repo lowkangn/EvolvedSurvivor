@@ -10,6 +10,8 @@ public class AbilityMergeSlotUI : AbilityButton
 
     [SerializeField] protected MergeAbilityHandler mergeAbilityHandler;
     [SerializeField] protected LevelUpScreenManager levelUpManager;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Animator recursiveAnimator;
 
     private CurrentAbilityUI sourceSlot;
 
@@ -29,6 +31,18 @@ public class AbilityMergeSlotUI : AbilityButton
         }
     }
 
+    public override void AddAbilityToButton(Ability ability)
+    {
+        base.AddAbilityToButton(ability);
+        this.animator.SetFloat("upgradableIndex", ability.GetAnimatorIndex());
+
+        if (ability.HasRecursive)
+        {
+            Debug.Log(ability.GetRecursiveAnimatorIndex());
+            this.recursiveAnimator.SetFloat("upgradableIndex", ability.GetRecursiveAnimatorIndex());
+        }
+    }
+
     public void AddAbilityToButton(Ability ability, CurrentAbilityUI sourceSlot)
     {
         this.AddAbilityToButton(ability);
@@ -37,13 +51,34 @@ public class AbilityMergeSlotUI : AbilityButton
 
     public override void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if (this.isEmpty) {
-            this.textObj.text = TIP_MERGE_INSTRUCTION;
-            enterSfxHandler.PlaySfx();
-        } 
+        if (!this.isEmpty) {
+            base.OnPointerEnter(pointerEventData);
+            this.animator.SetBool("isHovering", true);
+
+            if (this.upgradable.HasRecursive)
+            {
+                this.recursiveAnimator.SetBool("isHovering", true);
+            }
+        }
         else 
         {
-            base.OnPointerEnter(pointerEventData);
+            this.textObj.text = TIP_MERGE_INSTRUCTION;
+            enterSfxHandler.PlaySfx();
+        }
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+
+        if (!this.isEmpty)
+        {
+            this.animator.SetBool("isHovering", false);
+
+            if (this.upgradable.HasRecursive)
+            {
+                this.recursiveAnimator.SetBool("isHovering", false);
+            }
         }
     }
 
