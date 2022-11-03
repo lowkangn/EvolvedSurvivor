@@ -20,6 +20,7 @@ public class CurrentPassiveAbilityUI : UpgradableButton<PassiveAbility>
     {
         this.textObj.text = "";
         this.detailedTextObj.text = "";
+        radarChart.ClearVisual();
     }
 
     public override void OnPointerClick(PointerEventData eventData)

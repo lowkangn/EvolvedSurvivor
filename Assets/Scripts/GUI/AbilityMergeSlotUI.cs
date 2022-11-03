@@ -69,7 +69,7 @@ public class AbilityMergeSlotUI : AbilityButton
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        base.OnPointerEnter(eventData);
+        base.OnPointerExit(eventData);
 
         if (!this.isEmpty)
         {
