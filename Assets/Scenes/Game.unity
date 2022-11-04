@@ -271,7 +271,7 @@ MonoBehaviour:
   - {fileID: 1130473581}
   tileSize: 40
   mapSizeInTiles: 3
-  density: 0.4
+  density: 0.35
 --- !u!114 &71771404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,37 +290,37 @@ MonoBehaviour:
   Pool:
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 4ff7a05e482059247bb562c2bf97de6a,
       type: 3}
-    PoolSize: 10
+    PoolSize: 20
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 2a3fde70c8fc41f44b5a5ba9e393b670,
       type: 3}
-    PoolSize: 20
+    PoolSize: 40
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: fbffe17ae4afffa4da72c0263536ebf7,
       type: 3}
-    PoolSize: 20
+    PoolSize: 40
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 9664c05237dbef24d8f2b2ffd8fb8c97,
       type: 3}
-    PoolSize: 10
+    PoolSize: 20
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 5d5e2aa99b1123b46ab41045efbf68e4,
       type: 3}
-    PoolSize: 20
+    PoolSize: 40
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: d6bcb27aa948ac44292fd325f3417850,
       type: 3}
-    PoolSize: 15
+    PoolSize: 30
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: ea8d131abaf1cb34d9913ba71819fe53,
       type: 3}
-    PoolSize: 5
+    PoolSize: 20
     PoolCanExpand: 1
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: 3d34f80b95534f64bb63b1b72863b9b4,
@@ -330,7 +330,22 @@ MonoBehaviour:
     Enabled: 1
   - GameObjectToPool: {fileID: 3925014887327293785, guid: d67b9463beac4ab42a9a7a94bcbf8dc3,
       type: 3}
-    PoolSize: 10
+    PoolSize: 20
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 124804f46d7ca504bb1fcac274438311,
+      type: 3}
+    PoolSize: 8
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 6ae2f71039253334f90dd89017f84a0c,
+      type: 3}
+    PoolSize: 8
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: f91f43f969c7ab145ae0ece0377785bf,
+      type: 3}
+    PoolSize: 3
     PoolCanExpand: 1
     Enabled: 1
   PoolingMethod: 3
@@ -441,11 +456,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -583,11 +593,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -952,11 +957,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -1344,11 +1344,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3982967524800901897, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -2359,11 +2354,6 @@ PrefabInstance:
       propertyPath: y
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2656,11 +2646,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
@@ -3930,11 +3915,6 @@ PrefabInstance:
       propertyPath: y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -4238,11 +4218,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 71771402}
     m_Modifications:
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -5117,11 +5092,6 @@ PrefabInstance:
         type: 3}
       propertyPath: y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848382279629026564, guid: 7a99464d4f768b64884620f546a481c4,
-        type: 3}
-      propertyPath: cellSize
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4002978369868285159, guid: 7a99464d4f768b64884620f546a481c4,
         type: 3}
