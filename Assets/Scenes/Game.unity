@@ -388,7 +388,12 @@ MonoBehaviour:
     PoolSize: 1
     PoolCanExpand: 1
     Enabled: 1
-  PoolingMethod: 3
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 9e33e4c15e6cbdf42b42d50605e5964d,
+      type: 3}
+    PoolSize: 1
+    PoolCanExpand: 1
+    Enabled: 1
+  PoolingMethod: 1
   CanPoolSameObjectTwice: 1
   MutualizedPoolName: 
 --- !u!1 &168818711
@@ -5993,7 +5998,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0183487, y: 1}
+    m_SensorSize: {x: 2.014652, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

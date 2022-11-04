@@ -14,7 +14,7 @@ public class WorldTile : MonoBehaviour
     private NonRandomObjectPooler bgObjectPool;
     private MMMultipleObjectPooler easterEggPool;
 
-    private float chanceForEasterEgg = 0.3f;
+    private float chanceForEasterEgg = 0.5f;
 
     private List<GameObject> bgObjects = new List<GameObject>();
 
