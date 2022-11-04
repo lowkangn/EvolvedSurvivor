@@ -349,6 +349,21 @@ MonoBehaviour:
     PoolSize: 10
     PoolCanExpand: 1
     Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 0e7d582b1105336419ffb0b937b6f5ba,
+      type: 3}
+    PoolSize: 10
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 0e7d582b1105336419ffb0b937b6f5ba,
+      type: 3}
+    PoolSize: 10
+    PoolCanExpand: 1
+    Enabled: 1
+  - GameObjectToPool: {fileID: 3925014887327293785, guid: 3b1deed1dd5848e46be5d03ca5033cc0,
+      type: 3}
+    PoolSize: 10
+    PoolCanExpand: 1
+    Enabled: 1
   PoolingMethod: 3
   CanPoolSameObjectTwice: 1
   MutualizedPoolName: 
