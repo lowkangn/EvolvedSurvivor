@@ -1,5 +1,6 @@
 using MoreMountains.Tools;
 using System.Collections.Generic;
+using TeamOne.EvolvedSurvivor;
 using UnityEngine;
 
 public class WorldTile : MonoBehaviour
@@ -11,6 +12,9 @@ public class WorldTile : MonoBehaviour
 
     private WorldScroller worldScroller;
     private NonRandomObjectPooler bgObjectPool;
+    private MMMultipleObjectPooler easterEggPool;
+
+    private float chanceForEasterEgg = 0.2f;
 
     private List<GameObject> bgObjects = new List<GameObject>();
 
@@ -18,6 +22,7 @@ public class WorldTile : MonoBehaviour
     {
         worldScroller = GetComponentInParent<WorldScroller>();
         bgObjectPool = GetComponentInParent<NonRandomObjectPooler>();
+        easterEggPool = GetComponentInParent<MMMultipleObjectPooler>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +43,11 @@ public class WorldTile : MonoBehaviour
 
         int tileSizeInCells = Mathf.FloorToInt(tileSize / cellSize);
         Vector2 tilePosition = gameObject.transform.position;
+        Random.InitState(Mathf.FloorToInt(seed + transform.position.x + transform.position.y));
+
+        bool shouldSpawnEasterEgg = Random.Range(0f, 1f) < chanceForEasterEgg;
+        bool hasEasterEggSpawned = false;
+
         Random.InitState(Mathf.FloorToInt(seed));
 
         for (int i = 0; i < tileSizeInCells; i++)
@@ -47,26 +57,42 @@ public class WorldTile : MonoBehaviour
                 Vector2 tileOffset = new Vector2((i + 0.5f) * cellSize, (j + 0.5f) * cellSize);
                 Vector2 objectRoughPosition = tilePosition + tileOffset;
 
+                // Do not spawn around the player's spawn
                 if (objectRoughPosition.x > -5f && objectRoughPosition.x < 8f && objectRoughPosition.y > -8f && objectRoughPosition.y < 8f)
                 {
                     continue;
                 }
 
                 float generatedNoise = Mathf.PerlinNoise((tilePosition.x + i) * 0.5f + seed, (tilePosition.y + j) * 0.5f + seed);
-                
-                if (generatedNoise < density)
-                {
-                    GameObject bgObject = bgObjectPool.GetPooledObjectBySeed(seed + i + j);
-                    Vector2 randomOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
-                    bgObject.transform.position = tilePosition + tileOffset + randomOffset;
-                    bgObject.transform.parent = gameObject.transform;
-                    bgObject.transform.rotation = (Random.Range(0f, 1f) <= 0.5f)
-                        ? Quaternion.Euler(0f, 0f, 0f)
-                        : Quaternion.Euler(0f, 180f, 0f);
-                    bgObject.SetActive(true);
 
-                    bgObjects.Add(bgObject);
+                // Spawn object if below threshold
+                if (generatedNoise >= density)
+                {
+                    continue;
                 }
+
+                GameObject objectToSpawn;
+
+                // Pick either easter egg or background object to spawn
+                if (shouldSpawnEasterEgg && !hasEasterEggSpawned)
+                {
+                    objectToSpawn = easterEggPool.GetPooledGameObject();
+                    hasEasterEggSpawned = true;
+                }
+                else
+                {
+                    objectToSpawn = bgObjectPool.GetPooledObjectBySeed(seed + i + j);
+                }
+
+                Vector2 randomOffset = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f));
+                objectToSpawn.transform.position = tilePosition + tileOffset + randomOffset;
+                objectToSpawn.transform.parent = gameObject.transform;
+                objectToSpawn.transform.rotation = (Random.Range(0f, 1f) <= 0.5f)
+                    ? Quaternion.Euler(0f, 0f, 0f)
+                    : Quaternion.Euler(0f, 180f, 0f);
+
+                objectToSpawn.SetActive(true);
+                bgObjects.Add(objectToSpawn);
             }
         }
     }
