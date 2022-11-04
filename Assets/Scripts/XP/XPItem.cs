@@ -28,7 +28,7 @@ namespace MoreMountains.TopDownEngine
 		protected override void Pick(GameObject picker) 
 		{
             TopDownEngine.XP playerXP = player.GetComponent<TopDownEngine.XP>();
-			playerXP.GetXP(XPBonus);
+			playerXP.UpdateXP(XPBonus);
 		}
     }
 }

@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.Collections;
 using MoreMountains.Tools;
-using MoreMountains.Feedbacks;
+using System.Collections;
+using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -43,14 +42,19 @@ namespace MoreMountains.TopDownEngine
         /// <summary>
         /// On Start, we initialize our XP
         /// </summary>
-        protected void Awake()
+        private void Awake()
 	    {
 			SetInitialXP();
 	    }
 
-        public void SetInitialXP()
+		private void OnDisable()
+		{
+			StopAllCoroutines();
+		}
+
+		public void SetInitialXP()
         {
-		    SetXP(InitialXP);	
+			UpdateXP(InitialXP);
         }
 
 		/// <summary>
@@ -68,63 +72,41 @@ namespace MoreMountains.TopDownEngine
 		/// Called when the character gets XP from picking up XP Items
 		/// </summary>
 		/// <param name="XP">The XP the character gets.</param>
-		public void GetXP(int XP)
+		public void UpdateXP(int XP)
 		{
 			if (currentLevel >= MaxLevel)
 			{
 				return;
 			}
-			// Set XP to new XP
-			SetXP(Mathf.Min (CurrentXP + XP, MaximumXP));
+            // Set XP to new XP
+            CurrentXP = Mathf.Min (CurrentXP + XP, MaximumXP);
+            guiUpdater.OnXpChange(CurrentXP, MaximumXP);
 
-			// If MaxXP is reached, level up 
-			if (CurrentXP == MaximumXP) {
+            // If MaxXP is reached, level up 
+            if (CurrentXP == MaximumXP) {
 				CurrentLevel++;
-				MaximumXP = GetMaximumXP(CurrentLevel);
+				MaximumXP = GetNextLevelXP();
 				CurrentXP = 0;
 
 				// This will update XP bar 0.5s after game resumes
-				IEnumerator coroutine = SetXPBarToZero(0.5f);
+				IEnumerator coroutine = LevelUp(0.5f);
         		StartCoroutine(coroutine);
 			}				
 		}
 
-		private IEnumerator SetXPBarToZero(float waitTime)
+		private IEnumerator LevelUp(float waitTime)
 		{
 			yield return new WaitForSeconds(waitTime);
-			UpdateXPBar();
-		}
+            guiUpdater.OnLevelUp();
+            guiUpdater.OnXpChange(CurrentXP, MaximumXP);
+        }
 
 		/// <summary>
 	    /// Change the character's max XP based on current level
 	    /// </summary>
-	    public int GetMaximumXP(int currentLevel)
+	    public int GetNextLevelXP()
 	    {
 		    return Mathf.Min(MaxXPCap, Mathf.FloorToInt(MaximumXP * 1.2f));
         }
-
-        /// <summary>
-        /// Sets the current XP to the specified new value, and updates the XP bar
-        /// </summary>
-        /// <param name="newValue"></param>
-        public void SetXP(int newValue)
-        {
-            CurrentXP = newValue;
-            UpdateXPBar();
-        }
-
-	    /// <summary>
-	    /// Updates the character's XP bar progress.
-	    /// </summary>
-		public void UpdateXPBar()
-	    {
-			guiUpdater.OnXpChange(CurrentXP, MaximumXP);
-
-			if (CurrentXP == MaximumXP)
-			{
-				guiUpdater.OnLevelUp();
-				currentLevel++;
-			}
-		}
     }
 }
