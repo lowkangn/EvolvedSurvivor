@@ -2408,7 +2408,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3381349969054367989}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7425059277236268598}
+        m_TargetAssemblyTypeName: HelpMenuEnabled, Assembly-CSharp
+        m_MethodName: goToNextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3381349969054367991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,14 +2435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickSfxHandler: {fileID: 0}
   enterSfxHandler: {fileID: 0}
-  helpPages:
-  - {fileID: 3381349970241582248}
-  - {fileID: 3381349969686538746}
-  - {fileID: 1676227980459508858}
-  - {fileID: 3381349968219852368}
-  - {fileID: 8645749135945369363}
-  nextButton: {fileID: 3381349969054367985}
-  backButton: {fileID: 3381349969359669394}
 --- !u!1 &3381349969086548617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,7 +2806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3381349969359669399}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7425059277236268598}
+        m_TargetAssemblyTypeName: HelpMenuEnabled, Assembly-CSharp
+        m_MethodName: goToPrevPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3381349969359669401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2817,14 +2833,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickSfxHandler: {fileID: 0}
   enterSfxHandler: {fileID: 0}
-  helpPages:
-  - {fileID: 3381349970241582248}
-  - {fileID: 3381349969686538746}
-  - {fileID: 1676227980459508858}
-  - {fileID: 3381349968219852368}
-  - {fileID: 8645749135945369363}
-  nextButton: {fileID: 3381349969054367985}
-  backButton: {fileID: 3381349969359669394}
 --- !u!1 &3381349969447409727
 GameObject:
   m_ObjectHideFlags: 0
