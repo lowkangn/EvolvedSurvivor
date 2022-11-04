@@ -238,5 +238,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  cellSize: 1
+  cellSize: 4
   tileSize: 40

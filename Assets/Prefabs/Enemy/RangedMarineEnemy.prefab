@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &7365134896438763654
 Animator:
   serializedVersion: 4
@@ -704,6 +704,7 @@ MonoBehaviour:
     Actions:
       array:
       - {fileID: -5462299731838461371}
+      - {fileID: -6232343430091109303}
     Transitions:
       array:
       - Decision: {fileID: 9222946713112327023}

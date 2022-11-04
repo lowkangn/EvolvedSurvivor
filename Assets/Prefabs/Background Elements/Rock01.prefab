@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3925014887327293788}
   - component: {fileID: 3925014887327293791}
-  - component: {fileID: 4634734408443315959}
-  - component: {fileID: 2600319061143484951}
+  - component: {fileID: 8719058610071605397}
+  - component: {fileID: 8635871634884104741}
   m_Layer: 8
-  m_Name: Cactus01
+  m_Name: Rock01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 47421343
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0fd39f24a23a9854097daeeaacae1bba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d834d3452bdc2a4baca40c264d84f46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &4634734408443315959
+--- !u!70 &8719058610071605397
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925014887327293785}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01, y: 0.45}
+  m_Size: {x: 1.88, y: 0.78}
+  m_Direction: 1
+--- !u!114 &8635871634884104741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,19 +122,3 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LifeTime: 0
---- !u!58 &2600319061143484951
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3925014887327293785}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 0.27}
-  serializedVersion: 2
-  m_Radius: 0.3
