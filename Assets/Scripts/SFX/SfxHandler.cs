@@ -15,15 +15,15 @@ public class SfxHandler : MonoBehaviour
     [SerializeField]
     protected int id;
 
-    private MMSoundManagerPlayOptions options = MMSoundManagerPlayOptions.Default;
-    private bool isPlaying;
+    protected MMSoundManagerPlayOptions options = MMSoundManagerPlayOptions.Default;
+    protected bool isPlaying;
 
     void Awake()
     {
         InitialiseSfx();
     }
 
-    private void InitialiseSfx()
+    protected virtual void InitialiseSfx()
     {
         options.MmSoundManagerTrack = MMSoundManager.MMSoundManagerTracks.Sfx;
         options.Location = this.transform.position;

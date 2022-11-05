@@ -3023,7 +3023,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1942408476}
+      objectReference: {fileID: 0}
     - target: {fileID: 1333174594953888485, guid: c7699d4ffb623f343bdddaf41092a5b2,
         type: 3}
       propertyPath: ButtonReleased.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -4738,7 +4738,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740540442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Script: {fileID: 11500000, guid: f5460cc079e394129a49a098983c75f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 8300000, guid: 904f380025c724682827bdccf044b30d, type: 3}
@@ -4893,7 +4893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1942408476}
+      objectReference: {fileID: 0}
     - target: {fileID: 2822217715210594626, guid: 1ab58ea76be00384fa688421a103301f,
         type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4928,7 +4928,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1942408476}
+      objectReference: {fileID: 0}
     - target: {fileID: 2822217715454418998, guid: 1ab58ea76be00384fa688421a103301f,
         type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1942408474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Script: {fileID: 11500000, guid: f5460cc079e394129a49a098983c75f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 8300000, guid: 081ecc97abdc6440c8123724abe440d4, type: 3}
