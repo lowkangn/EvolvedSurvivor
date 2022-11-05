@@ -29,8 +29,6 @@ namespace MoreMountains.TopDownEngine
 		/// the maximum amount of XP of the object
 		[Tooltip("the maximum amount of XP of the object")]
 		public int MaximumXP = 5;
-		[Tooltip("the current level given the amount of XP")]
-		public int CurrentLevel = 1;
 		/// if this is true, XP values will be reset everytime this character is enabled (usually at the start of a scene)
 		[Tooltip("if this is true, XP values will be reset everytime this character is enabled (usually at the start of a scene)")]
 		public bool ResetXPOnEnable = true;
@@ -85,7 +83,7 @@ namespace MoreMountains.TopDownEngine
 
             // If MaxXP is reached, level up 
             if (CurrentXP == MaximumXP) {
-				CurrentLevel++;
+				currentLevel++;
 				MaximumXP = GetNextLevelXP();
 				CurrentXP = 0;
 
