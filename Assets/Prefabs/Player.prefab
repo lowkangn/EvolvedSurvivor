@@ -571,11 +571,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentXP: 0
-  MaxXPCap: 80
   MaxLevel: 80
+  xpScalingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.2
+      inSlope: 1.1534594
+      outSlope: -0.10032816
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.12969431
+    - serializedVersion: 3
+      time: 0.25
+      value: 1.05
+      inSlope: -0.3655072
+      outSlope: -0.3655072
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12698689
+      outWeight: 0.09770403
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: -0.010807935
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.15908638
+      outWeight: 0.104508705
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0
+      outSlope: 0
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.06854653
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   InitialXP: 0
-  MaximumXP: 5
-  CurrentLevel: 1
+  XPToNextLevel: 3
   ResetXPOnEnable: 1
   guiUpdater: {fileID: 11400000, guid: 0d14c9dd2ee06724094bbc5727838b9f, type: 2}
   levelUpEffect: {fileID: 4357805639856733539}

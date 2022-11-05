@@ -475,7 +475,7 @@ MonoBehaviour:
   TargetObjectToDisable: {fileID: 0}
   TargetObjectDisableDelay: 0
   Model: {fileID: 0}
-  XPBonus: 5
+  XPBonus: 3
 --- !u!114 &-5086284348085792106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   ExecuteOnDisable:
     m_PersistentCalls:
       m_Calls: []
-  LifeTime: 60
+  LifeTime: 30
 --- !u!114 &8917874383364436486
 MonoBehaviour:
   m_ObjectHideFlags: 0
