@@ -17,6 +17,15 @@ public class ESSoundManager : MonoBehaviour
     [SerializeField] Sprite soundOnIcon;
     [SerializeField] Sprite soundOffIcon;
 
+    void Awake()
+    {
+        MMSoundManager soundManager = GameObject.Find("SoundManager").GetComponent<MMSoundManager>();
+        SetMasterVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Master, false));
+        SetMusicVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, false));
+        SetSfxVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, false));
+        SetUiVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.UI, false));
+    }
+
     private void ChangeVolume(MMSoundManager.MMSoundManagerTracks track, float volume, Image spriteImage)
     {
         MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.SetVolumeTrack, track, volume);
@@ -49,5 +58,61 @@ public class ESSoundManager : MonoBehaviour
     public void ChangeUiVolume()
     {
         ChangeVolume(MMSoundManager.MMSoundManagerTracks.UI, uiVolumeSlider.value, uiSoundSprite);
+    }
+
+    private void SetMasterVolume(float newVolume)
+    {
+        masterVolumeSlider.value = newVolume;
+
+        if (newVolume == 0)
+        {
+            masterSoundSprite.sprite = soundOffIcon;
+        }
+        if (newVolume > 0)
+        {
+            masterSoundSprite.sprite = soundOnIcon;
+        }
+    }
+
+    private void SetMusicVolume(float newVolume)
+    {
+        musicVolumeSlider.value = newVolume;
+
+        if (newVolume == 0)
+        {
+            musicSoundSprite.sprite = soundOffIcon;
+        }
+        if (newVolume > 0)
+        {
+            musicSoundSprite.sprite = soundOnIcon;
+        }
+    }
+
+    private void SetSfxVolume(float newVolume)
+    {
+        sfxVolumeSlider.value = newVolume;
+
+        if (newVolume == 0)
+        {
+            sfxSoundSprite.sprite = soundOffIcon;
+        }
+        if (newVolume > 0)
+        {
+            sfxSoundSprite.sprite = soundOnIcon;
+        }
+    }
+
+    private void SetUiVolume(float newVolume)
+    {
+        uiVolumeSlider.value = newVolume;
+
+        if (newVolume == 0)
+        {
+            uiSoundSprite.sprite = soundOffIcon;
+        }
+        if (newVolume > 0)
+        {
+            uiSoundSprite.sprite = soundOnIcon;
+        }
     }
 }
