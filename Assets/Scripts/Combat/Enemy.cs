@@ -16,7 +16,6 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected DamageArea damageArea;
         [SerializeField] protected Health health;
         [SerializeField] protected CharacterMovement movement;
-        [SerializeField] protected AIBrain aiBrain;
 
         [Header("Spawn manager")]
         [SerializeField] private SpawnManagerScriptableObject spawnManager;
