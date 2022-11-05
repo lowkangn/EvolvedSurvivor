@@ -933,7 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77877509ec450db4e92a79f5c290dd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDamage: 5
+  initialDamage: 7
   initialHealth: 15
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}

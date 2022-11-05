@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 685443863}
   - component: {fileID: 685443865}
   - component: {fileID: 685443866}
+  - component: {fileID: 685443867}
   m_Layer: 0
   m_Name: KillCounter
   m_TagString: Untagged
@@ -1519,7 +1520,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0fa31812d63b86d4983fec5d5338e6e0, type: 3}
     m_FontSize: 80
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 80
@@ -1532,6 +1533,19 @@ MonoBehaviour:
   m_Text: '0
 
 '
+--- !u!114 &685443867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685443862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34910d27d8788e4890d142e163a5e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 685443866}
 --- !u!1001 &754604115
 PrefabInstance:
   m_ObjectHideFlags: 0
