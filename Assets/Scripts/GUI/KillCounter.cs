@@ -28,4 +28,9 @@ public class KillCounter : MonoBehaviour, MMEventListener<MMLifeCycleEvent>
             text.text = killCount.ToString();
         }
     }
+
+    public string GetEnemiesKilled()
+    {
+        return killCount.ToString();
+    }
 }
