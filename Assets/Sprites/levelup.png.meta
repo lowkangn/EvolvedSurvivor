@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b4e62a00f6acfd4ab2169982a1fd761
+guid: 6c9b7d8bc2bae3045b678378ca30e268
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_idle_0
+      name: levelup_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1deeadc8d73c0c469c3547e36135adf
-      internalID: 344880243
+      spriteID: 46b1548895669f643bc7093e40c0de10
+      internalID: -1659508458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_1
+      name: levelup_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2234fe7ade85924fb616488de69dedf
-      internalID: -1952992592
+      spriteID: 238a528ced10fb14fbab0e00b7cf2dbf
+      internalID: 240495940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_2
+      name: levelup_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36670f9499a7404c99e76541079b3c1
-      internalID: 2025424085
+      spriteID: 3d3371878ac831b4391d2a79cc0a987f
+      internalID: -1226662452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_3
+      name: levelup_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,8 +193,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9e2c5d88dca8f249b9d6374db5d2b89
-      internalID: -1235332167
+      spriteID: f93d2fc8bdaefa147b1daec46a439b0d
+      internalID: -711001163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelup_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de2cb99d3c664944087bef01705b2868
+      internalID: -1542695587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelup_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d555deacbba5f91408079cc39d7c27ee
+      internalID: -1226258549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelup_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de12fe128bda70c41abb6e6421ada19d
+      internalID: -680411202
       vertices: []
       indices: 
       edges: []
@@ -202,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a6df4fb473d54924cbe2a3b31ee77695
+    spriteID: e43cc31987d33c84a9ee5a42fbb83e47
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +273,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_idle_2: 2025424085
-      player_idle_1: -1952992592
-      player_idle_3: -1235332167
-      player_idle_0: 344880243
+      levelup_2: -1226662452
+      levelup_3: -711001163
+      levelup_4: -1542695587
+      levelup_0: -1659508458
+      levelup_1: 240495940
+      levelup_5: -2041672063
+      levelup_6: -1226258549
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

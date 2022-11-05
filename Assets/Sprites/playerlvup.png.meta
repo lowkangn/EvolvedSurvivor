@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b4e62a00f6acfd4ab2169982a1fd761
+guid: ceb1f00f70ffe054eb92ec0c5ca62d28
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_idle_0
+      name: playerlvup_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1deeadc8d73c0c469c3547e36135adf
-      internalID: 344880243
+      spriteID: 2add355d5ad303c4fbfa3392839b65f7
+      internalID: 906920196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_1
+      name: playerlvup_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2234fe7ade85924fb616488de69dedf
-      internalID: -1952992592
+      spriteID: 5f7c52d79b7bf42499d1ec0a98d45017
+      internalID: 1208522100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_2
+      name: playerlvup_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36670f9499a7404c99e76541079b3c1
-      internalID: 2025424085
+      spriteID: 0511f8afb2fb0a7429722a30422dd67c
+      internalID: 1728944045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_3
+      name: playerlvup_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,8 +193,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9e2c5d88dca8f249b9d6374db5d2b89
-      internalID: -1235332167
+      spriteID: d641f9eea740f94428ed95b3cbf32ccc
+      internalID: -184274707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerlvup_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c147a62ac3eee3749996f12d6ff9415e
+      internalID: -81376381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerlvup_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f6e4cb8a5b93c4e8dd4a568a881640
+      internalID: -1885900821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerlvup_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb0bd8443a00ba43a7933c9be4e9977
+      internalID: 1567995909
       vertices: []
       indices: 
       edges: []
@@ -202,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a6df4fb473d54924cbe2a3b31ee77695
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +273,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_idle_2: 2025424085
-      player_idle_1: -1952992592
-      player_idle_3: -1235332167
-      player_idle_0: 344880243
+      playerlvup_1: 1208522100
+      playerlvup_3: -184274707
+      playerlvup_6: 1567995909
+      playerlvup_5: -1885900821
+      playerlvup_0: 906920196
+      playerlvup_2: 1728944045
+      playerlvup_4: -81376381
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
