@@ -36,6 +36,7 @@ namespace MoreMountains.TopDownEngine
 		public bool ResetXPOnEnable = true;
 
 		[SerializeField] private GUIUpdaterScriptableObject guiUpdater;
+		[SerializeField] private ParticleSystem levelUpEffect;
 
 		private int currentLevel = 0;
         
@@ -88,15 +89,16 @@ namespace MoreMountains.TopDownEngine
 				MaximumXP = GetNextLevelXP();
 				CurrentXP = 0;
 
-				// This will update XP bar 0.5s after game resumes
-				IEnumerator coroutine = LevelUp(0.5f);
+				IEnumerator coroutine = LevelUp(1f);
         		StartCoroutine(coroutine);
 			}				
 		}
 
 		private IEnumerator LevelUp(float waitTime)
 		{
-			yield return new WaitForSeconds(waitTime);
+			levelUpEffect.Play();
+
+            yield return new WaitForSeconds(waitTime);
             guiUpdater.OnLevelUp();
             guiUpdater.OnXpChange(CurrentXP, MaximumXP);
         }
