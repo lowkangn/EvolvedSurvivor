@@ -16,19 +16,19 @@ namespace MoreMountains.TopDownEngine
         /// the current XP of the character
         [MMReadOnly]
 		[Tooltip("the current XP of the character")]
-		public int CurrentXP;
-        public int MaxXPCap = 80;
-		public int MaxLevel = 80;
+		public float CurrentXP;
+		public float MaxLevel = 80f;
+		[SerializeField] private AnimationCurve xpScalingCurve;
 
         [Header("XP")]
 
 		[MMInformation("Add this component to an object and it'll have XP",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the initial amount of XP of the object
 		[Tooltip("the initial amount of XP of the object")]
-		public int InitialXP = 0;
+		public float InitialXP = 0f;
 		/// the maximum amount of XP of the object
 		[Tooltip("the maximum amount of XP of the object")]
-		public int MaximumXP = 5;
+		public float XPToNextLevel = 5f;
 		/// if this is true, XP values will be reset everytime this character is enabled (usually at the start of a scene)
 		[Tooltip("if this is true, XP values will be reset everytime this character is enabled (usually at the start of a scene)")]
 		public bool ResetXPOnEnable = true;
@@ -36,7 +36,7 @@ namespace MoreMountains.TopDownEngine
 		[SerializeField] private GUIUpdaterScriptableObject guiUpdater;
 		[SerializeField] private ParticleSystem levelUpEffect;
 
-		private int currentLevel = 0;
+		private float currentLevel = 0;
         
         /// <summary>
         /// On Start, we initialize our XP
@@ -71,21 +71,21 @@ namespace MoreMountains.TopDownEngine
 		/// Called when the character gets XP from picking up XP Items
 		/// </summary>
 		/// <param name="XP">The XP the character gets.</param>
-		public void UpdateXP(int XP)
+		public void UpdateXP(float XP)
 		{
 			if (currentLevel >= MaxLevel)
 			{
 				return;
 			}
             // Set XP to new XP
-            CurrentXP = Mathf.Min (CurrentXP + XP, MaximumXP);
-            guiUpdater.OnXpChange(CurrentXP, MaximumXP);
-
+            CurrentXP = Mathf.Min(CurrentXP + XP, XPToNextLevel);
+            guiUpdater.OnXpChange(CurrentXP, XPToNextLevel);
+			
             // If MaxXP is reached, level up 
-            if (CurrentXP == MaximumXP) {
+            if (CurrentXP == XPToNextLevel) {
 				currentLevel++;
-				MaximumXP = GetNextLevelXP();
-				CurrentXP = 0;
+				XPToNextLevel = GetNextLevelXP();
+				CurrentXP = 0f;
 
 				IEnumerator coroutine = LevelUp(1f);
         		StartCoroutine(coroutine);
@@ -98,15 +98,15 @@ namespace MoreMountains.TopDownEngine
 
             yield return new WaitForSeconds(waitTime);
             guiUpdater.OnLevelUp();
-            guiUpdater.OnXpChange(CurrentXP, MaximumXP);
+            guiUpdater.OnXpChange(CurrentXP, XPToNextLevel);
         }
 
 		/// <summary>
 	    /// Change the character's max XP based on current level
 	    /// </summary>
-	    public int GetNextLevelXP()
+	    public float GetNextLevelXP()
 	    {
-		    return Mathf.Min(MaxXPCap, Mathf.FloorToInt(MaximumXP * 1.2f));
+		    return XPToNextLevel * xpScalingCurve.Evaluate(currentLevel / MaxLevel);
         }
     }
 }

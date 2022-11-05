@@ -476,7 +476,7 @@ MonoBehaviour:
   TargetObjectToDisable: {fileID: 0}
   TargetObjectDisableDelay: 0
   Model: {fileID: 0}
-  XPBonus: 2
+  XPBonus: 1
 --- !u!114 &4545392945006928485
 MonoBehaviour:
   m_ObjectHideFlags: 0
