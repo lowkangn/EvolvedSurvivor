@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3480624771339914315}
   - component: {fileID: 61951514383847170}
   - component: {fileID: -1245011797071281657}
+  - component: {fileID: 5619794092697462019}
   m_Layer: 18
   m_Name: HomingProjectile
   m_TagString: Untagged
@@ -122,7 +123,36 @@ MonoBehaviour:
   repeatingRate: 0.5
   OnHitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5619794092697462019}
+        m_TargetAssemblyTypeName: SfxHandler, Assembly-CSharp
+        m_MethodName: StopSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  sfxHandler: {fileID: 5619794092697462019}
+--- !u!114 &5619794092697462019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133100380862132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: e0ce8f1648c2c4b509146782b8bf7cae, type: 3}
+  volume: 1
+  loop: 1
+  id: 2
 --- !u!1 &5441985088151882332
 GameObject:
   m_ObjectHideFlags: 0

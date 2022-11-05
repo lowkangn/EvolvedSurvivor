@@ -8,6 +8,8 @@ namespace TeamOne.EvolvedSurvivor
         private bool isTracking = true;
         private float angularVelocity = 180f;
 
+        [SerializeField] SfxHandler sfxHandler;
+
         public void SetTarget(GameObject target)
         {
             this.target = target;
@@ -34,7 +36,18 @@ namespace TeamOne.EvolvedSurvivor
             else
             {
                 isTracking = false;
+                sfxHandler.StopSfx();
             }
+        }
+
+        void OnEnable()
+        {
+            sfxHandler.PlaySfx();
+        }
+
+        void OnDisable()
+        {
+            sfxHandler.StopSfx();
         }
     }
 }

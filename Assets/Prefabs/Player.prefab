@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 8710403640008511705}
   - component: {fileID: 3974080717082401969}
   - component: {fileID: 5109408067721764813}
+  - component: {fileID: 8618349434218143790}
+  - component: {fileID: 1226762968564970562}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -579,6 +581,7 @@ MonoBehaviour:
   ResetXPOnEnable: 1
   guiUpdater: {fileID: 11400000, guid: 0d14c9dd2ee06724094bbc5727838b9f, type: 2}
   levelUpEffect: {fileID: 4357805639856733539}
+  levelUpSfxHandler: {fileID: 8618349434218143790}
 --- !u!114 &8710403640008511705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +628,39 @@ MonoBehaviour:
   AbilityPermitted: 0
   BlockingMovementStates: 
   BlockingConditionStates: 
+--- !u!114 &8618349434218143790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498750440386690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a28f72d757471f8c787aed2a314de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: bff68ea73685f4289b26d714518498f8, type: 3}
+  volume: 1
+  loop: 0
+  id: 0
+--- !u!114 &1226762968564970562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498750440386690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0015dce0f71af48ef8c60ab649e87475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: f1684d3cbaa94406e9ebf364580da045, type: 3}
+  volume: 1
+  loop: 0
+  id: 0
+  health: {fileID: 114171358364461030}
 --- !u!1 &905297264760070559
 GameObject:
   m_ObjectHideFlags: 0
