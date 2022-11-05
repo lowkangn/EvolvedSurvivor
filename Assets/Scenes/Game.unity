@@ -4789,6 +4789,11 @@ PrefabInstance:
       propertyPath: enterSfxHandler
       value: 
       objectReference: {fileID: 1740540444}
+    - target: {fileID: 704391054323367883, guid: 1ab58ea76be00384fa688421a103301f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 704391054959536097, guid: 1ab58ea76be00384fa688421a103301f,
         type: 3}
       propertyPath: clickSfxHandler
@@ -5712,7 +5717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826729123167980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.75, y: 0, z: -11.5}
+  m_LocalPosition: {x: -44.4, y: 0, z: -11.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
