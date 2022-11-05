@@ -63,56 +63,24 @@ public class ESSoundManager : MonoBehaviour
     private void SetMasterVolume(float newVolume)
     {
         masterVolumeSlider.value = newVolume;
-
-        if (newVolume == 0)
-        {
-            masterSoundSprite.sprite = soundOffIcon;
-        }
-        if (newVolume > 0)
-        {
-            masterSoundSprite.sprite = soundOnIcon;
-        }
+        ChangeMasterVolume();
     }
 
     private void SetMusicVolume(float newVolume)
     {
         musicVolumeSlider.value = newVolume;
-
-        if (newVolume == 0)
-        {
-            musicSoundSprite.sprite = soundOffIcon;
-        }
-        if (newVolume > 0)
-        {
-            musicSoundSprite.sprite = soundOnIcon;
-        }
+        ChangeMusicVolume();
     }
 
     private void SetSfxVolume(float newVolume)
     {
         sfxVolumeSlider.value = newVolume;
-
-        if (newVolume == 0)
-        {
-            sfxSoundSprite.sprite = soundOffIcon;
-        }
-        if (newVolume > 0)
-        {
-            sfxSoundSprite.sprite = soundOnIcon;
-        }
+        ChangeSfxVolume();
     }
 
     private void SetUiVolume(float newVolume)
     {
         uiVolumeSlider.value = newVolume;
-
-        if (newVolume == 0)
-        {
-            uiSoundSprite.sprite = soundOffIcon;
-        }
-        if (newVolume > 0)
-        {
-            uiSoundSprite.sprite = soundOnIcon;
-        }
+        ChangeUiVolume();
     }
 }
