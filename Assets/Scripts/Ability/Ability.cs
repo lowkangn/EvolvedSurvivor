@@ -311,6 +311,23 @@ namespace TeamOne.EvolvedSurvivor
 
         public abstract string GetDetails();
 
+        public abstract string GetComparedDetails(Ability other);
+
+        protected string GetComparedValueString<T>(T original, T upgraded) where T : System.IComparable<T>
+        {
+            if (upgraded.CompareTo(original) > 0)
+            {
+                return "<color=green>" + upgraded + "</color>";
+            }
+
+            if (upgraded.CompareTo(original) < 0)
+            {
+                return "<color=red>" + upgraded + "</color>";
+            }
+
+            return upgraded.ToString();
+        }
+
         protected string GetStatusEffects()
         {
             string result = "Status Effects: ";

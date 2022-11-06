@@ -27,7 +27,7 @@ public class MergeOutputSlotUI : AbilityMergeSlotUI
         if (!isEmpty)
         {
             this.textObj.text = upgradable.GetName() + upgradable.GetDescription();
-            this.detailedTextObj.text = upgradable.GetDetails();
+            this.detailedTextObj.text = upgradable.GetComparedDetails(primaryAbility);
 
             if (radarChart.isActiveAndEnabled)
             {

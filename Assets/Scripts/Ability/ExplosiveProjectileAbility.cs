@@ -149,5 +149,10 @@ namespace TeamOne.EvolvedSurvivor
                 + "\n"
                 + GetStatusEffects();
         }
+
+        public override string GetComparedDetails(Ability other)
+        {
+            return GetDetails();
+        }
     }
 }
