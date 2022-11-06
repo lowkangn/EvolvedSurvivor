@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4088140799272747558}
   m_Layer: 10
   m_Name: PlayerModel
-  m_TagString: Player
+  m_TagString: PlayerModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,7 +683,6 @@ MonoBehaviour:
   sfx: {fileID: 8300000, guid: bff68ea73685f4289b26d714518498f8, type: 3}
   volume: 1
   loop: 0
-  id: 0
 --- !u!114 &1226762968564970562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +698,6 @@ MonoBehaviour:
   sfx: {fileID: 8300000, guid: f1684d3cbaa94406e9ebf364580da045, type: 3}
   volume: 1
   loop: 0
-  id: 0
   health: {fileID: 114171358364461030}
 --- !u!1 &905297264760070559
 GameObject:

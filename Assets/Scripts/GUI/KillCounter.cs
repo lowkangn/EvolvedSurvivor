@@ -22,7 +22,7 @@ public class KillCounter : MonoBehaviour, MMEventListener<MMLifeCycleEvent>
     public void OnMMEvent(MMLifeCycleEvent eventType)
     {
         if (eventType.MMLifeCycleEventTypes == MMLifeCycleEventTypes.Death
-            && !eventType.AffectedHealth.Model.CompareTag("Player"))
+            && !eventType.AffectedHealth.Model.CompareTag("PlayerModel"))
         {
             killCount++;
             text.text = killCount.ToString();
