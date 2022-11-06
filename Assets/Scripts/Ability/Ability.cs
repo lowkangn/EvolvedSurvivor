@@ -105,8 +105,10 @@ namespace TeamOne.EvolvedSurvivor
                 Ability newAbility = Instantiate(abilityGenerator.GetPrefab(abilityName));
                 newAbility.CopyAbility(this);
 
+                bool isMaxTier = this.tier + consumedAbility.tier == 10;
+                newAbility.tier = this.tier + (isMaxTier ? 1 : consumedAbility.tier);
+
                 // Element Upgrade
-                newAbility.tier = tier + consumedAbility.tier;
                 int additionalLevel = newAbility.tier % 2 + newAbility.tier / 2 - element.GetTotalLevel();
                 if (additionalLevel > 0)
                 {
@@ -124,12 +126,13 @@ namespace TeamOne.EvolvedSurvivor
                 newAbility.hasBuilt = true;
                 newAbility.isActive = true;
 
-                if (newAbility.tier == maxTier)
+                if (isMaxTier)
                 {
                     Ability recursiveAbility = Instantiate(consumedAbility);
                     recursiveAbility.CloneAbility(consumedAbility);
 
                     newAbility.AddRecursiveAbility(recursiveAbility);
+                    newAbility.tier = 10;
                 }
 
                 return newAbility;

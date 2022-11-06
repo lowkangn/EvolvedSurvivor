@@ -14,7 +14,7 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("XP Bonus")]
 		/// the amount of XP to add to the player when the item is used
-		public int XPBonus;
+		public float XPBonus;
         private GameObject player;
 
         void Awake() {
