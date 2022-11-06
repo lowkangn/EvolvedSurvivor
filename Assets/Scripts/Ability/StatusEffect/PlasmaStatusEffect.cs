@@ -6,10 +6,9 @@ namespace TeamOne.EvolvedSurvivor
     {
         private readonly float radius = 0.8f;
         private float damageMultiplier;
-        private int level;
         public override void Build(int level, float magnitude)
         {
-            this.level = level;
+            this.Level = level;
             damageMultiplier = magnitude;
         }
 
@@ -46,7 +45,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Plasma " + level;
+            return "Plasma " + Level;
+        }
+
+        public override bool EqualTypeTo(StatusEffect other)
+        {
+            return other is PlasmaStatusEffect;
         }
     }
 }

@@ -5,10 +5,9 @@ namespace TeamOne.EvolvedSurvivor
     public class CryoStatusEffect : StatusEffect
     {
         private float duration;
-        private int level;
         public override void Build(int level, float magnitude)
         {
-            this.level = level;
+            this.Level = level;
             duration = magnitude;
         }
 
@@ -22,7 +21,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Cryo " + level;
+            return "Cryo " + Level;
+        }
+
+        public override bool EqualTypeTo(StatusEffect other)
+        {
+            return other is CryoStatusEffect;
         }
     }
 }

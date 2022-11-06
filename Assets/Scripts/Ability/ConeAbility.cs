@@ -187,5 +187,20 @@ namespace TeamOne.EvolvedSurvivor
                 + "\n"
                 + GetStatusEffects();
         }
+
+        public override string GetComparedDetails(Ability other)
+        {
+            ConeAbility o = (ConeAbility)other;
+
+            string details = "";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage every 0.5 seconds\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
+            details += "Range: " + GetComparedFloatString(o.aoeRange.value, aoeRange.value) + " units\n";
+            details += "Cone Angle: " + GetComparedFloatString(o.coneNumber.value * anglePerHalfCone * 2, coneNumber.value * anglePerHalfCone * 2) + " degrees\n";
+            details += "\n" + GetComparedStatusEffects(o);
+
+            return details;
+        }
     }
 }

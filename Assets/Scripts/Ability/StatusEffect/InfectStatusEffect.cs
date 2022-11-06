@@ -7,11 +7,10 @@ namespace TeamOne.EvolvedSurvivor
     {
         private float duration;
         private readonly float magnitude = 0.3f;
-        private int level;
 
         public override void Build(int level, float magnitude)
         {
-            this.level = level;
+            this.Level = level;
             duration = magnitude;
         }
 
@@ -25,7 +24,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Infect " + level;
+            return "Infect " + Level;
+        }
+
+        public override bool EqualTypeTo(StatusEffect other)
+        {
+            return other is InfectStatusEffect;
         }
     }
 }
