@@ -34,7 +34,7 @@ namespace TeamOne.EvolvedSurvivor
         public virtual void ScaleStats(float enemyLevel)
         {
             Damage damage = new Damage();
-            damage.damage = this.initialDamage * 0.8f * (1f + enemyLevel);
+            damage.damage = this.initialDamage * 0.5f * (1f + enemyLevel);
 
             damage = this.damageHandler.ProcessOutgoingDamage(damage);
             this.damageArea.SetDamage(damage);

@@ -993,6 +993,7 @@ MonoBehaviour:
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
   movement: {fileID: 7751080476582257864}
+  aiBrain: {fileID: 7751210001397076598}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
 --- !u!114 &4865310587204656476
 MonoBehaviour:
