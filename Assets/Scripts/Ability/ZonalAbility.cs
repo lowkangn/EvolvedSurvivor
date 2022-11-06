@@ -149,5 +149,20 @@ namespace TeamOne.EvolvedSurvivor
                 + "\n"
                 + GetStatusEffects();
         }
+
+        public override string GetComparedDetails(Ability other)
+        {
+            ZonalAbility o = (ZonalAbility)other;
+
+            string details = "";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage every 0.5 seconds\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Targets up to " + GetComparedIntString(o.targetNumber.value, targetNumber.value) + " enemies\n";
+            details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
+            details += "Pool radius: " + GetComparedFloatString(o.aoeRadius.value, aoeRadius.value) + " units\n";
+            details += "\n" + GetComparedStatusEffects(o);
+
+            return details;
+        }
     }
 }

@@ -155,5 +155,20 @@ namespace TeamOne.EvolvedSurvivor
                 + "\n"
                 + GetStatusEffects();
         }
+
+        public override string GetComparedDetails(Ability other)
+        {
+            OrbitalAbility o = (OrbitalAbility)other;
+
+            string details = "";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage per orb\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Spawns " + GetComparedIntString(o.orbitalNumber.value, orbitalNumber.value) + " orbs\n";
+            details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
+            details += "Orb radius: " + GetComparedFloatString(o.projectileSize.value, projectileSize.value) + " units\n";
+            details += "\n" + GetComparedStatusEffects(o);
+
+            return details;
+        }
     }
 }

@@ -9,11 +9,10 @@ namespace TeamOne.EvolvedSurvivor
         private readonly float tickRate = 0.5f;
         private readonly float duration = 3f;
         private float damageMultiplier;
-        private int level;
 
         public override void Build(int level, float magnitude)
         {
-            this.level = level;
+            this.Level = level;
             damageMultiplier = magnitude;
         }
 
@@ -28,7 +27,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Pyro " + level;
+            return "Pyro " + Level;
+        }
+
+        public override bool EqualTypeTo(StatusEffect other)
+        {
+            return other is PyroStatusEffect;
         }
     }
 }

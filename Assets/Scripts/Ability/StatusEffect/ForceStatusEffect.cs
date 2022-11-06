@@ -8,11 +8,10 @@ namespace TeamOne.EvolvedSurvivor
     public class ForceStatusEffect : StatusEffect
     {
         private float force;
-        private int level;
 
         public override void Build(int level, float magnitude)
         {
-            this.level = level;
+            this.Level = level;
             force = magnitude;
         }
 
@@ -27,7 +26,12 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetName()
         {
-            return "Force " + level;
+            return "Force " + Level;
+        }
+
+        public override bool EqualTypeTo(StatusEffect other)
+        {
+            return other is ForceStatusEffect;
         }
     }
 }

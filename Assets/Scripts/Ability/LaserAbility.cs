@@ -160,5 +160,20 @@ namespace TeamOne.EvolvedSurvivor
                 + "\n"
                 + GetStatusEffects();
         }
+
+        public override string GetComparedDetails(Ability other)
+        {
+            LaserAbility o = (LaserAbility)other;
+
+            string details = "";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage every 0.5 seconds\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Targets up to " + GetComparedIntString(o.laserNumber.value, laserNumber.value) + " enemies\n";
+            details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
+            details += "Laser thickness: " + GetComparedFloatString(o.projectileSize.value, projectileSize.value) + " units\n";
+            details += "\n" + GetComparedStatusEffects(o);
+
+            return details;
+        }
     }
 }
