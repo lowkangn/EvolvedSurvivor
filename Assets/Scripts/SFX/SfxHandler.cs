@@ -12,11 +12,10 @@ public class SfxHandler : MonoBehaviour
     protected float volume = 1.0f;
     [SerializeField]
     protected bool loop;
-    [SerializeField]
-    protected int id;
 
     protected MMSoundManagerPlayOptions options = MMSoundManagerPlayOptions.Default;
-    protected bool isPlaying;
+
+    private int id = 0;
 
     void Awake()
     {
@@ -29,33 +28,25 @@ public class SfxHandler : MonoBehaviour
         options.Location = this.transform.position;
         options.Volume = volume;
         options.Loop = loop;
-        options.ID = id;
+
+        if (loop)
+        {
+            this.id = IdAssigner.GetSoundId();
+            options.ID = this.id;
+        }
     }
 
     public void PlaySfx()
     {
-        if (id != 0)
-        {
-            MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, id);
-        }
-        else {
-            isPlaying = false;
-        }
-
-        if (!isPlaying)
-        {
-            isPlaying = true;
-            MMSoundManagerSoundPlayEvent.Trigger(sfx, options);
-        }
+        StopSfx();
+        MMSoundManagerSoundPlayEvent.Trigger(sfx, options);
     }
 
     public void StopSfx()
     {
         if (id != 0) // id == 0 means ID not assigned, so should not be calling this method (this method is only used for sfx that need to be stopped prematurely and ID must be assigned)
         {
-            MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, id);
-            isPlaying = false;
-        }
-        
+            MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Free, id);
+        }     
     }
 }

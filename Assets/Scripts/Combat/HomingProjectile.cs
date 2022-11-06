@@ -8,14 +8,13 @@ namespace TeamOne.EvolvedSurvivor
         private bool isTracking = true;
         private float angularVelocity = 180f;
 
-        [SerializeField] SfxHandler sfxHandler;
+        [SerializeField] private SfxHandler sfxHandler;
 
         public void SetTarget(GameObject target)
         {
             this.target = target;
             isTracking = true;
         }
-
 
         protected override void Update()
         {

@@ -1170,7 +1170,6 @@ MonoBehaviour:
   sfx: {fileID: 8300000, guid: 359fab1e8941547fe878d8ab46cffa82, type: 3}
   volume: 1
   loop: 0
-  id: 0
 --- !u!1 &7639620610091389554
 GameObject:
   m_ObjectHideFlags: 0
