@@ -1054,13 +1054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e3276b50beb0e42bf5b46790782765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDamage: 4
+  initialDamage: 5
   initialHealth: 15
   damageHandler: {fileID: -5534447137170697443}
   damageArea: {fileID: 560260766162801752}
   health: {fileID: 7750977142303885208}
   movement: {fileID: 7751080476582257864}
-  aiBrain: {fileID: 7751210001397076598}
   spawnManager: {fileID: 11400000, guid: c8a4edc2ef48d224e9560953b32268f1, type: 2}
   initialSecondaryDamage: 8
   secDamageArea: {fileID: 0}
