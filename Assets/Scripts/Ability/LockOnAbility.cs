@@ -131,7 +131,16 @@ namespace TeamOne.EvolvedSurvivor
 
         public override string GetComparedDetails(Ability other)
         {
-            return GetDetails();
+            LockOnAbility o = (LockOnAbility)other;
+
+            string details = "";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage on hit\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Targets up to " + GetComparedIntString(o.targetNumber.value, targetNumber.value) + " enemies\n";
+            details += "Explosion radius on strike: " + GetComparedFloatString(o.aoeRadius.value, aoeRadius.value) + " units\n";
+            details += "\n" + GetComparedStatusEffects(o);
+
+            return details;
         }
     }
 }

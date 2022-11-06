@@ -197,8 +197,8 @@ namespace TeamOne.EvolvedSurvivor
             details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
             details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
             details += "Range: " + GetComparedFloatString(o.aoeRange.value, aoeRange.value) + " units\n";
-            details += "Cone Angle: " + GetComparedIntString(o.coneNumber.value, coneNumber.value) + " degrees\n";
-            details += "\n" + GetStatusEffects();
+            details += "Cone Angle: " + GetComparedFloatString(o.coneNumber.value * anglePerHalfCone * 2, coneNumber.value * anglePerHalfCone * 2) + " degrees\n";
+            details += "\n" + GetComparedStatusEffects(o);
 
             return details;
         }

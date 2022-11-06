@@ -166,7 +166,7 @@ namespace TeamOne.EvolvedSurvivor
             details += "Spawns " + GetComparedIntString(o.orbitalNumber.value, orbitalNumber.value) + " orbs\n";
             details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
             details += "Orb radius: " + GetComparedFloatString(o.projectileSize.value, projectileSize.value) + " units\n";
-            details += "\n" + GetStatusEffects();
+            details += "\n" + GetComparedStatusEffects(o);
 
             return details;
         }

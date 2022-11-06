@@ -317,12 +317,12 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (upgraded.CompareTo(original) > 0)
             {
-                return "<color=green>" + upgraded.ToString("0.0") + "</color>";
+                return "<color=#00ff00ff>" + upgraded.ToString("0.0") + "</color>";
             }
 
             if (upgraded.CompareTo(original) < 0)
             {
-                return "<color=red>" + upgraded.ToString("0.0") + "</color>";
+                return "<color=#ff3224>" + upgraded.ToString("0.0") + "</color>";
             }
 
             return upgraded.ToString("0.0");
@@ -332,12 +332,12 @@ namespace TeamOne.EvolvedSurvivor
         {
             if (upgraded.CompareTo(original) > 0)
             {
-                return "<color=green>" + upgraded + "</color>";
+                return "<color=#00ff00ff>" + upgraded + "</color>";
             }
 
             if (upgraded.CompareTo(original) < 0)
             {
-                return "<color=red>" + upgraded + "</color>";
+                return "<color=#ff3224>" + upgraded + "</color>";
             }
 
             return upgraded.ToString();
@@ -357,6 +357,39 @@ namespace TeamOne.EvolvedSurvivor
                 }
 
                 result += effectName;
+            }
+
+            return result;
+        }
+
+        protected string GetComparedStatusEffects(Ability other)
+        {
+            string result = "Status Effects: ";
+
+            for (int i = 0; i < effects.Count; i++)
+            {
+                if (i > 0)
+                {
+                    result += ", ";
+                }
+
+                StatusEffect upgraded = effects[i];
+                StatusEffect original = other.effects.Find(x => x.EqualTypeTo(upgraded));
+                if (original == null)
+                {
+                    result += "<color=#00ff00ff>" + upgraded.GetName() + "</color>";
+                }
+                else
+                {
+                    if (upgraded.Level > original.Level)
+                    {
+                        result += "<color=#00ff00ff>" + upgraded.GetName() + "</color>";
+                    }
+                    else
+                    {
+                        result += upgraded.GetName();
+                    }
+                }
             }
 
             return result;
