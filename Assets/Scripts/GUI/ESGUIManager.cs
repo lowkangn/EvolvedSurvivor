@@ -83,5 +83,14 @@ public class ESGUIManager : MonoBehaviour, MMEventListener<TopDownEngineEvent>
             isLevelUpScreenVisible = false;
             LevelUpScreen.SetActive(false);
         }
+
+        if (eventType.EventType == TopDownEngineEventTypes.Pause)
+        {
+            MMSoundManager.Instance.PauseTrack(MMSoundManager.MMSoundManagerTracks.Sfx);
+        } 
+        else if (eventType.EventType == TopDownEngineEventTypes.UnPause)
+        {
+            MMSoundManager.Instance.PlayTrack(MMSoundManager.MMSoundManagerTracks.Sfx);
+        }
     }
 }
