@@ -56,7 +56,7 @@ public class MergeAbilityHandler : MonoBehaviour
             if (primary.CanUpgrade(secondary))
             {
                 Ability outputAbility = primary.UpgradeAbility(secondary);
-                this.outputSlot.AddAbilityToButton(outputAbility);
+                this.outputSlot.AddAbilityToButton(outputAbility, primary);
                 confirmButton.SetActive(true);
             }
         }

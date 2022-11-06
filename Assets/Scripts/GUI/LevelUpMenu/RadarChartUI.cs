@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +13,9 @@ namespace TeamOne.EvolvedSurvivor
         private const string TITLE_TRAIT_QUANTITY = "Quantity:\n";
         private const string TITLE_TRAIT_UTILITY = "Utility:\n";
 
-        [SerializeField] private CanvasRenderer radarMeshCanvasRenderer;
+        [SerializeField] private List<CanvasRenderer> radarMeshCanvasRenderers;
         [SerializeField] private Texture2D radarTexture2D;
-        [SerializeField] private Material radarMaterial;
+        [SerializeField] private List<Material> radarMaterials;
         [SerializeField] private GameObject notAvailableBox;
 
         [SerializeField] protected Text rcDamageText;
@@ -23,12 +24,17 @@ namespace TeamOne.EvolvedSurvivor
         [SerializeField] protected Text rcQuantityText;
         [SerializeField] protected Text rcUtilityText;
 
+        [SerializeField] protected Color defaultColor;
+        [SerializeField] protected Color statIncreaseColor;
+        [SerializeField] protected Color statDecreaseColor;
+
         public void UpdateVisual(Upgradable upgradable)
         {
             if (upgradable.IsAbility())
             {
                 TraitChart traitChart = upgradable.ConvertTo<Ability>().GetTraitChart();
-                DrawChart(traitChart);
+                DrawChart(traitChart, radarMeshCanvasRenderers[0], radarMaterials[0], radarTexture2D);
+                UpdateLabels(traitChart);
             } 
             else
             {
@@ -36,16 +42,34 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        public void UpdateVisual(Upgradable original, Upgradable upgraded)
+        {
+            if (original.IsAbility() && upgraded.IsAbility())
+            {
+                TraitChart originalTraitChart = original.ConvertTo<Ability>().GetTraitChart();
+                TraitChart upgradedTraitChart = upgraded.ConvertTo<Ability>().GetTraitChart();
+                DrawChart(originalTraitChart, radarMeshCanvasRenderers[0], radarMaterials[0], radarTexture2D);
+                DrawChart(upgradedTraitChart, radarMeshCanvasRenderers[1], radarMaterials[1], radarTexture2D);
+                UpdateLabels(originalTraitChart, upgradedTraitChart);
+
+            }
+            else
+            {
+                Debug.LogWarning("The original or upgraded is not an ability");
+                notAvailableBox.SetActive(true);
+            }
+        }
+
         public void ClearVisual() 
         {
             // This method should remove the mesh from the radarChart 
-            radarMeshCanvasRenderer.SetMesh(null);
+            radarMeshCanvasRenderers.ForEach(x => x.SetMesh(null));
 
             notAvailableBox.SetActive(false);
             ClearLabels();
         }
 
-        private void DrawChart(TraitChart traitChart)
+        private void DrawChart(TraitChart traitChart, CanvasRenderer renderer, Material material, Texture2D texture)
         {
             Mesh mesh = new Mesh();
             Vector3[] vertices = new Vector3[6];
@@ -114,27 +138,76 @@ namespace TeamOne.EvolvedSurvivor
             mesh.uv = uv;
             mesh.triangles = triangles;
 
-            radarMeshCanvasRenderer.SetMesh(mesh);
-            radarMeshCanvasRenderer.SetMaterial(radarMaterial, radarTexture2D);
-            UpdateLabels(traitChart);
+            renderer.SetMesh(mesh);
+            renderer.SetMaterial(material, texture);
         }
 
         private void UpdateLabels(TraitChart traitChart)
         {
             rcDamageText.text = TITLE_TRAIT_DAMAGE + $"{traitChart.damage:0.0}";
+            rcDamageText.color = defaultColor;
             rcUptimeText.text = TITLE_TRAIT_UPTIME + $"{traitChart.uptime:0.0}";
+            rcUptimeText.color = defaultColor;
             rcAoeText.text = TITLE_TRAIT_AOE + $"{traitChart.aoe:0.0}";
+            rcAoeText.color = defaultColor;
             rcQuantityText.text = TITLE_TRAIT_QUANTITY + $"{traitChart.quantity:0.0}";
+            rcQuantityText.color = defaultColor;
             rcUtilityText.text = TITLE_TRAIT_UTILITY + $"{traitChart.utility:0.0}";
+            rcUtilityText.color = defaultColor;
+        }
+
+        private void UpdateLabels(TraitChart original, TraitChart upgraded)
+        {
+            UpdateLabels(upgraded);
+
+            // damage
+            bool damageChanged = original.damage != upgraded.damage;
+            if (damageChanged)
+            {
+                rcDamageText.color = upgraded.damage > original.damage ? statIncreaseColor : statDecreaseColor;
+            }
+
+            // uptime
+            bool uptimeChanged = original.uptime != upgraded.uptime;
+            if (uptimeChanged)
+            {
+                rcUptimeText.color = upgraded.uptime > original.uptime ? statIncreaseColor : statDecreaseColor;
+            }
+
+            // aoe
+            bool aoeChanged = original.aoe != upgraded.aoe;
+            if (aoeChanged)
+            {
+                rcAoeText.color = upgraded.aoe > original.aoe ? statIncreaseColor : statDecreaseColor;
+            }
+
+            // quantity
+            bool quantityChanged = original.quantity != upgraded.quantity;
+            if (quantityChanged)
+            {
+                rcQuantityText.color = upgraded.quantity > original.quantity ? statIncreaseColor : statDecreaseColor;
+            }
+
+            // utility
+            bool utilityChanged = original.utility != upgraded.utility;
+            if (utilityChanged)
+            {
+                rcUtilityText.color = upgraded.utility > original.utility ? statIncreaseColor : statDecreaseColor;
+            }
         }
 
         private void ClearLabels()
         {
             rcDamageText.text = TITLE_TRAIT_DAMAGE;
+            rcDamageText.color = defaultColor;
             rcUptimeText.text = TITLE_TRAIT_UPTIME;
+            rcUptimeText.color = defaultColor;
             rcAoeText.text = TITLE_TRAIT_AOE;
+            rcAoeText.color = defaultColor;
             rcQuantityText.text = TITLE_TRAIT_QUANTITY;
+            rcQuantityText.color = defaultColor;
             rcUtilityText.text = TITLE_TRAIT_UTILITY;
+            rcUtilityText.color = defaultColor;
         }
     }
 }
