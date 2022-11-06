@@ -313,7 +313,22 @@ namespace TeamOne.EvolvedSurvivor
 
         public abstract string GetComparedDetails(Ability other);
 
-        protected string GetComparedValueString<T>(T original, T upgraded) where T : System.IComparable<T>
+        protected string GetComparedFloatString(float original, float upgraded)
+        {
+            if (upgraded.CompareTo(original) > 0)
+            {
+                return "<color=green>" + upgraded.ToString("0.0") + "</color>";
+            }
+
+            if (upgraded.CompareTo(original) < 0)
+            {
+                return "<color=red>" + upgraded.ToString("0.0") + "</color>";
+            }
+
+            return upgraded.ToString("0.0");
+        }
+
+        protected string GetComparedIntString(int original, int upgraded)
         {
             if (upgraded.CompareTo(original) > 0)
             {

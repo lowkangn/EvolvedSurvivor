@@ -193,11 +193,11 @@ namespace TeamOne.EvolvedSurvivor
             ConeAbility o = (ConeAbility)other;
 
             string details = "";
-            details += GetComparedValueString(o.damage.value, damage.value) + " damage every 0.5 seconds\n";
-            details += "Fires every " + GetComparedValueString(o.coolDown.value, coolDown.value) + " seconds\n";
-            details += "Lasts " + GetComparedValueString(o.duration.value, duration.value) + " seconds\n";
-            details += "Range: " + GetComparedValueString(o.aoeRange.value, aoeRange.value) + " units\n";
-            details += "Cone Angle: " + GetComparedValueString(o.coneNumber.value, coneNumber.value) + " degrees\n";
+            details += GetComparedFloatString(o.damage.value, damage.value) + " damage every 0.5 seconds\n";
+            details += "Fires every " + GetComparedFloatString(o.coolDown.value, coolDown.value) + " seconds\n";
+            details += "Lasts " + GetComparedFloatString(o.duration.value, duration.value) + " seconds\n";
+            details += "Range: " + GetComparedFloatString(o.aoeRange.value, aoeRange.value) + " units\n";
+            details += "Cone Angle: " + GetComparedIntString(o.coneNumber.value, coneNumber.value) + " degrees\n";
             details += "\n" + GetStatusEffects();
 
             return details;
