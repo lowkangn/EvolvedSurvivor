@@ -16,11 +16,7 @@ public class SfxHandler : MonoBehaviour
     protected MMSoundManagerPlayOptions options = MMSoundManagerPlayOptions.Default;
 
     private int id = 0;
-
-    void Awake()
-    {
-        InitialiseSfx();
-    }
+    private bool isInitialised = false;
 
     protected virtual void InitialiseSfx()
     {
@@ -34,10 +30,17 @@ public class SfxHandler : MonoBehaviour
             this.id = IdAssigner.GetSoundId();
             options.ID = this.id;
         }
+
+        isInitialised = true;
     }
 
     public void PlaySfx()
     {
+        if (!isInitialised)
+        {
+            InitialiseSfx();
+        }
+
         StopSfx();
         MMSoundManagerSoundPlayEvent.Trigger(sfx, options);
     }
