@@ -1,30 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ESSoundManager : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
-    [SerializeField] Image soundSprite;
+    [SerializeField] Slider masterVolumeSlider;
+    [SerializeField] Image masterSoundSprite;
+    [SerializeField] Slider musicVolumeSlider;
+    [SerializeField] Image musicSoundSprite;
+    [SerializeField] Slider sfxVolumeSlider;
+    [SerializeField] Image sfxSoundSprite;
+    [SerializeField] Slider uiVolumeSlider;
+    [SerializeField] Image uiSoundSprite;
     [SerializeField] Sprite soundOnIcon;
     [SerializeField] Sprite soundOffIcon;
 
-    void Start()
+    void Awake()
     {
-        volumeSlider.value = AudioListener.volume;
+        MMSoundManager soundManager = GameObject.Find("SoundManager").GetComponent<MMSoundManager>();
+        SetMasterVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Master, false));
+        SetMusicVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, false));
+        SetSfxVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, false));
+        SetUiVolume(soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.UI, false));
     }
 
-    public void ChangeVolume()
+    private void ChangeVolume(MMSoundManager.MMSoundManagerTracks track, float volume, Image spriteImage)
     {
-        AudioListener.volume = volumeSlider.value;
-        if (AudioListener.volume == 0) 
+        MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.SetVolumeTrack, track, volume);
+
+        if (volume == 0)
         {
-            soundSprite.sprite = soundOffIcon;
+            spriteImage.sprite = soundOffIcon;
         }
-        if (AudioListener.volume > 0) 
+        if (volume > 0)
         {
-            soundSprite.sprite = soundOnIcon;
+            spriteImage.sprite = soundOnIcon;
         }
+    }
+
+    public void ChangeMasterVolume()
+    {
+        ChangeVolume(MMSoundManager.MMSoundManagerTracks.Master, masterVolumeSlider.value, masterSoundSprite);
+    }
+
+    public void ChangeMusicVolume()
+    {
+        ChangeVolume(MMSoundManager.MMSoundManagerTracks.Music, musicVolumeSlider.value, musicSoundSprite);
+    }
+
+    public void ChangeSfxVolume()
+    {
+        ChangeVolume(MMSoundManager.MMSoundManagerTracks.Sfx, sfxVolumeSlider.value, sfxSoundSprite);
+    }
+
+    public void ChangeUiVolume()
+    {
+        ChangeVolume(MMSoundManager.MMSoundManagerTracks.UI, uiVolumeSlider.value, uiSoundSprite);
+    }
+
+    private void SetMasterVolume(float newVolume)
+    {
+        masterVolumeSlider.value = newVolume;
+        ChangeMasterVolume();
+    }
+
+    private void SetMusicVolume(float newVolume)
+    {
+        musicVolumeSlider.value = newVolume;
+        ChangeMusicVolume();
+    }
+
+    private void SetSfxVolume(float newVolume)
+    {
+        sfxVolumeSlider.value = newVolume;
+        ChangeSfxVolume();
+    }
+
+    private void SetUiVolume(float newVolume)
+    {
+        uiVolumeSlider.value = newVolume;
+        ChangeUiVolume();
     }
 }

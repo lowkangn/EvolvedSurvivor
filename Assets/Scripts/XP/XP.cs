@@ -35,6 +35,7 @@ namespace MoreMountains.TopDownEngine
 
 		[SerializeField] private GUIUpdaterScriptableObject guiUpdater;
 		[SerializeField] private ParticleSystem levelUpEffect;
+		[SerializeField] private SfxHandler levelUpSfxHandler;
 
 		private float currentLevel = 0;
         
@@ -99,6 +100,7 @@ namespace MoreMountains.TopDownEngine
             yield return new WaitForSeconds(waitTime);
             guiUpdater.OnLevelUp();
             guiUpdater.OnXpChange(CurrentXP, XPToNextLevel);
+            levelUpSfxHandler.PlaySfx();  
         }
 
 		/// <summary>
