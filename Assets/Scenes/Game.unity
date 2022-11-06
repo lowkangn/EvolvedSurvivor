@@ -4116,34 +4116,34 @@ MonoBehaviour:
   enemies:
   - enemyObject: {fileID: 7639002971553439240, guid: cc78a6a591e0b7046bb96ec73af2dff2,
       type: 3}
-    spawnLimit: 0
+    spawnLimit: 10
     cost: 1
     spawnAfterSeconds: 0
-    limitScalingFactor: 0
+    limitScalingFactor: 0.15
   - enemyObject: {fileID: 7639002971553439240, guid: 1fc4754dfeddf004e92c39ecd3665c93,
       type: 3}
-    spawnLimit: 0
+    spawnLimit: 2
     cost: 2
     spawnAfterSeconds: 60
-    limitScalingFactor: 0
+    limitScalingFactor: 0.02
   - enemyObject: {fileID: 7639002971553439240, guid: cb346948d18b67c4caa0979ecc5037d9,
       type: 3}
-    spawnLimit: 0
+    spawnLimit: 2
     cost: 2
     spawnAfterSeconds: 30
-    limitScalingFactor: 0
+    limitScalingFactor: 0.02
   - enemyObject: {fileID: 7639002971553439240, guid: 8c96b7bd1519d864eb272c351ae82d24,
       type: 3}
     spawnLimit: 1
     cost: 10
-    spawnAfterSeconds: 0
-    limitScalingFactor: 0
+    spawnAfterSeconds: 180
+    limitScalingFactor: 0.01
   - enemyObject: {fileID: 7639002971553439240, guid: fe0f7a2b8e0bfb448ba934e7e31c6627,
       type: 3}
-    spawnLimit: 0
+    spawnLimit: 3
     cost: 3
     spawnAfterSeconds: 120
-    limitScalingFactor: 0
+    limitScalingFactor: 0.08
   objectPooler: {fileID: 1427425514}
   spendingPointsMultiplier: 0.01
   minSpawnFreq: 3
