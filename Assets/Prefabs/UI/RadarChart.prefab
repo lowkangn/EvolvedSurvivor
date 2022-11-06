@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1322697030803485676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403264047069173878}
+  - component: {fileID: 35224308865448354}
+  m_Layer: 5
+  m_Name: RadarMesh_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1403264047069173878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322697030803485676}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7710826428008384043}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &35224308865448354
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322697030803485676}
+  m_CullTransparentMesh: 1
 --- !u!1 &2781434870221629889
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +557,7 @@ GameObject:
   - component: {fileID: 2781434871392961150}
   - component: {fileID: 2781434871392961151}
   m_Layer: 5
-  m_Name: RadarMesh
+  m_Name: RadarMesh_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,8 +575,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2781434871706124779}
-  m_RootOrder: 2
+  m_Father: {fileID: 7710826428008384043}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -577,7 +622,7 @@ RectTransform:
   m_Children:
   - {fileID: 2781434871258683311}
   - {fileID: 2781434870766697767}
-  - {fileID: 2781434871392961150}
+  - {fileID: 7710826428008384043}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,14 +643,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52cb36465f23774fb7a8c105ab58c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radarMeshCanvasRenderer: {fileID: 2781434871392961151}
+  radarMeshCanvasRenderers:
+  - {fileID: 2781434871392961151}
+  - {fileID: 35224308865448354}
   radarTexture2D: {fileID: 2800000, guid: ccf36b5cfc00e3749a05d6b7b8b425ce, type: 3}
-  radarMaterial: {fileID: 2100000, guid: e01c9bf6f6a4a8f4298639e6fdd201dd, type: 2}
+  radarMaterials:
+  - {fileID: 2100000, guid: 065f7264e5bdc6846bb932a90be5ff7a, type: 2}
+  - {fileID: 2100000, guid: e01c9bf6f6a4a8f4298639e6fdd201dd, type: 2}
+  notAvailableBox: {fileID: 0}
   rcDamageText: {fileID: 2781434870980325474}
   rcUptimeText: {fileID: 2781434871809644456}
   rcAoeText: {fileID: 2781434870730275403}
   rcQuantityText: {fileID: 2781434870221629948}
   rcUtilityText: {fileID: 2781434871244494593}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  statIncreaseColor: {r: 0, g: 1, b: 0.00427413, a: 1}
+  statDecreaseColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2781434871809644461
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,3 +755,41 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.153}
   m_EffectDistance: {x: 0, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!1 &8120241656965085723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7710826428008384043}
+  m_Layer: 5
+  m_Name: RadarMeshes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7710826428008384043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120241656965085723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1403264047069173878}
+  - {fileID: 2781434871392961150}
+  m_Father: {fileID: 2781434871706124779}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
