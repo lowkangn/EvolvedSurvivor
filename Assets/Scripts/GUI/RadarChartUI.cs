@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +13,9 @@ namespace TeamOne.EvolvedSurvivor
         private const string TITLE_TRAIT_QUANTITY = "Quantity:\n";
         private const string TITLE_TRAIT_UTILITY = "Utility:\n";
 
-        [SerializeField] private CanvasRenderer radarMeshCanvasRenderer;
+        [SerializeField] private List<CanvasRenderer> radarMeshCanvasRenderers;
         [SerializeField] private Texture2D radarTexture2D;
-        [SerializeField] private Material radarMaterial;
+        [SerializeField] private List<Material> radarMaterials;
         [SerializeField] private GameObject notAvailableBox;
 
         [SerializeField] protected Text rcDamageText;
@@ -28,7 +29,8 @@ namespace TeamOne.EvolvedSurvivor
             if (upgradable.IsAbility())
             {
                 TraitChart traitChart = upgradable.ConvertTo<Ability>().GetTraitChart();
-                DrawChart(traitChart);
+                DrawChart(traitChart, radarMeshCanvasRenderers[0], radarMaterials[0], radarTexture2D);
+                UpdateLabels(traitChart);
             } 
             else
             {
@@ -36,16 +38,34 @@ namespace TeamOne.EvolvedSurvivor
             }
         }
 
+        public void UpdateVisual(Upgradable original, Upgradable upgraded)
+        {
+            if (original.IsAbility() && upgraded.IsAbility())
+            {
+                TraitChart originalTraitChart = original.ConvertTo<Ability>().GetTraitChart();
+                TraitChart upgradedTraitChart = upgraded.ConvertTo<Ability>().GetTraitChart();
+                DrawChart(originalTraitChart, radarMeshCanvasRenderers[0], radarMaterials[1], radarTexture2D);
+                DrawChart(upgradedTraitChart, radarMeshCanvasRenderers[1], radarMaterials[0], radarTexture2D);
+                UpdateLabels(upgradedTraitChart);
+
+            }
+            else
+            {
+                Debug.LogWarning("The original or upgraded is not an ability");
+                notAvailableBox.SetActive(true);
+            }
+        }
+
         public void ClearVisual() 
         {
             // This method should remove the mesh from the radarChart 
-            radarMeshCanvasRenderer.SetMesh(null);
+            radarMeshCanvasRenderers.ForEach(x => x.SetMesh(null));
 
             notAvailableBox.SetActive(false);
             ClearLabels();
         }
 
-        private void DrawChart(TraitChart traitChart)
+        private void DrawChart(TraitChart traitChart, CanvasRenderer renderer, Material material, Texture2D texture)
         {
             Mesh mesh = new Mesh();
             Vector3[] vertices = new Vector3[6];
@@ -114,9 +134,8 @@ namespace TeamOne.EvolvedSurvivor
             mesh.uv = uv;
             mesh.triangles = triangles;
 
-            radarMeshCanvasRenderer.SetMesh(mesh);
-            radarMeshCanvasRenderer.SetMaterial(radarMaterial, radarTexture2D);
-            UpdateLabels(traitChart);
+            renderer.SetMesh(mesh);
+            renderer.SetMaterial(material, texture);
         }
 
         private void UpdateLabels(TraitChart traitChart)
