@@ -99,9 +99,8 @@ namespace MoreMountains.TopDownEngine
 
             yield return new WaitForSeconds(waitTime);
             guiUpdater.OnLevelUp();
-            guiUpdater.OnXpChange(CurrentXP, MaximumXP);
-			levelUpSfxHandler.PlaySfx();
             guiUpdater.OnXpChange(CurrentXP, XPToNextLevel);
+            levelUpSfxHandler.PlaySfx();  
         }
 
 		/// <summary>
