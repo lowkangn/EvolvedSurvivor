@@ -18,6 +18,11 @@ public class TargetLaserGroup : MonoBehaviour
     [SerializeField] private SpawnManagerScriptableObject spawnManager;
     [SerializeField] private float damageValue = 1000f;
 
+    [Header("Sound")]
+    [SerializeField] private SfxHandler warmupSfxHandler;
+    [SerializeField] private SfxHandler fireSfxHandler;
+    [SerializeField] private SfxHandler explosionSfxHandler;
+
     private bool isMissileFired = false;
 
     private Health playerHealth;
@@ -63,6 +68,7 @@ public class TargetLaserGroup : MonoBehaviour
     {
         yield return new WaitForSeconds(fireAfterSeconds);
 
+        warmupSfxHandler.PlaySfx();
         SetLasers(true);
         yield return new WaitForSeconds(0.1f);
         SetLasers(false);
@@ -78,9 +84,10 @@ public class TargetLaserGroup : MonoBehaviour
         ArmLasers();
 
         yield return new WaitForSeconds(fireDuration);
+        warmupSfxHandler.StopSfx();
         StartCoroutine(FireMissile());
         yield return new WaitForSeconds(0.5f);
-        Explode();
+        StartCoroutine(Explode());
     }
 
     private IEnumerator FireMissile()
@@ -89,6 +96,7 @@ public class TargetLaserGroup : MonoBehaviour
         missileParticles.gameObject.SetActive(true);
         missileParticles.Play();
         missileParticles.transform.localPosition = new Vector3(0f, missileSpawnHeight, 0f);
+        fireSfxHandler.PlaySfx();
 
         yield return new WaitForSeconds(1f);
 
@@ -113,12 +121,16 @@ public class TargetLaserGroup : MonoBehaviour
         }
     }
 
-    private void Explode()
+    private IEnumerator Explode()
     {
         MMFlashEvent.Trigger(Color.red, 0.5f, 1f, 0, 0, TimescaleModes.Unscaled);
         explosionParticles.gameObject.SetActive(true);
         explosionParticles.Play();
+        explosionSfxHandler.PlaySfx();
 
         playerHealth.Damage(damageValue, gameObject, 0f, 0f, Vector3.zero);
+
+        yield return new WaitForSeconds(1f);
+        explosionParticles.gameObject.SetActive(false);
     }
 }

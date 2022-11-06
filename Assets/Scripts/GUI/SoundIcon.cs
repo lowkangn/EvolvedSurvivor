@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,29 +12,30 @@ public class SoundIcon : MonoBehaviour, IPointerClickHandler
     [SerializeField] Image soundSprite;
     [SerializeField] Sprite soundOnIcon;
     [SerializeField] Sprite soundOffIcon;
+    [SerializeField] MMSoundManager.MMSoundManagerTracks track;
     private float savedVolume;
 
-    public void OnPointerClick (PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         // Unmute
-        if (AudioListener.volume == 0) 
+        if (volumeSlider.value == 0) 
         {
             soundSprite.sprite = soundOnIcon;
             if (savedVolume == 0) 
             {
                 savedVolume = 1.0f;
             }
-            AudioListener.volume = savedVolume;
+            MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.SetVolumeTrack, track, savedVolume);
+            volumeSlider.value = savedVolume;
         } 
 
         // Mute
         else 
         {
-            savedVolume = AudioListener.volume;
+            savedVolume = volumeSlider.value;
             soundSprite.sprite = soundOffIcon;
-            AudioListener.volume = 0;
+            MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.SetVolumeTrack, track, 0);
+            volumeSlider.value = 0;
         }
-
-        volumeSlider.value = AudioListener.volume;
     }
 }
