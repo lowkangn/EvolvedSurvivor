@@ -1730,6 +1730,7 @@ MonoBehaviour:
   - {fileID: 1117195976}
   - {fileID: 825510470}
   - {fileID: 1736934432}
+  menuAnimator: {fileID: 1358006279}
 --- !u!1 &1418757245
 GameObject:
   m_ObjectHideFlags: 0
