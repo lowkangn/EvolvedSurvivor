@@ -2441,6 +2441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: {fileID: 908169018}
+  gameLength: 600
 --- !u!114 &908169018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4568,6 +4569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 908169017}
   killCounter: {fileID: 685443867}
+  deathSplashTitle: {fileID: 871566451}
   timeSurvivedText: {fileID: 762174010}
   enemiesKilledText: {fileID: 316468659}
 --- !u!1 &1596088393
@@ -6470,7 +6472,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783883, y: 1}
+    m_SensorSize: {x: 2.014652, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
